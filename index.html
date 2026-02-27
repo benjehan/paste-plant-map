@@ -153,6 +153,11 @@ a:hover{text-decoration:underline}
 .popup-badge.status-operating{background:rgba(46,204,113,0.15);color:var(--green)}
 .popup-badge.status-closed{background:rgba(231,76,60,0.15);color:var(--red)}
 .popup-badge.status-other{background:rgba(241,196,15,0.15);color:var(--yellow)}
+.popup-badge.fill-paste{background:rgba(0,169,157,0.2);color:#00a99d}
+.popup-badge.fill-caf{background:rgba(155,89,182,0.2);color:#9b59b6}
+.popup-badge.fill-hydraulic{background:rgba(52,152,219,0.2);color:#3498db}
+.popup-badge.fill-crf{background:rgba(230,126,34,0.2);color:#e67e22}
+.popup-badge.fill-multiple{background:rgba(241,196,15,0.2);color:#f1c40f}
 .popup-grid{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;padding:6px 14px 10px;font-size:12px}
 .popup-grid .pg-label{color:var(--muted);white-space:nowrap}
 .popup-grid .pg-val{font-weight:500;text-align:right}
@@ -335,6 +340,10 @@ a:hover{text-decoration:underline}
         <select id="filterStatus"><option value="">All Statuses</option></select>
       </div>
       <div class="filter-group">
+        <label>Fill Type</label>
+        <select id="filterFillType"><option value="">All Types</option><option value="Paste">Paste</option><option value="CAF">CAF</option><option value="Hydraulic Fill">Hydraulic Fill</option><option value="CRF">CRF</option><option value="Multiple">Multiple</option></select>
+      </div>
+      <div class="filter-group">
         <label>Confidence</label>
         <select id="filterConfidence"><option value="" selected>All Confidence</option><option value="verified">Verified Only</option><option value="likely">Likely</option></select>
       </div>
@@ -390,6 +399,11 @@ a:hover{text-decoration:underline}
     <div class="chart-section">
       <h3>Status</h3>
       <div class="chart-wrap" style="min-height:180px"><canvas id="chartStatus"></canvas></div>
+    </div>
+
+    <div class="chart-section">
+      <h3>Fill Type</h3>
+      <div class="chart-wrap" style="min-height:180px"><canvas id="chartFillType"></canvas></div>
     </div>
 
     <div class="chart-section">
@@ -506,6 +520,11 @@ const REGION_COLORS = {
   'North America':'#3498db','South America':'#e74c3c','Europe':'#f39c12',
   'Africa':'#9b59b6','Asia':'#1abc9c','Australia':'#e67e22'
 };
+const FILL_TYPE_COLORS = {
+  'Paste':'#00a99d','CAF':'#9b59b6','Hydraulic Fill':'#3498db','CRF':'#e67e22','Multiple':'#f1c40f'
+};
+function fillBadgeClass(ft){return 'fill-'+(ft||'paste').toLowerCase().replace(/ .*/,'')}
+
 const STATUS_COLORS = {
   'operating':'#2ecc71','closed':'#e74c3c','care & maintenance':'#f39c12',
   'planned':'#3498db','under construction':'#9b59b6','commissioning 2026':'#1abc9c','':'#7f8c8d'
@@ -583,6 +602,7 @@ function clearFilters(){
   document.getElementById('filterRegion').value='';
   document.getElementById('filterCommodity').value='';
   document.getElementById('filterStatus').value='';
+  document.getElementById('filterFillType').value='';
   document.getElementById('filterConfidence').value='';
   applyFilters();
 }
@@ -591,12 +611,14 @@ function applyFilters(){
   const region=document.getElementById('filterRegion').value;
   const commodity=document.getElementById('filterCommodity').value;
   const status=document.getElementById('filterStatus').value;
+  const fillType=document.getElementById('filterFillType').value;
   const confidence=document.getElementById('filterConfidence').value;
   const search=document.getElementById('searchBox').value.toLowerCase();
   const filtered=allData.filter(d=>{
     if(region && d.region!==region) return false;
     if(commodity && !(d.commodity||'').toLowerCase().includes(commodity.toLowerCase())) return false;
     if(status && d.status!==status) return false;
+    if(fillType && (d.fill_type||'Paste')!==fillType) return false;
     if(confidence && d.confidence!==confidence) return false;
     if(search && !d.name.toLowerCase().includes(search) && !(d.company||'').toLowerCase().includes(search) && !(d.country||'').toLowerCase().includes(search)) return false;
     return true;
@@ -605,7 +627,7 @@ function applyFilters(){
   if(clusterGroup && clusterGroup.getLayers().length){
     map.fitBounds(clusterGroup.getBounds().pad(0.1));
   }
-  const hasFilters = region || commodity || status || confidence || search;
+  const hasFilters = region || commodity || status || fillType || confidence || search;
   document.getElementById('clearFiltersBtn').style.display = hasFilters ? 'block' : 'none';
 }
 
@@ -642,13 +664,14 @@ function renderMap(data){
       </div>
       <div class="popup-badges">
         <span class="popup-badge capacity">${(d.tpd||0).toLocaleString()} tpd</span>
+        <span class="popup-badge ${fillBadgeClass(d.fill_type)}">${esc(d.fill_type||'Paste')}</span>
         ${d.commodity?'<span class="popup-badge commodity">'+esc(d.commodity)+'</span>':''}
         ${d.status?'<span class="popup-badge '+statusClass+'">'+esc(d.status)+'</span>':''}
       </div>
       <div class="popup-grid">
         <span class="pg-label">Country</span><span class="pg-val">${esc(d.country)}</span>
         <span class="pg-label">Region</span><span class="pg-val">${esc(d.region)}</span>
-        <span class="pg-label">Fill Type</span><span class="pg-val">${esc(d.type)}</span>
+        <span class="pg-label">Fill Type</span><span class="pg-val">${esc(d.fill_type||'Paste')}</span>
         <span class="pg-label">Plants</span><span class="pg-val">${d.plants||'—'}</span>
         <span class="pg-label">Ore TPD</span><span class="pg-val">${d.ore_tpd?(d.ore_tpd.toLocaleString()):'—'}</span>
         <span class="pg-label">Designer</span><span class="pg-val">${esc(designer)}</span>
@@ -730,7 +753,13 @@ function renderCharts(data){
   const statusLabels=Object.keys(statusCounts).sort();
   makeChart('chartStatus','doughnut',statusLabels,statusLabels.map(s=>statusCounts[s]),statusLabels.map(s=>STATUS_COLORS[s]||'#7f8c8d'));
 
-  // 8. Average Plant Size by Region
+  // 8. Fill Type (doughnut)
+  const fillCounts={};
+  data.forEach(d=>{const ft=d.fill_type||'Paste';fillCounts[ft]=(fillCounts[ft]||0)+1});
+  const fillLabels=Object.keys(fillCounts).sort((a,b)=>fillCounts[b]-fillCounts[a]);
+  makeChart('chartFillType','doughnut',fillLabels,fillLabels.map(f=>fillCounts[f]),fillLabels.map(f=>FILL_TYPE_COLORS[f]||'#7f8c8d'));
+
+  // 9. Average Plant Size by Region
   const regionCount2={}, regionTpd2={};
   data.forEach(d=>{
     if(d.tpd){
@@ -1044,13 +1073,14 @@ renderMap = function(data) {
       </div>
       <div class="popup-badges">
         <span class="popup-badge capacity">${(d.tpd||0).toLocaleString()} tpd</span>
+        <span class="popup-badge ${fillBadgeClass(d.fill_type)}">${esc(d.fill_type||'Paste')}</span>
         ${d.commodity?'<span class="popup-badge commodity">'+esc(d.commodity)+'</span>':''}
         ${d.status?'<span class="popup-badge '+statusClass+'">'+esc(d.status)+'</span>':''}
       </div>
       <div class="popup-grid">
         <span class="pg-label">Country</span><span class="pg-val">${esc(d.country)}</span>
         <span class="pg-label">Region</span><span class="pg-val">${esc(d.region)}</span>
-        <span class="pg-label">Fill Type</span><span class="pg-val">${esc(d.type)}</span>
+        <span class="pg-label">Fill Type</span><span class="pg-val">${esc(d.fill_type||'Paste')}</span>
         <span class="pg-label">Plants</span><span class="pg-val">${d.plants||'—'}</span>
         <span class="pg-label">Ore TPD</span><span class="pg-val">${d.ore_tpd?(d.ore_tpd.toLocaleString()):'—'}</span>
         <span class="pg-label">Designer</span><span class="pg-val">${esc(designer)}</span>
