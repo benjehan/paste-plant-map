@@ -242,14 +242,17 @@ a:hover{text-decoration:underline}
 }
 
 /* Header signup */
-.header-signup{display:flex;gap:6px;align-items:center}
-.header-signup input{background:var(--card);color:var(--text);border:1px solid var(--border);padding:7px 10px;border-radius:6px;font-size:13px;width:180px}
-.header-signup input:focus{outline:none;border-color:var(--accent)}
-.header-signup input::placeholder{color:var(--muted)}
-.mobile-signup{display:flex;gap:6px}
-.mobile-signup input{flex:1;background:var(--card);color:var(--text);border:1px solid var(--border);padding:8px 10px;border-radius:6px;font-size:13px}
-.mobile-signup input:focus{outline:none;border-color:var(--accent)}
-.mobile-signup input::placeholder{color:var(--muted)}
+/* Subscribe modal */
+.subscribe-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;justify-content:center;align-items:center;backdrop-filter:blur(4px)}
+.subscribe-overlay.active{display:flex}
+.subscribe-modal{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:28px;width:90%;max-width:400px;box-shadow:0 8px 32px rgba(0,0,0,.5);position:relative}
+.subscribe-modal h2{color:var(--accent);font-size:18px;margin-bottom:4px}
+.subscribe-modal p{color:var(--muted);font-size:12px;margin-bottom:16px}
+.subscribe-modal input{width:100%;background:var(--card);color:var(--text);border:1px solid var(--border);padding:10px 12px;border-radius:6px;font-size:14px;margin-bottom:10px}
+.subscribe-modal input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+.subscribe-modal input::placeholder{color:var(--muted)}
+.subscribe-modal .btn{width:100%;text-align:center;padding:11px;font-size:14px}
+.subscribe-modal .close-btn{position:absolute;right:12px;top:12px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer}
 
 /* Timeline slider */
 .timeline-panel{position:absolute;bottom:10px;left:50px;right:10px;z-index:800;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glass-border);border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:12px}
@@ -309,18 +312,12 @@ a:hover{text-decoration:underline}
     </div>
   </div>
   <div class="header-right">
-    <div class="header-signup">
-      <input type="email" id="headerSubEmail" placeholder="Your email">
-      <button class="btn" onclick="headerSubscribe()">Subscribe</button>
-    </div>
+    <button class="btn btn-outline" onclick="openSubscribeModal()">Stay Updated</button>
     <a href="https://minesmart.io/backfill-pro/" target="_blank" class="btn">Request a Demo</a>
   </div>
   <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">☰</button>
   <div class="mobile-menu">
-    <div class="mobile-signup">
-      <input type="email" id="mobileSubEmail" placeholder="Your email">
-      <button class="btn" onclick="mobileSubscribe()">Subscribe</button>
-    </div>
+    <button class="btn btn-outline" onclick="openSubscribeModal();document.querySelector('.mobile-menu').classList.remove('open')" style="width:100%;text-align:center">Stay Updated</button>
     <a href="https://minesmart.io/backfill-pro/" target="_blank" class="btn">Request a Demo</a>
   </div>
 </div>
@@ -432,7 +429,6 @@ a:hover{text-decoration:underline}
 
     <div class="cta-section">
       <a href="https://minesmart.io/backfill-pro/" target="_blank" class="btn">Learn about Backfill Pro</a>
-      <a href="https://minesmart.io/backfill-pro/" target="_blank" class="btn btn-outline">Request a Demo</a>
     </div>
   </div>
 </div>
@@ -498,6 +494,21 @@ a:hover{text-decoration:underline}
         <input type="checkbox" id="welcomeDontShow" style="accent-color:var(--accent);width:16px;height:16px"> Don't show this again
       </label>
       <button class="btn" onclick="closeWelcome()" style="padding:10px 24px;font-size:14px">Got it</button>
+    </div>
+  </div>
+</div>
+
+<!-- Subscribe Modal -->
+<div class="modal-overlay" id="subscribeModal">
+  <div class="modal" style="position:relative;max-width:420px">
+    <button class="close-btn" onclick="closeSubscribeModal()">&times;</button>
+    <h2>Stay Updated</h2>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Get notified when new plants are added or major updates are made to the map.</p>
+    <label>Name</label><input id="subName" placeholder="Your name">
+    <label>Email *</label><input id="subEmail" type="email" placeholder="your@email.com" required>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeSubscribeModal()">Cancel</button>
+      <button class="btn" onclick="submitSubscribe()">Subscribe</button>
     </div>
   </div>
 </div>
@@ -912,17 +923,28 @@ async function doSubscribe(email){
   showToast("Thanks! You're subscribed.");
   return true;
 }
-async function headerSubscribe(){
+function openSubscribeModal(){document.getElementById('subscribeModal').classList.add('active')}
+function closeSubscribeModal(){document.getElementById('subscribeModal').classList.remove('active')}
+document.getElementById('subscribeModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeSubscribeModal()});
+async function submitSubscribe(){
   try{
-    const input=document.getElementById('headerSubEmail');
-    if(await doSubscribe(input.value.trim()))input.value='';
-  }catch(e){showToast('Error: '+e.message)}
-}
-async function mobileSubscribe(){
-  try{
-    const input=document.getElementById('mobileSubEmail');
-    if(await doSubscribe(input.value.trim()))input.value='';
-    document.querySelector('.mobile-menu').classList.remove('open');
+    const email=document.getElementById('subEmail').value.trim();
+    const name=document.getElementById('subName').value.trim()||null;
+    if(!email){showToast('Please enter your email.');return}
+    const res=await fetch(SUPABASE_URL+'/rest/v1/subscribers',{
+      method:'POST',headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body:JSON.stringify({email,name})
+    });
+    if(res.status===409||res.status===400){
+      const txt=await res.text();
+      if(txt.includes('duplicate')||txt.includes('unique')){showToast("You're already subscribed!");closeSubscribeModal();return}
+      throw new Error(txt);
+    }
+    if(!res.ok)throw new Error(await res.text());
+    showToast("Thanks! You're subscribed.");
+    closeSubscribeModal();
+    document.getElementById('subEmail').value='';
+    document.getElementById('subName').value='';
   }catch(e){showToast('Error: '+e.message)}
 }
 
