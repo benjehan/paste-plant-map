@@ -320,7 +320,7 @@ function applyFilters(){
 }
 
 function initMap(){
-  map=L.map('map',{zoomControl:true,attributionControl:false}).setView([20,0],2);
+  map=L.map('map',{zoomControl:true,attributionControl:false,maxBounds:[[-85,-200],[85,200]],maxBoundsViscosity:1.0}).setView([20,0],2);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:18}).addTo(map);
   L.control.attribution({prefix:false,position:'bottomright'}).addAttribution('© <a href="https://carto.com">CARTO</a> © <a href="https://osm.org">OSM</a>').addTo(map);
 }
@@ -363,6 +363,7 @@ function renderMap(data){
     clusterGroup.addLayer(marker);
   });
   map.addLayer(clusterGroup);
+  if(clusterGroup.getLayers().length) map.fitBounds(clusterGroup.getBounds().pad(0.05));
 }
 
 function renderStats(data){
