@@ -474,12 +474,12 @@ a:hover{text-decoration:underline}
   <div class="welcome-box">
     <h2 style="color:var(--accent);margin-bottom:12px;font-size:20px">🌍 Welcome to the Global Paste Plant Map</h2>
     <p style="color:var(--text);font-size:14px;line-height:1.6;margin-bottom:10px">This map aims to chart the global paste backfill ecosystem — <strong>a shared resource for the entire industry</strong>. It is live and continuously updated as new data becomes available.</p>
-    <p style="color:var(--muted);font-size:13px;line-height:1.6;margin-bottom:16px">While we strive for accuracy, some data may be incomplete or evolving. If you spot something that needs correcting or know of a plant not listed, please <a href="#" onclick="closeWelcome();openModal();return false" style="color:var(--accent)">submit an update</a> with a source — every contribution helps make this resource better for everyone.</p>
+    <p style="color:var(--muted);font-size:13px;line-height:1.6;margin-bottom:16px">While we strive for accuracy, some data may be incomplete or evolving. If you spot something that needs correcting or know of a plant not listed, please submit an update with a source — every contribution helps make this resource better for everyone.</p>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
       <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer">
         <input type="checkbox" id="welcomeDontShow" style="accent-color:var(--accent);width:16px;height:16px"> Don't show this again
       </label>
-      <button class="btn" onclick="closeWelcome()" style="padding:10px 24px;font-size:14px">Got it</button>
+      <button class="btn" id="welcomeGotIt" style="padding:10px 24px;font-size:14px">Got it</button>
     </div>
   </div>
 </div>
@@ -867,6 +867,8 @@ function closeWelcome(){
     localStorage.setItem('hideWelcome','true');
   }
 }
+document.getElementById('welcomeGotIt').addEventListener('click',function(e){e.stopPropagation();closeWelcome();});
+document.getElementById('welcomeOverlay').addEventListener('click',function(e){if(e.target===this)closeWelcome();});
 
 function showToast(msg){
   const t = document.getElementById('toast');
