@@ -442,6 +442,21 @@ function openModal(prefill, isCorrection){
     document.getElementById('correctionNote').style.display = 'block';
     document.getElementById('existingMineRow').style.display = 'block';
     document.getElementById('modalTitle').textContent = 'Suggest a Correction';
+    // Pre-fill existing data so user can see current values and edit
+    const mine = allData.find(d => d.name === prefill);
+    if(mine){
+      document.getElementById('fCompany').value = mine.company || '';
+      document.getElementById('fCountry').value = mine.country || '';
+      document.getElementById('fType').value = mine.type || 'Paste';
+      document.getElementById('fTpd').value = mine.tpd || '';
+      document.getElementById('fPlants').value = mine.plants || 1;
+      document.getElementById('fCommodity').value = mine.commodity || '';
+      document.getElementById('fYear').value = mine.year_commissioned || '';
+      document.getElementById('fLat').value = mine.lat || '';
+      document.getElementById('fLng').value = mine.lng || '';
+      document.getElementById('fNotes').value = mine.notes || '';
+      document.getElementById('fSource').value = mine.source || '';
+    }
   } else if(prefill){
     document.getElementById('fName').value = prefill;
   }
