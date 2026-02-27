@@ -88,8 +88,8 @@ a:hover{text-decoration:underline}
 
 /* Search box */
 .search-wrap{position:relative;flex:1;min-width:200px}
-.search-wrap::before{content:'🔍';position:absolute;left:11px;top:0;bottom:0;display:flex;align-items:center;font-size:15px;pointer-events:none;z-index:1}
-.search-wrap::after{display:none}
+.search-wrap::before{content:'';position:absolute;left:13px;top:50%;width:13px;height:13px;margin-top:-8px;border:2px solid var(--muted);border-radius:50%;pointer-events:none;z-index:1}
+.search-wrap::after{content:'';position:absolute;left:24px;top:50%;margin-top:3px;width:2px;height:7px;background:var(--muted);transform:rotate(-45deg);transform-origin:top;pointer-events:none;z-index:1}
 .search-wrap input{width:100%;padding:9px 12px 9px 38px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:14px;transition:border-color .2s,box-shadow .2s}
 .search-wrap input::placeholder{color:var(--muted)}
 .search-wrap input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
