@@ -29,15 +29,13 @@ a:hover{text-decoration:underline}
 .btn-outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
 .btn-outline:hover{background:var(--accent);color:#fff}
 
-/* News ticker */
-.news-ticker{background:#001a20;border-bottom:1px solid var(--border);display:flex;align-items:center;overflow:hidden;height:32px;flex-shrink:0}
-.ticker-label{background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:0 10px;height:100%;display:flex;align-items:center;letter-spacing:1px;flex-shrink:0;z-index:1}
-.ticker-track{flex:1;overflow:hidden;position:relative;height:100%;display:flex;align-items:center;padding:0 16px}
-.ticker-item{position:absolute;opacity:0;transition:opacity 1s ease-in-out;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-.ticker-item.active{opacity:1}
-.ticker-item a{color:var(--text);text-decoration:none}
-.ticker-item a:hover{color:var(--accent);text-decoration:underline}
-.ticker-item .ticker-source{color:var(--muted);font-size:10px;margin-left:8px}
+/* Header news */
+.header-news{flex:1;text-align:center;overflow:hidden;padding:0 20px}
+.header-news-item{opacity:0;transition:opacity 1.2s ease-in-out}
+.header-news-item.active{opacity:1}
+.header-news-tag{margin-right:8px}
+.header-news-item a{color:var(--text);text-decoration:none;font-size:14px;font-weight:500}
+.header-news-item a:hover{color:var(--accent);text-decoration:underline}
 
 /* Main layout */
 .main{display:flex;flex:1;overflow:hidden}
@@ -138,15 +136,16 @@ a:hover{text-decoration:underline}
     <img src="https://minesmart.io/wp-content/uploads/2023/03/MineSmart-Logo-White.png" alt="MineSmart" onerror="this.style.display='none'">
     <h1>Global Paste Backfill Plant Map</h1>
   </div>
+  <div class="header-news" id="headerNews" style="display:none">
+    <div class="header-news-item" id="headerNewsItem">
+      <span class="header-news-tag">📰</span>
+      <a id="headerNewsLink" href="#" target="_blank"></a>
+    </div>
+  </div>
   <div class="header-right">
     <button class="btn btn-outline" onclick="openModal()">+ Submit a Mine</button>
     <a href="https://minesmart.io/backfill-pro/" target="_blank" class="btn">Request a Demo</a>
   </div>
-</div>
-
-<div class="news-ticker" id="newsTicker" style="display:none">
-  <div class="ticker-label">📰 NEWS</div>
-  <div class="ticker-track"><div class="ticker-content" id="tickerContent"></div></div>
 </div>
 
 <div class="main">
@@ -302,20 +301,25 @@ async function loadNews() {
         <div class="news-meta">${n.source ? esc(n.source) + ' · ' : ''}${date}</div>
       </div>`;
     }).join('');
-    // Populate ticker — fade one at a time
+    // Populate header news — fade one at a time
     if(news.length) {
-      const ticker = document.getElementById('newsTicker');
-      const tickerTrack = document.getElementById('tickerContent');
-      tickerTrack.innerHTML = news.map(n => `<span class="ticker-item"><a href="${esc(n.url)}" target="_blank">${esc(n.title)}</a><span class="ticker-source">${n.source ? '— '+esc(n.source) : ''}</span></span>`).join('');
-      ticker.style.display = 'flex';
-      const items = tickerTrack.querySelectorAll('.ticker-item');
-      let current = 0;
-      items[0].classList.add('active');
-      setInterval(() => {
-        items[current].classList.remove('active');
-        current = (current + 1) % items.length;
-        items[current].classList.add('active');
-      }, 12000);
+      const headerNews = document.getElementById('headerNews');
+      const newsItem = document.getElementById('headerNewsItem');
+      const newsLink = document.getElementById('headerNewsLink');
+      headerNews.style.display = 'block';
+      let idx = 0;
+      function showNews() {
+        newsItem.classList.remove('active');
+        setTimeout(() => {
+          newsLink.textContent = news[idx].title;
+          newsLink.href = news[idx].url;
+          newsItem.classList.add('active');
+          idx = (idx + 1) % news.length;
+        }, 1200);
+      }
+      showNews();
+      newsItem.classList.add('active');
+      setInterval(showNews, 12000);
     }
   } catch(e) {
     document.getElementById('newsFeed').innerHTML = '<div class="news-empty">News feed coming soon...</div>';
