@@ -136,18 +136,17 @@ a{color:var(--accent);text-decoration:none}
 const SUPABASE_URL = 'https://cxsariervcthxoudumaq.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN4c2FyaWVydmN0aHhvdWR1bWFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxOTcwMTAsImV4cCI6MjA4Nzc3MzAxMH0.KmjcyBRtRRgvg4FZarJ935wjcKZ4PTThszKWbFPzwUY';
 
-const { createClient } = window.supabase || window.Supabase || {};
-const supabase = (createClient || window.supabase?.createClient)(SUPABASE_URL, SUPABASE_ANON_KEY);
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // Check for existing session on load
 (async function init() {
-  const { data: { session } } = await supabase.auth.getSession();
+  const { data: { session } } = await sb.auth.getSession();
   if (session) {
     showAdmin(session.user.email);
   }
 
   // Listen for auth changes
-  supabase.auth.onAuthStateChange((event, session) => {
+  sb.auth.onAuthStateChange((event, session) => {
     if (event === 'SIGNED_OUT') {
       location.reload();
     }
@@ -165,7 +164,7 @@ async function login() {
   btn.disabled = true; btn.textContent = 'Signing in...';
   errEl.style.display = 'none';
 
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  const { data, error } = await sb.auth.signInWithPassword({ email, password });
   
   if (error) {
     errEl.textContent = error.message;
@@ -186,7 +185,7 @@ function showAdmin(email) {
 }
 
 async function logout() {
-  await supabase.auth.signOut();
+  await sb.auth.signOut();
   location.reload();
 }
 
