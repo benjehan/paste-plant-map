@@ -58,6 +58,12 @@ a{color:var(--accent);text-decoration:none}
 .modal textarea{height:80px;resize:vertical}
 .modal-actions{display:flex;gap:8px;margin-top:16px;justify-content:flex-end}
 
+.field-changed{background:rgba(241,196,0,.12);border-radius:3px;padding:1px 4px}
+.field-old{color:var(--red);text-decoration:line-through;opacity:.8}
+.field-new{color:var(--green);font-weight:500}
+.field-unchanged{color:var(--muted);opacity:.5}
+.badge-new{background:var(--green);color:#000;font-size:9px;padding:1px 6px;border-radius:8px;margin-left:6px;font-weight:700;text-transform:uppercase;vertical-align:middle}
+.diff-arrow{color:var(--muted);margin:0 4px;font-size:11px}
 .empty{text-align:center;padding:60px 20px;color:var(--muted);font-size:16px}
 .toast{position:fixed;bottom:20px;right:20px;background:var(--green);color:#fff;padding:12px 20px;border-radius:6px;font-size:14px;z-index:3000;display:none}
 #loginScreen{display:flex;justify-content:center;align-items:center;min-height:80vh}
@@ -137,6 +143,60 @@ const SUPABASE_URL = 'https://cxsariervcthxoudumaq.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN4c2FyaWVydmN0aHhvdWR1bWFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxOTcwMTAsImV4cCI6MjA4Nzc3MzAxMH0.KmjcyBRtRRgvg4FZarJ935wjcKZ4PTThszKWbFPzwUY';
 
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// Mine data for diff comparison
+let mineData = [];
+async function loadMineData() {
+  try {
+    const r = await fetch('data.json');
+    mineData = await r.json();
+  } catch(e) { console.warn('Could not load data.json for diffs:', e); }
+}
+loadMineData();
+
+// Field mapping: submission field -> data.json field
+const FIELD_MAP = {
+  mine_name: { label: 'Mine Name', dataKey: 'name' },
+  company: { label: 'Company', dataKey: 'company' },
+  country: { label: 'Country', dataKey: 'country' },
+  region: { label: 'Region', dataKey: 'region' },
+  fill_type: { label: 'Fill Type', dataKey: 'type' },
+  tpd: { label: 'TPD', dataKey: 'tpd' },
+  plants: { label: 'Plants', dataKey: 'plants' },
+  commodity: { label: 'Commodity', dataKey: 'commodity' },
+  commissioned_year: { label: 'Year', dataKey: 'year_commissioned' },
+  designer: { label: 'Designer', dataKey: 'designer' },
+  lat: { label: 'Lat', dataKey: 'lat' },
+  lng: { label: 'Lng', dataKey: 'lng' },
+};
+
+function findExistingMine(name) {
+  if (!name || !mineData.length) return null;
+  const n = name.toLowerCase().trim();
+  return mineData.find(m => m.name && m.name.toLowerCase().trim() === n) || null;
+}
+
+function renderDiffField(label, subVal, oldVal, isNew) {
+  const sv = (subVal == null || subVal === '') ? '' : String(subVal);
+  if (!sv) return ''; // skip empty
+
+  if (isNew) {
+    return `<div class="f"><span class="fl">${label}</span><span class="field-new">${esc(sv)}</span><span class="badge-new">NEW</span></div>`;
+  }
+
+  const ov = (oldVal == null || oldVal === '') ? '' : String(oldVal);
+
+  if (!ov) {
+    // Field not in original — new data
+    return `<div class="f"><span class="fl">${label}</span><span class="field-new">${esc(sv)}</span><span class="badge-new">NEW</span></div>`;
+  }
+
+  if (sv.toLowerCase().trim() === ov.toLowerCase().trim()) {
+    return `<div class="f field-unchanged"><span class="fl">${label}</span>${esc(sv)}</div>`;
+  }
+
+  return `<div class="f field-changed"><span class="fl">${label}</span><span class="field-old">${esc(ov)}</span><span class="diff-arrow">→</span><span class="field-new">${esc(sv)}</span></div>`;
+}
 
 // Check for existing session on load
 (async function init() {
@@ -223,29 +283,33 @@ function renderSubmissions(data) {
   document.getElementById('submissionsList').innerHTML = data.map(d => {
     const bc = d.status === 'pending' ? 'pending' : d.status === 'approved' ? 'approved' : 'rejected';
     const date = new Date(d.created_at).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+    const isNewMine = d.submission_type === 'new';
+    const existing = !isNewMine ? findExistingMine(d.existing_mine_name) : null;
+
+    // Build diff fields
+    let fieldsHtml = '';
+    for (const [subKey, cfg] of Object.entries(FIELD_MAP)) {
+      const subVal = d[subKey];
+      const oldVal = existing ? existing[cfg.dataKey] : undefined;
+      const row = renderDiffField(cfg.label, subVal, oldVal, isNewMine);
+      if (row) fieldsHtml += row;
+    }
+
+    // Always show metadata fields (non-diff)
+    fieldsHtml += `<div class="f"><span class="fl">Submitter</span>${esc(d.submitter_name||'')} ${d.submitter_email?'('+esc(d.submitter_email)+')':''}</div>`;
+    fieldsHtml += `<div class="f"><span class="fl">Submitted</span>${date}</div>`;
+    if (d.existing_mine_name) fieldsHtml += `<div class="f"><span class="fl">Existing Mine</span>${esc(d.existing_mine_name)}</div>`;
+    if (!isNewMine && !existing && d.existing_mine_name) fieldsHtml += `<div class="f"><span class="fl" style="color:var(--yellow)">⚠ Mine not found in data.json</span></div>`;
+    if (d.notes) fieldsHtml += `<div class="f"><span class="fl">Notes</span>${esc(d.notes)}</div>`;
+    if (d.source_reference) fieldsHtml += `<div class="f"><span class="fl">Source</span>${esc(d.source_reference)}</div>`;
+    if (d.admin_notes) fieldsHtml += `<div class="f"><span class="fl">Admin Notes</span>${esc(d.admin_notes)}</div>`;
+
     return `<div class="card">
       <div class="card-header">
         <h3>${esc(d.mine_name)} <span class="type-badge">${d.submission_type}</span></h3>
         <span class="badge badge-${bc}">${d.status}</span>
       </div>
-      <div class="fields">
-        <div class="f"><span class="fl">Company</span>${esc(d.company||'—')}</div>
-        <div class="f"><span class="fl">Country</span>${esc(d.country||'—')}</div>
-        <div class="f"><span class="fl">Region</span>${esc(d.region||'—')}</div>
-        <div class="f"><span class="fl">Fill Type</span>${esc(d.fill_type||'—')}</div>
-        <div class="f"><span class="fl">TPD</span>${d.tpd||'—'}</div>
-        <div class="f"><span class="fl">Plants</span>${d.plants||'—'}</div>
-        <div class="f"><span class="fl">Commodity</span>${esc(d.commodity||'—')}</div>
-        <div class="f"><span class="fl">Year</span>${d.commissioned_year||'—'}</div>
-        <div class="f"><span class="fl">Designer</span>${esc(d.designer||'—')}</div>
-        <div class="f"><span class="fl">Lat/Lng</span>${d.lat||'—'}, ${d.lng||'—'}</div>
-        <div class="f"><span class="fl">Submitter</span>${esc(d.submitter_name)} ${d.submitter_email?'('+esc(d.submitter_email)+')':''}</div>
-        <div class="f"><span class="fl">Submitted</span>${date}</div>
-        ${d.existing_mine_name?`<div class="f"><span class="fl">Existing Mine</span>${esc(d.existing_mine_name)}</div>`:''}
-        ${d.notes?`<div class="f"><span class="fl">Notes</span>${esc(d.notes)}</div>`:''}
-        ${d.source_reference?`<div class="f"><span class="fl">Source</span>${esc(d.source_reference)}</div>`:''}
-        ${d.admin_notes?`<div class="f"><span class="fl">Admin Notes</span>${esc(d.admin_notes)}</div>`:''}
-      </div>
+      <div class="fields">${fieldsHtml}</div>
       <div class="card-actions">
         ${d.status==='pending'?`
           <button class="btn btn-sm" style="background:var(--green)" onclick="approve('${d.id}')">✓ Approve</button>
