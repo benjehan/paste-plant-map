@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--
+  SETUP INSTRUCTIONS:
+  1. Run schema-auth.sql in Supabase SQL Editor
+  2. Go to Supabase Dashboard > Authentication > Users > Add User
+     Email: ben@minesmart.io, set a password
+  3. Run in SQL Editor:
+     INSERT INTO admin_users (id, email) SELECT id, email FROM auth.users WHERE email = 'ben@minesmart.io';
+  4. Login at this page with your email and password
+-->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin — Paste Plant Map | MineSmart</title>
@@ -55,6 +64,8 @@ a{color:var(--accent);text-decoration:none}
 #loginScreen .login-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:32px;text-align:center;width:360px}
 #loginScreen h2{color:var(--accent);margin-bottom:16px}
 #loginScreen input{width:100%;background:var(--panel);color:var(--text);border:1px solid var(--border);padding:10px;border-radius:4px;font-size:13px;margin-bottom:12px}
+.login-error{color:var(--red);font-size:13px;margin-bottom:12px;display:none}
+.user-email{color:var(--muted);font-size:12px;margin-right:8px}
 </style>
 </head>
 <body>
@@ -63,6 +74,7 @@ a{color:var(--accent);text-decoration:none}
   <h1>🔒 Paste Plant Map — Admin</h1>
   <div class="header-right">
     <a href="index.html" class="btn btn-outline btn-sm">← Back to Map</a>
+    <span class="user-email" id="userEmail"></span>
     <button class="btn btn-sm btn-red" onclick="logout()" id="logoutBtn" style="display:none">Logout</button>
   </div>
 </div>
@@ -71,9 +83,11 @@ a{color:var(--accent);text-decoration:none}
   <div id="loginScreen">
     <div class="login-box">
       <h2>Admin Login</h2>
-      <p style="color:var(--muted);font-size:13px;margin-bottom:16px">Enter your Supabase service role key</p>
-      <input type="password" id="keyInput" placeholder="eyJhbGci...">
-      <button class="btn" onclick="login()" style="width:100%">Login</button>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:16px">Sign in with your admin email and password</p>
+      <div class="login-error" id="loginError"></div>
+      <input type="email" id="emailInput" placeholder="Email address">
+      <input type="password" id="passwordInput" placeholder="Password">
+      <button class="btn" onclick="login()" style="width:100%" id="loginBtn">Login</button>
     </div>
   </div>
 
@@ -117,55 +131,75 @@ a{color:var(--accent);text-decoration:none}
 
 <div class="toast" id="toast"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const SUPABASE_URL = 'https://cxsariervcthxoudumaq.supabase.co';
-let SERVICE_KEY = '';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN4c2FyaWVydmN0aHhvdWR1bWFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxOTcwMTAsImV4cCI6MjA4Nzc3MzAxMH0.KmjcyBRtRRgvg4FZarJ935wjcKZ4PTThszKWbFPzwUY';
 
-function getKey() { return sessionStorage.getItem('sb_service_key') || ''; }
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-function login() {
-  const key = document.getElementById('keyInput').value.trim();
-  if (!key) return;
-  SERVICE_KEY = key;
-  sessionStorage.setItem('sb_service_key', key);
+// Check for existing session on load
+(async function init() {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (session) {
+    showAdmin(session.user.email);
+  }
+
+  // Listen for auth changes
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (event === 'SIGNED_OUT') {
+      location.reload();
+    }
+  });
+})();
+
+async function login() {
+  const email = document.getElementById('emailInput').value.trim();
+  const password = document.getElementById('passwordInput').value;
+  const errEl = document.getElementById('loginError');
+  const btn = document.getElementById('loginBtn');
+  
+  if (!email || !password) { errEl.textContent = 'Enter email and password'; errEl.style.display = 'block'; return; }
+  
+  btn.disabled = true; btn.textContent = 'Signing in...';
+  errEl.style.display = 'none';
+
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  
+  if (error) {
+    errEl.textContent = error.message;
+    errEl.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Login';
+    return;
+  }
+
+  showAdmin(data.user.email);
+}
+
+function showAdmin(email) {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('adminPanel').style.display = 'block';
   document.getElementById('logoutBtn').style.display = 'block';
+  document.getElementById('userEmail').textContent = email;
   loadSubmissions();
 }
 
-function logout() {
-  sessionStorage.removeItem('sb_service_key');
-  SERVICE_KEY = '';
+async function logout() {
+  await supabase.auth.signOut();
   location.reload();
 }
 
-// Auto-login if key in session
-(function() {
-  const k = getKey();
-  if (k) { document.getElementById('keyInput').value = k; login(); }
-})();
-
-async function sbFetch(path, opts = {}) {
-  const key = getKey();
-  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
-    ...opts,
-    headers: {
-      'apikey': key,
-      'Authorization': 'Bearer ' + key,
-      'Content-Type': 'application/json',
-      'Prefer': opts.prefer || 'return=representation',
-      ...opts.headers
-    }
-  });
-  if (!res.ok) { const t = await res.text(); throw new Error(t); }
-  const text = await res.text();
-  return text ? JSON.parse(text) : null;
-}
+// Enter key to login
+document.getElementById('passwordInput')?.addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
 
 async function loadSubmissions() {
   try {
-    const data = await sbFetch('mine_submissions?order=created_at.desc');
+    const { data, error } = await supabase
+      .from('mine_submissions')
+      .select('*')
+      .order('created_at', { ascending: false });
+    
+    if (error) throw error;
     renderSubmissions(data);
   } catch (e) {
     document.getElementById('submissionsList').innerHTML = `<div class="empty">Error loading: ${e.message}</div>`;
@@ -227,10 +261,11 @@ function esc(s) { const d = document.createElement('div'); d.textContent = s; re
 
 async function approve(id) {
   try {
-    await sbFetch(`mine_submissions?id=eq.${id}`, {
-      method: 'PATCH',
-      body: JSON.stringify({ status: 'approved', reviewed_at: new Date().toISOString() })
-    });
+    const { error } = await supabase
+      .from('mine_submissions')
+      .update({ status: 'approved', reviewed_at: new Date().toISOString() })
+      .eq('id', id);
+    if (error) throw error;
     showToast('Approved!');
     loadSubmissions();
   } catch(e) { alert('Error: ' + e.message); }
@@ -241,19 +276,25 @@ async function reject(id) {
   try {
     const body = { status: 'rejected', reviewed_at: new Date().toISOString() };
     if (notes) body.admin_notes = notes;
-    await sbFetch(`mine_submissions?id=eq.${id}`, { method: 'PATCH', body: JSON.stringify(body) });
+    const { error } = await supabase
+      .from('mine_submissions')
+      .update(body)
+      .eq('id', id);
+    if (error) throw error;
     showToast('Rejected');
     loadSubmissions();
   } catch(e) { alert('Error: ' + e.message); }
 }
 
-let editData = [];
 async function openEdit(id) {
   try {
-    const data = await sbFetch(`mine_submissions?id=eq.${id}`);
+    const { data, error } = await supabase
+      .from('mine_submissions')
+      .select('*')
+      .eq('id', id);
+    if (error) throw error;
     if (!data.length) return;
     const d = data[0];
-    editData = d;
     document.getElementById('editId').value = d.id;
     document.getElementById('eName').value = d.mine_name || '';
     document.getElementById('eCompany').value = d.company || '';
@@ -297,7 +338,11 @@ function getEditBody() {
 async function saveEdit() {
   const id = document.getElementById('editId').value;
   try {
-    await sbFetch(`mine_submissions?id=eq.${id}`, { method: 'PATCH', body: JSON.stringify(getEditBody()) });
+    const { error } = await supabase
+      .from('mine_submissions')
+      .update(getEditBody())
+      .eq('id', id);
+    if (error) throw error;
     closeEdit(); showToast('Saved!'); loadSubmissions();
   } catch(e) { alert('Error: ' + e.message); }
 }
@@ -306,7 +351,11 @@ async function saveAndApprove() {
   const id = document.getElementById('editId').value;
   const body = { ...getEditBody(), status: 'approved', reviewed_at: new Date().toISOString() };
   try {
-    await sbFetch(`mine_submissions?id=eq.${id}`, { method: 'PATCH', body: JSON.stringify(body) });
+    const { error } = await supabase
+      .from('mine_submissions')
+      .update(body)
+      .eq('id', id);
+    if (error) throw error;
     closeEdit(); showToast('Saved & Approved!'); loadSubmissions();
   } catch(e) { alert('Error: ' + e.message); }
 }
