@@ -3,271 +3,390 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global Paste Backfill Plants | MineSmart</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<title>Global Paste Backfill Plant Map | MineSmart</title>
+<meta name="description" content="Interactive map of 190+ paste backfill plants worldwide. Explore capacity, commodity, and regional data.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#0f1923;--bg2:#162232;--bg3:#1c2d42;--border:#2a3f57;
-  --text:#e8edf3;--text2:#8fa3b8;--accent:#4fc3f7;
-  --gold:#ffc107;--green:#4caf50;--blue:#2196f3;--red:#ef5350;--purple:#ab47bc;--orange:#ff9800;
-}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh}
-#map{position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;background:#0a1929}
-.leaflet-container{background:#0a1929!important}
-.leaflet-tile-pane{filter:brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7)}
+:root{--bg:#0a1a1f;--panel:#0d2329;--card:#112e36;--accent:#00a99d;--brand:#004a59;--text:#e0e8ea;--muted:#7a9ca8;--border:#1a3f4a;--red:#e74c3c;--yellow:#f1c40f;--green:#2ecc71}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh;display:flex;flex-direction:column}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
 
 /* Header */
-#header{position:fixed;top:0;left:0;right:0;z-index:1000;
-  background:linear-gradient(180deg,rgba(15,25,35,0.97) 0%,rgba(15,25,35,0.85) 100%);
-  backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 20px;
-  display:flex;align-items:center;justify-content:space-between;gap:16px}
-#header .title-group{flex:1;min-width:0}
-#header h1{font-size:clamp(14px,2.2vw,22px);font-weight:700;letter-spacing:-0.3px;
-  background:linear-gradient(135deg,var(--accent),#81d4fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-#header .subtitle{font-size:clamp(10px,1.2vw,12px);color:var(--text2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#header .brand{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text2);white-space:nowrap}
-#header .brand .logo{width:20px;height:20px;background:var(--accent);border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:10px;color:var(--bg)}
-.toggle-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text);
-  padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px;font-family:inherit;white-space:nowrap}
-.toggle-btn:hover{background:var(--border)}
-.toggle-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.header{background:linear-gradient(135deg,var(--brand),#002a33);padding:8px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--accent);z-index:1000;flex-shrink:0}
+.header-left{display:flex;align-items:center;gap:12px}
+.header-left img{height:32px}
+.header-left h1{font-size:18px;font-weight:600;letter-spacing:0.5px}
+.header-right{display:flex;gap:8px;align-items:center}
+.btn{background:var(--accent);color:#fff;border:none;padding:7px 14px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:500;transition:all .2s}
+.btn:hover{background:#00c9b7;transform:translateY(-1px)}
+.btn-outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+.btn-outline:hover{background:var(--accent);color:#fff}
 
-/* Stats Bar */
-#stats{position:fixed;bottom:0;left:0;right:0;z-index:1000;
-  background:linear-gradient(0deg,rgba(15,25,35,0.97),rgba(15,25,35,0.85));
-  backdrop-filter:blur(12px);border-top:1px solid var(--border);
-  padding:8px 20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px}
-#stats .stat{display:flex;align-items:center;gap:6px}
-#stats .stat .val{font-weight:700;font-size:14px;color:var(--accent)}
-#stats .stat .label{color:var(--text2)}
-#stats .credit{margin-left:auto;color:var(--text2);font-size:10px;text-align:right}
-#stats .credit a{color:var(--accent);text-decoration:none}
+/* Main layout */
+.main{display:flex;flex:1;overflow:hidden}
+.map-container{flex:1;position:relative;min-width:0}
+#map{width:100%;height:100%;background:var(--bg)}
 
-/* Filter Panel */
-#filters{position:fixed;top:60px;right:12px;z-index:1000;
-  background:rgba(22,34,50,0.95);backdrop-filter:blur(12px);
-  border:1px solid var(--border);border-radius:10px;padding:14px;
-  width:240px;max-height:calc(100vh - 130px);overflow-y:auto;
-  display:none;font-size:12px}
-#filters.open{display:block}
-#filters h3{font-size:13px;font-weight:600;margin-bottom:10px;color:var(--accent)}
-.filter-section{margin-bottom:12px}
-.filter-section .section-title{font-weight:600;margin-bottom:6px;color:var(--text2);text-transform:uppercase;font-size:10px;letter-spacing:0.5px}
-.filter-section label{display:flex;align-items:center;gap:6px;padding:3px 0;cursor:pointer;color:var(--text)}
-.filter-section input[type=checkbox]{accent-color:var(--accent);width:14px;height:14px}
-.filter-count{margin-left:auto;color:var(--text2);font-size:10px}
+/* Sidebar */
+.sidebar{width:380px;background:var(--panel);overflow-y:auto;border-left:1px solid var(--border);flex-shrink:0;display:flex;flex-direction:column}
+.sidebar::-webkit-scrollbar{width:6px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 
-/* Legend */
-#legend{position:fixed;bottom:50px;left:12px;z-index:1000;
-  background:rgba(22,34,50,0.95);backdrop-filter:blur(12px);
-  border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:11px}
-#legend h4{font-size:11px;font-weight:600;margin-bottom:8px;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px}
-.legend-item{display:flex;align-items:center;gap:8px;padding:2px 0}
-.legend-dot{width:12px;height:12px;border-radius:50%;border:2px solid rgba(255,255,255,0.3)}
-.legend-size{display:flex;align-items:flex-end;gap:4px;margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
-.legend-size .circle{border-radius:50%;background:rgba(79,195,247,0.3);border:1px solid var(--accent)}
+/* Stats cards */
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px}
+.stat-card{background:var(--card);border-radius:6px;padding:12px;text-align:center;border:1px solid var(--border)}
+.stat-card .value{font-size:24px;font-weight:700;color:var(--accent)}
+.stat-card .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
 
-/* Popup */
-.leaflet-popup-content-wrapper{background:var(--bg2)!important;color:var(--text)!important;border:1px solid var(--border)!important;border-radius:10px!important;box-shadow:0 8px 32px rgba(0,0,0,0.5)!important}
-.leaflet-popup-tip{background:var(--bg2)!important;border:1px solid var(--border)!important}
-.leaflet-popup-content{margin:12px 14px!important;font-family:'Inter',sans-serif!important;font-size:12px!important;line-height:1.5!important}
-.popup-name{font-size:14px;font-weight:700;margin-bottom:2px}
-.popup-company{color:var(--accent);font-weight:500;margin-bottom:6px}
-.popup-detail{display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
-.popup-detail .k{color:var(--text2)}
-.popup-detail .v{font-weight:500}
-.popup-notes{margin-top:6px;color:var(--text2);font-size:11px;font-style:italic}
+/* Chart sections */
+.chart-section{padding:8px 12px}
+.chart-section h3{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px;border-bottom:1px solid var(--border);padding-bottom:4px}
+.chart-wrap{position:relative;max-height:200px}
 
-/* Scrollbar */
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+/* CTA */
+.cta-section{padding:12px;display:flex;flex-direction:column;gap:6px;margin-top:auto}
+.cta-section .btn{text-align:center;font-size:14px;padding:10px}
 
-/* Mobile */
-@media(max-width:600px){
-  #header{padding:8px 12px}
-  #header h1{font-size:14px}
-  #header .subtitle{display:none}
-  #stats{padding:6px 12px;font-size:11px}
-  #stats .stat .val{font-size:12px}
-  #stats .credit{display:none}
-  #filters{width:calc(100vw - 24px);right:12px}
-  #legend{bottom:44px;font-size:10px}
+/* Filter bar on map */
+.filter-bar{position:absolute;top:10px;left:50px;right:10px;z-index:800;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.filter-bar select,.filter-bar input{background:rgba(13,35,41,0.95);color:var(--text);border:1px solid var(--border);padding:6px 10px;border-radius:4px;font-size:12px;backdrop-filter:blur(8px)}
+.filter-bar input{width:180px}
+.filter-bar select{min-width:110px}
+.filter-bar select:focus,.filter-bar input:focus{outline:none;border-color:var(--accent)}
+
+/* Footer */
+.footer{background:var(--brand);padding:6px 20px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;flex-shrink:0;border-top:1px solid var(--border)}
+
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:2000;justify-content:center;align-items:center}
+.modal-overlay.active{display:flex}
+.modal{background:var(--panel);border-radius:8px;padding:24px;width:90%;max-width:500px;max-height:90vh;overflow-y:auto;border:1px solid var(--border)}
+.modal h2{margin-bottom:16px;font-size:18px;color:var(--accent)}
+.modal label{display:block;font-size:12px;color:var(--muted);margin:8px 0 4px;text-transform:uppercase;letter-spacing:0.5px}
+.modal input,.modal select,.modal textarea{width:100%;background:var(--card);color:var(--text);border:1px solid var(--border);padding:8px 10px;border-radius:4px;font-size:13px}
+.modal textarea{height:60px;resize:vertical}
+.modal input:focus,.modal select:focus,.modal textarea:focus{outline:none;border-color:var(--accent)}
+.modal-actions{display:flex;gap:8px;margin-top:16px;justify-content:flex-end}
+.modal .close-btn{position:absolute;right:12px;top:12px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer}
+
+/* Leaflet overrides */
+.leaflet-popup-content-wrapper{background:var(--card);color:var(--text);border-radius:6px;border:1px solid var(--border)}
+.leaflet-popup-tip{background:var(--card)}
+.leaflet-popup-content{margin:10px 14px;font-size:13px;line-height:1.5}
+.leaflet-popup-content h4{color:var(--accent);margin-bottom:4px;font-size:15px}
+.leaflet-popup-content .popup-row{display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid var(--border)}
+.leaflet-popup-content .popup-row:last-child{border:none}
+.leaflet-popup-content .popup-label{color:var(--muted);font-size:11px}
+.leaflet-popup-content .popup-val{font-weight:500}
+.leaflet-popup-content .suggest-link{display:inline-block;margin-top:6px;font-size:11px;color:var(--accent)}
+.leaflet-control-zoom a{background:var(--card)!important;color:var(--text)!important;border-color:var(--border)!important}
+.marker-cluster{background:rgba(0,169,157,0.3)!important}
+.marker-cluster div{background:rgba(0,169,157,0.7)!important;color:#fff!important;font-weight:600}
+
+/* Responsive */
+@media(max-width:900px){
+  .main{flex-direction:column}
+  .map-container{height:50vh}
+  .sidebar{width:100%;border-left:none;border-top:1px solid var(--border)}
+  .filter-bar{left:10px;right:10px;top:10px}
+  .header-left h1{font-size:14px}
 }
 </style>
 </head>
 <body>
 
-<div id="header">
-  <div class="title-group">
-    <h1>⛏ Global Paste Backfill Plants</h1>
-    <div class="subtitle">Interactive map of active cemented paste backfill operations worldwide</div>
+<div class="header">
+  <div class="header-left">
+    <img src="https://minesmart.io/wp-content/uploads/2023/03/MineSmart-Logo-White.png" alt="MineSmart" onerror="this.style.display='none'">
+    <h1>Global Paste Backfill Plant Map</h1>
   </div>
-  <button class="toggle-btn" id="filterToggle" onclick="toggleFilters()">☰ Filters</button>
-  <div class="brand">
-    <div class="logo">M</div>
-    <span>MineSmart</span>
-  </div>
-</div>
-
-<div id="filters">
-  <h3>Filter Plants</h3>
-  <div class="filter-section" id="regionFilters">
-    <div class="section-title">Region</div>
-  </div>
-  <div class="filter-section" id="typeFilters">
-    <div class="section-title">Backfill Type</div>
-  </div>
-  <div class="filter-section" id="companyFilters">
-    <div class="section-title">Company (top 15)</div>
+  <div class="header-right">
+    <button class="btn btn-outline" onclick="openModal()">+ Submit a Mine</button>
+    <a href="https://minesmart.io" target="_blank" class="btn">Request a Demo</a>
   </div>
 </div>
 
-<div id="legend">
-  <h4>Legend</h4>
-  <div class="legend-item"><div class="legend-dot" style="background:#ffc107"></div>Australia</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#4caf50"></div>Africa</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#2196f3"></div>South America</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#ef5350"></div>North America</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#ab47bc"></div>Europe</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#ff9800"></div>Asia</div>
-  <div class="legend-size">
-    <div class="circle" style="width:10px;height:10px"></div>
-    <div class="circle" style="width:16px;height:16px"></div>
-    <div class="circle" style="width:24px;height:24px"></div>
-    <span style="color:var(--text2);margin-left:4px;font-size:10px">Size = TPD (where known)</span>
+<div class="main">
+  <div class="map-container">
+    <div class="filter-bar">
+      <input type="text" id="searchBox" placeholder="🔍 Search mines...">
+      <select id="filterRegion"><option value="">All Regions</option></select>
+      <select id="filterCommodity"><option value="">All Commodities</option></select>
+      <select id="filterStatus"><option value="">All Statuses</option></select>
+      <select id="filterConfidence"><option value="">All Confidence</option></select>
+    </div>
+    <div id="map"></div>
+  </div>
+
+  <div class="sidebar">
+    <div class="stats-row">
+      <div class="stat-card"><div class="value" id="totalMines">—</div><div class="label">Paste Plants</div></div>
+      <div class="stat-card"><div class="value" id="totalTpd">—</div><div class="label">Total TPD</div></div>
+    </div>
+
+    <div class="chart-section">
+      <h3>By Region</h3>
+      <div class="chart-wrap"><canvas id="chartRegion"></canvas></div>
+    </div>
+
+    <div class="chart-section">
+      <h3>Top 10 by Capacity (tpd)</h3>
+      <div class="chart-wrap" style="max-height:220px"><canvas id="chartTop10"></canvas></div>
+    </div>
+
+    <div class="chart-section">
+      <h3>Primary Commodity</h3>
+      <div class="chart-wrap"><canvas id="chartCommodity"></canvas></div>
+    </div>
+
+    <div class="chart-section">
+      <h3>Commissioning Timeline</h3>
+      <div class="chart-wrap"><canvas id="chartTimeline"></canvas></div>
+    </div>
+
+    <div class="chart-section">
+      <h3>Status</h3>
+      <div class="chart-wrap"><canvas id="chartStatus"></canvas></div>
+    </div>
+
+    <div class="cta-section">
+      <a href="https://minesmart.io" target="_blank" class="btn">Learn about Backfill Pro</a>
+      <a href="https://minesmart.io" target="_blank" class="btn btn-outline">Request a Demo</a>
+    </div>
   </div>
 </div>
 
-<div id="stats">
-  <div class="stat"><span class="val" id="totalPlants">—</span><span class="label">plants</span></div>
-  <div class="stat"><span class="val" id="totalMines">—</span><span class="label">mines</span></div>
-  <div class="stat"><span class="val" id="totalTpd">—</span><span class="label">known TPD</span></div>
-  <div class="stat"><span class="val" id="totalCountries">—</span><span class="label">countries</span></div>
-  <div class="credit">Data compiled from industry sources incl. L-P Gélinas (Agnico Eagle) LinkedIn compilation.<br>
-    Contribute: <a href="mailto:contact@minesmart.io">contact@minesmart.io</a> · <strong>MineSmart.io</strong></div>
+<div class="footer">
+  <span>Powered by <a href="https://minesmart.io" target="_blank">MineSmart Solutions Ltd</a> | <strong>Backfill Pro</strong> — Paste Operations Management Platform</span>
+  <span>Data: L-P Gélinas, industry reports, public filings</span>
 </div>
 
-<div id="map"></div>
+<!-- Submit Modal -->
+<div class="modal-overlay" id="submitModal">
+  <div class="modal" style="position:relative">
+    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <h2>Submit a Mine</h2>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:12px">Know of a paste backfill plant not on the map? Submit it here.</p>
+    <label>Mine Name *</label><input id="fName" required>
+    <label>Company</label><input id="fCompany">
+    <label>Country *</label><input id="fCountry">
+    <label>Fill Type</label>
+    <select id="fType"><option>Paste</option><option>Cemented Paste</option><option>Thickened Tailings</option><option>Other</option></select>
+    <label>Paste Capacity (tpd)</label><input id="fTpd" type="number">
+    <label>Year Commissioned</label><input id="fYear" type="number">
+    <label>Primary Commodity</label><input id="fCommodity">
+    <label>Your Name</label><input id="fSubmitter">
+    <label>Your Email</label><input id="fEmail" type="email">
+    <label>Source / Reference</label><textarea id="fSource"></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+      <button class="btn" onclick="submitMine()">Submit</button>
+    </div>
+  </div>
+</div>
 
 <script>
-const COLORS = {
-  'Australia':'#ffc107','Africa':'#4caf50','South America':'#2196f3',
-  'North America':'#ef5350','Europe':'#ab47bc','Asia':'#ff9800'
+const REGION_COLORS = {
+  'North America':'#3498db','South America':'#e74c3c','Europe':'#f39c12',
+  'Africa':'#9b59b6','Asia':'#1abc9c','Australia':'#e67e22'
+};
+const STATUS_COLORS = {
+  'operating':'#2ecc71','closed':'#e74c3c','care & maintenance':'#f39c12',
+  'planned':'#3498db','under construction':'#9b59b6','commissioning 2026':'#1abc9c','':'#7f8c8d'
 };
 
-let map, markers = [], allData = [], activeFilters = {regions:new Set(),types:new Set(),companies:new Set()};
+let allData=[], map, clusterGroup, charts={};
 
-function init(){
-  map = L.map('map',{
-    center:[20,10],zoom:3,zoomControl:false,
-    maxBounds:[[-85,-200],[85,200]],minZoom:2
-  });
-  L.control.zoom({position:'bottomright'}).addTo(map);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-    attribution:'',maxZoom:18,noWrap:true
-  }).addTo(map);
+// Chart.js defaults
+Chart.defaults.color='#7a9ca8';
+Chart.defaults.borderColor='#1a3f4a';
+Chart.defaults.font.size=11;
+Chart.defaults.plugins.legend.labels.boxWidth=10;
+Chart.defaults.animation.duration=800;
 
-  fetch('data.json').then(r=>r.json()).then(data=>{
-    allData=data;
-    buildFilters();
-    renderMarkers();
-    updateStats();
-  });
+fetch('data.json').then(r=>r.json()).then(data=>{
+  allData=data;
+  populateFilters(data);
+  initMap();
+  renderAll(data);
+});
+
+function populateFilters(data){
+  const add=(id,vals)=>{const s=document.getElementById(id);vals.forEach(v=>{if(v){const o=document.createElement('option');o.value=v;o.textContent=v;s.appendChild(o)}})};
+  add('filterRegion',[...new Set(data.map(d=>d.region))].sort());
+  // primary commodity (first in slash-separated)
+  add('filterCommodity',[...new Set(data.map(d=>(d.commodity||'').split('/')[0]).filter(Boolean))].sort());
+  add('filterStatus',[...new Set(data.map(d=>d.status).filter(Boolean))].sort());
+  add('filterConfidence',[...new Set(data.map(d=>d.confidence).filter(Boolean))].sort());
+  document.querySelectorAll('.filter-bar select, .filter-bar input').forEach(el=>el.addEventListener('input',applyFilters));
 }
 
-function getRadius(d){
-  if(d.tpd) return Math.max(6, Math.min(20, 4 + Math.sqrt(d.tpd/50)));
-  return d.plants > 1 ? 8 : 6;
-}
-
-function renderMarkers(){
-  markers.forEach(m=>map.removeLayer(m));
-  markers=[];
-  const filtered = allData.filter(d=>{
-    if(activeFilters.regions.size && !activeFilters.regions.has(d.region)) return false;
-    if(activeFilters.types.size && !activeFilters.types.has(d.type)) return false;
-    if(activeFilters.companies.size && !activeFilters.companies.has(d.company)) return false;
+function applyFilters(){
+  const region=document.getElementById('filterRegion').value;
+  const commodity=document.getElementById('filterCommodity').value;
+  const status=document.getElementById('filterStatus').value;
+  const confidence=document.getElementById('filterConfidence').value;
+  const search=document.getElementById('searchBox').value.toLowerCase();
+  const filtered=allData.filter(d=>{
+    if(region && d.region!==region) return false;
+    if(commodity && !(d.commodity||'').toLowerCase().includes(commodity.toLowerCase())) return false;
+    if(status && d.status!==status) return false;
+    if(confidence && d.confidence!==confidence) return false;
+    if(search && !d.name.toLowerCase().includes(search) && !(d.company||'').toLowerCase().includes(search) && !(d.country||'').toLowerCase().includes(search)) return false;
     return true;
   });
-  filtered.forEach(d=>{
-    const color = COLORS[d.region]||'#888';
-    const r = getRadius(d);
-    const m = L.circleMarker([d.lat,d.lng],{
-      radius:r, fillColor:color, color:'rgba(255,255,255,0.4)',
-      weight:1.5, opacity:0.9, fillOpacity:0.7
-    }).addTo(map);
-    m.bindPopup(makePopup(d),{maxWidth:280});
-    m.on('mouseover',function(){this.setStyle({weight:3,color:'#fff',fillOpacity:0.95})});
-    m.on('mouseout',function(){this.setStyle({weight:1.5,color:'rgba(255,255,255,0.4)',fillOpacity:0.7})});
-    markers.push(m);
+  renderAll(filtered);
+}
+
+function initMap(){
+  map=L.map('map',{zoomControl:true,attributionControl:false}).setView([20,0],2);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:18}).addTo(map);
+  L.control.attribution({prefix:false,position:'bottomright'}).addAttribution('© <a href="https://carto.com">CARTO</a> © <a href="https://osm.org">OSM</a>').addTo(map);
+}
+
+function renderAll(data){
+  renderMap(data);
+  renderStats(data);
+  renderCharts(data);
+}
+
+function renderMap(data){
+  if(clusterGroup) map.removeLayer(clusterGroup);
+  clusterGroup=L.markerClusterGroup({maxClusterRadius:40,spiderfyOnMaxZoom:true});
+  const maxTpd=Math.max(...data.map(d=>d.tpd||0),1);
+  data.forEach(d=>{
+    if(!d.lat||!d.lng) return;
+    const r=Math.max(5,Math.min(25,Math.sqrt((d.tpd||0)/maxTpd)*25));
+    const color=REGION_COLORS[d.region]||'#00a99d';
+    const marker=L.circleMarker([d.lat,d.lng],{radius:r,fillColor:color,color:'#fff',weight:1,opacity:0.8,fillOpacity:0.65});
+    const conf=d.confidence==='verified'?'🟢':'🟡';
+    const yr=d.year_commissioned||'—';
+    const designer=d.designer||'—';
+    marker.bindPopup(`
+      <h4>${d.name}</h4>
+      <div class="popup-row"><span class="popup-label">Company</span><span class="popup-val">${d.company||'—'}</span></div>
+      <div class="popup-row"><span class="popup-label">Country</span><span class="popup-val">${d.country}</span></div>
+      <div class="popup-row"><span class="popup-label">Region</span><span class="popup-val">${d.region}</span></div>
+      <div class="popup-row"><span class="popup-label">Fill Type</span><span class="popup-val">${d.type}</span></div>
+      <div class="popup-row"><span class="popup-label">Paste Capacity</span><span class="popup-val">${(d.tpd||0).toLocaleString()} tpd</span></div>
+      <div class="popup-row"><span class="popup-label">Ore Throughput</span><span class="popup-val">${d.ore_tpd?(d.ore_tpd.toLocaleString()+' tpd'):'—'}</span></div>
+      <div class="popup-row"><span class="popup-label">Commissioned</span><span class="popup-val">${yr}</span></div>
+      <div class="popup-row"><span class="popup-label">Designer</span><span class="popup-val">${designer}</span></div>
+      <div class="popup-row"><span class="popup-label">Status</span><span class="popup-val">${d.status||'—'}</span></div>
+      <div class="popup-row"><span class="popup-label">Confidence</span><span class="popup-val">${conf} ${d.confidence||'—'}</span></div>
+      <div class="popup-row"><span class="popup-label">Commodity</span><span class="popup-val">${d.commodity||'—'}</span></div>
+      <a class="suggest-link" href="#" onclick="openCorrection('${d.name.replace(/'/g,"\\'")}');return false">📝 Suggest a correction</a>
+    `,{maxWidth:300});
+    clusterGroup.addLayer(marker);
   });
-  updateStats(filtered);
+  map.addLayer(clusterGroup);
 }
 
-function makePopup(d){
-  let html=`<div class="popup-name">${d.name}</div><div class="popup-company">${d.company}</div>`;
-  html+=`<div class="popup-detail"><span class="k">Country</span><span class="v">${d.country}</span></div>`;
-  html+=`<div class="popup-detail"><span class="k">Region</span><span class="v">${d.region}</span></div>`;
-  html+=`<div class="popup-detail"><span class="k">Backfill</span><span class="v">${d.type}</span></div>`;
-  if(d.tpd) html+=`<div class="popup-detail"><span class="k">Capacity</span><span class="v">${d.tpd.toLocaleString()} tpd</span></div>`;
-  if(d.plants>1) html+=`<div class="popup-detail"><span class="k">Plants</span><span class="v">${d.plants}</span></div>`;
-  if(d.notes) html+=`<div class="popup-notes">${d.notes}</div>`;
-  return html;
-}
-
-function updateStats(filtered){
-  const data = filtered || allData;
-  const totalPlants = data.reduce((s,d)=>s+d.plants,0);
-  const knownTpd = data.filter(d=>d.tpd).reduce((s,d)=>s+d.tpd,0);
-  const countries = new Set(data.map(d=>d.country));
-  document.getElementById('totalPlants').textContent=totalPlants;
+function renderStats(data){
   document.getElementById('totalMines').textContent=data.length;
-  document.getElementById('totalTpd').textContent=knownTpd?knownTpd.toLocaleString()+'+ tpd':'455,000+ est.';
-  document.getElementById('totalCountries').textContent=countries.size;
+  const total=data.reduce((s,d)=>s+(d.tpd||0),0);
+  document.getElementById('totalTpd').textContent=total>=1e6?(total/1e6).toFixed(1)+'M':total>=1e3?(total/1e3).toFixed(0)+'K':total;
 }
 
-function buildFilters(){
-  const regions={},types={},companies={};
-  allData.forEach(d=>{
-    regions[d.region]=(regions[d.region]||0)+1;
-    types[d.type]=(types[d.type]||0)+1;
-    companies[d.company]=(companies[d.company]||0)+1;
+function renderCharts(data){
+  // Region pie
+  const regionCounts={};
+  data.forEach(d=>{regionCounts[d.region]=(regionCounts[d.region]||0)+1});
+  const regionLabels=Object.keys(regionCounts).sort();
+  makeChart('chartRegion','doughnut',regionLabels,regionLabels.map(r=>regionCounts[r]),regionLabels.map(r=>REGION_COLORS[r]||'#666'));
+
+  // Top 10
+  const top10=[...data].sort((a,b)=>(b.tpd||0)-(a.tpd||0)).slice(0,10);
+  makeChart('chartTop10','bar',top10.map(d=>d.name.length>20?d.name.slice(0,18)+'…':d.name),top10.map(d=>d.tpd||0),top10.map(d=>REGION_COLORS[d.region]||'#00a99d'),{indexAxis:'y',plugins:{legend:{display:false}}});
+
+  // Commodity donut — primary commodity
+  const commCounts={};
+  data.forEach(d=>{const c=(d.commodity||'unknown').split('/')[0];commCounts[c]=(commCounts[c]||0)+1});
+  const commSorted=Object.entries(commCounts).sort((a,b)=>b[1]-a[1]);
+  const topComm=commSorted.slice(0,8);
+  const otherCount=commSorted.slice(8).reduce((s,e)=>s+e[1],0);
+  if(otherCount>0) topComm.push(['other',otherCount]);
+  const commColors=['#3498db','#e74c3c','#f39c12','#2ecc71','#9b59b6','#e67e22','#1abc9c','#34495e','#7f8c8d'];
+  makeChart('chartCommodity','doughnut',topComm.map(c=>c[0]),topComm.map(c=>c[1]),commColors);
+
+  // Timeline
+  const decades={};
+  data.forEach(d=>{
+    const y=d.year_commissioned;
+    if(y){const dec=Math.floor(y/5)*5;decades[dec]=(decades[dec]||0)+1}
   });
-  buildFilterGroup('regionFilters',regions,activeFilters.regions);
-  buildFilterGroup('typeFilters',types,activeFilters.types);
-  const topCompanies=Object.entries(companies).sort((a,b)=>b[1]-a[1]).slice(0,15);
-  buildFilterGroup('companyFilters',Object.fromEntries(topCompanies),activeFilters.companies);
+  const decLabels=Object.keys(decades).sort();
+  makeChart('chartTimeline','bar',decLabels.map(d=>d+'s'),decLabels.map(d=>decades[d]),'#00a99d',{plugins:{legend:{display:false}}});
+
+  // Status
+  const statusCounts={};
+  data.forEach(d=>{const s=d.status||'unknown';statusCounts[s]=(statusCounts[s]||0)+1});
+  const statusLabels=Object.keys(statusCounts).sort();
+  makeChart('chartStatus','doughnut',statusLabels,statusLabels.map(s=>statusCounts[s]),statusLabels.map(s=>STATUS_COLORS[s]||'#7f8c8d'));
 }
 
-function buildFilterGroup(containerId,items,filterSet){
-  const c=document.getElementById(containerId);
-  const title=c.querySelector('.section-title');
-  c.innerHTML='';c.appendChild(title);
-  Object.entries(items).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{
-    const label=document.createElement('label');
-    const cb=document.createElement('input');cb.type='checkbox';cb.checked=false;
-    cb.addEventListener('change',()=>{
-      if(cb.checked) filterSet.add(k); else filterSet.delete(k);
-      renderMarkers();
-    });
-    const span=document.createElement('span');span.textContent=k;
-    const count=document.createElement('span');count.className='filter-count';count.textContent=v;
-    label.append(cb,span,count);c.appendChild(label);
+function makeChart(id,type,labels,values,colors,extraOpts={}){
+  if(charts[id]) charts[id].destroy();
+  const ctx=document.getElementById(id).getContext('2d');
+  const isBar=type==='bar';
+  charts[id]=new Chart(ctx,{
+    type,
+    data:{
+      labels,
+      datasets:[{data:values,backgroundColor:Array.isArray(colors)?colors:colors,borderWidth:0,borderRadius:isBar?3:0}]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:true,
+      plugins:{legend:{display:!isBar,position:'right',labels:{padding:6,font:{size:10}}}},
+      scales:isBar?{x:{grid:{display:false}},y:{grid:{color:'#1a3f4a'}}}:undefined,
+      ...extraOpts
+    }
   });
 }
 
-function toggleFilters(){
-  const f=document.getElementById('filters');
-  const b=document.getElementById('filterToggle');
-  f.classList.toggle('open');
-  b.classList.toggle('active');
+// Modal
+function openModal(prefill){
+  document.getElementById('submitModal').classList.add('active');
+  if(prefill) document.getElementById('fName').value=prefill;
+}
+function closeModal(){document.getElementById('submitModal').classList.remove('active')}
+function openCorrection(name){openModal(name)}
+
+function submitMine(){
+  const fields={
+    name:document.getElementById('fName').value,
+    company:document.getElementById('fCompany').value,
+    country:document.getElementById('fCountry').value,
+    type:document.getElementById('fType').value,
+    tpd:document.getElementById('fTpd').value,
+    year:document.getElementById('fYear').value,
+    commodity:document.getElementById('fCommodity').value,
+    submitter:document.getElementById('fSubmitter').value,
+    email:document.getElementById('fEmail').value,
+    source:document.getElementById('fSource').value
+  };
+  if(!fields.name||!fields.country){alert('Mine name and country are required.');return}
+  // Store in localStorage
+  const pending=JSON.parse(localStorage.getItem('pendingSubmissions')||'[]');
+  pending.push({...fields,submitted:new Date().toISOString()});
+  localStorage.setItem('pendingSubmissions',JSON.stringify(pending));
+  // Also open mailto
+  const body=Object.entries(fields).map(([k,v])=>`${k}: ${v}`).join('\n');
+  window.open(`mailto:info@minesmart.io?subject=Paste Plant Submission: ${encodeURIComponent(fields.name)}&body=${encodeURIComponent(body)}`);
+  closeModal();
+  document.querySelectorAll('.modal input,.modal textarea').forEach(el=>el.value='');
+  alert(`Thank you! ${pending.length} submission(s) recorded.`);
 }
 
-init();
+// Close modal on overlay click
+document.getElementById('submitModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
 </script>
 </body>
 </html>

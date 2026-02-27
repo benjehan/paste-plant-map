@@ -1,29 +1,79 @@
-# Global Paste Backfill Plants — Interactive Map
+# Global Paste Backfill Plant Map
 
-Interactive Leaflet.js map showing 100+ active cemented paste backfill operations worldwide.
+An interactive dashboard mapping **190+ paste backfill plants worldwide**, built by [MineSmart Solutions](https://minesmart.io).
 
-## What It Is
-A single-page web app (`index.html`) with dark mining-industry theme, circle markers sized by TPD, coloured by region, with filtering, popups, stats, and legend.
+🌐 **Live:** [pasteplant.minesmart.io](https://pasteplant.minesmart.io)
 
-## Data Source
-- **Primary:** L-P Gélinas (Agnico Eagle) LinkedIn post compilation — 108+ plants, 455,000+ tpd combined
-- **Supplementary:** MineSmart MineMap API database, industry contacts, MineFill conference data
-- **Note:** China has 400+ additional plants (not individually mapped due to data access)
+## What Is This?
 
-## Files
-- `index.html` — the app (CDN Leaflet, no build step, just open in browser)
-- `data.json` — structured plant data (edit this to add/update plants)
-- `raw-linkedin-data.md` — original extracted data from LinkedIn post
+A public, open-data map of every known paste backfill plant in the mining industry. Filter by region, commodity, status, and confidence level. View charts showing regional distribution, top plants by capacity, commodity breakdown, and commissioning timeline.
 
-## How to Update
-1. Edit `data.json` — add new entries with: name, company, country, region, lat, lng, type, tpd, plants, notes
-2. Region must be one of: `Australia`, `Africa`, `South America`, `North America`, `Europe`, `Asia`
-3. Type is typically: `Paste`, `CAF`, `CRF`
-4. Refresh the page
+## Features
+
+- 🗺️ **Interactive map** with bubble markers sized by paste capacity (tpd)
+- 📊 **Dashboard sidebar** with Chart.js visualisations (region, commodity, timeline, status)
+- 🔍 **Search & filter** by region, commodity, status, confidence
+- 📝 **Submit a mine** — contribute data via the built-in form
+- 📱 **Responsive** — works on desktop and mobile
+- 🎨 **Dark theme** with MineSmart branding
+
+## Tech Stack
+
+Pure HTML/CSS/JS — no build step required.
+
+- [Leaflet.js](https://leafletjs.com/) — mapping
+- [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster) — marker clustering
+- [Chart.js](https://www.chartjs.org/) — charts
+- [CARTO Dark](https://carto.com/basemaps/) — basemap tiles
+
+## Data
+
+`data.json` contains an array of paste plant records with fields:
+
+| Field | Description |
+|-------|-------------|
+| name | Mine/plant name |
+| company | Operating company |
+| country | Country |
+| region | Continent/region |
+| lat, lng | Coordinates |
+| type | Fill type (Paste) |
+| tpd | Paste capacity (tonnes per day) |
+| ore_tpd | Ore throughput (tpd) |
+| commodity | Primary commodity |
+| status | Operating status |
+| confidence | Data confidence (verified/likely) |
+| year_commissioned | Year commissioned |
+| designer | Plant designer |
+
+### Data Sources
+
+- L-P Gélinas Inc. research
+- Industry reports and conference papers
+- Public company filings and technical reports
+- Community contributions
+
+## Contributing
+
+Know of a paste plant not on the map? Have a correction?
+
+1. Click **"Submit a Mine"** on the live site
+2. Or open a pull request adding to `data.json`
+3. Or email [info@minesmart.io](mailto:info@minesmart.io)
 
 ## Hosting
-Static files — host anywhere (GitHub Pages, Netlify, S3, etc). No server needed.
 
-## Credit
-Data compiled from industry sources. Contribute: contact@minesmart.io
-Built by MineSmart.io
+Static site — just serve `index.html` and `data.json` from any web server or CDN.
+
+## About MineSmart
+
+[MineSmart Solutions](https://minesmart.io) builds **Backfill Pro**, the paste operations management platform for underground mines. Track plant performance, optimise mix designs, and manage your backfill programme.
+
+## Licence
+
+**Code:** MIT  
+**Data:** [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) — share and adapt with attribution.
+
+---
+
+*Built with ❤️ by MineSmart Solutions Ltd*
