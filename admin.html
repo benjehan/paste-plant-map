@@ -131,12 +131,13 @@ a{color:var(--accent);text-decoration:none}
 
 <div class="toast" id="toast"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
 const SUPABASE_URL = 'https://cxsariervcthxoudumaq.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN4c2FyaWVydmN0aHhvdWR1bWFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxOTcwMTAsImV4cCI6MjA4Nzc3MzAxMH0.KmjcyBRtRRgvg4FZarJ935wjcKZ4PTThszKWbFPzwUY';
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const { createClient } = window.supabase || window.Supabase || {};
+const supabase = (createClient || window.supabase?.createClient)(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // Check for existing session on load
 (async function init() {
