@@ -503,12 +503,15 @@ function applyFilters(){
     return true;
   });
   renderAll(filtered);
+  if(clusterGroup && clusterGroup.getLayers().length){
+    map.fitBounds(clusterGroup.getBounds().pad(0.1));
+  }
   const hasFilters = region || commodity || status || confidence || search;
   document.getElementById('clearFiltersBtn').style.display = hasFilters ? 'block' : 'none';
 }
 
 function initMap(){
-  map=L.map('map',{zoomControl:true,attributionControl:false,maxBounds:[[-85,-200],[85,200]],maxBoundsViscosity:1.0}).setView([20,0],2);
+  map=L.map('map',{zoomControl:true,attributionControl:false,worldCopyJump:true,minZoom:2,maxZoom:18}).setView([20,0],2);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:18}).addTo(map);
   L.control.attribution({prefix:false,position:'bottomright'}).addAttribution('© <a href="https://carto.com">CARTO</a> © <a href="https://osm.org">OSM</a>').addTo(map);
 }
@@ -557,7 +560,7 @@ function renderMap(data){
         ${d.last_updated?'<div style="margin-bottom:4px;font-size:11px;color:var(--muted)">✅ Last checked '+d.last_updated+(d.updated_by?' by <strong style="color:var(--text)">'+esc(d.updated_by)+'</strong>':'')+'</div>':''}
         <a class="suggest-link" href="#" onclick="openCorrection('${safeName}');return false">📝 Suggest a correction</a>
       </div>
-    `,{maxWidth:320});
+    `,{maxWidth:320,autoPan:true,autoPanPadding:[40,40]});
     clusterGroup.addLayer(marker);
   });
   map.addLayer(clusterGroup);
