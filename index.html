@@ -108,13 +108,24 @@ a:hover{text-decoration:underline}
 /* Leaflet overrides */
 .leaflet-popup-content-wrapper{background:var(--card);color:var(--text);border-radius:6px;border:1px solid var(--border)}
 .leaflet-popup-tip{background:var(--card)}
-.leaflet-popup-content{margin:10px 14px;font-size:13px;line-height:1.5}
-.leaflet-popup-content h4{color:var(--accent);margin-bottom:4px;font-size:15px}
-.leaflet-popup-content .popup-row{display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid var(--border)}
-.leaflet-popup-content .popup-row:last-child{border:none}
-.leaflet-popup-content .popup-label{color:var(--muted);font-size:11px}
-.leaflet-popup-content .popup-val{font-weight:500}
-.leaflet-popup-content .suggest-link{display:inline-block;margin-top:6px;font-size:11px;color:var(--accent)}
+.leaflet-popup-content{margin:0;font-size:13px;line-height:1.5;min-width:260px;max-width:320px}
+.popup-header{padding:12px 14px 8px}
+.popup-mine-name{font-size:16px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px}
+.popup-company{font-size:12px;color:var(--muted);margin-top:2px}
+.popup-badges{display:flex;flex-wrap:wrap;gap:5px;padding:6px 14px 8px}
+.popup-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;line-height:1.4}
+.popup-badge.capacity{background:rgba(0,169,157,0.2);color:var(--accent)}
+.popup-badge.commodity{background:rgba(52,152,219,0.2);color:#3498db}
+.popup-badge.status-operating{background:rgba(46,204,113,0.15);color:var(--green)}
+.popup-badge.status-closed{background:rgba(231,76,60,0.15);color:var(--red)}
+.popup-badge.status-other{background:rgba(241,196,15,0.15);color:var(--yellow)}
+.popup-grid{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;padding:6px 14px 10px;font-size:12px}
+.popup-grid .pg-label{color:var(--muted);white-space:nowrap}
+.popup-grid .pg-val{font-weight:500;text-align:right}
+.popup-source{padding:4px 14px 6px;border-top:1px solid var(--border);font-size:11px}
+.popup-source a{color:var(--accent)}
+.popup-footer{padding:6px 14px 10px;border-top:1px solid var(--border);font-size:11px;color:var(--muted)}
+.popup-footer .suggest-link{display:inline-block;margin-top:4px;color:var(--accent);font-size:11px}
 .leaflet-control-zoom a{background:var(--card)!important;color:var(--text)!important;border-color:var(--border)!important}
 .marker-cluster{background:rgba(0,169,157,0.3)!important}
 .marker-cluster div{background:rgba(0,169,157,0.7)!important;color:#fff!important;font-weight:600}
@@ -272,8 +283,26 @@ Chart.defaults.font.size=11;
 Chart.defaults.plugins.legend.labels.boxWidth=10;
 Chart.defaults.animation.duration=800;
 
-fetch('data.json').then(r=>r.json()).then(data=>{
+fetch('data.json').then(r=>r.json()).then(async data=>{
   allData=data;
+  // Enrich with approved submission data
+  try {
+    const subRes = await fetch(SUPABASE_URL + '/rest/v1/mine_submissions?status=eq.approved&select=existing_mine_name,submitter_name,reviewed_at&order=reviewed_at.desc', {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY }
+    });
+    if (subRes.ok) {
+      const subs = await subRes.json();
+      const subMap = {};
+      subs.forEach(s => { if (s.existing_mine_name && !subMap[s.existing_mine_name]) subMap[s.existing_mine_name] = s; });
+      allData.forEach(d => {
+        const match = subMap[d.name];
+        if (match) {
+          d.last_updated = new Date(match.reviewed_at).toLocaleDateString('en-GB', {day:'numeric',month:'short'});
+          d.updated_by = match.submitter_name;
+        }
+      });
+    }
+  } catch(e) { /* silently continue */ }
   populateFilters(data);
   initMap();
   applyFilters();
@@ -378,23 +407,32 @@ function renderMap(data){
     const yr=d.year_commissioned||'—';
     const designer=d.designer||'—';
     const safeName = (d.name||'').replace(/'/g,"\\'").replace(/"/g,'&quot;');
+    const statusClass = (d.status||'').toLowerCase()==='operating'?'status-operating':(d.status||'').toLowerCase()==='closed'?'status-closed':'status-other';
     marker.bindPopup(`
-      <h4>${esc(d.name)}</h4>
-      <div class="popup-row"><span class="popup-label">Company</span><span class="popup-val">${esc(d.company)||'—'}</span></div>
-      <div class="popup-row"><span class="popup-label">Country</span><span class="popup-val">${esc(d.country)}</span></div>
-      <div class="popup-row"><span class="popup-label">Region</span><span class="popup-val">${esc(d.region)}</span></div>
-      <div class="popup-row"><span class="popup-label">Fill Type</span><span class="popup-val">${esc(d.type)}</span></div>
-      <div class="popup-row"><span class="popup-label">Paste Capacity</span><span class="popup-val">${(d.tpd||0).toLocaleString()} tpd</span></div>
-      <div class="popup-row"><span class="popup-label">Ore Throughput</span><span class="popup-val">${d.ore_tpd?(d.ore_tpd.toLocaleString()+' tpd'):'—'}</span></div>
-      <div class="popup-row"><span class="popup-label">Commissioned</span><span class="popup-val">${yr}</span></div>
-      <div class="popup-row"><span class="popup-label">Designer</span><span class="popup-val">${esc(designer)}</span></div>
-      <div class="popup-row"><span class="popup-label">Status</span><span class="popup-val">${esc(d.status)||'—'}</span></div>
-      <div class="popup-row"><span class="popup-label">Confidence</span><span class="popup-val">${conf} ${esc(d.confidence)||'—'}</span></div>
-      <div class="popup-row"><span class="popup-label">Commodity</span><span class="popup-val">${esc(d.commodity)||'—'}</span></div>
-      ${d.source ? '<div class="popup-row"><span class="popup-label">Source</span><span class="popup-val"><a href="'+encodeURI(d.source)+'" target="_blank" rel="noopener" style="font-size:11px;color:var(--accent)">'+esc(d.source_label||'View source')+'</a></span></div>' : ''}
-      ${d.last_updated ? '<div class="popup-row" style="margin-top:6px;border-top:1px solid var(--border);padding-top:4px"><span class="popup-label">Last Updated</span><span class="popup-val" style="font-size:11px;color:var(--muted)">'+(d.last_updated)+' by '+(esc(d.updated_by)||'—')+'</span></div>' : ''}
-      <a class="suggest-link" href="#" onclick="openCorrection('${safeName}');return false">📝 Suggest a correction</a>
-    `,{maxWidth:300});
+      <div class="popup-header">
+        <div class="popup-mine-name">${conf} ${esc(d.name)}</div>
+        <div class="popup-company">${esc(d.company)||'—'}</div>
+      </div>
+      <div class="popup-badges">
+        <span class="popup-badge capacity">${(d.tpd||0).toLocaleString()} tpd</span>
+        ${d.commodity?'<span class="popup-badge commodity">'+esc(d.commodity)+'</span>':''}
+        ${d.status?'<span class="popup-badge '+statusClass+'">'+esc(d.status)+'</span>':''}
+      </div>
+      <div class="popup-grid">
+        <span class="pg-label">Country</span><span class="pg-val">${esc(d.country)}</span>
+        <span class="pg-label">Region</span><span class="pg-val">${esc(d.region)}</span>
+        <span class="pg-label">Fill Type</span><span class="pg-val">${esc(d.type)}</span>
+        <span class="pg-label">Plants</span><span class="pg-val">${d.plants||'—'}</span>
+        <span class="pg-label">Ore TPD</span><span class="pg-val">${d.ore_tpd?(d.ore_tpd.toLocaleString()):'—'}</span>
+        <span class="pg-label">Designer</span><span class="pg-val">${esc(designer)}</span>
+        <span class="pg-label">Commissioned</span><span class="pg-val">${yr}</span>
+      </div>
+      ${d.source?'<div class="popup-source">📎 <a href="'+encodeURI(d.source)+'" target="_blank" rel="noopener">'+esc(d.source_label||'View source')+' →</a></div>':''}
+      <div class="popup-footer">
+        ${d.last_updated?'Updated '+d.last_updated+(d.updated_by?' by '+esc(d.updated_by):'')+'<br>':''}
+        <a class="suggest-link" href="#" onclick="openCorrection('${safeName}');return false">📝 Suggest a correction</a>
+      </div>
+    `,{maxWidth:320});
     clusterGroup.addLayer(marker);
   });
   map.addLayer(clusterGroup);
