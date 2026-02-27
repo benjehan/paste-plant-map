@@ -279,7 +279,7 @@ a:hover{text-decoration:underline}
         <label>Confidence</label>
         <select id="filterConfidence"><option value="" selected>All Confidence</option><option value="verified">Verified Only</option><option value="likely">Likely</option></select>
       </div>
-      <button class="clear-filters" onclick="clearFilters()">✕ Clear filters</button>
+      <button class="clear-filters" id="clearFiltersBtn" onclick="clearFilters()" style="display:none">✕ Clear filters</button>
     </div>
     <div id="map"></div>
     <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">📊</button>
@@ -503,6 +503,8 @@ function applyFilters(){
     return true;
   });
   renderAll(filtered);
+  const hasFilters = region || commodity || status || confidence || search;
+  document.getElementById('clearFiltersBtn').style.display = hasFilters ? 'block' : 'none';
 }
 
 function initMap(){
