@@ -855,6 +855,19 @@ async function submitMine(){
   } catch(e) { alert('Error submitting: ' + e.message); }
 }
 
+// Welcome popup
+(function(){
+  if(localStorage.getItem('hideWelcome')==='true'){
+    document.getElementById('welcomeOverlay').style.display='none';
+  }
+})();
+function closeWelcome(){
+  document.getElementById('welcomeOverlay').style.display='none';
+  if(document.getElementById('welcomeDontShow').checked){
+    localStorage.setItem('hideWelcome','true');
+  }
+}
+
 function showToast(msg){
   const t = document.getElementById('toast');
   t.textContent = msg; t.style.display = 'block';
