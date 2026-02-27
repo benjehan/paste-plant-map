@@ -237,14 +237,15 @@ a:hover{text-decoration:underline}
   .cta-section .btn{padding:14px;font-size:15px}
 }
 
-/* Email signup card */
-.signup-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px;margin:12px;transition:border-color .2s}
-.signup-card:hover{border-color:var(--glass-border)}
-.signup-card h3{font-size:14px;margin-bottom:4px}
-.signup-card p{font-size:11px;color:var(--muted);margin-bottom:10px}
-.signup-card input{width:100%;background:var(--panel);color:var(--text);border:1px solid var(--border);padding:8px 10px;border-radius:4px;font-size:13px;margin-bottom:6px}
-.signup-card input:focus{outline:none;border-color:var(--accent)}
-.signup-card .btn{width:100%;text-align:center}
+/* Header signup */
+.header-signup{display:flex;gap:6px;align-items:center}
+.header-signup input{background:var(--card);color:var(--text);border:1px solid var(--border);padding:7px 10px;border-radius:6px;font-size:13px;width:180px}
+.header-signup input:focus{outline:none;border-color:var(--accent)}
+.header-signup input::placeholder{color:var(--muted)}
+.mobile-signup{display:flex;gap:6px}
+.mobile-signup input{flex:1;background:var(--card);color:var(--text);border:1px solid var(--border);padding:8px 10px;border-radius:6px;font-size:13px}
+.mobile-signup input:focus{outline:none;border-color:var(--accent)}
+.mobile-signup input::placeholder{color:var(--muted)}
 
 /* Timeline slider */
 .timeline-panel{position:absolute;bottom:10px;left:50px;right:10px;z-index:800;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glass-border);border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:12px}
@@ -304,13 +305,19 @@ a:hover{text-decoration:underline}
     </div>
   </div>
   <div class="header-right">
-    <button class="btn btn-outline" onclick="openCompareModal()">📊 Compare Regions</button>
+    <div class="header-signup">
+      <input type="email" id="headerSubEmail" placeholder="Your email">
+      <button class="btn" onclick="headerSubscribe()">Subscribe</button>
+    </div>
     <button class="btn btn-outline" onclick="openModal()">+ Submit a Mine</button>
     <a href="https://minesmart.io/backfill-pro/" target="_blank" class="btn">Request a Demo</a>
   </div>
   <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">☰</button>
   <div class="mobile-menu">
-    <button class="btn btn-outline" onclick="openCompareModal();document.querySelector('.mobile-menu').classList.remove('open')">📊 Compare Regions</button>
+    <div class="mobile-signup">
+      <input type="email" id="mobileSubEmail" placeholder="Your email">
+      <button class="btn" onclick="mobileSubscribe()">Subscribe</button>
+    </div>
     <button class="btn btn-outline" onclick="openModal();document.querySelector('.mobile-menu').classList.remove('open')">+ Submit a Mine</button>
     <a href="https://minesmart.io/backfill-pro/" target="_blank" class="btn">Request a Demo</a>
   </div>
@@ -415,13 +422,9 @@ a:hover{text-decoration:underline}
       <div id="newsFeed"><div class="news-empty">Loading news...</div></div>
     </div>
 
-    <!-- Email Signup -->
-    <div class="signup-card">
-      <h3>📧 Stay Updated</h3>
-      <p>Get notified when new plants are added to the map</p>
-      <input type="text" id="subName" placeholder="Your name">
-      <input type="email" id="subEmail" placeholder="Your email">
-      <button class="btn" onclick="subscribe()">Subscribe</button>
+    <!-- Compare Regions -->
+    <div style="padding:8px 12px">
+      <button class="btn btn-outline" style="width:100%;text-align:center" onclick="openCompareModal()">📊 Compare Regions</button>
     </div>
 
     <div class="cta-section">
@@ -891,23 +894,32 @@ document.addEventListener('click',e=>{
 });
 
 // ============ FEATURE 1: Email Signup ============
-async function subscribe(){
-  const name=document.getElementById('subName').value.trim();
-  const email=document.getElementById('subEmail').value.trim();
-  if(!email){showToast('Please enter your email.');return}
+async function doSubscribe(email){
+  if(!email){showToast('Please enter your email.');return false}
+  const res=await fetch(SUPABASE_URL+'/rest/v1/subscribers',{
+    method:'POST',headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+    body:JSON.stringify({email,name:null})
+  });
+  if(res.status===409||res.status===400){
+    const txt=await res.text();
+    if(txt.includes('duplicate')||txt.includes('unique')){showToast("You're already subscribed!");return true}
+    throw new Error(txt);
+  }
+  if(!res.ok)throw new Error(await res.text());
+  showToast("Thanks! You're subscribed.");
+  return true;
+}
+async function headerSubscribe(){
   try{
-    const res=await fetch(SUPABASE_URL+'/rest/v1/subscribers',{
-      method:'POST',headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
-      body:JSON.stringify({email,name:name||null})
-    });
-    if(res.status===409||res.status===400){
-      const txt=await res.text();
-      if(txt.includes('duplicate')||txt.includes('unique')){showToast("You're already subscribed!");return}
-      throw new Error(txt);
-    }
-    if(!res.ok)throw new Error(await res.text());
-    document.getElementById('subName').value='';document.getElementById('subEmail').value='';
-    showToast("Thanks! You're subscribed.");
+    const input=document.getElementById('headerSubEmail');
+    if(await doSubscribe(input.value.trim()))input.value='';
+  }catch(e){showToast('Error: '+e.message)}
+}
+async function mobileSubscribe(){
+  try{
+    const input=document.getElementById('mobileSubEmail');
+    if(await doSubscribe(input.value.trim()))input.value='';
+    document.querySelector('.mobile-menu').classList.remove('open');
   }catch(e){showToast('Error: '+e.message)}
 }
 
