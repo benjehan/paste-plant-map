@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Paste Backfill Plants | MineSmart</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0f1923;--bg2:#162232;--bg3:#1c2d42;--border:#2a3f57;
+  --text:#e8edf3;--text2:#8fa3b8;--accent:#4fc3f7;
+  --gold:#ffc107;--green:#4caf50;--blue:#2196f3;--red:#ef5350;--purple:#ab47bc;--orange:#ff9800;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh}
+#map{position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;background:#0a1929}
+.leaflet-container{background:#0a1929!important}
+.leaflet-tile-pane{filter:brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7)}
+
+/* Header */
+#header{position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:linear-gradient(180deg,rgba(15,25,35,0.97) 0%,rgba(15,25,35,0.85) 100%);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px}
+#header .title-group{flex:1;min-width:0}
+#header h1{font-size:clamp(14px,2.2vw,22px);font-weight:700;letter-spacing:-0.3px;
+  background:linear-gradient(135deg,var(--accent),#81d4fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+#header .subtitle{font-size:clamp(10px,1.2vw,12px);color:var(--text2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#header .brand{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text2);white-space:nowrap}
+#header .brand .logo{width:20px;height:20px;background:var(--accent);border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:10px;color:var(--bg)}
+.toggle-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text);
+  padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px;font-family:inherit;white-space:nowrap}
+.toggle-btn:hover{background:var(--border)}
+.toggle-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+
+/* Stats Bar */
+#stats{position:fixed;bottom:0;left:0;right:0;z-index:1000;
+  background:linear-gradient(0deg,rgba(15,25,35,0.97),rgba(15,25,35,0.85));
+  backdrop-filter:blur(12px);border-top:1px solid var(--border);
+  padding:8px 20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px}
+#stats .stat{display:flex;align-items:center;gap:6px}
+#stats .stat .val{font-weight:700;font-size:14px;color:var(--accent)}
+#stats .stat .label{color:var(--text2)}
+#stats .credit{margin-left:auto;color:var(--text2);font-size:10px;text-align:right}
+#stats .credit a{color:var(--accent);text-decoration:none}
+
+/* Filter Panel */
+#filters{position:fixed;top:60px;right:12px;z-index:1000;
+  background:rgba(22,34,50,0.95);backdrop-filter:blur(12px);
+  border:1px solid var(--border);border-radius:10px;padding:14px;
+  width:240px;max-height:calc(100vh - 130px);overflow-y:auto;
+  display:none;font-size:12px}
+#filters.open{display:block}
+#filters h3{font-size:13px;font-weight:600;margin-bottom:10px;color:var(--accent)}
+.filter-section{margin-bottom:12px}
+.filter-section .section-title{font-weight:600;margin-bottom:6px;color:var(--text2);text-transform:uppercase;font-size:10px;letter-spacing:0.5px}
+.filter-section label{display:flex;align-items:center;gap:6px;padding:3px 0;cursor:pointer;color:var(--text)}
+.filter-section input[type=checkbox]{accent-color:var(--accent);width:14px;height:14px}
+.filter-count{margin-left:auto;color:var(--text2);font-size:10px}
+
+/* Legend */
+#legend{position:fixed;bottom:50px;left:12px;z-index:1000;
+  background:rgba(22,34,50,0.95);backdrop-filter:blur(12px);
+  border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:11px}
+#legend h4{font-size:11px;font-weight:600;margin-bottom:8px;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px}
+.legend-item{display:flex;align-items:center;gap:8px;padding:2px 0}
+.legend-dot{width:12px;height:12px;border-radius:50%;border:2px solid rgba(255,255,255,0.3)}
+.legend-size{display:flex;align-items:flex-end;gap:4px;margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+.legend-size .circle{border-radius:50%;background:rgba(79,195,247,0.3);border:1px solid var(--accent)}
+
+/* Popup */
+.leaflet-popup-content-wrapper{background:var(--bg2)!important;color:var(--text)!important;border:1px solid var(--border)!important;border-radius:10px!important;box-shadow:0 8px 32px rgba(0,0,0,0.5)!important}
+.leaflet-popup-tip{background:var(--bg2)!important;border:1px solid var(--border)!important}
+.leaflet-popup-content{margin:12px 14px!important;font-family:'Inter',sans-serif!important;font-size:12px!important;line-height:1.5!important}
+.popup-name{font-size:14px;font-weight:700;margin-bottom:2px}
+.popup-company{color:var(--accent);font-weight:500;margin-bottom:6px}
+.popup-detail{display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.popup-detail .k{color:var(--text2)}
+.popup-detail .v{font-weight:500}
+.popup-notes{margin-top:6px;color:var(--text2);font-size:11px;font-style:italic}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* Mobile */
+@media(max-width:600px){
+  #header{padding:8px 12px}
+  #header h1{font-size:14px}
+  #header .subtitle{display:none}
+  #stats{padding:6px 12px;font-size:11px}
+  #stats .stat .val{font-size:12px}
+  #stats .credit{display:none}
+  #filters{width:calc(100vw - 24px);right:12px}
+  #legend{bottom:44px;font-size:10px}
+}
+</style>
+</head>
+<body>
+
+<div id="header">
+  <div class="title-group">
+    <h1>⛏ Global Paste Backfill Plants</h1>
+    <div class="subtitle">Interactive map of active cemented paste backfill operations worldwide</div>
+  </div>
+  <button class="toggle-btn" id="filterToggle" onclick="toggleFilters()">☰ Filters</button>
+  <div class="brand">
+    <div class="logo">M</div>
+    <span>MineSmart</span>
+  </div>
+</div>
+
+<div id="filters">
+  <h3>Filter Plants</h3>
+  <div class="filter-section" id="regionFilters">
+    <div class="section-title">Region</div>
+  </div>
+  <div class="filter-section" id="typeFilters">
+    <div class="section-title">Backfill Type</div>
+  </div>
+  <div class="filter-section" id="companyFilters">
+    <div class="section-title">Company (top 15)</div>
+  </div>
+</div>
+
+<div id="legend">
+  <h4>Legend</h4>
+  <div class="legend-item"><div class="legend-dot" style="background:#ffc107"></div>Australia</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#4caf50"></div>Africa</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#2196f3"></div>South America</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ef5350"></div>North America</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ab47bc"></div>Europe</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ff9800"></div>Asia</div>
+  <div class="legend-size">
+    <div class="circle" style="width:10px;height:10px"></div>
+    <div class="circle" style="width:16px;height:16px"></div>
+    <div class="circle" style="width:24px;height:24px"></div>
+    <span style="color:var(--text2);margin-left:4px;font-size:10px">Size = TPD (where known)</span>
+  </div>
+</div>
+
+<div id="stats">
+  <div class="stat"><span class="val" id="totalPlants">—</span><span class="label">plants</span></div>
+  <div class="stat"><span class="val" id="totalMines">—</span><span class="label">mines</span></div>
+  <div class="stat"><span class="val" id="totalTpd">—</span><span class="label">known TPD</span></div>
+  <div class="stat"><span class="val" id="totalCountries">—</span><span class="label">countries</span></div>
+  <div class="credit">Data compiled from industry sources incl. L-P Gélinas (Agnico Eagle) LinkedIn compilation.<br>
+    Contribute: <a href="mailto:contact@minesmart.io">contact@minesmart.io</a> · <strong>MineSmart.io</strong></div>
+</div>
+
+<div id="map"></div>
+
+<script>
+const COLORS = {
+  'Australia':'#ffc107','Africa':'#4caf50','South America':'#2196f3',
+  'North America':'#ef5350','Europe':'#ab47bc','Asia':'#ff9800'
+};
+
+let map, markers = [], allData = [], activeFilters = {regions:new Set(),types:new Set(),companies:new Set()};
+
+function init(){
+  map = L.map('map',{
+    center:[20,10],zoom:3,zoomControl:false,
+    maxBounds:[[-85,-200],[85,200]],minZoom:2
+  });
+  L.control.zoom({position:'bottomright'}).addTo(map);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'',maxZoom:18,noWrap:true
+  }).addTo(map);
+
+  fetch('data.json').then(r=>r.json()).then(data=>{
+    allData=data;
+    buildFilters();
+    renderMarkers();
+    updateStats();
+  });
+}
+
+function getRadius(d){
+  if(d.tpd) return Math.max(6, Math.min(20, 4 + Math.sqrt(d.tpd/50)));
+  return d.plants > 1 ? 8 : 6;
+}
+
+function renderMarkers(){
+  markers.forEach(m=>map.removeLayer(m));
+  markers=[];
+  const filtered = allData.filter(d=>{
+    if(activeFilters.regions.size && !activeFilters.regions.has(d.region)) return false;
+    if(activeFilters.types.size && !activeFilters.types.has(d.type)) return false;
+    if(activeFilters.companies.size && !activeFilters.companies.has(d.company)) return false;
+    return true;
+  });
+  filtered.forEach(d=>{
+    const color = COLORS[d.region]||'#888';
+    const r = getRadius(d);
+    const m = L.circleMarker([d.lat,d.lng],{
+      radius:r, fillColor:color, color:'rgba(255,255,255,0.4)',
+      weight:1.5, opacity:0.9, fillOpacity:0.7
+    }).addTo(map);
+    m.bindPopup(makePopup(d),{maxWidth:280});
+    m.on('mouseover',function(){this.setStyle({weight:3,color:'#fff',fillOpacity:0.95})});
+    m.on('mouseout',function(){this.setStyle({weight:1.5,color:'rgba(255,255,255,0.4)',fillOpacity:0.7})});
+    markers.push(m);
+  });
+  updateStats(filtered);
+}
+
+function makePopup(d){
+  let html=`<div class="popup-name">${d.name}</div><div class="popup-company">${d.company}</div>`;
+  html+=`<div class="popup-detail"><span class="k">Country</span><span class="v">${d.country}</span></div>`;
+  html+=`<div class="popup-detail"><span class="k">Region</span><span class="v">${d.region}</span></div>`;
+  html+=`<div class="popup-detail"><span class="k">Backfill</span><span class="v">${d.type}</span></div>`;
+  if(d.tpd) html+=`<div class="popup-detail"><span class="k">Capacity</span><span class="v">${d.tpd.toLocaleString()} tpd</span></div>`;
+  if(d.plants>1) html+=`<div class="popup-detail"><span class="k">Plants</span><span class="v">${d.plants}</span></div>`;
+  if(d.notes) html+=`<div class="popup-notes">${d.notes}</div>`;
+  return html;
+}
+
+function updateStats(filtered){
+  const data = filtered || allData;
+  const totalPlants = data.reduce((s,d)=>s+d.plants,0);
+  const knownTpd = data.filter(d=>d.tpd).reduce((s,d)=>s+d.tpd,0);
+  const countries = new Set(data.map(d=>d.country));
+  document.getElementById('totalPlants').textContent=totalPlants;
+  document.getElementById('totalMines').textContent=data.length;
+  document.getElementById('totalTpd').textContent=knownTpd?knownTpd.toLocaleString()+'+ tpd':'455,000+ est.';
+  document.getElementById('totalCountries').textContent=countries.size;
+}
+
+function buildFilters(){
+  const regions={},types={},companies={};
+  allData.forEach(d=>{
+    regions[d.region]=(regions[d.region]||0)+1;
+    types[d.type]=(types[d.type]||0)+1;
+    companies[d.company]=(companies[d.company]||0)+1;
+  });
+  buildFilterGroup('regionFilters',regions,activeFilters.regions);
+  buildFilterGroup('typeFilters',types,activeFilters.types);
+  const topCompanies=Object.entries(companies).sort((a,b)=>b[1]-a[1]).slice(0,15);
+  buildFilterGroup('companyFilters',Object.fromEntries(topCompanies),activeFilters.companies);
+}
+
+function buildFilterGroup(containerId,items,filterSet){
+  const c=document.getElementById(containerId);
+  const title=c.querySelector('.section-title');
+  c.innerHTML='';c.appendChild(title);
+  Object.entries(items).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{
+    const label=document.createElement('label');
+    const cb=document.createElement('input');cb.type='checkbox';cb.checked=false;
+    cb.addEventListener('change',()=>{
+      if(cb.checked) filterSet.add(k); else filterSet.delete(k);
+      renderMarkers();
+    });
+    const span=document.createElement('span');span.textContent=k;
+    const count=document.createElement('span');count.className='filter-count';count.textContent=v;
+    label.append(cb,span,count);c.appendChild(label);
+  });
+}
+
+function toggleFilters(){
+  const f=document.getElementById('filters');
+  const b=document.getElementById('filterToggle');
+  f.classList.toggle('open');
+  b.classList.toggle('active');
+}
+
+init();
+</script>
+</body>
+</html>
