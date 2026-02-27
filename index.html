@@ -499,17 +499,14 @@ a:hover{text-decoration:underline}
 </div>
 
 <!-- Subscribe Modal -->
-<div class="modal-overlay" id="subscribeModal">
-  <div class="modal" style="position:relative;max-width:420px">
+<div class="subscribe-overlay" id="subscribeModal" onclick="if(event.target===this)closeSubscribeModal()">
+  <div class="subscribe-modal">
     <button class="close-btn" onclick="closeSubscribeModal()">&times;</button>
-    <h2>Stay Updated</h2>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Get notified when new plants are added or major updates are made to the map.</p>
-    <label>Name</label><input id="subName" placeholder="Your name">
-    <label>Email *</label><input id="subEmail" type="email" placeholder="your@email.com" required>
-    <div class="modal-actions">
-      <button class="btn btn-outline" onclick="closeSubscribeModal()">Cancel</button>
-      <button class="btn" onclick="submitSubscribe()">Subscribe</button>
-    </div>
+    <h2>📧 Stay Updated</h2>
+    <p>Get notified when new plants are added or major updates are made to the map.</p>
+    <input id="subName" placeholder="Your name">
+    <input id="subEmail" type="email" placeholder="Your email *" required>
+    <button class="btn" onclick="submitSubscribe()">Subscribe</button>
   </div>
 </div>
 
@@ -908,24 +905,8 @@ document.addEventListener('click',e=>{
 });
 
 // ============ FEATURE 1: Email Signup ============
-async function doSubscribe(email){
-  if(!email){showToast('Please enter your email.');return false}
-  const res=await fetch(SUPABASE_URL+'/rest/v1/subscribers',{
-    method:'POST',headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
-    body:JSON.stringify({email,name:null})
-  });
-  if(res.status===409||res.status===400){
-    const txt=await res.text();
-    if(txt.includes('duplicate')||txt.includes('unique')){showToast("You're already subscribed!");return true}
-    throw new Error(txt);
-  }
-  if(!res.ok)throw new Error(await res.text());
-  showToast("Thanks! You're subscribed.");
-  return true;
-}
 function openSubscribeModal(){document.getElementById('subscribeModal').classList.add('active')}
 function closeSubscribeModal(){document.getElementById('subscribeModal').classList.remove('active')}
-document.getElementById('subscribeModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeSubscribeModal()});
 async function submitSubscribe(){
   try{
     const email=document.getElementById('subEmail').value.trim();
