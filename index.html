@@ -457,6 +457,7 @@ a:hover{text-decoration:underline}
     <label>Paste Capacity (tpd)</label><input id="fTpd" type="number">
     <label>Number of Plants</label><input id="fPlants" type="number" value="1">
     <label>Year Commissioned</label><input id="fYear" type="number">
+    <label>Year Decommissioned</label><input id="fYearDecom" type="number" placeholder="Leave blank if active">
     <label>Primary Commodity</label><input id="fCommodity">
     <label>Latitude</label><input id="fLat" type="number" step="any" placeholder="e.g. -33.8688">
     <label>Longitude</label><input id="fLng" type="number" step="any" placeholder="e.g. 151.2093">
@@ -676,6 +677,7 @@ function renderMap(data){
         <span class="pg-label">Ore TPD</span><span class="pg-val">${d.ore_tpd?(d.ore_tpd.toLocaleString()):'—'}</span>
         <span class="pg-label">Designer</span><span class="pg-val">${esc(designer)}</span>
         <span class="pg-label">Commissioned</span><span class="pg-val">${yr}</span>
+        ${d.year_decommissioned?'<span class="pg-label">Decommissioned</span><span class="pg-val" style="color:var(--red)">'+d.year_decommissioned+'</span>':''}
       </div>
       ${d.source?'<div class="popup-source">📎 <a href="'+encodeURI(d.source)+'" target="_blank" rel="noopener">'+esc(d.source_label||'View source')+' →</a></div>':''}
       <div class="popup-footer">
@@ -829,6 +831,7 @@ function openModal(prefill, isCorrection){
       document.getElementById('fPlants').value = mine.plants || 1;
       document.getElementById('fCommodity').value = mine.commodity || '';
       document.getElementById('fYear').value = mine.year_commissioned || '';
+      document.getElementById('fYearDecom').value = mine.year_decommissioned || '';
       document.getElementById('fLat').value = mine.lat || '';
       document.getElementById('fLng').value = mine.lng || '';
       document.getElementById('fNotes').value = mine.notes || '';
@@ -857,6 +860,7 @@ async function submitMine(){
     plants: parseInt(document.getElementById('fPlants').value) || 1,
     commodity: document.getElementById('fCommodity').value.trim() || null,
     commissioned_year: parseInt(document.getElementById('fYear').value) || null,
+    decommissioned_year: parseInt(document.getElementById('fYearDecom').value) || null,
     lat: parseFloat(document.getElementById('fLat').value) || null,
     lng: parseFloat(document.getElementById('fLng').value) || null,
     notes: document.getElementById('fNotes').value.trim() || null,
@@ -1085,6 +1089,7 @@ renderMap = function(data) {
         <span class="pg-label">Ore TPD</span><span class="pg-val">${d.ore_tpd?(d.ore_tpd.toLocaleString()):'—'}</span>
         <span class="pg-label">Designer</span><span class="pg-val">${esc(designer)}</span>
         <span class="pg-label">Commissioned</span><span class="pg-val">${yr}</span>
+        ${d.year_decommissioned?'<span class="pg-label">Decommissioned</span><span class="pg-val" style="color:var(--red)">'+d.year_decommissioned+'</span>':''}
       </div>
       ${d.source?'<div class="popup-source">📎 <a href="'+encodeURI(d.source)+'" target="_blank" rel="noopener">'+esc(d.source_label||'View source')+' →</a></div>':''}
       <div class="popup-footer">
