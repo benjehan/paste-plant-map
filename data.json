@@ -15,7 +15,7 @@
     "ore_tpd": 3500,
     "confidence": "verified",
     "source": "https://minedocs.com/23/Granny-Smith-TR-12312021.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 136
   },
   {
@@ -34,7 +34,7 @@
     "ore_tpd": 2500,
     "confidence": "verified",
     "source": "https://www.igo.com.au/sustainabilityreport/2022/16-17/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 121
   },
   {
@@ -55,7 +55,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.liontown.com/latest-news/paste-plant-construction-complete/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 116
   },
   {
@@ -75,7 +75,7 @@
     "year_commissioned": 2002,
     "confidence": "verified",
     "source": "https://www.listcorp.com/asx/29m/29metals-limited/news/2024-mineral-resources-and-ore-reserves-estimates-updated-3158934.html",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 110
   },
   {
@@ -95,7 +95,7 @@
     "year_commissioned": 2008,
     "confidence": "verified",
     "source": "https://igo.com.au/site/pdf/cc8b7aad-4996-4f7c-a28b-73d58d577a22/FY23-Mineral-Resources-and-Ore-Reserves-Statement.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 106
   },
   {
@@ -114,7 +114,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.greatland.com.au/wp-content/uploads/2025/12/Havieron-Project-Feasibility-Study-Presentation.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 132
   },
   {
@@ -133,7 +133,7 @@
     "ore_tpd": 9600,
     "confidence": "verified",
     "source": "https://evolutionmining.com/wp-content/uploads/2025/11/fy25-cowal-fact-sheet-1.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 118
   },
   {
@@ -153,7 +153,7 @@
     "year_commissioned": 2006,
     "confidence": "verified",
     "source": "https://www.glencore.com/media-and-insights/news/glencore-closes-sale-of-cobar-mine",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 102
   },
   {
@@ -172,7 +172,7 @@
     "ore_tpd": 2700,
     "confidence": "verified",
     "source": "https://www.glencore.com/dam/jcr:27756a61-b398-41da-bdfc-3dde51a54ac3/Xstrata-2007-OM.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 117
   },
   {
@@ -191,7 +191,7 @@
     "ore_tpd": 1000,
     "confidence": "likely",
     "source": "https://australianminingreview.com.au/wp-content/uploads/2024/05/AMR_APR2022-WEB2.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Fender",
@@ -209,7 +209,7 @@
     "ore_tpd": 2500,
     "confidence": "verified",
     "source": "https://tinkaresources.com/wp-content/uploads/2024/04/tinka_ayawilca_2024_tr_240412_final.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 105
   },
   {
@@ -228,7 +228,7 @@
     "ore_tpd": 1800,
     "confidence": "verified",
     "source": "https://www.asx.com.au/asxpdf/20191223/pdf/44cttnxmlkb7yz.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 96
   },
   {
@@ -248,7 +248,7 @@
     "status": "commissioning 2026",
     "confidence": "verified",
     "source": "https://www.bhp.com/news/articles/2025/10/bhp-investing-to-boost-olympic-dam-operations",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 122
   },
   {
@@ -268,7 +268,7 @@
     "year_commissioned": 2005,
     "confidence": "verified",
     "source": "https://www.glencoretechnology.com/.rest/api/v1/documents/d23cbeff146f7007355c354fa913476f/2020+IsaMill+Compendium+of+Papers.pdf?download=true",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 109
   },
   {
@@ -287,7 +287,7 @@
     "ore_tpd": 5500,
     "confidence": "verified",
     "source": "https://cyanidecode.org/wp-content/uploads/2025/03/AngloSunriseSAR2014_0.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 130
   },
   {
@@ -307,7 +307,7 @@
     "year_commissioned": 2000,
     "confidence": "verified",
     "source": "https://www.listcorp.com/asx/kau/kaiser-reef-limited/news/transformational-acquisition-of-the-henty-gold-mine-3168246.html",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 112
   },
   {
@@ -327,7 +327,7 @@
     "year_commissioned": 2003,
     "confidence": "verified",
     "source": "https://api.investi.com.au/api/announcements/cyl/09744c2d-713.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 124
   },
   {
@@ -346,7 +346,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.mmg.com/wp-content/uploads/2025/09/2025-Mineral-Resource-and-Ore-Reserve-Statement-and-Technical-Appendix.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 103
   },
   {
@@ -365,7 +365,7 @@
     "ore_tpd": 2000,
     "confidence": "verified",
     "source": "https://www.listcorp.com/asx/29m/29metals-limited/news/2024-mineral-resources-and-ore-reserves-estimates-updated-3158934.html",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 99
   },
   {
@@ -384,7 +384,7 @@
     "ore_tpd": 1500,
     "confidence": "verified",
     "source": "https://www.listcorp.com/asx/dvp/develop-global-limited/news/updated-woodlawn-mine-plan-to-generate-exceptional-returns-2924125.html",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 138
   },
   {
@@ -403,7 +403,7 @@
     "ore_tpd": 2500,
     "confidence": "likely",
     "source": "https://minedocs.com/17/NorthernStar_Fact_2018.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Big Bell",
@@ -421,7 +421,7 @@
     "ore_tpd": 2000,
     "confidence": "verified",
     "source": "https://westgold.com.au/pdf/d5ff5105-39b1-4618-a863-63a76313e78d/June-24-Quarterly-Results.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 140
   },
   {
@@ -440,7 +440,7 @@
     "ore_tpd": 1500,
     "confidence": "verified",
     "source": "https://westgold.com.au/pdf/d5ff5105-39b1-4618-a863-63a76313e78d/June-24-Quarterly-Results.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 141
   },
   {
@@ -462,7 +462,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.asx.com.au/asxpdf/20170824/pdf/43lp75ts0h0zpg.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 97
   },
   {
@@ -482,7 +482,7 @@
     "ore_tpd": 2500,
     "confidence": "likely",
     "source": "https://www.listcorp.com/asx/rrl/regis-resources-limited/news/development-approval-for-two-underground-mines-3028235.html",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Kanowna Belle",
@@ -501,7 +501,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/17/NorthernStar-Kalgoorlie-Fact-Sheet-2016.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 115
   },
   {
@@ -521,7 +521,7 @@
     "ore_tpd": 2000,
     "confidence": "likely",
     "source": "https://www.superpit.com.au/wp-content/uploads/2024/03/Fimiston-South-ERD-v4-20240311-Print-version-v2.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Karari (Carosue Dam)",
@@ -541,7 +541,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://portergeo.com.au/database/mineinfo.php?mineid=mn1741",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 100
   },
   {
@@ -561,7 +561,7 @@
     "ore_tpd": 6000,
     "confidence": "likely",
     "source": "https://www.mininglink.com.au/mine-details/mt-isa-cu-orebodies",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Mungari",
@@ -579,7 +579,7 @@
     "ore_tpd": 4700,
     "confidence": "verified",
     "source": "https://minedocs.com/23/Evolution-MR-02162022.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 119
   },
   {
@@ -599,7 +599,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.goldfields.com/pdf/investors/presentation/2022/australia-site-visit-nov-2022-st-ives.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 129
   },
   {
@@ -619,7 +619,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.technogen.com.au/wp-content/uploads/2025/01/TechnoGen-Project-Profiles-NEWMONT-Tanami.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Leinster",
@@ -638,7 +638,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.bhp.com/-/media/documents/media/reports-and-presentations/2025/250805_bhpgistmconformancestatementandpublicdisclosure2025.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Pogo",
@@ -656,7 +656,7 @@
     "ore_tpd": 3200,
     "confidence": "likely",
     "source": "https://www.asx.com.au/asxpdf/20180928/pdf/43yr8w5tx372xj.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Thunderbox",
@@ -675,7 +675,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.gres.com.au/projects/details/thunderbox-expansion-project.aspx",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 133
   },
   {
@@ -695,7 +695,7 @@
     "ore_tpd": 1200,
     "confidence": "likely",
     "source": "https://www.listcorp.com/asx/alk/alkane-resources-limited/news/annual-report-to-shareholders-3100715.html",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Didipio",
@@ -713,7 +713,7 @@
     "ore_tpd": 3500,
     "confidence": "verified",
     "source": "https://region2.mgb.gov.ph/a-closer-look-at-oceanagolds-best-practices-conducts-mine-tour-for-the-members-of-the-press/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 24
   },
   {
@@ -732,7 +732,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://minedocs.com/28/Barrick-CP-North-Mara-Bulyanhulu-Site-Visit-05082024pdf.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 1
   },
   {
@@ -752,7 +752,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/28/Barrick-CP-North-Mara-Bulyanhulu-Site-Visit-05082024pdf.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 13
   },
   {
@@ -772,7 +772,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/24/Loulo-Gounkoto-TR-12312022.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 11
   },
   {
@@ -793,7 +793,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/22/Barrick_Kibali_TR_12312021.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 8
   },
   {
@@ -815,7 +815,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.ivanhoemines.com/news-stories/news-release/kamoa-kakula-to-begin-copper-production-within-a-month/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 6
   },
   {
@@ -835,7 +835,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.globalminingreview.com/mining/30092021/anglogold-ashanti-provides-obuasi-underground-mining-update/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 14
   },
   {
@@ -857,7 +857,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://miningdataonline.com/property/193/Wassa-Mine.aspx",
-    "source_label": "Mining Publication",
+    "source_label": "Source",
     "lp_id": 20
   },
   {
@@ -877,7 +877,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.goldfields.com/pdf/sustainbility/transparency-and-disclosure/annual-tailings-disclosure-report-final-5-august-2025.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 18
   },
   {
@@ -897,7 +897,7 @@
     "status": "operating",
     "confidence": "likely",
     "source": "https://www.anglogoldashanti.com/wp-content/uploads/centamin/zt612205-centamin-sukari-ni-43-101-final-v10.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Rosh Pinah",
@@ -917,7 +917,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mining.com/rosh-pinah-zinc-commissions-namibias-first-paste-backfill-plant/",
-    "source_label": "Mining Publication",
+    "source_label": "Source",
     "lp_id": 17
   },
   {
@@ -937,7 +937,7 @@
     "status": "commissioning 2026",
     "confidence": "likely",
     "source": "https://www.mmg.com/wp-content/uploads/2024/05/c_f-Competent-Persons-Report.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Platreef",
@@ -955,7 +955,7 @@
     "status": "commissioning 2026",
     "confidence": "likely",
     "source": "https://www.ivanhoemines.com/wp-content/uploads/250329-Platreef-IDP25_RevF.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Nova Xavantina",
@@ -973,7 +973,7 @@
     "ore_tpd": 1200,
     "confidence": "verified",
     "source": "https://www.sec.gov/Archives/edgar/data/1853860/000162828023006809/a991-aif.htm",
-    "source_label": "Technical Report (SEDAR/SEC)",
+    "source_label": "Source",
     "lp_id": 153
   },
   {
@@ -991,7 +991,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.sec.gov/Archives/edgar/data/1853860/000162828023006809/a991-aif.htm",
-    "source_label": "Technical Report (SEDAR/SEC)",
+    "source_label": "Source",
     "lp_id": 144
   },
   {
@@ -1010,7 +1010,7 @@
     "ore_tpd": 1800,
     "confidence": "verified",
     "source": "https://jaguarmining.com/files/2024/03/application/65f3007c7fe8c.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 155
   },
   {
@@ -1028,7 +1028,7 @@
     "status": "operating",
     "confidence": "likely",
     "source": "https://www.nexaresources.com/en/nexa-resources-announces-aripuana-ramp-up-and-exploration-program-update/",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Buritic\u00e1",
@@ -1045,7 +1045,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.sec.gov/Archives/edgar/data/1829726/000110465922092225/tm2220483d2_ex4-1.htm",
-    "source_label": "Technical Report (SEDAR/SEC)",
+    "source_label": "Source",
     "lp_id": 142
   },
   {
@@ -1064,7 +1064,7 @@
     "ore_tpd": 2000,
     "confidence": "likely",
     "source": "https://aris-mining.com/operation/marmato/",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Vazante",
@@ -1079,7 +1079,7 @@
     "notes": "Low-cement paste fill from flotation tailings. 5,000 tpd.",
     "confidence": "likely",
     "source": "https://www.sec.gov/Archives/edgar/data/1713930/000110465921039824/tm2110062d1_ex99-1.htm",
-    "source_label": "Technical Report (SEDAR/SEC)"
+    "source_label": "Source"
   },
   {
     "name": "Yauricocha",
@@ -1097,7 +1097,7 @@
     "ore_tpd": 3200,
     "confidence": "likely",
     "source": "https://www.e-mj.com/leading-developments/alpayana-completes-sierra-metals-takeover/",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Tambomayo",
@@ -1115,7 +1115,7 @@
     "ore_tpd": 3000,
     "confidence": "likely",
     "source": "https://minedocs.com/22/Tambomayo-PFS-03152022.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Almina (SOMINCOR)",
@@ -1133,7 +1133,7 @@
     "ore_tpd": 4500,
     "confidence": "verified",
     "source": "https://www.boliden.com/operations/mines/boliden-somincor/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 47
   },
   {
@@ -1153,7 +1153,7 @@
     "ore_tpd": 3300,
     "confidence": "verified",
     "source": "https://www.boliden.com/operations/mines/boliden-zinkgruvan/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 60
   },
   {
@@ -1173,7 +1173,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.boliden.com/operations/mines/boliden-somincor/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 55
   },
   {
@@ -1194,7 +1194,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.eldoradogold.com/sites/eldorado-gold/files/eldorado/assets/operations/olympias/oly-technical-report-2023-12-31-final.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 56
   },
   {
@@ -1214,7 +1214,7 @@
     "ore_tpd": 1000,
     "confidence": "likely",
     "source": "https://www.eldoradogold.com/sites/eldorado-gold/files/eldorado/assets/operations/olympias/oly-technical-report-2023-12-31-final.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Skouries",
@@ -1232,7 +1232,7 @@
     "status": "commissioning 2026",
     "confidence": "likely",
     "source": "https://www.eldoradogold.com/investors/news-releases/eldorado-gold-delivers-strong-2025-full-year-and-fourth-quarter-financial",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "SASA",
@@ -1251,7 +1251,7 @@
     "year_commissioned": 2025,
     "confidence": "verified",
     "source": "https://im-mining.com/2023/01/10/camls-sasa-in-north-macedonia-advancing-cut-and-fill-project-plus-new-paste-backfill-plant/",
-    "source_label": "Mining Publication",
+    "source_label": "Source",
     "lp_id": 58
   },
   {
@@ -1272,7 +1272,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/17/FirstQuantumMinerals_AIF_2016.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 48
   },
   {
@@ -1291,7 +1291,7 @@
     "ore_tpd": 25000,
     "confidence": "likely",
     "source": "https://minedocs.com/11/KGMT_Technical_Report_Micon_Lubin_2013.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Kittil\u00e4",
@@ -1308,7 +1308,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2024/AGNICO-EAGLE-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2023-RESULTS-RECORD-QUARTERLY-AND-ANNUAL-GOLD-PRODUCTION-AND-FREE-CASH-FLOW-RECORD-MINERAL-RESERVES-INCREASED-10.5-UPDATED-THREE-YEAR-GUIDANCE-02-15-2024/default.aspx",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 54
   },
   {
@@ -1327,7 +1327,7 @@
     "ore_tpd": 1000,
     "confidence": "likely",
     "source": "https://www.boliden.com/newsroom/news--media/stories/sand-recycling/",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Kristineberg",
@@ -1345,7 +1345,7 @@
     "ore_tpd": 1200,
     "confidence": "likely",
     "source": "https://www.boliden.com/newsroom/news--media/stories/sand-recycling/",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Renstrom",
@@ -1363,7 +1363,7 @@
     "ore_tpd": 800,
     "confidence": "likely",
     "source": "https://www.boliden.com/49034a/globalassets/operations/exploration/mineral-resources-and-mineral-reserves-pdf/2024/resources-and-reserves-renstrom-2024-12-31.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Viscaria",
@@ -1380,7 +1380,7 @@
     "status": "planned",
     "confidence": "likely",
     "source": "https://www.mining-technology.com/news/rejlers-copperstones-copper-restart/",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Aguas Tenidas (MATSA)",
@@ -1399,7 +1399,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.sandfire.com.au/wp-content/uploads/2023/03/December2021HalfYearFinancialReportandAppendix4D.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Los Frailes",
@@ -1417,7 +1417,7 @@
     "status": "planned",
     "confidence": "likely",
     "source": "https://www.panglobalresources.com/news/pan-global-welcomes-approval-of-grupo-mexicos-adjacent-los-frailes-mine",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Vares (Rupice)",
@@ -1434,7 +1434,7 @@
     "status": "commissioning 2026",
     "confidence": "verified",
     "source": "https://minedocs.com/29/Vares-TR-04012025.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 59
   },
   {
@@ -1452,7 +1452,7 @@
     "status": "planned",
     "confidence": "likely",
     "source": "https://abmec.org.uk/cornish-metals-reports-positive-preliminary-economic-assessment-results-for-south-crofty/",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Zijin Bor",
@@ -1470,7 +1470,7 @@
     "ore_tpd": 8000,
     "confidence": "likely",
     "source": "https://www.zijinmining.com/global/program-detail-71737.htm",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Sakatti",
@@ -1487,7 +1487,7 @@
     "status": "planned",
     "confidence": "likely",
     "source": "https://minedocs.com/28/Ikkari-PFS-02142025.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Brucejack",
@@ -1506,7 +1506,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://operations.newmont.com/_doc/operation/bluejack/Brucejacks%20Area%20B%20withdrawal%20letter%20and%20Mine%20Act%20M-243%20application.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 63
   },
   {
@@ -1525,7 +1525,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/22/Timmins_West_TR_06_30_2021.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 76
   },
   {
@@ -1544,7 +1544,7 @@
     "ore_tpd": 4000,
     "confidence": "likely",
     "source": "https://www.falcores.com/wp-content/uploads/2022/06/Horne-5_EF_2021.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Macassa",
@@ -1562,7 +1562,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2024/AGNICO-EAGLE-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2023-RESULTS-RECORD-QUARTERLY-AND-ANNUAL-GOLD-PRODUCTION-AND-FREE-CASH-FLOW-RECORD-MINERAL-RESERVES-INCREASED-10.5-UPDATED-THREE-YEAR-GUIDANCE-02-15-2024/default.aspx",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 82
   },
   {
@@ -1581,7 +1581,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://cyanidecode.org/wp-content/uploads/2025/03/AgnicoEagleMeliadineMineSAR2023.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 84
   },
   {
@@ -1601,7 +1601,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://cyanidecode.org/wp-content/uploads/2025/08/AgnicoEaglePinosAltosSAR2015_0.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 87
   },
   {
@@ -1620,7 +1620,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.iamgold.com/English/investors/news-releases/news-releases-details/2009/IAMGOLDApprovesMillExpansionPasteBackfillPlantatNiobecNiobiumMineSignificantlyIncreasestheMinesLongTermCashFlow/default.aspx",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Red Lake",
@@ -1639,7 +1639,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://cyanidecode.org/wp-content/uploads/2021/06/EvolutionRedLakeSAR2021.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 89
   },
   {
@@ -1660,7 +1660,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://undergroundmining.com/projects/leeville/",
-    "source_label": "Mining Publication",
+    "source_label": "Source",
     "lp_id": 79
   },
   {
@@ -1680,7 +1680,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://simemug.com/technical-case-studies/development-of-colloidal-mixer-based-crf-systems",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Media Luna",
@@ -1700,7 +1700,7 @@
     "status": "commissioning 2026",
     "confidence": "verified",
     "source": "https://torexgold.com/news-and-media/news/torex-announces-a-positive-pea-for-its-media-luna-project-including-a-new-inferred-resource-estimate-of-7.4-million-gold-equiv/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 83
   },
   {
@@ -1719,7 +1719,7 @@
     "ore_tpd": 4000,
     "confidence": "likely",
     "source": "https://www.gov.mb.ca/sd/eal/registries/557.1/rpt_vale_rar350_noa_20210706_final_rev.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Williams (Hemlo)",
@@ -1738,7 +1738,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.barrick.com/English/news/news-details/2020/modernized-hemlo-transitions-to-underground-mining/default.aspx",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 73
   },
   {
@@ -1756,7 +1756,7 @@
     "status": "planned",
     "confidence": "likely",
     "source": "https://im-mining.com/2022/05/27/glencore-reveals-bev-mining-fleet-order-for-onaping-depth-all-electric-nickel-copper-mine/",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "McArthur River",
@@ -1774,7 +1774,7 @@
     "ore_tpd": 1100,
     "confidence": "likely",
     "source": "https://www.cameco.com/sites/default/files/documents/cameco-2024-annual-information-form.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Kensington",
@@ -1792,7 +1792,7 @@
     "ore_tpd": 1500,
     "confidence": "likely",
     "source": "https://s201.q4cdn.com/254090064/files/doc_downloads/operations/Kensington-TR.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Lucky Friday",
@@ -1811,7 +1811,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.hecla.com/wp-content/uploads/SLR-Hecla-Lucky-Friday-FINAL-S-K-1300-TRS-21-Feb-2022-rev_web.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 80
   },
   {
@@ -1831,7 +1831,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.sibanyestillwater.com/business/americas/pgm-operations-americas/stillwater-east-boulder/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 90
   },
   {
@@ -1850,7 +1850,7 @@
     "ore_tpd": 2000,
     "confidence": "likely",
     "source": "http://mssi.nrs.gov.bc.ca/MyraFalls/MyraFalls_2014_EPRP_OMSManual.pdf",
-    "source_label": "Government Mining Database"
+    "source_label": "Source"
   },
   {
     "name": "Windfall",
@@ -1867,7 +1867,7 @@
     "status": "planned",
     "confidence": "likely",
     "source": "https://www.osiskomining.com/osisko-mining-delivers-positive-feasibility-study-for-windfall/",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Timmins West (Tahoe)",
@@ -1885,7 +1885,7 @@
     "ore_tpd": 1800,
     "confidence": "verified",
     "source": "https://panamericansilver.com/wp-content/uploads/2023/01/Timmins-West-TR-2021-06-filed-2022.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 91
   },
   {
@@ -1905,7 +1905,7 @@
     "status": "operating",
     "confidence": "likely",
     "source": "https://capstonecopper.com/wp-content/uploads/2023/01/CZ-Technical-Report-Mar-11-2022.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Juanicipio",
@@ -1924,7 +1924,7 @@
     "year_commissioned": 2023,
     "confidence": "likely",
     "source": "https://panamericansilver.com/wp-content/uploads/2026/01/PAAS-Investor-Presentation_Jan_2026.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Lamaque",
@@ -1942,7 +1942,7 @@
     "ore_tpd": 2500,
     "confidence": "likely",
     "source": "https://www.eldoradogold.com/sites/eldorado-gold/files/2025-02/Lamaque%20Complex%20Technical%20Report%20-%20Dec%2031%202024%20-%2020250220_Final%201.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Island Gold",
@@ -1961,7 +1961,7 @@
     "status": "under construction",
     "confidence": "verified",
     "source": "https://www.juniorminingnetwork.com/junior-miner-news/press-releases/1192-tsx/agi/196515-alamos-gold-announces-island-gold-district-expansion-to-20-000-tpd-creating-one-of-canada-s-largest-and-lowest-cost-gold-mines-with-attractive-economics-including-69-after-tax-irr-and-12-2-billion-npv-at-4-500-oz-gold.html",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Rajpura Dariba",
@@ -1979,7 +1979,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://im-mining.com/2020/12/22/flsmidth-to-deliver-dry-stack-tailings-solution-at-hindustan-zincs-rajpura-dariba-mine/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 33
   },
   {
@@ -1998,7 +1998,7 @@
     "status": "operating",
     "confidence": "likely",
     "source": "https://im-mining.com/2020/12/22/flsmidth-to-deliver-dry-stack-tailings-solution-at-hindustan-zincs-rajpura-dariba-mine/",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Kayad",
@@ -2016,7 +2016,7 @@
     "ore_tpd": 3000,
     "confidence": "likely",
     "source": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=9OkF1OAB%2FMjw7P5%2FkJbDD+zfIgyslN8llrmXRLD5f3VfcLbPldI%2F2a63Lx++wEkAxZTuwjIlc3pdPa3uhA9fI0Ciyd+++jq+bi15YyCZSwg%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzXmG8GlihX6H9UP1HygCn3pCkAF2zPFXFQNqA4krKa1Aw%3D%3D",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Jabal Sayid",
@@ -2037,7 +2037,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.gres.com.au/projects/details/jabal-sayid-filter-project.aspx",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 27
   },
   {
@@ -2057,7 +2057,7 @@
     "status": "commissioning 2026",
     "confidence": "likely",
     "source": "https://k92mining.com/site/assets/files/6377/k92_updated_2024_dfs_technical_report.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Porgera",
@@ -2075,7 +2075,7 @@
     "ore_tpd": 6500,
     "confidence": "likely",
     "source": "https://www.gres.com.au/theme/grescomau/assets/public/Image/Projects/Porgera_Paste_Backfill_Project/Project_Focus_-_Porgera_Paste_Plant.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Bad Grund",
@@ -2092,7 +2092,7 @@
     "status": "closed",
     "confidence": "likely",
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8707897/",
-    "source_label": "Government Mining Database"
+    "source_label": "Source"
   },
   {
     "name": "Fruta del Norte",
@@ -2113,7 +2113,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://lundingold.com/fruta-del-norte/fruta-del-norte/operational-overview/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 148
   },
   {
@@ -2133,7 +2133,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://investors.boliden.com/en/press/decision-increase-backfill-capacity-garpenberg-2309885",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 52
   },
   {
@@ -2152,7 +2152,7 @@
     "ore_tpd": 3600,
     "confidence": "verified",
     "source": "https://capstonecopper.com/operations/cozamin/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 66
   },
   {
@@ -2171,7 +2171,7 @@
     "status": "operating",
     "confidence": "likely",
     "source": "https://miningdataonline.com/property/3303/Grasberg-Complex.aspx",
-    "source_label": "Mining Publication"
+    "source_label": "Source"
   },
   {
     "name": "Cerro Lindo",
@@ -2190,7 +2190,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/19/Cerro-Lindo-TR-12312020.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 145
   },
   {
@@ -2209,7 +2209,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://dpmmetals.com/news-media/news-releases/dundee-precious-metals-announces-pre-feasibility-s-9826/",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 49
   },
   {
@@ -2228,7 +2228,7 @@
     "ore_tpd": 5000,
     "confidence": "likely",
     "source": "https://minedocs.com/24/Sudbury-TR-12312022.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Totten",
@@ -2246,7 +2246,7 @@
     "ore_tpd": 2000,
     "confidence": "likely",
     "source": "https://minedocs.com/24/Sudbury-TR-12312022.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Coleman",
@@ -2264,7 +2264,7 @@
     "ore_tpd": 3500,
     "confidence": "likely",
     "source": "https://utoronto.scholaris.ca/server/api/core/bitstreams/d43ece49-6a16-4061-b76a-c6caff5dcd74/content",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Voisey's Bay",
@@ -2284,7 +2284,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://vale.com/w/vale-base-metals-complete-voisey-s-bay-transition-to-underground-mining",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 92
   },
   {
@@ -2304,7 +2304,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://s24.q4cdn.com/382246808/files/document_library/Eleonore-Technical-Report-November-2018.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 68
   },
   {
@@ -2324,7 +2324,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.hecla.com/wp-content/uploads/HECLA-CASA-BERARDI-SK1300-RESPEC-V8.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 64
   },
   {
@@ -2343,7 +2343,7 @@
     "ore_tpd": 2300,
     "confidence": "likely",
     "source": "https://www.hecla.com/wp-content/uploads/2019-Greens-Creek-Technical-Report-43-101-31Mar19-Final.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Turquoise Ridge",
@@ -2361,7 +2361,7 @@
     "ore_tpd": 3500,
     "confidence": "likely",
     "source": "https://minedocs.com/19/Turquoise-Ridge-TR-12312023.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Eagle Mine",
@@ -2379,7 +2379,7 @@
     "ore_tpd": 2000,
     "confidence": "likely",
     "source": "https://minedocs.com/23/Eagle-TR-12312022.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Caylloma",
@@ -2397,7 +2397,7 @@
     "ore_tpd": 1500,
     "confidence": "likely",
     "source": "https://fortunamining.com/wp-content/uploads/2024/02/technical_report_caylloma_mine_240216.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Caijiaying",
@@ -2415,7 +2415,7 @@
     "ore_tpd": 3600,
     "confidence": "likely",
     "source": "https://miningdataonline.com/property/994/Caijiaying-Mine.aspx",
-    "source_label": "Mining Publication"
+    "source_label": "Source"
   },
   {
     "name": "Rampura Agucha",
@@ -2434,7 +2434,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.geomechanics.io/news/article/cimichindustan-zinc-tailings-recycling-project-design-notes-for-mine-engineers",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 33
   },
   {
@@ -2454,7 +2454,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.facebook.com/HindustanZinc/videos/sindesar-khurd-indias-most-mechanised-mine/1069853486970864/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 36
   },
   {
@@ -2473,7 +2473,7 @@
     "ore_tpd": 5500,
     "confidence": "likely",
     "source": "https://investors.boliden.com/en/press/decision-increase-backfill-capacity-garpenberg-2309885",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "LaRonde",
@@ -2491,7 +2491,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://cyanidecode.org/wp-content/uploads/2025/08/AgnicoEagleLaRondeSAR2024.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Goldex",
@@ -2510,7 +2510,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2013/Agnico-Eagle-announces-development-project-update-La-India-commissioning-underway-and-mining-and-processing-has-restarted-at-Goldex-09-19-2013/default.aspx",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 71
   },
   {
@@ -2529,7 +2529,7 @@
     "status": "operating",
     "confidence": "likely",
     "source": "https://cyanidecode.org/wp-content/uploads/2025/03/AgnicoEagleMeliadineMineSAR2023.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Fosterville",
@@ -2548,7 +2548,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://emtek.com.au/projects/paste-plant",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 107
   },
   {
@@ -2567,7 +2567,7 @@
     "status": "care & maintenance",
     "confidence": "likely",
     "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2024/AGNICO-EAGLE-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2023-RESULTS-RECORD-QUARTERLY-AND-ANNUAL-GOLD-PRODUCTION-AND-FREE-CASH-FLOW-RECORD-MINERAL-RESERVES-INCREASED-10.5-UPDATED-THREE-YEAR-GUIDANCE-02-15-2024/default.aspx",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Detour Lake",
@@ -2585,7 +2585,7 @@
     "status": "operating",
     "confidence": "likely",
     "source": "https://s205.q4cdn.com/243646470/files/doc_downloads/DetourLake/N1-43-101-Detour-Lake-Mine.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Ernest Henry",
@@ -2604,7 +2604,7 @@
     "status": "operating",
     "confidence": "likely",
     "source": "https://minedocs.com/23/Evolution-MR-02162022.pdf",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Spotted Quoll",
@@ -2622,7 +2622,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.igo.com.au/site/pdf/24e1eb53-85d0-4b7e-8f6e-b20333eba996/FY25-Mineral-Resources-and-Ore-Reserves-Report.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 128
   },
   {
@@ -2641,7 +2641,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12158861/",
-    "source_label": "Government Mining Database",
+    "source_label": "Source",
     "lp_id": 70
   },
   {
@@ -2660,7 +2660,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://investingnews.com/daily/resource-investing/precious-metals-investing/silver-investing/trevali-mining-backfill-tests-caribou-indicate-feasibility/",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "Source"
   },
   {
     "name": "Johnny Lee Deposit",
@@ -2678,7 +2678,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.globenewswire.com/news-release/2025/12/16/3206033/0/en/Sandfire-Resources-America-Announces-Results-of-Updated-Pre-Feasibility-Study-for-the-Johnny-Lee-Deposit-and-Updated-Mineral-Resource-for-the-Lowry-Deposit-at-the-Black-Butte-Coppe.html",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 74
   },
   {
@@ -2697,7 +2697,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mining-technology.com/projects/kemi/",
-    "source_label": "Mining Publication",
+    "source_label": "Source",
     "lp_id": 57
   },
   {
@@ -2716,7 +2716,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.zijinmining.com/global/program-detail-71738.htm",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 40
   },
   {
@@ -2735,7 +2735,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "http://en.jnmc.com/2024-02/23/c_964665.htm",
-    "source_label": "Reference",
+    "source_label": "Source",
     "lp_id": 29
   },
   {
@@ -2754,7 +2754,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://miningdataonline.com/property/1062/KTO-Mine.aspx",
-    "source_label": "Mining Publication"
+    "source_label": "Source"
   },
   {
     "name": "Modikwa Platinum Mine",
@@ -2772,7 +2772,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mining-technology.com/projects/modikwa-platinum/",
-    "source_label": "Mining Publication",
+    "source_label": "Source",
     "lp_id": 12
   },
   {
@@ -2791,7 +2791,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.ivanhoemines.com/wp-content/uploads/kamoa-kakula-technical-report-march-2019-1.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 19
   },
   {
@@ -2810,7 +2810,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.listcorp.com/asx/orn/orion-minerals-limited/news/robust-development-pathway-for-okiep-copper-project-3170783.html",
-    "source_label": "Company Website (Orion Minerals ASX)"
+    "source_label": "Source"
   },
   {
     "name": "Cuiab\u00e1",
@@ -2828,7 +2828,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://reports.anglogoldashanti.com/22/wp-content/uploads/2023/05/AGA-RR22.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 146
   },
   {
@@ -2847,7 +2847,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://jusmundi.com/fr/document/decision/en-glencore-finance-bermuda-ltd-v-plurinational-state-of-bolivia-award-friday-8th-september-2023",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 143
   },
   {
@@ -2866,7 +2866,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://utoronto.scholaris.ca/bitstreams/802cd599-c160-463b-89ee-2ed3e5663522/download",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Agnew",
@@ -2884,7 +2884,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.goldfields.com/reports/rr_2009/tech_agnew.php",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 95
   },
   {
@@ -2903,7 +2903,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.ohsa.com.au/australias-key-projects-mine-expansions/",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Frog's Leg",
@@ -2921,7 +2921,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/23/Evolution-MR-02162022.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 108
   },
   {
@@ -2940,7 +2940,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.igo.com.au/site/content/InteractiveDocument/Sustainability/files/assets/common/downloads/publication.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 135
   },
   {
@@ -2959,7 +2959,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mining-technology.com/projects/brunswick/",
-    "source_label": "Mining Publication"
+    "source_label": "Source"
   },
   {
     "name": "Odyssey",
@@ -2977,7 +2977,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2023/AGNICO-EAGLE-PROVIDES-UPDATE-ON-CANADIAN-MALARTIC-COMPLEX-INTERNAL-STUDY-DEMONSTRATES-IMPROVED-VALUE-EXTENDS-MINE-LIFE-AND-SUPPORTS-POTENTIAL-FUTURE-PRODUCTION-GROWTH-IN-THE-ABITIBI-GREENSTONE-BELT-POSITIVE-EXPLORATION-RESULTS-EXP-06-20-2023/default.aspx",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 86
   },
   {
@@ -2996,7 +2996,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://s23.q4cdn.com/405985100/files/doc_downloads/tech_reports/canada/cmm-ni-43-101-technical-report-dec-5-2023.pdf",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 65
   },
   {
@@ -3015,7 +3015,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.gov.nl.ca/eccc/files/FireFly-GBMM-Registration-Appendices-part1-1.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 85
   },
   {
@@ -3034,7 +3034,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.iamgold.com/English/investors/news-releases/news-releases-details/2024/IAMGOLD-Provides-Westwood-Updated-Mine-Plan-and-Mineral-Resource--Mineral-Reserve-Estimates/default.aspx",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 93
   },
   {
@@ -3053,7 +3053,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.sec.gov/Archives/edgar/data/831259/000083125921000009/fcx-20201231.htm",
-    "source_label": "Technical Report (SEDAR/SEC)",
+    "source_label": "Source",
     "lp_id": 62
   },
   {
@@ -3072,7 +3072,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://miningdataonline.com/property/1056/Kemi-Mine.aspx",
-    "source_label": "Mining Publication",
+    "source_label": "Source",
     "lp_id": 53
   },
   {
@@ -3091,7 +3091,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8954551/",
-    "source_label": "Government Mining Database",
+    "source_label": "Source",
     "lp_id": 41
   },
   {
@@ -3110,7 +3110,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9101011/",
-    "source_label": "Government Mining Database",
+    "source_label": "Source",
     "lp_id": 37
   },
   {
@@ -3129,7 +3129,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://en.wikipedia.org/wiki/Uchalinsky_mine",
-    "source_label": "Wikipedia",
+    "source_label": "Source",
     "lp_id": 37
   },
   {
@@ -3148,7 +3148,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.sec.gov/Archives/edgar/data/831259/000083125922000012/a2021trsptfi-exhibit.htm",
-    "source_label": "Technical Report (SEDAR/SEC)",
+    "source_label": "Source",
     "lp_id": 22
   },
   {
@@ -3167,7 +3167,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mdpi.com/2075-163X/8/8",
-    "source_label": "Reference",
+    "source_label": "Source",
     "lp_id": 30
   },
   {
@@ -3186,7 +3186,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://baike.baidu.com/en/item/Qichun%20County/997997",
-    "source_label": "Reference"
+    "source_label": "Source"
   },
   {
     "name": "Dongguashan Copper",
@@ -3204,7 +3204,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://papers.acg.uwa.edu.au/d/1404_04_Zhang/04_Zhang.pdf",
-    "source_label": "Industry Reference",
+    "source_label": "Source",
     "lp_id": 25
   },
   {
@@ -3223,7 +3223,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mining-technology.com/marketdata/five-largest-nickel-mines-russia/",
-    "source_label": "Mining Publication",
+    "source_label": "Source",
     "lp_id": 31
   },
   {
@@ -3242,7 +3242,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://doi.org/10.1007/s12613-023-2663-0",
-    "source_label": "Academic Paper (IJMMM 2023)"
+    "source_label": "Source"
   },
   {
     "name": "Chengcheng Mine",
@@ -3260,7 +3260,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://en.wikipedia.org/wiki/Qingchengzi_mine",
-    "source_label": "Wikipedia"
+    "source_label": "Source"
   },
   {
     "name": "Huize Mine",
@@ -3278,7 +3278,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mdpi.com/2075-163X/11/7/722",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 26
   },
   {
@@ -3297,7 +3297,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.hkexnews.hk/listedco/listconews/sehk/2018/0914/01787_3476377/ESGMC-20180914-39.pdf",
-    "source_label": "Technical Report (HKEX Filing)"
+    "source_label": "Source"
   },
   {
     "name": "Xincheng Gold Mine",
@@ -3315,7 +3315,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8782490/",
-    "source_label": "Government Mining Database",
+    "source_label": "Source",
     "lp_id": 38
   },
   {
@@ -3334,7 +3334,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://silvercorpmetals.com/byp-mine-legacy/",
-    "source_label": "Reference"
+    "source_label": "Source"
   },
   {
     "name": "Jiaojia Gold Mine",
@@ -3352,7 +3352,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8954551/",
-    "source_label": "Government Mining Database",
+    "source_label": "Source",
     "lp_id": 28
   },
   {
@@ -3371,7 +3371,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.asianmetal.com/news/data/1361156/China%20Minmetals%20-%20Shuikoushan%20copper-lead-zinc%20comprehensive%20base%20project%20settled",
-    "source_label": "Industry Reference (AsianMetal)"
+    "source_label": "Source"
   },
   {
     "name": "Kusasalethu",
@@ -3389,7 +3389,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/22/Harmony-20F-2021.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 10
   },
   {
@@ -3408,7 +3408,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://im-mining.com/2019/06/17/ivanhoes-kakula-copper-mine-takes-shape-drc/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 9
   },
   {
@@ -3427,7 +3427,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://miningdataonline.com/property/1966/Phalaborwa-Project.aspx",
-    "source_label": "Mining Publication",
+    "source_label": "Source",
     "lp_id": 16
   },
   {
@@ -3446,7 +3446,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4248400/",
-    "source_label": "Government Mining Database",
+    "source_label": "Source",
     "lp_id": 2
   },
   {
@@ -3465,7 +3465,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.sharedata.co.za/Data/000886/pdfs/METOREX_ar_dec10.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 3
   },
   {
@@ -3484,7 +3484,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://bearcreekmining.com/projects/corani/highlights/",
-    "source_label": "Mining Publication",
+    "source_label": "Source",
     "lp_id": 154
   },
   {
@@ -3503,7 +3503,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mining-technology.com/marketdata/ten-biggest-underground-mines-in-operation-insouth-and-central-america/",
-    "source_label": "Mining Publication",
+    "source_label": "Source",
     "lp_id": 150
   },
   {
@@ -3522,7 +3522,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://dpmmetals.com/news-media/news-releases/dpm-metals-announces-updated-feasibility-study-res-11509/",
-    "source_label": "NI 43-101 Technical Report",
+    "source_label": "Source",
     "lp_id": 151
   },
   {
@@ -3541,7 +3541,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.bhp.com/news/articles/2025/10/bhp-investing-to-boost-olympic-dam-operations",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Higginsville",
@@ -3559,7 +3559,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.gres.com.au/projects/details/higginsville-paste-backfill-project.aspx",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 113
   },
   {
@@ -3578,7 +3578,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.gres.com.au/projects/details/degrussa-paste-backfill-plant.aspx",
-    "source_label": "Company Website"
+    "source_label": "Source"
   },
   {
     "name": "Nova Nickel",
@@ -3596,7 +3596,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.gres.com.au/projects/details/nova-nickel-paste-backfill-plant.aspx",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 120
   },
   {
@@ -3615,7 +3615,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.metalsx.com.au/wp-content/uploads/2023/12/21_MLX_ASX_Ore-Reserve-and-LOMP-Update_19-December-2023.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 126
   },
   {
@@ -3634,7 +3634,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.aerisresources.com.au/images/files/resource-and-reserve/Tritton_Mineral_Resource_and_Ore_Reserve_Estimate_30_June_2016_Update.pdf",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 134
   },
   {
@@ -3653,7 +3653,7 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.gres.com.au/projects/details/savannah-paste-backfill-project.aspx",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 127
   },
   {
@@ -3671,7 +3671,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.sibanyestillwater.com/business/southern-africa/gold-operations/cooke/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 4
   },
   {
@@ -3689,7 +3689,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.anglogoldashanti.com/portfolio/africa/geita/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 5
   },
   {
@@ -3707,7 +3707,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.gecamines.cd/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 7
   },
   {
@@ -3725,7 +3725,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.mining-technology.com/projects/otjihase-mine/",
-    "source_label": "Industry Publication",
+    "source_label": "Source",
     "lp_id": 15
   },
   {
@@ -3743,7 +3743,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.mindat.org/loc-223892.html",
-    "source_label": "Mindat",
+    "source_label": "Source",
     "lp_id": 21
   },
   {
@@ -3761,7 +3761,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.sdgold.com/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 23
   },
   {
@@ -3779,7 +3779,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.tlys.cn/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 32
   },
   {
@@ -3797,7 +3797,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.geopromining.com/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 34
   },
   {
@@ -3815,7 +3815,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.chinagoldintl.com/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 35
   },
   {
@@ -3833,7 +3833,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.zijinmining.com/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 42
   },
   {
@@ -3851,7 +3851,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.wengfu.com/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 44
   },
   {
@@ -3869,7 +3869,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.mindat.org/loc-257849.html",
-    "source_label": "Mindat",
+    "source_label": "Source",
     "lp_id": 45
   },
   {
@@ -3887,7 +3887,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://atalayamining.com/operations/proyecto-riotinto/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 46
   },
   {
@@ -3905,7 +3905,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.zfrb.rs/en/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 50
   },
   {
@@ -3923,7 +3923,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.etibakir.com.tr/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 51
   },
   {
@@ -3941,7 +3941,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://auraminerals.com/operations/aranzazu/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 61
   },
   {
@@ -3959,7 +3959,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.firstmajestic.com/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 67
   },
   {
@@ -3977,7 +3977,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.vale.com/canada/en/business/mining/nickel/vale-canada-limited",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 69
   },
   {
@@ -3995,7 +3995,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.nevadagoldmines.com/operations/goldstrike",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 72
   },
   {
@@ -4013,7 +4013,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.riotinto.com/operations/us/kennecott",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 75
   },
   {
@@ -4031,7 +4031,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.wesdome.com/operations/kiena-mine/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 77
   },
   {
@@ -4049,7 +4049,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.agnicoeagle.com/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 78
   },
   {
@@ -4067,7 +4067,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.agnicoeagle.com/English/operations/operations/LaRonde/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 81
   },
   {
@@ -4085,7 +4085,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.newmont.com/operations-and-projects/global-presence/north-america/porcupine-canada/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 88
   },
   {
@@ -4103,7 +4103,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.alamosgold.com/operations/young-davidson-mine/default.aspx",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 94
   },
   {
@@ -4121,7 +4121,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.bhp.com/what-we-do/global-locations/australia/south-australia/olympic-dam/carrapateena",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 98
   },
   {
@@ -4139,7 +4139,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.goldfields.com/st-ives.php",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 101
   },
   {
@@ -4157,7 +4157,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.nsrltd.com/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 104
   },
   {
@@ -4175,7 +4175,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.nsrltd.com/our-assets/kalgoorlie",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 111
   },
   {
@@ -4193,7 +4193,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.nsrltd.com/our-assets/kalgoorlie",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 114
   },
   {
@@ -4211,7 +4211,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.nsrltd.com/our-assets/kalgoorlie",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 123
   },
   {
@@ -4229,7 +4229,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.nsrltd.com/our-assets/kalgoorlie",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 125
   },
   {
@@ -4247,7 +4247,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.nsrltd.com/our-assets/kalgoorlie",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 131
   },
   {
@@ -4265,7 +4265,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.nsrltd.com/our-assets/kalgoorlie",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 137
   },
   {
@@ -4283,7 +4283,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.nyrstar.com/operations/mining/el-toqui",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 147
   },
   {
@@ -4301,7 +4301,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.hochschildmining.com/en/our-operations/inmaculada/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 149
   },
   {
@@ -4319,7 +4319,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.nexaresources.com/operations/mining/mina-jaguara/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 152
   },
   {
@@ -4337,7 +4337,7 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.volcan.com.pe/en/operations/andaychagua/",
-    "source_label": "Company Website",
+    "source_label": "Source",
     "lp_id": 156
   }
 ]
