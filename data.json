@@ -7,15 +7,16 @@
     "lat": -28.23,
     "lng": 121.79,
     "type": "Paste",
-    "tpd": 1500,
+    "tpd": 1200,
     "plants": 1,
     "notes": "Gold Fields operation, WA. ~1.3 Mtpa ore (~3,500 tpd). Paste backfill system. Est. ~1,500 tpd paste.",
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 3500,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://minedocs.com/23/Granny-Smith-TR-12312021.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 136
   },
   {
     "name": "Odysseus (Cosmos)",
@@ -25,15 +26,16 @@
     "lat": -27.09,
     "lng": 120.52,
     "type": "Paste",
-    "tpd": 1200,
+    "tpd": 1000,
     "plants": 1,
     "notes": "Nickel mine, WA. IGO. ~0.9 Mtpa ore (~2,500 tpd). Paste backfill. Est. ~1,200 tpd paste.",
     "commodity": "nickel",
     "status": "operating",
     "ore_tpd": 2500,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.igo.com.au/sustainabilityreport/2022/16-17/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 121
   },
   {
     "name": "Kathleen Valley",
@@ -43,9 +45,9 @@
     "lat": -27.3,
     "lng": 121.47,
     "type": "Paste",
-    "tpd": 5800,
+    "tpd": 7660,
     "plants": 2,
-    "notes": "Biggest paste plant in Australia (two trains). 2900m³/day per paste plant. GR Engineering EPC.",
+    "notes": "Biggest paste plant in Australia (two trains). 2900m\u00b3/day per paste plant. GR Engineering EPC.",
     "commodity": "lithium",
     "ore_tpd": 5500,
     "year_commissioned": 2024,
@@ -53,7 +55,8 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.liontown.com/latest-news/paste-plant-construction-complete/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 116
   },
   {
     "name": "Golden Grove",
@@ -63,16 +66,17 @@
     "lat": -28.74,
     "lng": 116.09,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 1500,
     "plants": 1,
     "notes": "Polymetallic mine, WA. ~1.4 Mtpa ore (~3,800 tpd). Paste backfill system. Est. ~2,000 tpd paste. 29 Metals.",
     "commodity": "copper/zinc/lead/gold",
     "status": "operating",
     "ore_tpd": 3800,
     "year_commissioned": 2002,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.listcorp.com/asx/29m/29metals-limited/news/2024-mineral-resources-and-ore-reserves-estimates-updated-3158934.html",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 110
   },
   {
     "name": "Flying Fox",
@@ -82,16 +86,17 @@
     "lat": -31.18,
     "lng": 121.62,
     "type": "Paste",
-    "tpd": 800,
+    "tpd": 1000,
     "plants": 1,
     "notes": "Nickel mine, Kambalda region. IGO. ~0.55 Mtpa ore (~1,500 tpd). Paste backfill. Est. ~800 tpd paste. Mine winding down.",
     "commodity": "nickel",
     "status": "operating",
     "ore_tpd": 1500,
     "year_commissioned": 2008,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://igo.com.au/site/pdf/cc8b7aad-4996-4f7c-a28b-73d58d577a22/FY23-Mineral-Resources-and-Ore-Reserves-Statement.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 106
   },
   {
     "name": "Telfer",
@@ -101,7 +106,7 @@
     "lat": -21.72,
     "lng": 122.23,
     "type": "Paste",
-    "tpd": 5500,
+    "tpd": 4320,
     "plants": 1,
     "notes": "Paste plant confirmed at MineFill 2024. ~27,400 tpd ore (10Mtpa Train 1). Est. ~5,500 tpd paste (20% of ore to UG fill).",
     "commodity": "gold/copper",
@@ -109,7 +114,8 @@
     "status": "operating",
     "confidence": "verified",
     "source": "https://www.greatland.com.au/wp-content/uploads/2025/12/Havieron-Project-Feasibility-Study-Presentation.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 132
   },
   {
     "name": "Lake Cowal",
@@ -125,9 +131,10 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 9600,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://evolutionmining.com/wp-content/uploads/2025/11/fy25-cowal-fact-sheet-1.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 118
   },
   {
     "name": "Cobar (CSA Mine)",
@@ -137,16 +144,17 @@
     "lat": -31.49,
     "lng": 145.83,
     "type": "Paste",
-    "tpd": 1800,
+    "tpd": 1200,
     "plants": 1,
     "notes": "Historic copper mine, NSW. ~1.1 Mtpa ore (~3,000 tpd). Est. ~1,800 tpd paste. Metals Acquisition Corp acquired 2023.",
     "commodity": "copper",
     "status": "operating",
     "ore_tpd": 3000,
     "year_commissioned": 2006,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.glencore.com/media-and-insights/news/glencore-closes-sale-of-cobar-mine",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 102
   },
   {
     "name": "Lady Loretta",
@@ -156,15 +164,16 @@
     "lat": -20.59,
     "lng": 139.45,
     "type": "Paste",
-    "tpd": 1500,
+    "tpd": 1000,
     "plants": 1,
     "notes": "Zinc-lead mine, QLD. Glencore. ~1.0 Mtpa ore (~2,700 tpd). Est. ~1,500 tpd paste.",
     "commodity": "zinc/lead",
     "status": "operating",
     "ore_tpd": 2700,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.glencore.com/dam/jcr:27756a61-b398-41da-bdfc-3dde51a54ac3/Xstrata-2007-OM.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 117
   },
   {
     "name": "Pajingo",
@@ -198,9 +207,10 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 2500,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://tinkaresources.com/wp-content/uploads/2024/04/tinka_ayawilca_2024_tr_240412_final.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 105
   },
   {
     "name": "Bronzewing",
@@ -210,15 +220,16 @@
     "lat": -27.37,
     "lng": 121.07,
     "type": "Paste",
-    "tpd": 800,
+    "tpd": 1000,
     "plants": 1,
     "notes": "Gold mine, WA. Northern Star. ~0.66 Mtpa ore (~1,800 tpd). Paste backfill. Est. ~800 tpd paste.",
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 1800,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.asx.com.au/asxpdf/20191223/pdf/44cttnxmlkb7yz.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 96
   },
   {
     "name": "Olympic Dam",
@@ -228,16 +239,17 @@
     "lat": -30.44,
     "lng": 136.88,
     "type": "Paste",
-    "tpd": 6000,
+    "tpd": 12000,
     "plants": 1,
     "notes": "World's largest underground mine. A$840M paste system investment. ~12,300 tpd ore, est. ~6,000 tpd paste. New cement paste backfill system commissioning 2026.",
     "commodity": "copper/uranium/gold",
     "ore_tpd": 12300,
     "year_commissioned": 2026,
     "status": "commissioning 2026",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.bhp.com/news/articles/2025/10/bhp-investing-to-boost-olympic-dam-operations",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 122
   },
   {
     "name": "George Fisher",
@@ -247,16 +259,17 @@
     "lat": -20.56,
     "lng": 139.49,
     "type": "Paste",
-    "tpd": 3500,
+    "tpd": 5500,
     "plants": 1,
     "notes": "Glencore zinc mine, Mt Isa complex. ~2.0 Mtpa ore (~5,500 tpd). Est. ~3,500 tpd paste. Paste backfill system.",
     "commodity": "zinc/lead/silver",
     "status": "operating",
     "ore_tpd": 5500,
     "year_commissioned": 2005,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.glencoretechnology.com/.rest/api/v1/documents/d23cbeff146f7007355c354fa913476f/2020+IsaMill+Compendium+of+Papers.pdf?download=true",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 109
   },
   {
     "name": "Sunrise Dam",
@@ -266,15 +279,16 @@
     "lat": -29.1,
     "lng": 122.07,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 1500,
     "plants": 1,
     "notes": "Large underground gold mine, WA. AngloGold Ashanti. ~2.0 Mtpa ore (~5,500 tpd). Paste backfill. Est. ~2,000 tpd paste.",
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 5500,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://cyanidecode.org/wp-content/uploads/2025/03/AngloSunriseSAR2014_0.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 130
   },
   {
     "name": "Henty",
@@ -291,9 +305,10 @@
     "status": "operating",
     "ore_tpd": 1200,
     "year_commissioned": 2000,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.listcorp.com/asx/kau/kaiser-reef-limited/news/transformational-acquisition-of-the-henty-gold-mine-3168246.html",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 112
   },
   {
     "name": "Plutonic",
@@ -303,16 +318,17 @@
     "lat": -25.59,
     "lng": 119.58,
     "type": "Paste",
-    "tpd": 1000,
+    "tpd": 3360,
     "plants": 1,
     "notes": "Gold mine, WA. Catalyst Metals. ~0.9 Mtpa ore (~2,500 tpd). Paste backfill system. Est. ~1,000 tpd paste.",
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 2500,
     "year_commissioned": 2003,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://api.investi.com.au/api/announcements/cyl/09744c2d-713.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 124
   },
   {
     "name": "Dugald River",
@@ -322,15 +338,16 @@
     "lat": -20.27,
     "lng": 139.55,
     "type": "Paste",
-    "tpd": 2400,
+    "tpd": 1500,
     "plants": 1,
     "notes": "1.5 Mtpa mine production (~4,800 tpd ore). ~50% tailings used for paste backfill (~2,400 tpd). 170-185kt Zn production.",
     "commodity": "zinc/lead/silver",
     "ore_tpd": 4800,
     "status": "operating",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.mmg.com/wp-content/uploads/2025/09/2025-Mineral-Resource-and-Ore-Reserve-Statement-and-Technical-Appendix.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 103
   },
   {
     "name": "Capricorn Copper",
@@ -340,15 +357,16 @@
     "lat": -20.37,
     "lng": 139.76,
     "type": "Paste",
-    "tpd": 1000,
+    "tpd": 2000,
     "plants": 1,
     "notes": "Copper mine, QLD. 29 Metals (in administration). ~0.73 Mtpa ore (~2,000 tpd). Est. ~1,000 tpd paste.",
     "commodity": "copper",
     "status": "operating",
     "ore_tpd": 2000,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.listcorp.com/asx/29m/29metals-limited/news/2024-mineral-resources-and-ore-reserves-estimates-updated-3158934.html",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 99
   },
   {
     "name": "Woodlawn",
@@ -358,15 +376,16 @@
     "lat": -34.87,
     "lng": 149.52,
     "type": "Paste",
-    "tpd": 800,
+    "tpd": 1000,
     "plants": 1,
     "notes": "Polymetallic mine, NSW. Develop Global. ~0.55 Mtpa ore (~1,500 tpd). Paste backfill. Est. ~800 tpd paste.",
     "commodity": "copper/zinc/lead",
     "status": "operating",
     "ore_tpd": 1500,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.listcorp.com/asx/dvp/develop-global-limited/news/updated-woodlawn-mine-plan-to-generate-exceptional-returns-2924125.html",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 138
   },
   {
     "name": "SKO (South Kalgoorlie)",
@@ -394,15 +413,16 @@
     "lat": -26.99,
     "lng": 117.68,
     "type": "Paste",
-    "tpd": 800,
+    "tpd": 1400,
     "plants": 1,
     "notes": "Gold mine, WA. Westgold Resources. ~0.73 Mtpa ore (~2,000 tpd). Paste backfill. Est. ~800 tpd paste.",
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 2000,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://westgold.com.au/pdf/d5ff5105-39b1-4618-a863-63a76313e78d/June-24-Quarterly-Results.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 140
   },
   {
     "name": "Bluebird",
@@ -418,9 +438,10 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 1500,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://westgold.com.au/pdf/d5ff5105-39b1-4618-a863-63a76313e78d/June-24-Quarterly-Results.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 141
   },
   {
     "name": "Cannington",
@@ -430,7 +451,7 @@
     "lat": -21.88,
     "lng": 140.91,
     "type": "Paste",
-    "tpd": 10000,
+    "tpd": 2000,
     "plants": 1,
     "notes": "L-P verified: 10k tpd. Golders Pastetech design. Paste backfill since 1997. ~4,932 tpd ore, est. ~2,500 tpd paste. Expanded to 1.8 Mtpa in 2001.",
     "commodity": "silver/lead/zinc",
@@ -441,7 +462,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.asx.com.au/asxpdf/20170824/pdf/43lp75ts0h0zpg.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 97
   },
   {
     "name": "Garden Well",
@@ -453,7 +475,7 @@
     "type": "Paste",
     "tpd": 1200,
     "plants": 1,
-    "notes": "2026 commissioning — NEW plant (Mark Adams). First stope ore Jul-Sep 2026. Regis Resources first underground. Est. ~1,200 tpd paste.",
+    "notes": "2026 commissioning \u2014 NEW plant (Mark Adams). First stope ore Jul-Sep 2026. Regis Resources first underground. Est. ~1,200 tpd paste.",
     "commodity": "gold",
     "year_commissioned": 2026,
     "status": "commissioning 2026",
@@ -470,7 +492,7 @@
     "lat": -30.63,
     "lng": 121.58,
     "type": "Paste",
-    "tpd": 5000,
+    "tpd": 3288,
     "plants": 1,
     "notes": "L-P verified: 5k tpd. Kalgoorlie operations. Northern Star. ~1.3 Mtpa ore (~3,500 tpd). Paste backfill. Est. ~1,500 tpd paste.",
     "commodity": "gold",
@@ -479,7 +501,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/17/NorthernStar-Kalgoorlie-Fact-Sheet-2016.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 115
   },
   {
     "name": "Mt Charlotte",
@@ -508,9 +531,9 @@
     "lat": -29.73,
     "lng": 122.4,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 3700,
     "plants": 1,
-    "notes": "L-P verified: 3k tpd. 110-120 m³/h paste plant (~2,760 m³/day × 2.0 t/m³ ≈ 5,520 tpd). GR Engineering EPC 2018.",
+    "notes": "L-P verified: 3k tpd. 110-120 m\u00b3/h paste plant (~2,760 m\u00b3/day \u00d7 2.0 t/m\u00b3 \u2248 5,520 tpd). GR Engineering EPC 2018.",
     "commodity": "gold",
     "year_commissioned": 2018,
     "designer": "GR Engineering",
@@ -518,7 +541,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://portergeo.com.au/database/mineinfo.php?mineid=mn1741",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 100
   },
   {
     "name": "Mt Isa",
@@ -547,15 +571,16 @@
     "lat": -30.88,
     "lng": 121.47,
     "type": "Paste",
-    "tpd": 1500,
+    "tpd": 1200,
     "plants": 1,
     "notes": "Gold mine, WA. Evolution Mining. ~1.7 Mtpa processing (~4,700 tpd). Est. ~1,500 tpd paste for underground operations.",
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 4700,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://minedocs.com/23/Evolution-MR-02162022.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 119
   },
   {
     "name": "St Ives",
@@ -565,7 +590,7 @@
     "lat": -31.14,
     "lng": 121.62,
     "type": "Paste",
-    "tpd": 4000,
+    "tpd": 6480,
     "plants": 1,
     "notes": "L-P verified: 4k tpd. Gold mine, WA. Gold Fields. Invincible Reclaim Paste Plant. ~1.5 Mtpa ore (~4,000 tpd). Est. ~1,200 tpd paste.",
     "commodity": "gold",
@@ -574,7 +599,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.goldfields.com/pdf/investors/presentation/2022/australia-site-visit-nov-2022-st-ives.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 129
   },
   {
     "name": "Tanami",
@@ -640,7 +666,7 @@
     "lat": -27.62,
     "lng": 120.95,
     "type": "Paste",
-    "tpd": 5000,
+    "tpd": 7200,
     "plants": 1,
     "notes": "L-P verified: 5k tpd. Gold mine, WA. Northern Star. ~0.9 Mtpa UG ore. Paste backfill. Est. ~1,000 tpd paste.",
     "commodity": "gold",
@@ -649,7 +675,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.gres.com.au/projects/details/thunderbox-expansion-project.aspx",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 133
   },
   {
     "name": "Tomingley Gold",
@@ -678,15 +705,16 @@
     "lat": 16.24,
     "lng": 121.37,
     "type": "Paste",
-    "tpd": 1500,
+    "tpd": 1200,
     "plants": 1,
     "notes": "Gold/copper mine, Philippines. OceanaGold. ~1.3 Mtpa ore (~3,500 tpd). Paste backfill. Est. ~1,500 tpd paste.",
     "commodity": "gold/copper",
     "status": "operating",
     "ore_tpd": 3500,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://region2.mgb.gov.ph/a-closer-look-at-oceanagolds-best-practices-conducts-mine-tour-for-the-members-of-the-press/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 24
   },
   {
     "name": "Bulyanhulu",
@@ -702,9 +730,10 @@
     "commodity": "gold",
     "ore_tpd": 3300,
     "status": "operating",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://minedocs.com/28/Barrick-CP-North-Mara-Bulyanhulu-Site-Visit-05082024pdf.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 1
   },
   {
     "name": "North Mara",
@@ -714,7 +743,7 @@
     "lat": -1.48,
     "lng": 34.51,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 3000,
     "plants": 1,
     "notes": "L-P verified: 2k tpd. Tanzania gold mine. Process plant 8,000 tpd capacity. Est. ~4,000 tpd paste. Barrick Gold.",
     "commodity": "gold",
@@ -723,7 +752,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/28/Barrick-CP-North-Mara-Bulyanhulu-Site-Visit-05082024pdf.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 13
   },
   {
     "name": "Loulo-Gounkoto",
@@ -733,7 +763,7 @@
     "lat": 14.37,
     "lng": -11.57,
     "type": "Paste",
-    "tpd": 5000,
+    "tpd": 4800,
     "plants": 3,
     "notes": "L-P verified: 5k tpd. 3 paste plants (Gabriel Kone, Mine Manager). CIL 5 Mtpa (~13,700 tpd ore). Est. ~7,000 tpd paste across 3 plants. TSF deposition 280,000 tpm.",
     "commodity": "gold",
@@ -742,7 +772,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/24/Loulo-Gounkoto-TR-12312022.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 11
   },
   {
     "name": "Kibali",
@@ -752,9 +783,9 @@
     "lat": 3.01,
     "lng": 30.23,
     "type": "Paste",
-    "tpd": 1000,
+    "tpd": 9120,
     "plants": 1,
-    "notes": "L-P verified: 1k tpd. 190 m³/hr backfill plant (~4,560 m³/day × 2.0 t/m³ ≈ 9,120 tpd). Operating above design capacity. 7.2 Mtpa processing. Africa's largest gold mine.",
+    "notes": "L-P verified: 1k tpd. 190 m\u00b3/hr backfill plant (~4,560 m\u00b3/day \u00d7 2.0 t/m\u00b3 \u2248 9,120 tpd). Operating above design capacity. 7.2 Mtpa processing. Africa's largest gold mine.",
     "commodity": "gold",
     "ore_tpd": 19700,
     "year_commissioned": 2015,
@@ -762,7 +793,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/22/Barrick_Kibali_TR_12312021.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 8
   },
   {
     "name": "Kamoa-Kakula",
@@ -772,9 +804,9 @@
     "lat": -10.77,
     "lng": 26.39,
     "type": "Paste",
-    "tpd": 5000,
+    "tpd": 4800,
     "plants": 1,
-    "notes": "L-P verified: 5k tpd. 600m³/hr — world's largest paste backfill plant. 19.2 Mtpa processing capacity.",
+    "notes": "L-P verified: 5k tpd. 600m\u00b3/hr \u2014 world's largest paste backfill plant. 19.2 Mtpa processing capacity.",
     "commodity": "copper",
     "ore_tpd": 19200,
     "year_commissioned": 2021,
@@ -783,7 +815,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.ivanhoemines.com/news-stories/news-release/kamoa-kakula-to-begin-copper-production-within-a-month/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 6
   },
   {
     "name": "Obuasi",
@@ -793,16 +826,17 @@
     "lat": 6.2,
     "lng": -1.66,
     "type": "Paste",
-    "tpd": 4000,
+    "tpd": 5000,
     "plants": 1,
     "notes": "2.2 Mtpa processing plant. Phase 2 expanded to 4,000 tpd. Paste-fill plant included in redevelopment.",
     "commodity": "gold",
     "ore_tpd": 4000,
     "year_commissioned": 2020,
     "status": "operating",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.globalminingreview.com/mining/30092021/anglogold-ashanti-provides-obuasi-underground-mining-update/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 14
   },
   {
     "name": "Wassa",
@@ -812,7 +846,7 @@
     "lat": 5.58,
     "lng": -1.89,
     "type": "Paste",
-    "tpd": 8000,
+    "tpd": 6384,
     "plants": 1,
     "notes": "L-P verified: 8k tpd. GR Engineering EPC. 5,000 tpd production rate. Outotec feasibility 2018.",
     "commodity": "gold",
@@ -823,7 +857,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://miningdataonline.com/property/193/Wassa-Mine.aspx",
-    "source_label": "Mining Publication"
+    "source_label": "Mining Publication",
+    "lp_id": 20
   },
   {
     "name": "South Deep",
@@ -833,7 +868,7 @@
     "lat": -26.42,
     "lng": 27.6,
     "type": "Paste",
-    "tpd": 1000,
+    "tpd": 990,
     "plants": 1,
     "notes": "L-P verified: 1k tpd. World's largest gold mine by reserves. CIP plant 4.0 Mtpa (~11,000 tpd ore). Est. ~5,500 tpd paste. Gold Fields.",
     "commodity": "gold",
@@ -842,7 +877,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.goldfields.com/pdf/sustainbility/transparency-and-disclosure/annual-tailings-disclosure-report-final-5-august-2025.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 18
   },
   {
     "name": "Sukari",
@@ -854,7 +890,7 @@
     "type": "Paste",
     "tpd": 6000,
     "plants": 1,
-    "notes": "125 m³/hr pastefill plant (~3,000 m³/day × 2.0 t/m³ ≈ 6,000 tpd). Commissioned Q1 2023. Lycopodium designed.",
+    "notes": "125 m\u00b3/hr pastefill plant (~3,000 m\u00b3/day \u00d7 2.0 t/m\u00b3 \u2248 6,000 tpd). Commissioned Q1 2023. Lycopodium designed.",
     "commodity": "gold",
     "year_commissioned": 2023,
     "designer": "Lycopodium",
@@ -871,7 +907,7 @@
     "lat": -27.95,
     "lng": 16.76,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 6480,
     "plants": 1,
     "notes": "L-P verified: 3k tpd. Namibia's first paste plant, commissioned Feb 2026. RP2.0 doubling processing to 1.3 Mtpa. Est. ~1,500 tpd paste.",
     "commodity": "zinc/lead",
@@ -881,7 +917,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mining.com/rosh-pinah-zinc-commissions-namibias-first-paste-backfill-plant/",
-    "source_label": "Mining Publication"
+    "source_label": "Mining Publication",
+    "lp_id": 17
   },
   {
     "name": "Khoemacau",
@@ -928,32 +965,34 @@
     "lat": -14.66,
     "lng": -52.35,
     "type": "Paste",
-    "tpd": 500,
+    "tpd": 1000,
     "plants": 1,
     "notes": "Gold mine, Brazil. Ero Brasil (formerly Ero Gold). ~0.44 Mtpa ore (~1,200 tpd). Est. ~500 tpd paste.",
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 1200,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.sec.gov/Archives/edgar/data/1853860/000162828023006809/a991-aif.htm",
-    "source_label": "Technical Report (SEDAR/SEC)"
+    "source_label": "Technical Report (SEDAR/SEC)",
+    "lp_id": 153
   },
   {
-    "name": "Caraíba",
+    "name": "Cara\u00edba",
     "company": "Ero Brasil",
     "country": "Brazil",
     "region": "South America",
     "lat": -9.88,
     "lng": -39.87,
     "type": "Paste",
-    "tpd": 2667,
+    "tpd": 1400,
     "plants": 1,
-    "notes": "~40k m³/month capacity (~1,333 m³/day × 2.0 t/m³ = ~2,667 tpd). Ero Brasil copper mine.",
+    "notes": "~40k m\u00b3/month capacity (~1,333 m\u00b3/day \u00d7 2.0 t/m\u00b3 = ~2,667 tpd). Ero Brasil copper mine.",
     "commodity": "copper",
     "status": "operating",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.sec.gov/Archives/edgar/data/1853860/000162828023006809/a991-aif.htm",
-    "source_label": "Technical Report (SEDAR/SEC)"
+    "source_label": "Technical Report (SEDAR/SEC)",
+    "lp_id": 144
   },
   {
     "name": "Turmalina",
@@ -963,18 +1002,19 @@
     "lat": -17.28,
     "lng": -43.27,
     "type": "Paste",
-    "tpd": 700,
+    "tpd": 1100,
     "plants": 1,
     "notes": "Gold mine, Minas Gerais. Jaguar Mining. ~0.66 Mtpa ore (~1,800 tpd). Paste backfill. Est. ~700 tpd paste.",
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 1800,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://jaguarmining.com/files/2024/03/application/65f3007c7fe8c.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 155
   },
   {
-    "name": "Aripuanã",
+    "name": "Aripuan\u00e3",
     "company": "Nexa Resources",
     "country": "Brazil",
     "region": "South America",
@@ -983,7 +1023,7 @@
     "type": "Paste",
     "tpd": 3000,
     "plants": 1,
-    "notes": "45,000 m³/month capacity (~1,500 m³/day × 2.0 t/m³ = ~3,000 tpd). Nexa Resources polymetallic.",
+    "notes": "45,000 m\u00b3/month capacity (~1,500 m\u00b3/day \u00d7 2.0 t/m\u00b3 = ~3,000 tpd). Nexa Resources polymetallic.",
     "commodity": "zinc/copper",
     "status": "operating",
     "confidence": "likely",
@@ -991,21 +1031,22 @@
     "source_label": "Company Website"
   },
   {
-    "name": "Buriticá",
+    "name": "Buritic\u00e1",
     "company": "Zijin-Continental Gold",
     "country": "Colombia",
     "region": "South America",
     "lat": 6.73,
     "lng": -75.89,
     "type": "Paste",
-    "tpd": 3400,
+    "tpd": 4800,
     "plants": 1,
-    "notes": "1,700 m³/day paste capacity (Marlon Suarez). ~3,400 tpd at 2.0 t/m³ density.",
+    "notes": "1,700 m\u00b3/day paste capacity (Marlon Suarez). ~3,400 tpd at 2.0 t/m\u00b3 density.",
     "commodity": "gold",
     "status": "operating",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.sec.gov/Archives/edgar/data/1829726/000110465922092225/tm2220483d2_ex4-1.htm",
-    "source_label": "Technical Report (SEDAR/SEC)"
+    "source_label": "Technical Report (SEDAR/SEC)",
+    "lp_id": 142
   },
   {
     "name": "Marmato",
@@ -1084,15 +1125,16 @@
     "lat": 37.58,
     "lng": -7.97,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 6000,
     "plants": 1,
     "notes": "Neves-Corvo complex, Portugal. Almina. ~1.6 Mtpa ore (~4,500 tpd). Paste backfill. Est. ~2,000 tpd paste.",
     "commodity": "copper/zinc",
     "status": "operating",
     "ore_tpd": 4500,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.boliden.com/operations/mines/boliden-somincor/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 47
   },
   {
     "name": "Zinkgruvan",
@@ -1109,9 +1151,10 @@
     "year_commissioned": 2001,
     "status": "operating",
     "ore_tpd": 3300,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.boliden.com/operations/mines/boliden-zinkgruvan/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 60
   },
   {
     "name": "Neves-Corvo (Somincor)",
@@ -1121,7 +1164,7 @@
     "lat": 37.57,
     "lng": -7.97,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 5500,
     "plants": 1,
     "notes": "L-P verified: 3k tpd. Copper/zinc mine, Portugal. Boliden. ~2.0 Mtpa ore (~5,500 tpd). Shifting to total tailings paste, phasing out hydraulic fill. Est. ~2,500 tpd paste.",
     "commodity": "copper/zinc",
@@ -1130,7 +1173,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.boliden.com/operations/mines/boliden-somincor/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 55
   },
   {
     "name": "Olympias",
@@ -1140,7 +1184,7 @@
     "lat": 40.6,
     "lng": 23.74,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 2016,
     "plants": 1,
     "notes": "L-P verified: 3k tpd. Gold/silver/lead/zinc mine, Greece. Eldorado Gold. CPB since the 1990s. ~0.55 Mtpa ore (~1,500 tpd). Est. ~800 tpd paste.",
     "commodity": "gold/silver/lead/zinc",
@@ -1150,7 +1194,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.eldoradogold.com/sites/eldorado-gold/files/eldorado/assets/operations/olympias/oly-technical-report-2023-12-31-final.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 56
   },
   {
     "name": "Mavres Petres",
@@ -1181,7 +1226,7 @@
     "type": "Paste",
     "tpd": 12000,
     "plants": 1,
-    "notes": "250 m³/hr paste plant designed (~6,000 m³/day × 2.0 t/m³ ≈ 12,000 tpd at full capacity). 140koz Au + 67Mlb Cu p.a. Commercial production mid-2026.",
+    "notes": "250 m\u00b3/hr paste plant designed (~6,000 m\u00b3/day \u00d7 2.0 t/m\u00b3 \u2248 12,000 tpd at full capacity). 140koz Au + 67Mlb Cu p.a. Commercial production mid-2026.",
     "commodity": "copper/gold",
     "year_commissioned": 2026,
     "status": "commissioning 2026",
@@ -1197,26 +1242,27 @@
     "lat": 41.76,
     "lng": 22.38,
     "type": "Paste",
-    "tpd": 1000,
+    "tpd": 800,
     "plants": 1,
     "notes": "Zinc/lead mine, North Macedonia. Central Asia Metals. ~1.0 Mtpa ore (~2,700 tpd). Paste transition just commenced. Est. ~1,000 tpd paste.",
     "commodity": "zinc/lead",
     "status": "operating",
     "ore_tpd": 2700,
     "year_commissioned": 2025,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://im-mining.com/2023/01/10/camls-sasa-in-north-macedonia-advancing-cut-and-fill-project-plus-new-paste-backfill-plant/",
-    "source_label": "Mining Publication"
+    "source_label": "Mining Publication",
+    "lp_id": 58
   },
   {
-    "name": "Çayeli",
+    "name": "\u00c7ayeli",
     "company": "First Quantum",
     "country": "Turkey",
     "region": "Europe",
     "lat": 41.07,
     "lng": 40.72,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 1920,
     "plants": 1,
     "notes": "L-P verified: 3k tpd. Copper/zinc mine, Turkey. First Quantum. Operating since at least 2001. ~1.0 Mtpa ore (~2,700 tpd). Est. ~1,200 tpd paste.",
     "commodity": "copper/zinc",
@@ -1226,7 +1272,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/17/FirstQuantumMinerals_AIF_2016.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 48
   },
   {
     "name": "Lubin",
@@ -1247,21 +1294,22 @@
     "source_label": "NI 43-101 Technical Report"
   },
   {
-    "name": "Kittilä",
+    "name": "Kittil\u00e4",
     "company": "Agnico Eagle",
     "country": "Finland",
     "region": "Europe",
     "lat": 67.92,
     "lng": 25.36,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 2900,
     "plants": 1,
     "notes": "Europe's largest gold mine (~7,000 kg Au/yr). Agnico Eagle. ~2.0 Mtpa ore (~5,500 tpd). Est. ~3,000 tpd paste.",
     "commodity": "gold",
     "status": "operating",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2024/AGNICO-EAGLE-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2023-RESULTS-RECORD-QUARTERLY-AND-ANNUAL-GOLD-PRODUCTION-AND-FREE-CASH-FLOW-RECORD-MINERAL-RESERVES-INCREASED-10.5-UPDATED-THREE-YEAR-GUIDANCE-02-15-2024/default.aspx",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 54
   },
   {
     "name": "Kankberg",
@@ -1379,14 +1427,15 @@
     "lat": 44.15,
     "lng": 18.33,
     "type": "Paste",
-    "tpd": null,
+    "tpd": 2640,
     "plants": 1,
     "notes": "DPM Metals acquisition. Paste backfill plant pad completed. Not yet in commercial production.",
     "commodity": "silver/zinc/lead",
     "status": "commissioning 2026",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://minedocs.com/29/Vares-TR-04012025.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 59
   },
   {
     "name": "South Crofty",
@@ -1448,16 +1497,17 @@
     "lat": 56.47,
     "lng": -130.18,
     "type": "Paste",
-    "tpd": 1900,
+    "tpd": 6960,
     "plants": 1,
     "notes": "Major gold mine, BC. ~3,800 tpd ore. Est. ~1,900 tpd paste. GEHO piston pumps. Part of Newmont portfolio.",
     "commodity": "gold",
     "ore_tpd": 3800,
     "year_commissioned": 2017,
     "status": "operating",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://operations.newmont.com/_doc/operation/bluejack/Brucejacks%20Area%20B%20withdrawal%20letter%20and%20Mine%20Act%20M-243%20application.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 63
   },
   {
     "name": "Kidd Creek",
@@ -1467,7 +1517,7 @@
     "lat": 48.68,
     "lng": -81.37,
     "type": "Paste",
-    "tpd": 5000,
+    "tpd": 3800,
     "plants": 1,
     "notes": "L-P verified: 5k tpd. World's deepest base metal mine (~3km). CPB pioneer. 400 tph paste plant designed.",
     "commodity": "copper/zinc",
@@ -1475,7 +1525,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/22/Timmins_West_TR_06_30_2021.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 76
   },
   {
     "name": "Raglan",
@@ -1503,7 +1554,7 @@
     "lat": 48.17,
     "lng": -80.04,
     "type": "Paste",
-    "tpd": 4000,
+    "tpd": 800,
     "plants": 1,
     "notes": "L-P verified: 4k tpd. 5% binder, 19% water content CPB. Agnico Eagle. ~2,200 tpd ore. Est. ~1,200 tpd paste.",
     "commodity": "gold",
@@ -1511,7 +1562,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2024/AGNICO-EAGLE-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2023-RESULTS-RECORD-QUARTERLY-AND-ANNUAL-GOLD-PRODUCTION-AND-FREE-CASH-FLOW-RECORD-MINERAL-RESERVES-INCREASED-10.5-UPDATED-THREE-YEAR-GUIDANCE-02-15-2024/default.aspx",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 82
   },
   {
     "name": "Meliadine",
@@ -1521,7 +1573,7 @@
     "lat": 63.02,
     "lng": -92.17,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 1000,
     "plants": 1,
     "notes": "L-P verified: 3k tpd. Nunavut gold mine. Agnico Eagle. ~4,500 tpd ore. Est. ~2,500 tpd paste.",
     "commodity": "gold",
@@ -1529,7 +1581,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://cyanidecode.org/wp-content/uploads/2025/03/AgnicoEagleMeliadineMineSAR2023.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 84
   },
   {
     "name": "Pinos Altos",
@@ -1548,7 +1601,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://cyanidecode.org/wp-content/uploads/2025/08/AgnicoEaglePinosAltosSAR2015_0.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 87
   },
   {
     "name": "Niobec",
@@ -1576,7 +1630,7 @@
     "lat": 51.03,
     "lng": -93.83,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 4320,
     "plants": 1,
     "notes": "L-P verified: 3k tpd. Gold mine, Ontario. Evolution Mining. Live BFP client. Two paste plants (CC and RLC). Continuous-pour CPB program. ~1.0 Mtpa ore (~2,700 tpd). Est. ~1,500 tpd paste.",
     "commodity": "gold",
@@ -1585,7 +1639,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://cyanidecode.org/wp-content/uploads/2021/06/EvolutionRedLakeSAR2021.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 89
   },
   {
     "name": "Leeville / Rodeo",
@@ -1595,7 +1650,7 @@
     "lat": 40.93,
     "lng": -116.33,
     "type": "Paste",
-    "tpd": 6000,
+    "tpd": 4800,
     "plants": 2,
     "notes": "L-P verified: 6k tpd. Gold mine, Nevada. Nevada Gold Mines (Barrick/Newmont JV). First paste plant in Nevada (2013). Fly ash + cement binder. Est. ~1,500 tpd paste.",
     "commodity": "gold",
@@ -1605,7 +1660,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://undergroundmining.com/projects/leeville/",
-    "source_label": "Mining Publication"
+    "source_label": "Mining Publication",
+    "lp_id": 79
   },
   {
     "name": "Meikle",
@@ -1634,7 +1690,7 @@
     "lat": 18.22,
     "lng": -100.27,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 4000,
     "plants": 1,
     "notes": "Gold/copper mine, Mexico. Torex Gold. Live BFP client. Ramping to 7,500 t/d by 2027. P&C paste plant. Est. ~2,000 tpd paste.",
     "commodity": "gold/copper",
@@ -1644,7 +1700,8 @@
     "status": "commissioning 2026",
     "confidence": "verified",
     "source": "https://torexgold.com/news-and-media/news/torex-announces-a-positive-pea-for-its-media-luna-project-including-a-new-inferred-resource-estimate-of-7.4-million-gold-equiv/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 83
   },
   {
     "name": "Thompson Mine",
@@ -1672,16 +1729,17 @@
     "lat": 48.73,
     "lng": -85.83,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 3456,
     "plants": 1,
-    "notes": "L-P verified: 2k tpd. Gold mine, Ontario. Barrick Gold. 5% binder, 45% passing 20μm. ~1.1 Mtpa ore (~3,000 tpd). Est. ~1,500 tpd paste.",
+    "notes": "L-P verified: 2k tpd. Gold mine, Ontario. Barrick Gold. 5% binder, 45% passing 20\u03bcm. ~1.1 Mtpa ore (~3,000 tpd). Est. ~1,500 tpd paste.",
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 3000,
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.barrick.com/English/news/news-details/2020/modernized-hemlo-transitions-to-underground-mining/default.aspx",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 73
   },
   {
     "name": "Onaping Depth",
@@ -1744,7 +1802,7 @@
     "lat": 47.47,
     "lng": -115.81,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 483,
     "plants": 1,
     "notes": "L-P verified: 2k tpd. Underhand cut & fill with CPB. 1,000 tpd mill. Expanding to 900+ tpd ore production.",
     "commodity": "silver/lead/zinc",
@@ -1753,7 +1811,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.hecla.com/wp-content/uploads/SLR-Hecla-Lucky-Friday-FINAL-S-K-1300-TRS-21-Feb-2022-rev_web.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 80
   },
   {
     "name": "Stillwater",
@@ -1763,7 +1822,7 @@
     "lat": 45.38,
     "lng": -109.88,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 4320,
     "plants": 1,
     "notes": "L-P verified: 3k tpd. PGM mine, Montana. Sibanye-Stillwater. Underhand C&F with CPB. ~1.3 Mtpa ore (~3,500 tpd). Est. ~1,500 tpd paste.",
     "commodity": "PGM",
@@ -1772,7 +1831,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.sibanyestillwater.com/business/americas/pgm-operations-americas/stillwater-east-boulder/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 90
   },
   {
     "name": "Myra Falls",
@@ -1817,15 +1877,16 @@
     "lat": 48.45,
     "lng": -81.3,
     "type": "Paste",
-    "tpd": 800,
+    "tpd": 2700,
     "plants": 1,
     "notes": "Ontario gold mine. Pan American Silver. ~0.66 Mtpa ore (~1,800 tpd). Paste backfill. Est. ~800 tpd paste.",
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 1800,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://panamericansilver.com/wp-content/uploads/2023/01/Timmins-West-TR-2021-06-filed-2022.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 91
   },
   {
     "name": "Terronera",
@@ -1910,15 +1971,16 @@
     "lat": 25.03,
     "lng": 74.25,
     "type": "Paste",
-    "tpd": 13200,
+    "tpd": 4930,
     "plants": 1,
     "notes": "550 TPH paste fill plant (13,200 tpd). Ramping to 2.0 Mtpa. Paste & Hydro Filling.",
     "commodity": "zinc/lead",
     "ore_tpd": 5500,
     "status": "operating",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://im-mining.com/2020/12/22/flsmidth-to-deliver-dry-stack-tailings-solution-at-hindustan-zincs-rajpura-dariba-mine/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 33
   },
   {
     "name": "Zawar",
@@ -1964,7 +2026,7 @@
     "lat": 23.69,
     "lng": 40.87,
     "type": "Paste",
-    "tpd": 5000,
+    "tpd": 5472,
     "plants": 1,
     "notes": "L-P verified: 5k tpd. Copper mine, Saudi Arabia. Ma'aden/Barrick. First paste plant in Saudi Arabia (2017). GR Engineering filter project. P&C one year of paste ops paper. ~1.2 Mtpa ore (~3,200 tpd). Est. ~1,200 tpd paste.",
     "commodity": "copper",
@@ -1975,7 +2037,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.gres.com.au/projects/details/jabal-sayid-filter-project.aspx",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 27
   },
   {
     "name": "Kainantu",
@@ -2039,7 +2102,7 @@
     "lat": -3.81,
     "lng": -78.48,
     "type": "Paste",
-    "tpd": 5000,
+    "tpd": 5520,
     "plants": 1,
     "notes": "L-P verified: 5k tpd. Gold mine, Ecuador. Lundin Gold. ~1.5 Mtpa ore (~4,200 tpd). Paste backfill. Est. ~1,800 tpd paste.",
     "commodity": "gold",
@@ -2050,7 +2113,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://lundingold.com/fruta-del-norte/fruta-del-norte/operational-overview/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 148
   },
   {
     "name": "Garpenberg",
@@ -2060,7 +2124,7 @@
     "lat": 60.32,
     "lng": 16.23,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 548,
     "plants": 1,
     "notes": "L-P verified: 2k tpd. One of Europe's oldest mines (1200s). Boliden's largest underground mine. 3.0 Mtpa ore (~8,200 tpd). Est. ~4,000 tpd paste.",
     "commodity": "zinc/lead/copper/silver/gold",
@@ -2069,7 +2133,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://investors.boliden.com/en/press/decision-increase-backfill-capacity-garpenberg-2309885",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 52
   },
   {
     "name": "Cozamin",
@@ -2079,15 +2144,16 @@
     "lat": 23.48,
     "lng": -103.13,
     "type": "Paste",
-    "tpd": 1200,
+    "tpd": 4152,
     "plants": 1,
     "notes": "Copper/silver mine, Mexico. Capstone Copper. ~1.3 Mtpa ore (~3,600 tpd). Paste backfill. Est. ~1,200 tpd paste.",
     "commodity": "copper/silver",
     "status": "operating",
     "ore_tpd": 3600,
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://capstonecopper.com/operations/cozamin/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 66
   },
   {
     "name": "Grasberg (DMLZ)",
@@ -2115,7 +2181,7 @@
     "lat": -13.69,
     "lng": -75.62,
     "type": "Paste",
-    "tpd": 10000,
+    "tpd": 12400,
     "plants": 1,
     "notes": "L-P verified: 10k tpd. Peru's largest underground polymetallic mine. 18,000 tpd processing. Paste backfill system. P&C negotiation.",
     "commodity": "zinc/copper/lead",
@@ -2124,7 +2190,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/19/Cerro-Lindo-TR-12312020.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 145
   },
   {
     "name": "Chelopech",
@@ -2134,15 +2201,16 @@
     "lat": 42.7,
     "lng": 24.09,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 5520,
     "plants": 1,
     "notes": "Dundee Precious Metals. 2.2 Mtpa ore (~6,000 tpd). Paste backfill system.",
     "commodity": "copper/gold",
     "ore_tpd": 6000,
     "status": "operating",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://dpmmetals.com/news-media/news-releases/dundee-precious-metals-announces-pre-feasibility-s-9826/",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 49
   },
   {
     "name": "Creighton",
@@ -2206,7 +2274,7 @@
     "lat": 56.33,
     "lng": -62.08,
     "type": "Paste",
-    "tpd": 4000,
+    "tpd": 1900,
     "plants": 1,
     "notes": "L-P verified: 4k tpd. Nickel/copper/cobalt mine, Labrador, NL. Vale. Underground mine. ~1.1 Mtpa ore (~3,000 tpd). Paste backfill. Est. ~1,200 tpd paste.",
     "commodity": "nickel/copper/cobalt",
@@ -2216,7 +2284,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://vale.com/w/vale-base-metals-complete-voisey-s-bay-transition-to-underground-mining",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 92
   },
   {
     "name": "Eleonore",
@@ -2226,7 +2295,7 @@
     "lat": 52.72,
     "lng": -76.19,
     "type": "Paste",
-    "tpd": 5000,
+    "tpd": 3500,
     "plants": 1,
     "notes": "L-P verified: 5k tpd. Gold mine, James Bay, Quebec. Newmont. ~1.3 Mtpa ore (~3,500 tpd). Paste backfill. Est. ~1,500 tpd paste.",
     "commodity": "gold",
@@ -2235,7 +2304,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://s24.q4cdn.com/382246808/files/document_library/Eleonore-Technical-Report-November-2018.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 68
   },
   {
     "name": "Casa Berardi",
@@ -2254,7 +2324,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.hecla.com/wp-content/uploads/HECLA-CASA-BERARDI-SK1300-RESPEC-V8.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 64
   },
   {
     "name": "Greens Creek",
@@ -2354,7 +2425,7 @@
     "lat": 25.78,
     "lng": 74.72,
     "type": "Paste",
-    "tpd": 19000,
+    "tpd": 17760,
     "plants": 1,
     "notes": "L-P verified: 19k tpd. World's largest zinc mine. Transitioning to underground. ~3.75 Mtpa ore. Paste backfill system.",
     "commodity": "zinc/lead",
@@ -2363,7 +2434,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.geomechanics.io/news/article/cimichindustan-zinc-tailings-recycling-project-design-notes-for-mine-engineers",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 33
   },
   {
     "name": "Sindesar Khurd",
@@ -2373,7 +2445,7 @@
     "lat": 25.04,
     "lng": 74.27,
     "type": "Paste",
-    "tpd": 10000,
+    "tpd": 8496,
     "plants": 1,
     "notes": "L-P verified: 10k tpd. Underground zinc-lead-silver mine. 2.0 Mtpa. Paste backfill. Hindustan Zinc.",
     "commodity": "zinc/lead/silver",
@@ -2382,7 +2454,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.facebook.com/HindustanZinc/videos/sindesar-khurd-indias-most-mechanised-mine/1069853486970864/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 36
   },
   {
     "name": "Tara",
@@ -2428,7 +2501,7 @@
     "lat": 48.12,
     "lng": -77.78,
     "type": "Paste",
-    "tpd": 4000,
+    "tpd": 5900,
     "plants": 1,
     "notes": "L-P verified: 4k tpd. Quebec gold mine. Agnico Eagle. ~2.0 Mtpa ore (~5,500 tpd). Paste backfill. Est. ~1,500 tpd paste.",
     "commodity": "gold",
@@ -2437,7 +2510,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2013/Agnico-Eagle-announces-development-project-update-La-India-commissioning-underway-and-mining-and-processing-has-restarted-at-Goldex-09-19-2013/default.aspx",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 71
   },
   {
     "name": "Meadowbank / Amaruq",
@@ -2465,7 +2539,7 @@
     "lat": -36.711,
     "lng": 144.502,
     "type": "Paste",
-    "tpd": 4000,
+    "tpd": 2400,
     "plants": 1,
     "notes": "L-P verified: 4k tpd. Victoria's largest gold mine. Agnico Eagle (via Kirkland Lake merger 2022). ~0.6 Mtpa ore (~1,600 tpd). Paste backfill. Est. ~1,000 tpd paste.",
     "commodity": "gold",
@@ -2474,7 +2548,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://emtek.com.au/projects/paste-plant",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 107
   },
   {
     "name": "Hope Bay",
@@ -2545,9 +2620,10 @@
     "commodity": "nickel",
     "ore_tpd": 1500,
     "status": "operating",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.igo.com.au/site/pdf/24e1eb53-85d0-4b7e-8f6e-b20333eba996/FY25-Mineral-Resources-and-Ore-Reserves-Report.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 128
   },
   {
     "name": "Golden Giant Mine",
@@ -2557,7 +2633,7 @@
     "lat": 48.77,
     "lng": -85.84,
     "type": "Paste",
-    "tpd": 7000,
+    "tpd": 2400,
     "plants": 1,
     "notes": "L-P verified: 7k tpd.",
     "commodity": "gold",
@@ -2565,7 +2641,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12158861/",
-    "source_label": "Government Mining Database"
+    "source_label": "Government Mining Database",
+    "lp_id": 70
   },
   {
     "name": "Caribou",
@@ -2593,7 +2670,7 @@
     "lat": 34.5,
     "lng": -112.0,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 1640,
     "plants": 1,
     "notes": "L-P verified: 3k tpd.",
     "commodity": "copper",
@@ -2601,7 +2678,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.globenewswire.com/news-release/2025/12/16/3206033/0/en/Sandfire-Resources-America-Announces-Results-of-Updated-Pre-Feasibility-Study-for-the-Johnny-Lee-Deposit-and-Updated-Mineral-Resource-for-the-Lowry-Deposit-at-the-Black-Butte-Coppe.html",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 74
   },
   {
     "name": "Outokumpu Kemi",
@@ -2611,7 +2689,7 @@
     "lat": 65.78,
     "lng": 24.57,
     "type": "Paste",
-    "tpd": 7000,
+    "tpd": 9600,
     "plants": 1,
     "notes": "L-P verified: 7k tpd.",
     "commodity": "chromite",
@@ -2619,7 +2697,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mining-technology.com/projects/kemi/",
-    "source_label": "Mining Publication"
+    "source_label": "Mining Publication",
+    "lp_id": 57
   },
   {
     "name": "Yulong Copper Mine",
@@ -2629,7 +2708,7 @@
     "lat": 31.49,
     "lng": 97.38,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 4620,
     "plants": 1,
     "notes": "L-P verified: 3k tpd.",
     "commodity": "copper",
@@ -2637,7 +2716,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.zijinmining.com/global/program-detail-71738.htm",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 40
   },
   {
     "name": "Inchuan No. 2",
@@ -2647,7 +2727,7 @@
     "lat": 38.47,
     "lng": 106.27,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 5760,
     "plants": 1,
     "notes": "L-P verified: 3k tpd.",
     "commodity": "copper",
@@ -2655,7 +2735,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "http://en.jnmc.com/2024-02/23/c_964665.htm",
-    "source_label": "Reference"
+    "source_label": "Reference",
+    "lp_id": 29
   },
   {
     "name": "Kemoto Copper Company",
@@ -2683,7 +2764,7 @@
     "lat": -24.63,
     "lng": 30.07,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 1133,
     "plants": 1,
     "notes": "L-P verified: 3k tpd.",
     "commodity": "PGM",
@@ -2691,7 +2772,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mining-technology.com/projects/modikwa-platinum/",
-    "source_label": "Mining Publication"
+    "source_label": "Mining Publication",
+    "lp_id": 12
   },
   {
     "name": "Tenke Fungurume",
@@ -2701,7 +2783,7 @@
     "lat": -10.61,
     "lng": 26.1,
     "type": "Paste",
-    "tpd": 1000,
+    "tpd": 1138,
     "plants": 1,
     "notes": "L-P verified: 1k tpd.",
     "commodity": "copper/cobalt",
@@ -2709,7 +2791,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.ivanhoemines.com/wp-content/uploads/kamoa-kakula-technical-report-march-2019-1.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 19
   },
   {
     "name": "Okep Copper Project",
@@ -2730,14 +2813,14 @@
     "source_label": "Company Website (Orion Minerals ASX)"
   },
   {
-    "name": "Cuiabá",
+    "name": "Cuiab\u00e1",
     "company": "AngloGold Ashanti",
     "country": "Brazil",
     "region": "South America",
     "lat": -20.07,
     "lng": -43.85,
     "type": "Paste",
-    "tpd": 4000,
+    "tpd": 3840,
     "plants": 1,
     "notes": "L-P verified: 4k tpd.",
     "commodity": "gold",
@@ -2745,7 +2828,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://reports.anglogoldashanti.com/22/wp-content/uploads/2023/05/AGA-RR22.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 146
   },
   {
     "name": "Cabildo",
@@ -2755,7 +2839,7 @@
     "lat": -32.42,
     "lng": -71.07,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 4000,
     "plants": 1,
     "notes": "L-P verified: 3k tpd.",
     "commodity": "copper",
@@ -2763,7 +2847,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://jusmundi.com/fr/document/decision/en-glencore-finance-bermuda-ltd-v-plurinational-state-of-bolivia-award-friday-8th-september-2023",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 143
   },
   {
     "name": "El Teniente",
@@ -2791,7 +2876,7 @@
     "lat": -27.84,
     "lng": 120.56,
     "type": "Paste",
-    "tpd": 7000,
+    "tpd": 7200,
     "plants": 1,
     "notes": "L-P verified: 7k tpd.",
     "commodity": "gold/nickel",
@@ -2799,7 +2884,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.goldfields.com/reports/rr_2009/tech_agnew.php",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 95
   },
   {
     "name": "Gwalia",
@@ -2827,7 +2913,7 @@
     "lat": -31.18,
     "lng": 121.53,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 5280,
     "plants": 1,
     "notes": "L-P verified: 3k tpd.",
     "commodity": "gold",
@@ -2835,7 +2921,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/23/Evolution-MR-02162022.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 108
   },
   {
     "name": "Tropicana",
@@ -2845,7 +2932,7 @@
     "lat": -29.24,
     "lng": 124.55,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 1000,
     "plants": 1,
     "notes": "L-P verified: 2k tpd.",
     "commodity": "gold",
@@ -2853,7 +2940,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.igo.com.au/site/content/InteractiveDocument/Sustainability/files/assets/common/downloads/publication.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 135
   },
   {
     "name": "Brunswick Mine",
@@ -2889,7 +2977,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2023/AGNICO-EAGLE-PROVIDES-UPDATE-ON-CANADIAN-MALARTIC-COMPLEX-INTERNAL-STUDY-DEMONSTRATES-IMPROVED-VALUE-EXTENDS-MINE-LIFE-AND-SUPPORTS-POTENTIAL-FUTURE-PRODUCTION-GROWTH-IN-THE-ABITIBI-GREENSTONE-BELT-POSITIVE-EXPLORATION-RESULTS-EXP-06-20-2023/default.aspx",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 86
   },
   {
     "name": "Copper Mountain",
@@ -2899,7 +2988,7 @@
     "lat": 49.33,
     "lng": -120.52,
     "type": "Paste",
-    "tpd": 5000,
+    "tpd": 5760,
     "plants": 1,
     "notes": "L-P verified: 5k tpd.",
     "commodity": "copper",
@@ -2907,7 +2996,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://s23.q4cdn.com/405985100/files/doc_downloads/tech_reports/canada/cmm-ni-43-101-technical-report-dec-5-2023.pdf",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 65
   },
   {
     "name": "Ming Copper-Gold",
@@ -2917,7 +3007,7 @@
     "lat": 49.92,
     "lng": -56.15,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 800,
     "plants": 1,
     "notes": "L-P verified: 3k tpd.",
     "commodity": "copper/gold",
@@ -2925,7 +3015,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.gov.nl.ca/eccc/files/FireFly-GBMM-Registration-Appendices-part1-1.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 85
   },
   {
     "name": "Westwood",
@@ -2935,7 +3026,7 @@
     "lat": 48.28,
     "lng": -79.04,
     "type": "Paste",
-    "tpd": 1000,
+    "tpd": 3470,
     "plants": 1,
     "notes": "L-P verified: 1k tpd.",
     "commodity": "gold",
@@ -2943,7 +3034,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.iamgold.com/English/investors/news-releases/news-releases-details/2024/IAMGOLD-Provides-Westwood-Updated-Mine-Plan-and-Mineral-Resource--Mineral-Reserve-Estimates/default.aspx",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 93
   },
   {
     "name": "Bagdad Mine",
@@ -2961,7 +3053,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.sec.gov/Archives/edgar/data/831259/000083125921000009/fcx-20201231.htm",
-    "source_label": "Technical Report (SEDAR/SEC)"
+    "source_label": "Technical Report (SEDAR/SEC)",
+    "lp_id": 62
   },
   {
     "name": "Kemi Mine",
@@ -2971,7 +3064,7 @@
     "lat": 65.78,
     "lng": 24.57,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 1000,
     "plants": 1,
     "notes": "L-P verified: 2k tpd.",
     "commodity": "chromite",
@@ -2979,7 +3072,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://miningdataonline.com/property/1056/Kemi-Mine.aspx",
-    "source_label": "Mining Publication"
+    "source_label": "Mining Publication",
+    "lp_id": 53
   },
   {
     "name": "Zhangmatun Mine",
@@ -2989,7 +3083,7 @@
     "lat": 36.85,
     "lng": 117.12,
     "type": "Paste",
-    "tpd": 18000,
+    "tpd": 9500,
     "plants": 1,
     "notes": "L-P verified: 18k tpd.",
     "commodity": "iron",
@@ -2997,7 +3091,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8954551/",
-    "source_label": "Government Mining Database"
+    "source_label": "Government Mining Database",
+    "lp_id": 41
   },
   {
     "name": "Tonglushan Mine",
@@ -3007,7 +3102,7 @@
     "lat": 30.07,
     "lng": 114.95,
     "type": "Paste",
-    "tpd": 7000,
+    "tpd": 8448,
     "plants": 1,
     "notes": "L-P verified: 7k tpd.",
     "commodity": "copper",
@@ -3015,7 +3110,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9101011/",
-    "source_label": "Government Mining Database"
+    "source_label": "Government Mining Database",
+    "lp_id": 37
   },
   {
     "name": "Uchalinski Mine",
@@ -3025,7 +3121,7 @@
     "lat": 54.33,
     "lng": 59.34,
     "type": "Paste",
-    "tpd": 7000,
+    "tpd": 7475,
     "plants": 1,
     "notes": "L-P verified: 7k tpd.",
     "commodity": "copper/zinc",
@@ -3033,7 +3129,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://en.wikipedia.org/wiki/Uchalinsky_mine",
-    "source_label": "Wikipedia"
+    "source_label": "Wikipedia",
+    "lp_id": 37
   },
   {
     "name": "Big Gossan",
@@ -3043,7 +3140,7 @@
     "lat": -4.06,
     "lng": 137.12,
     "type": "Paste",
-    "tpd": 5000,
+    "tpd": 7200,
     "plants": 1,
     "notes": "L-P verified: 5k tpd.",
     "commodity": "copper/gold",
@@ -3051,7 +3148,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.sec.gov/Archives/edgar/data/831259/000083125922000012/a2021trsptfi-exhibit.htm",
-    "source_label": "Technical Report (SEDAR/SEC)"
+    "source_label": "Technical Report (SEDAR/SEC)",
+    "lp_id": 22
   },
   {
     "name": "Komsomolsky Mine",
@@ -3061,7 +3159,7 @@
     "lat": 69.33,
     "lng": 88.22,
     "type": "Paste",
-    "tpd": 5000,
+    "tpd": 6720,
     "plants": 1,
     "notes": "L-P verified: 5k tpd.",
     "commodity": "nickel/copper",
@@ -3069,7 +3167,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mdpi.com/2075-163X/8/8",
-    "source_label": "Reference"
+    "source_label": "Reference",
+    "lp_id": 30
   },
   {
     "name": "Qiushan Mine",
@@ -3097,7 +3196,7 @@
     "lat": 30.92,
     "lng": 117.86,
     "type": "Paste",
-    "tpd": 4000,
+    "tpd": 5184,
     "plants": 1,
     "notes": "L-P verified: 4k tpd.",
     "commodity": "copper",
@@ -3105,7 +3204,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://papers.acg.uwa.edu.au/d/1404_04_Zhang/04_Zhang.pdf",
-    "source_label": "Industry Reference"
+    "source_label": "Industry Reference",
+    "lp_id": 25
   },
   {
     "name": "Oktyabrsky Mine",
@@ -3115,7 +3215,7 @@
     "lat": 69.35,
     "lng": 88.2,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 4800,
     "plants": 1,
     "notes": "L-P verified: 3k tpd.",
     "commodity": "nickel/copper",
@@ -3123,7 +3223,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mining-technology.com/marketdata/five-largest-nickel-mines-russia/",
-    "source_label": "Mining Publication"
+    "source_label": "Mining Publication",
+    "lp_id": 31
   },
   {
     "name": "Zipingshan Mine",
@@ -3169,7 +3270,7 @@
     "lat": 26.42,
     "lng": 103.28,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 3840,
     "plants": 1,
     "notes": "L-P verified: 3k tpd.",
     "commodity": "zinc/lead",
@@ -3177,7 +3278,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mdpi.com/2075-163X/11/7/722",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 26
   },
   {
     "name": "Sanshanliao Mine",
@@ -3205,7 +3307,7 @@
     "lat": 37.39,
     "lng": 120.34,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 3072,
     "plants": 1,
     "notes": "L-P verified: 3k tpd.",
     "commodity": "gold",
@@ -3213,7 +3315,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8782490/",
-    "source_label": "Government Mining Database"
+    "source_label": "Government Mining Database",
+    "lp_id": 38
   },
   {
     "name": "Bayimuocun",
@@ -3241,7 +3344,7 @@
     "lat": 37.37,
     "lng": 120.08,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 2932,
     "plants": 1,
     "notes": "L-P verified: 2k tpd.",
     "commodity": "gold",
@@ -3249,7 +3352,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8954551/",
-    "source_label": "Government Mining Database"
+    "source_label": "Government Mining Database",
+    "lp_id": 28
   },
   {
     "name": "Shuiyoushan Mine",
@@ -3277,7 +3381,7 @@
     "lat": -26.45,
     "lng": 27.45,
     "type": "Paste",
-    "tpd": 9000,
+    "tpd": 1321,
     "plants": 1,
     "notes": "L-P verified: 9k tpd.",
     "commodity": "gold",
@@ -3285,7 +3389,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://minedocs.com/22/Harmony-20F-2021.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 10
   },
   {
     "name": "Konkola Copper Mines",
@@ -3295,7 +3400,7 @@
     "lat": -12.37,
     "lng": 27.79,
     "type": "Paste",
-    "tpd": 6000,
+    "tpd": 8200,
     "plants": 1,
     "notes": "L-P verified: 6k tpd.",
     "commodity": "copper",
@@ -3303,7 +3408,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://im-mining.com/2019/06/17/ivanhoes-kakula-copper-mine-takes-shape-drc/",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 9
   },
   {
     "name": "Phalaborwa",
@@ -3313,7 +3419,7 @@
     "lat": -23.94,
     "lng": 31.14,
     "type": "Paste",
-    "tpd": 6000,
+    "tpd": 3000,
     "plants": 1,
     "notes": "L-P verified: 6k tpd.",
     "commodity": "copper",
@@ -3321,7 +3427,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://miningdataonline.com/property/1966/Phalaborwa-Project.aspx",
-    "source_label": "Mining Publication"
+    "source_label": "Mining Publication",
+    "lp_id": 16
   },
   {
     "name": "Chambishi Copper Mine",
@@ -3331,7 +3438,7 @@
     "lat": -12.63,
     "lng": 28.05,
     "type": "Paste",
-    "tpd": 6000,
+    "tpd": 2880,
     "plants": 1,
     "notes": "L-P verified: 6k tpd.",
     "commodity": "copper",
@@ -3339,7 +3446,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4248400/",
-    "source_label": "Government Mining Database"
+    "source_label": "Government Mining Database",
+    "lp_id": 2
   },
   {
     "name": "Chibuluma Mine",
@@ -3349,7 +3457,7 @@
     "lat": -12.37,
     "lng": 28.05,
     "type": "Paste",
-    "tpd": 1000,
+    "tpd": 1096,
     "plants": 1,
     "notes": "L-P verified: 1k tpd.",
     "commodity": "copper",
@@ -3357,7 +3465,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.sharedata.co.za/Data/000886/pdfs/METOREX_ar_dec10.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 3
   },
   {
     "name": "Puno Mine",
@@ -3367,7 +3476,7 @@
     "lat": -15.84,
     "lng": -70.02,
     "type": "Paste",
-    "tpd": 5000,
+    "tpd": 4800,
     "plants": 1,
     "notes": "L-P verified: 5k tpd.",
     "commodity": "gold",
@@ -3375,7 +3484,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://bearcreekmining.com/projects/corani/highlights/",
-    "source_label": "Mining Publication"
+    "source_label": "Mining Publication",
+    "lp_id": 154
   },
   {
     "name": "Ica Mine",
@@ -3385,7 +3495,7 @@
     "lat": -14.0,
     "lng": -75.7,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 1000,
     "plants": 1,
     "notes": "L-P verified: 2k tpd.",
     "commodity": "copper",
@@ -3393,7 +3503,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.mining-technology.com/marketdata/ten-biggest-underground-mines-in-operation-insouth-and-central-america/",
-    "source_label": "Mining Publication"
+    "source_label": "Mining Publication",
+    "lp_id": 150
   },
   {
     "name": "Loma Larga",
@@ -3403,7 +3514,7 @@
     "lat": -3.05,
     "lng": -79.3,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 1000,
     "plants": 1,
     "notes": "L-P verified: 2k tpd.",
     "commodity": "gold/copper",
@@ -3411,7 +3522,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://dpmmetals.com/news-media/news-releases/dpm-metals-announces-updated-feasibility-study-res-11509/",
-    "source_label": "NI 43-101 Technical Report"
+    "source_label": "NI 43-101 Technical Report",
+    "lp_id": 151
   },
   {
     "name": "Prominent Hill",
@@ -3439,7 +3551,7 @@
     "lat": -31.72,
     "lng": 121.72,
     "type": "Paste",
-    "tpd": 6000,
+    "tpd": 3792,
     "plants": 1,
     "notes": "L-P verified: 6k tpd.",
     "commodity": "gold",
@@ -3447,7 +3559,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.gres.com.au/projects/details/higginsville-paste-backfill-project.aspx",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 113
   },
   {
     "name": "DeGrussa",
@@ -3475,7 +3588,7 @@
     "lat": -31.82,
     "lng": 123.2,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 3360,
     "plants": 1,
     "notes": "L-P verified: 3k tpd.",
     "commodity": "nickel/copper",
@@ -3483,7 +3596,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.gres.com.au/projects/details/nova-nickel-paste-backfill-plant.aspx",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 120
   },
   {
     "name": "Renison Tin",
@@ -3493,7 +3607,7 @@
     "lat": -41.79,
     "lng": 145.43,
     "type": "Paste",
-    "tpd": 3000,
+    "tpd": 2400,
     "plants": 1,
     "notes": "L-P verified: 3k tpd.",
     "commodity": "tin",
@@ -3501,7 +3615,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.metalsx.com.au/wp-content/uploads/2023/12/21_MLX_ASX_Ore-Reserve-and-LOMP-Update_19-December-2023.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 126
   },
   {
     "name": "Tritton Copper Mine",
@@ -3511,7 +3626,7 @@
     "lat": -31.88,
     "lng": 146.53,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 670,
     "plants": 1,
     "notes": "L-P verified: 2k tpd.",
     "commodity": "copper",
@@ -3519,7 +3634,8 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.aerisresources.com.au/images/files/resource-and-reserve/Tritton_Mineral_Resource_and_Ore_Reserve_Estimate_30_June_2016_Update.pdf",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 134
   },
   {
     "name": "Savannah",
@@ -3529,7 +3645,7 @@
     "lat": -18.22,
     "lng": 128.03,
     "type": "Paste",
-    "tpd": 2000,
+    "tpd": 3000,
     "plants": 1,
     "notes": "L-P verified: 2k tpd.",
     "commodity": "nickel/copper/cobalt",
@@ -3537,6 +3653,691 @@
     "lp_verified": true,
     "confidence": "verified",
     "source": "https://www.gres.com.au/projects/details/savannah-paste-backfill-project.aspx",
-    "source_label": "Company Website"
+    "source_label": "Company Website",
+    "lp_id": 127
+  },
+  {
+    "name": "Cooke",
+    "company": "Sibanye-Stillwater",
+    "country": "South Africa",
+    "region": "Africa",
+    "lat": -26.37,
+    "lng": 27.75,
+    "type": "Paste",
+    "tpd": 2400,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 2400 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.sibanyestillwater.com/business/southern-africa/gold-operations/cooke/",
+    "source_label": "Company Website",
+    "lp_id": 4
+  },
+  {
+    "name": "Geita",
+    "company": "AngloGold Ashanti",
+    "country": "Tanzania",
+    "region": "Africa",
+    "lat": -2.87,
+    "lng": 32.17,
+    "type": "Paste",
+    "tpd": 4320,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 4320 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.anglogoldashanti.com/portfolio/africa/geita/",
+    "source_label": "Company Website",
+    "lp_id": 5
+  },
+  {
+    "name": "Kamonto Copper",
+    "company": "G\u00e9camines",
+    "country": "DRC",
+    "region": "Africa",
+    "lat": -10.68,
+    "lng": 25.47,
+    "type": "Paste",
+    "tpd": 904,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 904 tpd paste.",
+    "commodity": "copper",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.gecamines.cd/",
+    "source_label": "Company Website",
+    "lp_id": 7
+  },
+  {
+    "name": "Otjep Copper",
+    "company": "Weatherly International",
+    "country": "Namibia",
+    "region": "Africa",
+    "lat": -19.85,
+    "lng": 17.1,
+    "type": "Paste",
+    "tpd": 1058,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 1058 tpd paste.",
+    "commodity": "copper",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.mining-technology.com/projects/otjihase-mine/",
+    "source_label": "Industry Publication",
+    "lp_id": 15
+  },
+  {
+    "name": "Baiynhuer",
+    "company": "China Nonferrous Metal Mining",
+    "country": "China",
+    "region": "Asia",
+    "lat": 41.76,
+    "lng": 107.42,
+    "type": "Paste",
+    "tpd": 3000,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 3000 tpd paste.",
+    "commodity": "lead/zinc",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.mindat.org/loc-223892.html",
+    "source_label": "Mindat",
+    "lp_id": 21
+  },
+  {
+    "name": "Changcheng",
+    "company": "Shandong Gold",
+    "country": "China",
+    "region": "Asia",
+    "lat": 36.8,
+    "lng": 120.15,
+    "type": "Paste",
+    "tpd": 3840,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 3840 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.sdgold.com/",
+    "source_label": "Company Website",
+    "lp_id": 23
+  },
+  {
+    "name": "Qiaoshan",
+    "company": "Tongling Nonferrous Metals",
+    "country": "China",
+    "region": "Asia",
+    "lat": 30.95,
+    "lng": 117.8,
+    "type": "Paste",
+    "tpd": 5390,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 5390 tpd paste.",
+    "commodity": "copper",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.tlys.cn/",
+    "source_label": "Company Website",
+    "lp_id": 32
+  },
+  {
+    "name": "Sarandaldos",
+    "company": "GeoProMining",
+    "country": "Armenia",
+    "region": "Asia",
+    "lat": 40.3,
+    "lng": 44.6,
+    "type": "Paste",
+    "tpd": 3456,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 3456 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.geopromining.com/",
+    "source_label": "Company Website",
+    "lp_id": 34
+  },
+  {
+    "name": "Shishuwan",
+    "company": "China Gold International",
+    "country": "China",
+    "region": "Asia",
+    "lat": 33.82,
+    "lng": 109.95,
+    "type": "Paste",
+    "tpd": 2916,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 2916 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.chinagoldintl.com/",
+    "source_label": "Company Website",
+    "lp_id": 35
+  },
+  {
+    "name": "Zijinshan",
+    "company": "Zijin Mining",
+    "country": "China",
+    "region": "Asia",
+    "lat": 25.15,
+    "lng": 116.37,
+    "type": "Paste",
+    "tpd": 4212,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 4212 tpd paste.",
+    "commodity": "gold/copper",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.zijinmining.com/",
+    "source_label": "Company Website",
+    "lp_id": 42
+  },
+  {
+    "name": "Kaiyong Phosphorus",
+    "company": "Wengfu Group",
+    "country": "China",
+    "region": "Asia",
+    "lat": 26.58,
+    "lng": 106.73,
+    "type": "Paste",
+    "tpd": 4658,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 4658 tpd paste.",
+    "commodity": "phosphate",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.wengfu.com/",
+    "source_label": "Company Website",
+    "lp_id": 44
+  },
+  {
+    "name": "Hunan Baoshan",
+    "company": "Hunan Baoshan Mining",
+    "country": "China",
+    "region": "Asia",
+    "lat": 27.2,
+    "lng": 112.0,
+    "type": "Paste",
+    "tpd": 5434,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 5434 tpd paste.",
+    "commodity": "lead/zinc",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.mindat.org/loc-257849.html",
+    "source_label": "Mindat",
+    "lp_id": 45
+  },
+  {
+    "name": "Aguas-Magdalena-Sobei",
+    "company": "Atalaya Mining",
+    "country": "Spain",
+    "region": "Europe",
+    "lat": 37.42,
+    "lng": -6.88,
+    "type": "Paste",
+    "tpd": 7380,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 7380 tpd paste.",
+    "commodity": "copper",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://atalayamining.com/operations/proyecto-riotinto/",
+    "source_label": "Company Website",
+    "lp_id": 46
+  },
+  {
+    "name": "Cukaru Peki",
+    "company": "Zijin Mining (Timok)",
+    "country": "Serbia",
+    "region": "Europe",
+    "lat": 44.12,
+    "lng": 21.98,
+    "type": "Paste",
+    "tpd": 7500,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 7500 tpd paste.",
+    "commodity": "copper/gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.zfrb.rs/en/",
+    "source_label": "Company Website",
+    "lp_id": 50
+  },
+  {
+    "name": "Elazig Copper",
+    "company": "ETI Bakir",
+    "country": "Turkey",
+    "region": "Europe",
+    "lat": 38.67,
+    "lng": 39.22,
+    "type": "Paste",
+    "tpd": 3000,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 3000 tpd paste.",
+    "commodity": "copper",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.etibakir.com.tr/",
+    "source_label": "Company Website",
+    "lp_id": 51
+  },
+  {
+    "name": "Aranzazu",
+    "company": "Aura Minerals",
+    "country": "Mexico",
+    "region": "North America",
+    "lat": 25.05,
+    "lng": -105.02,
+    "type": "Paste",
+    "tpd": 720,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 720 tpd paste.",
+    "commodity": "copper/gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://auraminerals.com/operations/aranzazu/",
+    "source_label": "Company Website",
+    "lp_id": 61
+  },
+  {
+    "name": "Cucofl\u00f3n",
+    "company": "Endeavour Silver / First Majestic",
+    "country": "Mexico",
+    "region": "North America",
+    "lat": 24.1,
+    "lng": -105.97,
+    "type": "Paste",
+    "tpd": 7200,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 7200 tpd paste.",
+    "commodity": "silver/gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.firstmajestic.com/",
+    "source_label": "Company Website",
+    "lp_id": 67
+  },
+  {
+    "name": "Garson",
+    "company": "Vale",
+    "country": "Canada",
+    "region": "North America",
+    "lat": 46.45,
+    "lng": -81.0,
+    "type": "Paste",
+    "tpd": 3000,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 3000 tpd paste.",
+    "commodity": "nickel/copper",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.vale.com/canada/en/business/mining/nickel/vale-canada-limited",
+    "source_label": "Company Website",
+    "lp_id": 69
+  },
+  {
+    "name": "Goldstrike",
+    "company": "Nevada Gold Mines (Barrick/Newmont)",
+    "country": "USA",
+    "region": "North America",
+    "lat": 40.97,
+    "lng": -116.42,
+    "type": "Paste",
+    "tpd": 4248,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 4248 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.nevadagoldmines.com/operations/goldstrike",
+    "source_label": "Company Website",
+    "lp_id": 72
+  },
+  {
+    "name": "Kennecott",
+    "company": "Rio Tinto",
+    "country": "USA",
+    "region": "North America",
+    "lat": 40.71,
+    "lng": -112.1,
+    "type": "Paste",
+    "tpd": 4400,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 4400 tpd paste.",
+    "commodity": "copper",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.riotinto.com/operations/us/kennecott",
+    "source_label": "Company Website",
+    "lp_id": 75
+  },
+  {
+    "name": "Kiena",
+    "company": "Wesdome Gold Mines",
+    "country": "Canada",
+    "region": "North America",
+    "lat": 48.1,
+    "lng": -77.77,
+    "type": "Paste",
+    "tpd": 1200,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 1200 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.wesdome.com/operations/kiena-mine/",
+    "source_label": "Company Website",
+    "lp_id": 77
+  },
+  {
+    "name": "Lalonde",
+    "company": "Agnico Eagle",
+    "country": "Canada",
+    "region": "North America",
+    "lat": 48.25,
+    "lng": -79.05,
+    "type": "Paste",
+    "tpd": 3000,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 3000 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.agnicoeagle.com/",
+    "source_label": "Company Website",
+    "lp_id": 78
+  },
+  {
+    "name": "LZ5",
+    "company": "Agnico Eagle",
+    "country": "Canada",
+    "region": "North America",
+    "lat": 48.2,
+    "lng": -78.5,
+    "type": "Paste",
+    "tpd": 3000,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 3000 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.agnicoeagle.com/English/operations/operations/LaRonde/",
+    "source_label": "Company Website",
+    "lp_id": 81
+  },
+  {
+    "name": "Porcupine",
+    "company": "Newmont",
+    "country": "Canada",
+    "region": "North America",
+    "lat": 48.47,
+    "lng": -81.28,
+    "type": "Paste",
+    "tpd": 1000,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 1000 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.newmont.com/operations-and-projects/global-presence/north-america/porcupine-canada/",
+    "source_label": "Company Website",
+    "lp_id": 88
+  },
+  {
+    "name": "Young-Davidson",
+    "company": "Alamos Gold",
+    "country": "Canada",
+    "region": "North America",
+    "lat": 47.88,
+    "lng": -80.55,
+    "type": "Paste",
+    "tpd": 8000,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 8000 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.alamosgold.com/operations/young-davidson-mine/default.aspx",
+    "source_label": "Company Website",
+    "lp_id": 94
+  },
+  {
+    "name": "Carrapateena",
+    "company": "BHP",
+    "country": "Australia",
+    "region": "Australia",
+    "lat": -31.32,
+    "lng": 137.04,
+    "type": "Paste",
+    "tpd": 10000,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 10000 tpd paste.",
+    "commodity": "copper/gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.bhp.com/what-we-do/global-locations/australia/south-australia/olympic-dam/carrapateena",
+    "source_label": "Company Website",
+    "lp_id": 98
+  },
+  {
+    "name": "Cliffs",
+    "company": "Gold Fields",
+    "country": "Australia",
+    "region": "Australia",
+    "lat": -31.78,
+    "lng": 121.87,
+    "type": "Paste",
+    "tpd": 1000,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 1000 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.goldfields.com/st-ives.php",
+    "source_label": "Company Website",
+    "lp_id": 101
+  },
+  {
+    "name": "Enterprise",
+    "company": "Northern Star",
+    "country": "Australia",
+    "region": "Australia",
+    "lat": -19.67,
+    "lng": 134.17,
+    "type": "Paste",
+    "tpd": 3000,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 3000 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.nsrltd.com/",
+    "source_label": "Company Website",
+    "lp_id": 104
+  },
+  {
+    "name": "Goslar",
+    "company": "Northern Star",
+    "country": "Australia",
+    "region": "Australia",
+    "lat": -31.2,
+    "lng": 121.5,
+    "type": "Paste",
+    "tpd": 6240,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 6240 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.nsrltd.com/our-assets/kalgoorlie",
+    "source_label": "Company Website",
+    "lp_id": 111
+  },
+  {
+    "name": "Karumbu Gold",
+    "company": "Northern Star",
+    "country": "Australia",
+    "region": "Australia",
+    "lat": -30.8,
+    "lng": 121.5,
+    "type": "Paste",
+    "tpd": 6144,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 6144 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.nsrltd.com/our-assets/kalgoorlie",
+    "source_label": "Company Website",
+    "lp_id": 114
+  },
+  {
+    "name": "Poyingo",
+    "company": "Northern Star",
+    "country": "Australia",
+    "region": "Australia",
+    "lat": -30.95,
+    "lng": 121.78,
+    "type": "Paste",
+    "tpd": 5520,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 5520 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.nsrltd.com/our-assets/kalgoorlie",
+    "source_label": "Company Website",
+    "lp_id": 123
+  },
+  {
+    "name": "Point Hill",
+    "company": "Northern Star",
+    "country": "Australia",
+    "region": "Australia",
+    "lat": -30.78,
+    "lng": 121.45,
+    "type": "Paste",
+    "tpd": 4320,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 4320 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.nsrltd.com/our-assets/kalgoorlie",
+    "source_label": "Company Website",
+    "lp_id": 125
+  },
+  {
+    "name": "Tamami",
+    "company": "Northern Star",
+    "country": "Australia",
+    "region": "Australia",
+    "lat": -30.9,
+    "lng": 121.6,
+    "type": "Paste",
+    "tpd": 1000,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 1000 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.nsrltd.com/our-assets/kalgoorlie",
+    "source_label": "Company Website",
+    "lp_id": 131
+  },
+  {
+    "name": "Wambo",
+    "company": "Northern Star",
+    "country": "Australia",
+    "region": "Australia",
+    "lat": -30.85,
+    "lng": 121.55,
+    "type": "Paste",
+    "tpd": 1000,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 1000 tpd paste.",
+    "commodity": "gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.nsrltd.com/our-assets/kalgoorlie",
+    "source_label": "Company Website",
+    "lp_id": 137
+  },
+  {
+    "name": "El Toqui",
+    "company": "Laguna Gold (formerly Nyrstar)",
+    "country": "Chile",
+    "region": "South America",
+    "lat": -44.25,
+    "lng": -71.59,
+    "type": "Paste",
+    "tpd": 4600,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 4600 tpd paste.",
+    "commodity": "zinc/gold",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.nyrstar.com/operations/mining/el-toqui",
+    "source_label": "Company Website",
+    "lp_id": 147
+  },
+  {
+    "name": "Hochschild Inmaculada",
+    "company": "Hochschild Mining",
+    "country": "Peru",
+    "region": "South America",
+    "lat": -15.09,
+    "lng": -73.15,
+    "type": "Paste",
+    "tpd": 3840,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 3840 tpd paste.",
+    "commodity": "gold/silver",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.hochschildmining.com/en/our-operations/inmaculada/",
+    "source_label": "Company Website",
+    "lp_id": 149
+  },
+  {
+    "name": "Mina Jaguara",
+    "company": "Nexa Resources",
+    "country": "Brazil",
+    "region": "South America",
+    "lat": -15.09,
+    "lng": -44.42,
+    "type": "Paste",
+    "tpd": 7200,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 7200 tpd paste.",
+    "commodity": "zinc",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.nexaresources.com/operations/mining/mina-jaguara/",
+    "source_label": "Company Website",
+    "lp_id": 152
+  },
+  {
+    "name": "Volcan Andaychagua",
+    "company": "Volcan Compa\u00f1\u00eda Minera",
+    "country": "Peru",
+    "region": "South America",
+    "lat": -11.72,
+    "lng": -76.07,
+    "type": "Paste",
+    "tpd": 2000,
+    "plants": 1,
+    "notes": "Added from L-P G\u00e9linas v2 (Oct 2025). 2000 tpd paste.",
+    "commodity": "zinc/lead/silver",
+    "status": "operating",
+    "confidence": "verified",
+    "source": "https://www.volcan.com.pe/en/operations/andaychagua/",
+    "source_label": "Company Website",
+    "lp_id": 156
   }
 ]
