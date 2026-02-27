@@ -1959,7 +1959,7 @@
     "ore_tpd": 2400,
     "designer": "Paterson & Cooke",
     "status": "under construction",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://www.juniorminingnetwork.com/junior-miner-news/press-releases/1192-tsx/agi/196515-alamos-gold-announces-island-gold-district-expansion-to-20-000-tpd-creating-one-of-canada-s-largest-and-lowest-cost-gold-mines-with-attractive-economics-including-69-after-tax-irr-and-12-2-billion-npv-at-4-500-oz-gold.html",
     "source_label": "Company Website"
   },
@@ -2489,7 +2489,7 @@
     "commodity": "gold/silver/copper/zinc",
     "ore_tpd": 6300,
     "status": "operating",
-    "confidence": "likely",
+    "confidence": "verified",
     "source": "https://cyanidecode.org/wp-content/uploads/2025/08/AgnicoEagleLaRondeSAR2024.pdf",
     "source_label": "Company Website"
   },

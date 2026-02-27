@@ -302,6 +302,7 @@ fetch('data.json').then(r=>r.json()).then(async data=>{
         if (match) {
           d.last_updated = new Date(match.reviewed_at).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'});
           d.updated_by = match.submitter_name;
+          d.confidence = 'verified';
         }
       });
     }
