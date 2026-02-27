@@ -392,6 +392,7 @@ function renderMap(data){
       <div class="popup-row"><span class="popup-label">Confidence</span><span class="popup-val">${conf} ${esc(d.confidence)||'—'}</span></div>
       <div class="popup-row"><span class="popup-label">Commodity</span><span class="popup-val">${esc(d.commodity)||'—'}</span></div>
       ${d.source ? '<div class="popup-row"><span class="popup-label">Source</span><span class="popup-val"><a href="'+encodeURI(d.source)+'" target="_blank" rel="noopener" style="font-size:11px;color:var(--accent)">'+esc(d.source_label||'View source')+'</a></span></div>' : ''}
+      ${d.last_updated ? '<div class="popup-row" style="margin-top:6px;border-top:1px solid var(--border);padding-top:4px"><span class="popup-label">Last Updated</span><span class="popup-val" style="font-size:11px;color:var(--muted)">'+(d.last_updated)+' by '+(esc(d.updated_by)||'—')+'</span></div>' : ''}
       <a class="suggest-link" href="#" onclick="openCorrection('${safeName}');return false">📝 Suggest a correction</a>
     `,{maxWidth:300});
     clusterGroup.addLayer(marker);
