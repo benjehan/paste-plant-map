@@ -141,7 +141,7 @@ a:hover{text-decoration:underline}
       <select id="filterRegion"><option value="">All Regions</option></select>
       <select id="filterCommodity"><option value="">All Commodities</option></select>
       <select id="filterStatus"><option value="">All Statuses</option></select>
-      <select id="filterConfidence"><option value="">All Confidence</option></select>
+      <select id="filterConfidence"><option value="">All Confidence</option><option value="verified" selected>Verified Only</option><option value="likely">Likely</option></select>
     </div>
     <div id="map"></div>
   </div>
@@ -266,7 +266,7 @@ fetch('data.json').then(r=>r.json()).then(data=>{
   allData=data;
   populateFilters(data);
   initMap();
-  renderAll(data);
+  applyFilters();
 });
 
 // Load news
@@ -303,7 +303,6 @@ function populateFilters(data){
   add('filterRegion',[...new Set(data.map(d=>d.region))].sort());
   add('filterCommodity',[...new Set(data.map(d=>(d.commodity||'').split('/')[0]).filter(Boolean))].sort());
   add('filterStatus',[...new Set(data.map(d=>d.status).filter(Boolean))].sort());
-  add('filterConfidence',[...new Set(data.map(d=>d.confidence).filter(Boolean))].sort());
   document.querySelectorAll('.filter-bar select, .filter-bar input').forEach(el=>el.addEventListener('input',applyFilters));
 }
 
