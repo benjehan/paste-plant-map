@@ -635,7 +635,8 @@ function applyFilters(){
 }
 
 function initMap(){
-  map=L.map('map',{zoomControl:true,attributionControl:false,worldCopyJump:true,minZoom:2,maxZoom:18}).setView([20,0],2);
+  map=L.map('map',{zoomControl:false,attributionControl:false,worldCopyJump:true,minZoom:2,maxZoom:18}).setView([20,0],2);
+  L.control.zoom({position:'topright'}).addTo(map);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:18}).addTo(map);
   L.control.attribution({prefix:false,position:'bottomright'}).addAttribution('© <a href="https://carto.com">CARTO</a> © <a href="https://osm.org">OSM</a>').addTo(map);
 }
