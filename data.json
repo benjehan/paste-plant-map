@@ -13,7 +13,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 3500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://minedocs.com/23/Granny-Smith-TR-12312021.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Odysseus (Cosmos)",
@@ -29,7 +31,9 @@
     "commodity": "nickel",
     "status": "operating",
     "ore_tpd": 2500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.igo.com.au/sustainabilityreport/2022/16-17/",
+    "source_label": "Company Website"
   },
   {
     "name": "Kathleen Valley",
@@ -47,7 +51,9 @@
     "year_commissioned": 2024,
     "designer": "GR Engineering",
     "status": "operating",
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.liontown.com/latest-news/paste-plant-construction-complete/",
+    "source_label": "Company Website"
   },
   {
     "name": "Golden Grove",
@@ -64,7 +70,9 @@
     "status": "operating",
     "ore_tpd": 3800,
     "year_commissioned": 2002,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.listcorp.com/asx/29m/29metals-limited/news/2024-mineral-resources-and-ore-reserves-estimates-updated-3158934.html",
+    "source_label": "Company Website"
   },
   {
     "name": "Flying Fox",
@@ -81,7 +89,9 @@
     "status": "operating",
     "ore_tpd": 1500,
     "year_commissioned": 2008,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://igo.com.au/site/pdf/cc8b7aad-4996-4f7c-a28b-73d58d577a22/FY23-Mineral-Resources-and-Ore-Reserves-Statement.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Telfer",
@@ -97,7 +107,9 @@
     "commodity": "gold/copper",
     "ore_tpd": 27400,
     "status": "operating",
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.greatland.com.au/wp-content/uploads/2025/12/Havieron-Project-Feasibility-Study-Presentation.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Lake Cowal",
@@ -113,7 +125,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 9600,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://evolutionmining.com/wp-content/uploads/2025/11/fy25-cowal-fact-sheet-1.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Cobar (CSA Mine)",
@@ -130,7 +144,9 @@
     "status": "operating",
     "ore_tpd": 3000,
     "year_commissioned": 2006,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.glencore.com/media-and-insights/news/glencore-closes-sale-of-cobar-mine",
+    "source_label": "Company Website"
   },
   {
     "name": "Lady Loretta",
@@ -146,7 +162,9 @@
     "commodity": "zinc/lead",
     "status": "operating",
     "ore_tpd": 2700,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.glencore.com/dam/jcr:27756a61-b398-41da-bdfc-3dde51a54ac3/Xstrata-2007-OM.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Pajingo",
@@ -162,7 +180,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 1000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://australianminingreview.com.au/wp-content/uploads/2024/05/AMR_APR2022-WEB2.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Fender",
@@ -178,7 +198,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 2500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://tinkaresources.com/wp-content/uploads/2024/04/tinka_ayawilca_2024_tr_240412_final.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Bronzewing",
@@ -194,7 +216,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 1800,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.asx.com.au/asxpdf/20191223/pdf/44cttnxmlkb7yz.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Olympic Dam",
@@ -211,7 +235,9 @@
     "ore_tpd": 12300,
     "year_commissioned": 2026,
     "status": "commissioning 2026",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.bhp.com/news/articles/2025/10/bhp-investing-to-boost-olympic-dam-operations",
+    "source_label": "Company Website"
   },
   {
     "name": "George Fisher",
@@ -228,7 +254,9 @@
     "status": "operating",
     "ore_tpd": 5500,
     "year_commissioned": 2005,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.glencoretechnology.com/.rest/api/v1/documents/d23cbeff146f7007355c354fa913476f/2020+IsaMill+Compendium+of+Papers.pdf?download=true",
+    "source_label": "Company Website"
   },
   {
     "name": "Sunrise Dam",
@@ -244,7 +272,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 5500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://cyanidecode.org/wp-content/uploads/2025/03/AngloSunriseSAR2014_0.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Henty",
@@ -261,7 +291,9 @@
     "status": "operating",
     "ore_tpd": 1200,
     "year_commissioned": 2000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.listcorp.com/asx/kau/kaiser-reef-limited/news/transformational-acquisition-of-the-henty-gold-mine-3168246.html",
+    "source_label": "Company Website"
   },
   {
     "name": "Plutonic",
@@ -278,7 +310,9 @@
     "status": "operating",
     "ore_tpd": 2500,
     "year_commissioned": 2003,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://api.investi.com.au/api/announcements/cyl/09744c2d-713.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Dugald River",
@@ -294,7 +328,9 @@
     "commodity": "zinc/lead/silver",
     "ore_tpd": 4800,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.mmg.com/wp-content/uploads/2025/09/2025-Mineral-Resource-and-Ore-Reserve-Statement-and-Technical-Appendix.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Capricorn Copper",
@@ -310,7 +346,9 @@
     "commodity": "copper",
     "status": "operating",
     "ore_tpd": 2000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.listcorp.com/asx/29m/29metals-limited/news/2024-mineral-resources-and-ore-reserves-estimates-updated-3158934.html",
+    "source_label": "Company Website"
   },
   {
     "name": "Woodlawn",
@@ -326,7 +364,9 @@
     "commodity": "copper/zinc/lead",
     "status": "operating",
     "ore_tpd": 1500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.listcorp.com/asx/dvp/develop-global-limited/news/updated-woodlawn-mine-plan-to-generate-exceptional-returns-2924125.html",
+    "source_label": "Company Website"
   },
   {
     "name": "SKO (South Kalgoorlie)",
@@ -342,7 +382,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 2500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://minedocs.com/17/NorthernStar_Fact_2018.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Big Bell",
@@ -358,7 +400,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 2000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://westgold.com.au/pdf/d5ff5105-39b1-4618-a863-63a76313e78d/June-24-Quarterly-Results.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Bluebird",
@@ -374,7 +418,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 1500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://westgold.com.au/pdf/d5ff5105-39b1-4618-a863-63a76313e78d/June-24-Quarterly-Results.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Cannington",
@@ -393,7 +439,9 @@
     "designer": "Golder Pastetech",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.asx.com.au/asxpdf/20170824/pdf/43lp75ts0h0zpg.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Garden Well",
@@ -410,7 +458,9 @@
     "year_commissioned": 2026,
     "status": "commissioning 2026",
     "ore_tpd": 2500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.listcorp.com/asx/rrl/regis-resources-limited/news/development-approval-for-two-underground-mines-3028235.html",
+    "source_label": "Company Website"
   },
   {
     "name": "Kanowna Belle",
@@ -427,7 +477,9 @@
     "status": "operating",
     "ore_tpd": 3500,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://minedocs.com/17/NorthernStar-Kalgoorlie-Fact-Sheet-2016.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Mt Charlotte",
@@ -444,7 +496,9 @@
     "year_commissioned": 1963,
     "status": "operating",
     "ore_tpd": 2000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.superpit.com.au/wp-content/uploads/2024/03/Fimiston-South-ERD-v4-20240311-Print-version-v2.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Karari (Carosue Dam)",
@@ -462,7 +516,9 @@
     "designer": "GR Engineering",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://portergeo.com.au/database/mineinfo.php?mineid=mn1741",
+    "source_label": "Company Website"
   },
   {
     "name": "Mt Isa",
@@ -479,7 +535,9 @@
     "year_commissioned": 2001,
     "status": "operating",
     "ore_tpd": 6000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.mininglink.com.au/mine-details/mt-isa-cu-orebodies",
+    "source_label": "Company Website"
   },
   {
     "name": "Mungari",
@@ -495,7 +553,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 4700,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://minedocs.com/23/Evolution-MR-02162022.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "St Ives",
@@ -512,7 +572,9 @@
     "status": "operating",
     "ore_tpd": 4000,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.goldfields.com/pdf/investors/presentation/2022/australia-site-visit-nov-2022-st-ives.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Tanami",
@@ -529,7 +591,9 @@
     "status": "operating",
     "ore_tpd": 7200,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.technogen.com.au/wp-content/uploads/2025/01/TechnoGen-Project-Profiles-NEWMONT-Tanami.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Leinster",
@@ -546,7 +610,9 @@
     "status": "operating",
     "ore_tpd": 3500,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.bhp.com/-/media/documents/media/reports-and-presentations/2025/250805_bhpgistmconformancestatementandpublicdisclosure2025.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Pogo",
@@ -562,7 +628,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 3200,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.asx.com.au/asxpdf/20180928/pdf/43yr8w5tx372xj.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Thunderbox",
@@ -579,7 +647,9 @@
     "status": "operating",
     "ore_tpd": 2500,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.gres.com.au/projects/details/thunderbox-expansion-project.aspx",
+    "source_label": "Company Website"
   },
   {
     "name": "Tomingley Gold",
@@ -596,7 +666,9 @@
     "designer": "MineFill Services",
     "status": "operating",
     "ore_tpd": 1200,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.listcorp.com/asx/alk/alkane-resources-limited/news/annual-report-to-shareholders-3100715.html",
+    "source_label": "Company Website"
   },
   {
     "name": "Didipio",
@@ -612,7 +684,9 @@
     "commodity": "gold/copper",
     "status": "operating",
     "ore_tpd": 3500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://region2.mgb.gov.ph/a-closer-look-at-oceanagolds-best-practices-conducts-mine-tour-for-the-members-of-the-press/",
+    "source_label": "Company Website"
   },
   {
     "name": "Bulyanhulu",
@@ -628,7 +702,9 @@
     "commodity": "gold",
     "ore_tpd": 3300,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://minedocs.com/28/Barrick-CP-North-Mara-Bulyanhulu-Site-Visit-05082024pdf.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "North Mara",
@@ -645,7 +721,9 @@
     "ore_tpd": 8000,
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://minedocs.com/28/Barrick-CP-North-Mara-Bulyanhulu-Site-Visit-05082024pdf.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Loulo-Gounkoto",
@@ -662,7 +740,9 @@
     "ore_tpd": 13700,
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://minedocs.com/24/Loulo-Gounkoto-TR-12312022.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Kibali",
@@ -680,7 +760,9 @@
     "year_commissioned": 2015,
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://minedocs.com/22/Barrick_Kibali_TR_12312021.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Kamoa-Kakula",
@@ -699,7 +781,9 @@
     "designer": "CITIC Construction",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.ivanhoemines.com/news-stories/news-release/kamoa-kakula-to-begin-copper-production-within-a-month/",
+    "source_label": "Company Website"
   },
   {
     "name": "Obuasi",
@@ -716,7 +800,9 @@
     "ore_tpd": 4000,
     "year_commissioned": 2020,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.globalminingreview.com/mining/30092021/anglogold-ashanti-provides-obuasi-underground-mining-update/",
+    "source_label": "Company Website"
   },
   {
     "name": "Wassa",
@@ -735,7 +821,9 @@
     "designer": "GR Engineering",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://miningdataonline.com/property/193/Wassa-Mine.aspx",
+    "source_label": "Mining Publication"
   },
   {
     "name": "South Deep",
@@ -752,7 +840,9 @@
     "ore_tpd": 11000,
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.goldfields.com/pdf/sustainbility/transparency-and-disclosure/annual-tailings-disclosure-report-final-5-august-2025.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Sukari",
@@ -769,7 +859,9 @@
     "year_commissioned": 2023,
     "designer": "Lycopodium",
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.anglogoldashanti.com/wp-content/uploads/centamin/zt612205-centamin-sukari-ni-43-101-final-v10.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Rosh Pinah",
@@ -787,7 +879,9 @@
     "year_commissioned": 2026,
     "status": "commissioning 2026",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.mining.com/rosh-pinah-zinc-commissions-namibias-first-paste-backfill-plant/",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Khoemacau",
@@ -804,7 +898,9 @@
     "ore_tpd": 10000,
     "year_commissioned": 2026,
     "status": "commissioning 2026",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.mmg.com/wp-content/uploads/2024/05/c_f-Competent-Persons-Report.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Platreef",
@@ -820,7 +916,9 @@
     "commodity": "PGM/nickel/copper/gold",
     "ore_tpd": 1918,
     "status": "commissioning 2026",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.ivanhoemines.com/wp-content/uploads/250329-Platreef-IDP25_RevF.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Nova Xavantina",
@@ -836,7 +934,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 1200,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.sec.gov/Archives/edgar/data/1853860/000162828023006809/a991-aif.htm",
+    "source_label": "Technical Report (SEDAR/SEC)"
   },
   {
     "name": "Caraíba",
@@ -851,7 +951,9 @@
     "notes": "~40k m³/month capacity (~1,333 m³/day × 2.0 t/m³ = ~2,667 tpd). Ero Brasil copper mine.",
     "commodity": "copper",
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.sec.gov/Archives/edgar/data/1853860/000162828023006809/a991-aif.htm",
+    "source_label": "Technical Report (SEDAR/SEC)"
   },
   {
     "name": "Turmalina",
@@ -867,7 +969,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 1800,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://jaguarmining.com/files/2024/03/application/65f3007c7fe8c.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Aripuanã",
@@ -882,7 +986,9 @@
     "notes": "45,000 m³/month capacity (~1,500 m³/day × 2.0 t/m³ = ~3,000 tpd). Nexa Resources polymetallic.",
     "commodity": "zinc/copper",
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.nexaresources.com/en/nexa-resources-announces-aripuana-ramp-up-and-exploration-program-update/",
+    "source_label": "Company Website"
   },
   {
     "name": "Buriticá",
@@ -897,7 +1003,9 @@
     "notes": "1,700 m³/day paste capacity (Marlon Suarez). ~3,400 tpd at 2.0 t/m³ density.",
     "commodity": "gold",
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.sec.gov/Archives/edgar/data/1829726/000110465922092225/tm2220483d2_ex4-1.htm",
+    "source_label": "Technical Report (SEDAR/SEC)"
   },
   {
     "name": "Marmato",
@@ -913,7 +1021,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 2000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://aris-mining.com/operation/marmato/",
+    "source_label": "Company Website"
   },
   {
     "name": "Vazante",
@@ -926,7 +1036,9 @@
     "tpd": 5000,
     "plants": 1,
     "notes": "Low-cement paste fill from flotation tailings. 5,000 tpd.",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.sec.gov/Archives/edgar/data/1713930/000110465921039824/tm2110062d1_ex99-1.htm",
+    "source_label": "Technical Report (SEDAR/SEC)"
   },
   {
     "name": "Yauricocha",
@@ -942,7 +1054,9 @@
     "commodity": "copper/zinc/lead/silver",
     "status": "operating",
     "ore_tpd": 3200,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.e-mj.com/leading-developments/alpayana-completes-sierra-metals-takeover/",
+    "source_label": "Company Website"
   },
   {
     "name": "Tambomayo",
@@ -958,7 +1072,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 3000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://minedocs.com/22/Tambomayo-PFS-03152022.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Almina (SOMINCOR)",
@@ -974,7 +1090,9 @@
     "commodity": "copper/zinc",
     "status": "operating",
     "ore_tpd": 4500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.boliden.com/operations/mines/boliden-somincor/",
+    "source_label": "Company Website"
   },
   {
     "name": "Zinkgruvan",
@@ -991,7 +1109,9 @@
     "year_commissioned": 2001,
     "status": "operating",
     "ore_tpd": 3300,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.boliden.com/operations/mines/boliden-zinkgruvan/",
+    "source_label": "Company Website"
   },
   {
     "name": "Neves-Corvo (Somincor)",
@@ -1008,7 +1128,9 @@
     "status": "operating",
     "ore_tpd": 5500,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.boliden.com/operations/mines/boliden-somincor/",
+    "source_label": "Company Website"
   },
   {
     "name": "Olympias",
@@ -1026,7 +1148,9 @@
     "status": "operating",
     "ore_tpd": 1500,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.eldoradogold.com/sites/eldorado-gold/files/eldorado/assets/operations/olympias/oly-technical-report-2023-12-31-final.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Mavres Petres",
@@ -1043,7 +1167,9 @@
     "year_commissioned": 1996,
     "status": "operating",
     "ore_tpd": 1000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.eldoradogold.com/sites/eldorado-gold/files/eldorado/assets/operations/olympias/oly-technical-report-2023-12-31-final.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Skouries",
@@ -1059,7 +1185,9 @@
     "commodity": "copper/gold",
     "year_commissioned": 2026,
     "status": "commissioning 2026",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.eldoradogold.com/investors/news-releases/eldorado-gold-delivers-strong-2025-full-year-and-fourth-quarter-financial",
+    "source_label": "Company Website"
   },
   {
     "name": "SASA",
@@ -1076,7 +1204,9 @@
     "status": "operating",
     "ore_tpd": 2700,
     "year_commissioned": 2025,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://im-mining.com/2023/01/10/camls-sasa-in-north-macedonia-advancing-cut-and-fill-project-plus-new-paste-backfill-plant/",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Çayeli",
@@ -1094,7 +1224,9 @@
     "status": "operating",
     "ore_tpd": 2700,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://minedocs.com/17/FirstQuantumMinerals_AIF_2016.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Lubin",
@@ -1110,7 +1242,9 @@
     "commodity": "copper",
     "status": "operating",
     "ore_tpd": 25000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://minedocs.com/11/KGMT_Technical_Report_Micon_Lubin_2013.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Kittilä",
@@ -1125,7 +1259,9 @@
     "notes": "Europe's largest gold mine (~7,000 kg Au/yr). Agnico Eagle. ~2.0 Mtpa ore (~5,500 tpd). Est. ~3,000 tpd paste.",
     "commodity": "gold",
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2024/AGNICO-EAGLE-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2023-RESULTS-RECORD-QUARTERLY-AND-ANNUAL-GOLD-PRODUCTION-AND-FREE-CASH-FLOW-RECORD-MINERAL-RESERVES-INCREASED-10.5-UPDATED-THREE-YEAR-GUIDANCE-02-15-2024/default.aspx",
+    "source_label": "Company Website"
   },
   {
     "name": "Kankberg",
@@ -1141,7 +1277,9 @@
     "commodity": "gold/tellurium",
     "status": "operating",
     "ore_tpd": 1000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.boliden.com/newsroom/news--media/stories/sand-recycling/",
+    "source_label": "Company Website"
   },
   {
     "name": "Kristineberg",
@@ -1157,7 +1295,9 @@
     "commodity": "zinc/copper",
     "status": "operating",
     "ore_tpd": 1200,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.boliden.com/newsroom/news--media/stories/sand-recycling/",
+    "source_label": "Company Website"
   },
   {
     "name": "Renstrom",
@@ -1173,7 +1313,9 @@
     "commodity": "zinc/gold",
     "status": "operating",
     "ore_tpd": 800,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.boliden.com/49034a/globalassets/operations/exploration/mineral-resources-and-mineral-reserves-pdf/2024/resources-and-reserves-renstrom-2024-12-31.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Viscaria",
@@ -1188,7 +1330,9 @@
     "notes": "New paste plant being designed. Paste backfill using thickened tailings.",
     "commodity": "copper",
     "status": "planned",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.mining-technology.com/news/rejlers-copperstones-copper-restart/",
+    "source_label": "Company Website"
   },
   {
     "name": "Aguas Tenidas (MATSA)",
@@ -1205,7 +1349,9 @@
     "status": "operating",
     "ore_tpd": 4500,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.sandfire.com.au/wp-content/uploads/2023/03/December2021HalfYearFinancialReportandAppendix4D.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Los Frailes",
@@ -1221,7 +1367,9 @@
     "commodity": "zinc/lead/copper",
     "designer": "Paterson & Cooke",
     "status": "planned",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.panglobalresources.com/news/pan-global-welcomes-approval-of-grupo-mexicos-adjacent-los-frailes-mine",
+    "source_label": "Company Website"
   },
   {
     "name": "Vares (Rupice)",
@@ -1236,7 +1384,9 @@
     "notes": "DPM Metals acquisition. Paste backfill plant pad completed. Not yet in commercial production.",
     "commodity": "silver/zinc/lead",
     "status": "commissioning 2026",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://minedocs.com/29/Vares-TR-04012025.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "South Crofty",
@@ -1251,7 +1401,9 @@
     "notes": "Tin mine, Cornwall. Planned.",
     "commodity": "tin",
     "status": "planned",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://abmec.org.uk/cornish-metals-reports-positive-preliminary-economic-assessment-results-for-south-crofty/",
+    "source_label": "Company Website"
   },
   {
     "name": "Zijin Bor",
@@ -1267,7 +1419,9 @@
     "commodity": "copper",
     "status": "operating",
     "ore_tpd": 8000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.zijinmining.com/global/program-detail-71737.htm",
+    "source_label": "Company Website"
   },
   {
     "name": "Sakatti",
@@ -1282,7 +1436,9 @@
     "notes": "Advanced project, planned paste",
     "commodity": "copper/nickel/PGM",
     "status": "planned",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://minedocs.com/28/Ikkari-PFS-02142025.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Brucejack",
@@ -1299,7 +1455,9 @@
     "ore_tpd": 3800,
     "year_commissioned": 2017,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://operations.newmont.com/_doc/operation/bluejack/Brucejacks%20Area%20B%20withdrawal%20letter%20and%20Mine%20Act%20M-243%20application.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Kidd Creek",
@@ -1315,7 +1473,9 @@
     "commodity": "copper/zinc",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://minedocs.com/22/Timmins_West_TR_06_30_2021.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Raglan",
@@ -1331,7 +1491,9 @@
     "commodity": "nickel/copper",
     "status": "operating",
     "ore_tpd": 4000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.falcores.com/wp-content/uploads/2022/06/Horne-5_EF_2021.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Macassa",
@@ -1347,7 +1509,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2024/AGNICO-EAGLE-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2023-RESULTS-RECORD-QUARTERLY-AND-ANNUAL-GOLD-PRODUCTION-AND-FREE-CASH-FLOW-RECORD-MINERAL-RESERVES-INCREASED-10.5-UPDATED-THREE-YEAR-GUIDANCE-02-15-2024/default.aspx",
+    "source_label": "Company Website"
   },
   {
     "name": "Meliadine",
@@ -1363,7 +1527,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://cyanidecode.org/wp-content/uploads/2025/03/AgnicoEagleMeliadineMineSAR2023.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Pinos Altos",
@@ -1380,7 +1546,9 @@
     "status": "operating",
     "ore_tpd": 2000,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://cyanidecode.org/wp-content/uploads/2025/08/AgnicoEaglePinosAltosSAR2015_0.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Niobec",
@@ -1396,7 +1564,9 @@
     "commodity": "niobium",
     "ore_tpd": 3500,
     "status": "operating",
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.iamgold.com/English/investors/news-releases/news-releases-details/2009/IAMGOLDApprovesMillExpansionPasteBackfillPlantatNiobecNiobiumMineSignificantlyIncreasestheMinesLongTermCashFlow/default.aspx",
+    "source_label": "Company Website"
   },
   {
     "name": "Red Lake",
@@ -1413,7 +1583,9 @@
     "status": "operating",
     "ore_tpd": 2700,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://cyanidecode.org/wp-content/uploads/2021/06/EvolutionRedLakeSAR2021.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Leeville / Rodeo",
@@ -1431,7 +1603,9 @@
     "status": "operating",
     "ore_tpd": 3000,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://undergroundmining.com/projects/leeville/",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Meikle",
@@ -1448,7 +1622,9 @@
     "status": "operating",
     "ore_tpd": 2500,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://simemug.com/technical-case-studies/development-of-colloidal-mixer-based-crf-systems",
+    "source_label": "Company Website"
   },
   {
     "name": "Media Luna",
@@ -1466,7 +1642,9 @@
     "year_commissioned": 2025,
     "designer": "Paterson & Cooke",
     "status": "commissioning 2026",
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://torexgold.com/news-and-media/news/torex-announces-a-positive-pea-for-its-media-luna-project-including-a-new-inferred-resource-estimate-of-7.4-million-gold-equiv/",
+    "source_label": "Company Website"
   },
   {
     "name": "Thompson Mine",
@@ -1482,7 +1660,9 @@
     "commodity": "nickel",
     "status": "operating",
     "ore_tpd": 4000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.gov.mb.ca/sd/eal/registries/557.1/rpt_vale_rar350_noa_20210706_final_rev.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Williams (Hemlo)",
@@ -1499,7 +1679,9 @@
     "status": "operating",
     "ore_tpd": 3000,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.barrick.com/English/news/news-details/2020/modernized-hemlo-transitions-to-underground-mining/default.aspx",
+    "source_label": "Company Website"
   },
   {
     "name": "Onaping Depth",
@@ -1514,7 +1696,9 @@
     "notes": "US$700M deep mine project. Mechanized cut and fill with paste backfill. Below existing Craig Mine. Proposal sent.",
     "commodity": "nickel/copper",
     "status": "planned",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://im-mining.com/2022/05/27/glencore-reveals-bev-mining-fleet-order-for-onaping-depth-all-electric-nickel-copper-mine/",
+    "source_label": "Company Website"
   },
   {
     "name": "McArthur River",
@@ -1530,7 +1714,9 @@
     "commodity": "uranium",
     "status": "operating",
     "ore_tpd": 1100,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.cameco.com/sites/default/files/documents/cameco-2024-annual-information-form.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Kensington",
@@ -1546,7 +1732,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 1500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://s201.q4cdn.com/254090064/files/doc_downloads/operations/Kensington-TR.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Lucky Friday",
@@ -1563,7 +1751,9 @@
     "ore_tpd": 1000,
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.hecla.com/wp-content/uploads/SLR-Hecla-Lucky-Friday-FINAL-S-K-1300-TRS-21-Feb-2022-rev_web.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Stillwater",
@@ -1580,7 +1770,9 @@
     "status": "operating",
     "ore_tpd": 3500,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.sibanyestillwater.com/business/americas/pgm-operations-americas/stillwater-east-boulder/",
+    "source_label": "Company Website"
   },
   {
     "name": "Myra Falls",
@@ -1596,7 +1788,9 @@
     "commodity": "zinc/copper/gold/silver",
     "status": "operating",
     "ore_tpd": 2000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "http://mssi.nrs.gov.bc.ca/MyraFalls/MyraFalls_2014_EPRP_OMSManual.pdf",
+    "source_label": "Government Mining Database"
   },
   {
     "name": "Windfall",
@@ -1611,7 +1805,9 @@
     "notes": "Quebec gold project. Paste backfill plant in initial CapEx. Gold Fields acquisition.",
     "commodity": "gold",
     "status": "planned",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.osiskomining.com/osisko-mining-delivers-positive-feasibility-study-for-windfall/",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Timmins West (Tahoe)",
@@ -1627,7 +1823,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 1800,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://panamericansilver.com/wp-content/uploads/2023/01/Timmins-West-TR-2021-06-filed-2022.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Terronera",
@@ -1644,7 +1842,9 @@
     "ore_tpd": 2000,
     "year_commissioned": 2025,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://capstonecopper.com/wp-content/uploads/2023/01/CZ-Technical-Report-Mar-11-2022.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Juanicipio",
@@ -1661,7 +1861,9 @@
     "status": "operating",
     "ore_tpd": 4000,
     "year_commissioned": 2023,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://panamericansilver.com/wp-content/uploads/2026/01/PAAS-Investor-Presentation_Jan_2026.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Lamaque",
@@ -1677,7 +1879,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 2500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.eldoradogold.com/sites/eldorado-gold/files/2025-02/Lamaque%20Complex%20Technical%20Report%20-%20Dec%2031%202024%20-%2020250220_Final%201.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Island Gold",
@@ -1694,7 +1898,9 @@
     "ore_tpd": 2400,
     "designer": "Paterson & Cooke",
     "status": "under construction",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.juniorminingnetwork.com/junior-miner-news/press-releases/1192-tsx/agi/196515-alamos-gold-announces-island-gold-district-expansion-to-20-000-tpd-creating-one-of-canada-s-largest-and-lowest-cost-gold-mines-with-attractive-economics-including-69-after-tax-irr-and-12-2-billion-npv-at-4-500-oz-gold.html",
+    "source_label": "Company Website"
   },
   {
     "name": "Rajpura Dariba",
@@ -1710,7 +1916,9 @@
     "commodity": "zinc/lead",
     "ore_tpd": 5500,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://im-mining.com/2020/12/22/flsmidth-to-deliver-dry-stack-tailings-solution-at-hindustan-zincs-rajpura-dariba-mine/",
+    "source_label": "Company Website"
   },
   {
     "name": "Zawar",
@@ -1726,7 +1934,9 @@
     "commodity": "zinc/lead",
     "ore_tpd": 6027,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://im-mining.com/2020/12/22/flsmidth-to-deliver-dry-stack-tailings-solution-at-hindustan-zincs-rajpura-dariba-mine/",
+    "source_label": "Company Website"
   },
   {
     "name": "Kayad",
@@ -1742,7 +1952,9 @@
     "commodity": "zinc/lead",
     "status": "operating",
     "ore_tpd": 3000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=9OkF1OAB%2FMjw7P5%2FkJbDD+zfIgyslN8llrmXRLD5f3VfcLbPldI%2F2a63Lx++wEkAxZTuwjIlc3pdPa3uhA9fI0Ciyd+++jq+bi15YyCZSwg%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzXmG8GlihX6H9UP1HygCn3pCkAF2zPFXFQNqA4krKa1Aw%3D%3D",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Jabal Sayid",
@@ -1761,7 +1973,9 @@
     "status": "operating",
     "ore_tpd": 3200,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.gres.com.au/projects/details/jabal-sayid-filter-project.aspx",
+    "source_label": "Company Website"
   },
   {
     "name": "Kainantu",
@@ -1778,7 +1992,9 @@
     "ore_tpd": 3288,
     "year_commissioned": 2025,
     "status": "commissioning 2026",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://k92mining.com/site/assets/files/6377/k92_updated_2024_dfs_technical_report.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Porgera",
@@ -1794,7 +2010,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 6500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.gres.com.au/theme/grescomau/assets/public/Image/Projects/Porgera_Paste_Backfill_Project/Project_Focus_-_Porgera_Paste_Plant.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Bad Grund",
@@ -1809,7 +2027,9 @@
     "notes": "First paste plant in the world (historical). Closed.",
     "commodity": "zinc/lead",
     "status": "closed",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8707897/",
+    "source_label": "Government Mining Database"
   },
   {
     "name": "Fruta del Norte",
@@ -1828,7 +2048,9 @@
     "status": "operating",
     "ore_tpd": 4200,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://lundingold.com/fruta-del-norte/fruta-del-norte/operational-overview/",
+    "source_label": "Company Website"
   },
   {
     "name": "Garpenberg",
@@ -1845,7 +2067,9 @@
     "ore_tpd": 8200,
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://investors.boliden.com/en/press/decision-increase-backfill-capacity-garpenberg-2309885",
+    "source_label": "Company Website"
   },
   {
     "name": "Cozamin",
@@ -1861,7 +2085,9 @@
     "commodity": "copper/silver",
     "status": "operating",
     "ore_tpd": 3600,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://capstonecopper.com/operations/cozamin/",
+    "source_label": "Company Website"
   },
   {
     "name": "Grasberg (DMLZ)",
@@ -1877,7 +2103,9 @@
     "commodity": "copper/gold",
     "ore_tpd": 240000,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://miningdataonline.com/property/3303/Grasberg-Complex.aspx",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Cerro Lindo",
@@ -1894,7 +2122,9 @@
     "ore_tpd": 18000,
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://minedocs.com/19/Cerro-Lindo-TR-12312020.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Chelopech",
@@ -1910,7 +2140,9 @@
     "commodity": "copper/gold",
     "ore_tpd": 6000,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://dpmmetals.com/news-media/news-releases/dundee-precious-metals-announces-pre-feasibility-s-9826/",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Creighton",
@@ -1926,7 +2158,9 @@
     "commodity": "nickel/copper",
     "status": "operating",
     "ore_tpd": 5000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://minedocs.com/24/Sudbury-TR-12312022.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Totten",
@@ -1942,7 +2176,9 @@
     "commodity": "nickel/copper",
     "status": "operating",
     "ore_tpd": 2000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://minedocs.com/24/Sudbury-TR-12312022.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Coleman",
@@ -1958,7 +2194,9 @@
     "commodity": "nickel/copper",
     "status": "operating",
     "ore_tpd": 3500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://utoronto.scholaris.ca/server/api/core/bitstreams/d43ece49-6a16-4061-b76a-c6caff5dcd74/content",
+    "source_label": "Company Website"
   },
   {
     "name": "Voisey's Bay",
@@ -1976,7 +2214,9 @@
     "ore_tpd": 3000,
     "year_commissioned": 2022,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://vale.com/w/vale-base-metals-complete-voisey-s-bay-transition-to-underground-mining",
+    "source_label": "Company Website"
   },
   {
     "name": "Eleonore",
@@ -1993,7 +2233,9 @@
     "status": "operating",
     "ore_tpd": 3500,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://s24.q4cdn.com/382246808/files/document_library/Eleonore-Technical-Report-November-2018.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Casa Berardi",
@@ -2010,7 +2252,9 @@
     "status": "operating",
     "ore_tpd": 3000,
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.hecla.com/wp-content/uploads/HECLA-CASA-BERARDI-SK1300-RESPEC-V8.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Greens Creek",
@@ -2026,7 +2270,9 @@
     "commodity": "silver/zinc/gold/lead",
     "status": "operating",
     "ore_tpd": 2300,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.hecla.com/wp-content/uploads/2019-Greens-Creek-Technical-Report-43-101-31Mar19-Final.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Turquoise Ridge",
@@ -2042,7 +2288,9 @@
     "commodity": "gold",
     "status": "operating",
     "ore_tpd": 3500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://minedocs.com/19/Turquoise-Ridge-TR-12312023.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Eagle Mine",
@@ -2058,7 +2306,9 @@
     "commodity": "nickel/copper",
     "status": "operating",
     "ore_tpd": 2000,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://minedocs.com/23/Eagle-TR-12312022.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Caylloma",
@@ -2074,7 +2324,9 @@
     "commodity": "silver/zinc/lead",
     "status": "operating",
     "ore_tpd": 1500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://fortunamining.com/wp-content/uploads/2024/02/technical_report_caylloma_mine_240216.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Caijiaying",
@@ -2090,7 +2342,9 @@
     "commodity": "zinc/gold",
     "status": "operating",
     "ore_tpd": 3600,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://miningdataonline.com/property/994/Caijiaying-Mine.aspx",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Rampura Agucha",
@@ -2107,7 +2361,9 @@
     "ore_tpd": 10274,
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.geomechanics.io/news/article/cimichindustan-zinc-tailings-recycling-project-design-notes-for-mine-engineers",
+    "source_label": "Company Website"
   },
   {
     "name": "Sindesar Khurd",
@@ -2124,7 +2380,9 @@
     "ore_tpd": 5500,
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.facebook.com/HindustanZinc/videos/sindesar-khurd-indias-most-mechanised-mine/1069853486970864/",
+    "source_label": "Company Website"
   },
   {
     "name": "Tara",
@@ -2140,7 +2398,9 @@
     "commodity": "zinc/lead",
     "status": "operating",
     "ore_tpd": 5500,
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://investors.boliden.com/en/press/decision-increase-backfill-capacity-garpenberg-2309885",
+    "source_label": "Company Website"
   },
   {
     "name": "LaRonde",
@@ -2156,7 +2416,9 @@
     "commodity": "gold/silver/copper/zinc",
     "ore_tpd": 6300,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://cyanidecode.org/wp-content/uploads/2025/08/AgnicoEagleLaRondeSAR2024.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Goldex",
@@ -2173,7 +2435,9 @@
     "ore_tpd": 5500,
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2013/Agnico-Eagle-announces-development-project-update-La-India-commissioning-underway-and-mining-and-processing-has-restarted-at-Goldex-09-19-2013/default.aspx",
+    "source_label": "Company Website"
   },
   {
     "name": "Meadowbank / Amaruq",
@@ -2189,7 +2453,9 @@
     "commodity": "gold",
     "ore_tpd": 4000,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://cyanidecode.org/wp-content/uploads/2025/03/AgnicoEagleMeliadineMineSAR2023.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Fosterville",
@@ -2206,7 +2472,9 @@
     "ore_tpd": 1600,
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://emtek.com.au/projects/paste-plant",
+    "source_label": "Company Website"
   },
   {
     "name": "Hope Bay",
@@ -2222,7 +2490,9 @@
     "commodity": "gold",
     "ore_tpd": 2000,
     "status": "care & maintenance",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2024/AGNICO-EAGLE-REPORTS-FOURTH-QUARTER-AND-FULL-YEAR-2023-RESULTS-RECORD-QUARTERLY-AND-ANNUAL-GOLD-PRODUCTION-AND-FREE-CASH-FLOW-RECORD-MINERAL-RESERVES-INCREASED-10.5-UPDATED-THREE-YEAR-GUIDANCE-02-15-2024/default.aspx",
+    "source_label": "Company Website"
   },
   {
     "name": "Detour Lake",
@@ -2238,7 +2508,9 @@
     "commodity": "gold",
     "ore_tpd": 75000,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://s205.q4cdn.com/243646470/files/doc_downloads/DetourLake/N1-43-101-Detour-Lake-Mine.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Ernest Henry",
@@ -2255,7 +2527,9 @@
     "ore_tpd": 6800,
     "year_commissioned": 2011,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://minedocs.com/23/Evolution-MR-02162022.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Spotted Quoll",
@@ -2271,7 +2545,9 @@
     "commodity": "nickel",
     "ore_tpd": 1500,
     "status": "operating",
-    "confidence": "likely"
+    "confidence": "likely",
+    "source": "https://www.igo.com.au/site/pdf/24e1eb53-85d0-4b7e-8f6e-b20333eba996/FY25-Mineral-Resources-and-Ore-Reserves-Report.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Golden Giant Mine",
@@ -2287,7 +2563,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12158861/",
+    "source_label": "Government Mining Database"
   },
   {
     "name": "Caribou",
@@ -2303,7 +2581,9 @@
     "commodity": "zinc/lead",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://investingnews.com/daily/resource-investing/precious-metals-investing/silver-investing/trevali-mining-backfill-tests-caribou-indicate-feasibility/",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Johnny Lee Deposit",
@@ -2319,7 +2599,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.globenewswire.com/news-release/2025/12/16/3206033/0/en/Sandfire-Resources-America-Announces-Results-of-Updated-Pre-Feasibility-Study-for-the-Johnny-Lee-Deposit-and-Updated-Mineral-Resource-for-the-Lowry-Deposit-at-the-Black-Butte-Coppe.html",
+    "source_label": "Company Website"
   },
   {
     "name": "Outokumpu Kemi",
@@ -2335,7 +2617,9 @@
     "commodity": "chromite",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.mining-technology.com/projects/kemi/",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Yulong Copper Mine",
@@ -2351,7 +2635,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.zijinmining.com/global/program-detail-71738.htm",
+    "source_label": "Company Website"
   },
   {
     "name": "Inchuan No. 2",
@@ -2367,7 +2653,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "http://en.jnmc.com/2024-02/23/c_964665.htm",
+    "source_label": "Reference"
   },
   {
     "name": "Kemoto Copper Company",
@@ -2383,7 +2671,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://miningdataonline.com/property/1062/KTO-Mine.aspx",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Modikwa Platinum Mine",
@@ -2399,7 +2689,9 @@
     "commodity": "PGM",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.mining-technology.com/projects/modikwa-platinum/",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Tenke Fungurume",
@@ -2415,7 +2707,9 @@
     "commodity": "copper/cobalt",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.ivanhoemines.com/wp-content/uploads/kamoa-kakula-technical-report-march-2019-1.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Okep Copper Project",
@@ -2431,7 +2725,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.listcorp.com/asx/orn/orion-minerals-limited/news/robust-development-pathway-for-okiep-copper-project-3170783.html",
+    "source_label": "Company Website (Orion Minerals ASX)"
   },
   {
     "name": "Cuiabá",
@@ -2447,7 +2743,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://reports.anglogoldashanti.com/22/wp-content/uploads/2023/05/AGA-RR22.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Cabildo",
@@ -2463,7 +2761,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://jusmundi.com/fr/document/decision/en-glencore-finance-bermuda-ltd-v-plurinational-state-of-bolivia-award-friday-8th-september-2023",
+    "source_label": "Company Website"
   },
   {
     "name": "El Teniente",
@@ -2479,7 +2779,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://utoronto.scholaris.ca/bitstreams/802cd599-c160-463b-89ee-2ed3e5663522/download",
+    "source_label": "Company Website"
   },
   {
     "name": "Agnew",
@@ -2495,7 +2797,9 @@
     "commodity": "gold/nickel",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.goldfields.com/reports/rr_2009/tech_agnew.php",
+    "source_label": "Company Website"
   },
   {
     "name": "Gwalia",
@@ -2511,7 +2815,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.ohsa.com.au/australias-key-projects-mine-expansions/",
+    "source_label": "Company Website"
   },
   {
     "name": "Frog's Leg",
@@ -2527,7 +2833,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://minedocs.com/23/Evolution-MR-02162022.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Tropicana",
@@ -2543,7 +2851,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.igo.com.au/site/content/InteractiveDocument/Sustainability/files/assets/common/downloads/publication.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Brunswick Mine",
@@ -2559,7 +2869,9 @@
     "commodity": "zinc/lead",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.mining-technology.com/projects/brunswick/",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Odyssey",
@@ -2575,7 +2887,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.agnicoeagle.com/English/news-and-media/news-releases/news-details/2023/AGNICO-EAGLE-PROVIDES-UPDATE-ON-CANADIAN-MALARTIC-COMPLEX-INTERNAL-STUDY-DEMONSTRATES-IMPROVED-VALUE-EXTENDS-MINE-LIFE-AND-SUPPORTS-POTENTIAL-FUTURE-PRODUCTION-GROWTH-IN-THE-ABITIBI-GREENSTONE-BELT-POSITIVE-EXPLORATION-RESULTS-EXP-06-20-2023/default.aspx",
+    "source_label": "Company Website"
   },
   {
     "name": "Copper Mountain",
@@ -2591,7 +2905,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://s23.q4cdn.com/405985100/files/doc_downloads/tech_reports/canada/cmm-ni-43-101-technical-report-dec-5-2023.pdf",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Ming Copper-Gold",
@@ -2607,7 +2923,9 @@
     "commodity": "copper/gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.gov.nl.ca/eccc/files/FireFly-GBMM-Registration-Appendices-part1-1.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Westwood",
@@ -2623,7 +2941,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.iamgold.com/English/investors/news-releases/news-releases-details/2024/IAMGOLD-Provides-Westwood-Updated-Mine-Plan-and-Mineral-Resource--Mineral-Reserve-Estimates/default.aspx",
+    "source_label": "Company Website"
   },
   {
     "name": "Bagdad Mine",
@@ -2639,7 +2959,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.sec.gov/Archives/edgar/data/831259/000083125921000009/fcx-20201231.htm",
+    "source_label": "Technical Report (SEDAR/SEC)"
   },
   {
     "name": "Kemi Mine",
@@ -2655,7 +2977,9 @@
     "commodity": "chromite",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://miningdataonline.com/property/1056/Kemi-Mine.aspx",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Zhangmatun Mine",
@@ -2671,7 +2995,9 @@
     "commodity": "iron",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8954551/",
+    "source_label": "Government Mining Database"
   },
   {
     "name": "Tonglushan Mine",
@@ -2687,7 +3013,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9101011/",
+    "source_label": "Government Mining Database"
   },
   {
     "name": "Uchalinski Mine",
@@ -2703,7 +3031,9 @@
     "commodity": "copper/zinc",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://en.wikipedia.org/wiki/Uchalinsky_mine",
+    "source_label": "Wikipedia"
   },
   {
     "name": "Big Gossan",
@@ -2719,7 +3049,9 @@
     "commodity": "copper/gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.sec.gov/Archives/edgar/data/831259/000083125922000012/a2021trsptfi-exhibit.htm",
+    "source_label": "Technical Report (SEDAR/SEC)"
   },
   {
     "name": "Komsomolsky Mine",
@@ -2735,7 +3067,9 @@
     "commodity": "nickel/copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.mdpi.com/2075-163X/8/8",
+    "source_label": "Reference"
   },
   {
     "name": "Qiushan Mine",
@@ -2751,7 +3085,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://baike.baidu.com/en/item/Qichun%20County/997997",
+    "source_label": "Reference"
   },
   {
     "name": "Dongguashan Copper",
@@ -2767,7 +3103,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://papers.acg.uwa.edu.au/d/1404_04_Zhang/04_Zhang.pdf",
+    "source_label": "Industry Reference"
   },
   {
     "name": "Oktyabrsky Mine",
@@ -2783,7 +3121,9 @@
     "commodity": "nickel/copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.mining-technology.com/marketdata/five-largest-nickel-mines-russia/",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Zipingshan Mine",
@@ -2799,7 +3139,9 @@
     "commodity": "zinc/lead",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://doi.org/10.1007/s12613-023-2663-0",
+    "source_label": "Academic Paper (IJMMM 2023)"
   },
   {
     "name": "Chengcheng Mine",
@@ -2815,7 +3157,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://en.wikipedia.org/wiki/Qingchengzi_mine",
+    "source_label": "Wikipedia"
   },
   {
     "name": "Huize Mine",
@@ -2831,7 +3175,9 @@
     "commodity": "zinc/lead",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.mdpi.com/2075-163X/11/7/722",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Sanshanliao Mine",
@@ -2847,7 +3193,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.hkexnews.hk/listedco/listconews/sehk/2018/0914/01787_3476377/ESGMC-20180914-39.pdf",
+    "source_label": "Technical Report (HKEX Filing)"
   },
   {
     "name": "Xincheng Gold Mine",
@@ -2863,7 +3211,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8782490/",
+    "source_label": "Government Mining Database"
   },
   {
     "name": "Bayimuocun",
@@ -2879,7 +3229,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://silvercorpmetals.com/byp-mine-legacy/",
+    "source_label": "Reference"
   },
   {
     "name": "Jiaojia Gold Mine",
@@ -2895,7 +3247,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8954551/",
+    "source_label": "Government Mining Database"
   },
   {
     "name": "Shuiyoushan Mine",
@@ -2911,7 +3265,9 @@
     "commodity": "zinc/lead",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.asianmetal.com/news/data/1361156/China%20Minmetals%20-%20Shuikoushan%20copper-lead-zinc%20comprehensive%20base%20project%20settled",
+    "source_label": "Industry Reference (AsianMetal)"
   },
   {
     "name": "Kusasalethu",
@@ -2927,7 +3283,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://minedocs.com/22/Harmony-20F-2021.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Konkola Copper Mines",
@@ -2943,7 +3301,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://im-mining.com/2019/06/17/ivanhoes-kakula-copper-mine-takes-shape-drc/",
+    "source_label": "Company Website"
   },
   {
     "name": "Phalaborwa",
@@ -2959,7 +3319,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://miningdataonline.com/property/1966/Phalaborwa-Project.aspx",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Chambishi Copper Mine",
@@ -2975,7 +3337,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4248400/",
+    "source_label": "Government Mining Database"
   },
   {
     "name": "Chibuluma Mine",
@@ -2991,7 +3355,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.sharedata.co.za/Data/000886/pdfs/METOREX_ar_dec10.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Puno Mine",
@@ -3007,7 +3373,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://bearcreekmining.com/projects/corani/highlights/",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Ica Mine",
@@ -3023,7 +3391,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.mining-technology.com/marketdata/ten-biggest-underground-mines-in-operation-insouth-and-central-america/",
+    "source_label": "Mining Publication"
   },
   {
     "name": "Loma Larga",
@@ -3039,7 +3409,9 @@
     "commodity": "gold/copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://dpmmetals.com/news-media/news-releases/dpm-metals-announces-updated-feasibility-study-res-11509/",
+    "source_label": "NI 43-101 Technical Report"
   },
   {
     "name": "Prominent Hill",
@@ -3055,7 +3427,9 @@
     "commodity": "copper/gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.bhp.com/news/articles/2025/10/bhp-investing-to-boost-olympic-dam-operations",
+    "source_label": "Company Website"
   },
   {
     "name": "Higginsville",
@@ -3071,7 +3445,9 @@
     "commodity": "gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.gres.com.au/projects/details/higginsville-paste-backfill-project.aspx",
+    "source_label": "Company Website"
   },
   {
     "name": "DeGrussa",
@@ -3087,7 +3463,9 @@
     "commodity": "copper/gold",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.gres.com.au/projects/details/degrussa-paste-backfill-plant.aspx",
+    "source_label": "Company Website"
   },
   {
     "name": "Nova Nickel",
@@ -3103,7 +3481,9 @@
     "commodity": "nickel/copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.gres.com.au/projects/details/nova-nickel-paste-backfill-plant.aspx",
+    "source_label": "Company Website"
   },
   {
     "name": "Renison Tin",
@@ -3119,7 +3499,9 @@
     "commodity": "tin",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.metalsx.com.au/wp-content/uploads/2023/12/21_MLX_ASX_Ore-Reserve-and-LOMP-Update_19-December-2023.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Tritton Copper Mine",
@@ -3135,7 +3517,9 @@
     "commodity": "copper",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.aerisresources.com.au/images/files/resource-and-reserve/Tritton_Mineral_Resource_and_Ore_Reserve_Estimate_30_June_2016_Update.pdf",
+    "source_label": "Company Website"
   },
   {
     "name": "Savannah",
@@ -3151,6 +3535,8 @@
     "commodity": "nickel/copper/cobalt",
     "status": "operating",
     "lp_verified": true,
-    "confidence": "verified"
+    "confidence": "verified",
+    "source": "https://www.gres.com.au/projects/details/savannah-paste-backfill-project.aspx",
+    "source_label": "Company Website"
   }
 ]
