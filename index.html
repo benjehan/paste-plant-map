@@ -287,17 +287,20 @@ fetch('data.json').then(r=>r.json()).then(async data=>{
   allData=data;
   // Enrich with approved submission data
   try {
-    const subRes = await fetch(SUPABASE_URL + '/rest/v1/mine_submissions?status=eq.approved&select=existing_mine_name,submitter_name,reviewed_at&order=reviewed_at.desc', {
+    const subRes = await fetch(SUPABASE_URL + '/rest/v1/mine_submissions?status=eq.approved&select=mine_name,existing_mine_name,submitter_name,reviewed_at,submission_type&order=reviewed_at.desc', {
       headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY }
     });
     if (subRes.ok) {
       const subs = await subRes.json();
       const subMap = {};
-      subs.forEach(s => { if (s.existing_mine_name && !subMap[s.existing_mine_name]) subMap[s.existing_mine_name] = s; });
+      subs.forEach(s => {
+        const key = s.existing_mine_name || s.mine_name;
+        if (key && !subMap[key.toLowerCase()]) subMap[key.toLowerCase()] = s;
+      });
       allData.forEach(d => {
-        const match = subMap[d.name];
+        const match = subMap[d.name.toLowerCase()];
         if (match) {
-          d.last_updated = new Date(match.reviewed_at).toLocaleDateString('en-GB', {day:'numeric',month:'short'});
+          d.last_updated = new Date(match.reviewed_at).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'});
           d.updated_by = match.submitter_name;
         }
       });
@@ -429,7 +432,7 @@ function renderMap(data){
       </div>
       ${d.source?'<div class="popup-source">📎 <a href="'+encodeURI(d.source)+'" target="_blank" rel="noopener">'+esc(d.source_label||'View source')+' →</a></div>':''}
       <div class="popup-footer">
-        ${d.last_updated?'Updated '+d.last_updated+(d.updated_by?' by '+esc(d.updated_by):'')+'<br>':''}
+        ${d.last_updated?'<div style="margin-bottom:4px;font-size:11px;color:var(--muted)">✅ Last checked '+d.last_updated+(d.updated_by?' by <strong style="color:var(--text)">'+esc(d.updated_by)+'</strong>':'')+'</div>':''}
         <a class="suggest-link" href="#" onclick="openCorrection('${safeName}');return false">📝 Suggest a correction</a>
       </div>
     `,{maxWidth:320});
