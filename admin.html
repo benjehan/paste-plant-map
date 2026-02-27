@@ -3,7 +3,7 @@
 <head>
 <!--
   SETUP INSTRUCTIONS:
-  1. Run schema-auth.sql in Supabase SQL Editor
+  1. Run schema-auth.sql + schema-mines.sql in Supabase SQL Editor
   2. Go to Supabase Dashboard > Authentication > Users > Add User
      Email: ben@minesmart.io, set a password
   3. Run in SQL Editor:
@@ -29,7 +29,16 @@ a{color:var(--accent);text-decoration:none}
 .btn-sm{padding:5px 10px;font-size:12px}
 
 .container{max-width:1200px;margin:0 auto;padding:20px}
-.stats-bar{display:flex;gap:16px;margin-bottom:20px}
+
+/* Tabs */
+.tabs{display:flex;gap:0;margin-bottom:20px;border-bottom:2px solid var(--border)}
+.tab{padding:10px 24px;cursor:pointer;font-size:14px;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+.stats-bar{display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap}
 .stat-box{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px 24px;text-align:center}
 .stat-box .num{font-size:28px;font-weight:700;color:var(--accent)}
 .stat-box .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
@@ -51,12 +60,13 @@ a{color:var(--accent);text-decoration:none}
 
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;justify-content:center;align-items:center}
 .modal-overlay.active{display:flex}
-.modal{background:var(--panel);border-radius:8px;padding:24px;width:90%;max-width:500px;max-height:90vh;overflow-y:auto;border:1px solid var(--border)}
+.modal{background:var(--panel);border-radius:8px;padding:24px;width:90%;max-width:560px;max-height:90vh;overflow-y:auto;border:1px solid var(--border)}
 .modal h2{margin-bottom:16px;color:var(--accent);font-size:18px}
 .modal label{display:block;font-size:12px;color:var(--muted);margin:8px 0 4px;text-transform:uppercase}
 .modal input,.modal select,.modal textarea{width:100%;background:var(--card);color:var(--text);border:1px solid var(--border);padding:8px;border-radius:4px;font-size:13px}
 .modal textarea{height:80px;resize:vertical}
 .modal-actions{display:flex;gap:8px;margin-top:16px;justify-content:flex-end}
+.modal-row{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
 
 .field-changed{background:rgba(241,196,0,.12);border-radius:3px;padding:1px 4px}
 .field-old{color:var(--red);text-decoration:line-through;opacity:.8}
@@ -72,6 +82,18 @@ a{color:var(--accent);text-decoration:none}
 #loginScreen input{width:100%;background:var(--panel);color:var(--text);border:1px solid var(--border);padding:10px;border-radius:4px;font-size:13px;margin-bottom:12px}
 .login-error{color:var(--red);font-size:13px;margin-bottom:12px;display:none}
 .user-email{color:var(--muted);font-size:12px;margin-right:8px}
+
+/* Mines tab */
+.mines-toolbar{display:flex;gap:12px;margin-bottom:16px;align-items:center;flex-wrap:wrap}
+.mines-toolbar input{background:var(--card);color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:4px;font-size:13px;flex:1;min-width:200px}
+.mines-toolbar input:focus{outline:none;border-color:var(--accent)}
+.mines-toolbar select{background:var(--card);color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:4px;font-size:13px;min-width:120px}
+.mines-table{width:100%;border-collapse:collapse;font-size:13px}
+.mines-table th{text-align:left;padding:8px 10px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap}
+.mines-table th:hover{color:var(--accent)}
+.mines-table td{padding:8px 10px;border-bottom:1px solid var(--border);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mines-table tr:hover{background:rgba(0,169,157,.05);cursor:pointer}
+.mines-count{color:var(--muted);font-size:12px;margin-left:auto}
 </style>
 </head>
 <body>
@@ -98,17 +120,58 @@ a{color:var(--accent);text-decoration:none}
   </div>
 
   <div id="adminPanel" style="display:none">
-    <div class="stats-bar">
-      <div class="stat-box pending"><div class="num" id="pendingCount">0</div><div class="lbl">Pending</div></div>
-      <div class="stat-box"><div class="num" id="approvedCount">0</div><div class="lbl">Approved</div></div>
-      <div class="stat-box"><div class="num" id="rejectedCount">0</div><div class="lbl">Rejected</div></div>
-      <div class="stat-box"><div class="num" id="totalCount">0</div><div class="lbl">Total</div></div>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('submissions')">📋 Submissions</div>
+      <div class="tab" onclick="switchTab('mines')">⛏️ Mines</div>
     </div>
-    <div id="submissionsList"></div>
+
+    <!-- Submissions Tab -->
+    <div class="tab-content active" id="tab-submissions">
+      <div class="stats-bar">
+        <div class="stat-box pending"><div class="num" id="pendingCount">0</div><div class="lbl">Pending</div></div>
+        <div class="stat-box"><div class="num" id="approvedCount">0</div><div class="lbl">Approved</div></div>
+        <div class="stat-box"><div class="num" id="rejectedCount">0</div><div class="lbl">Rejected</div></div>
+        <div class="stat-box"><div class="num" id="totalCount">0</div><div class="lbl">Total</div></div>
+      </div>
+      <div id="submissionsList"></div>
+    </div>
+
+    <!-- Mines Tab -->
+    <div class="tab-content" id="tab-mines">
+      <div class="mines-toolbar">
+        <input type="text" id="mineSearch" placeholder="Search mines, companies, countries..." oninput="filterMines()">
+        <select id="mineStatusFilter" onchange="filterMines()">
+          <option value="">All Statuses</option>
+          <option value="operating">Operating</option>
+          <option value="closed">Closed</option>
+          <option value="care & maintenance">Care & Maint.</option>
+          <option value="planned">Planned</option>
+          <option value="under construction">Under Construction</option>
+        </select>
+        <button class="btn" onclick="openMineModal()">+ Add Mine</button>
+        <span class="mines-count" id="minesCount"></span>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="mines-table">
+          <thead>
+            <tr>
+              <th onclick="sortMines('name')">Name ↕</th>
+              <th onclick="sortMines('company')">Company ↕</th>
+              <th onclick="sortMines('country')">Country ↕</th>
+              <th onclick="sortMines('commodity')">Commodity ↕</th>
+              <th onclick="sortMines('tpd')">TPD ↕</th>
+              <th onclick="sortMines('status')">Status ↕</th>
+              <th onclick="sortMines('confidence')">Conf. ↕</th>
+            </tr>
+          </thead>
+          <tbody id="minesTableBody"></tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- Edit Modal -->
+<!-- Edit Submission Modal -->
 <div class="modal-overlay" id="editModal">
   <div class="modal">
     <h2 id="editTitle">Edit Submission</h2>
@@ -118,19 +181,83 @@ a{color:var(--accent);text-decoration:none}
     <label>Country</label><input id="eCountry">
     <label>Region</label><input id="eRegion">
     <label>Fill Type</label><input id="eFillType">
-    <label>TPD</label><input id="eTpd" type="number">
-    <label>Plants</label><input id="ePlants" type="number">
+    <div class="modal-row">
+      <div><label>TPD</label><input id="eTpd" type="number"></div>
+      <div><label>Plants</label><input id="ePlants" type="number"></div>
+    </div>
     <label>Commodity</label><input id="eCommodity">
-    <label>Year Commissioned</label><input id="eYear" type="number">
-    <label>Designer</label><input id="eDesigner">
-    <label>Lat</label><input id="eLat" type="number" step="any">
-    <label>Lng</label><input id="eLng" type="number" step="any">
+    <div class="modal-row">
+      <div><label>Year Commissioned</label><input id="eYear" type="number"></div>
+      <div><label>Designer</label><input id="eDesigner"></div>
+    </div>
+    <div class="modal-row">
+      <div><label>Lat</label><input id="eLat" type="number" step="any"></div>
+      <div><label>Lng</label><input id="eLng" type="number" step="any"></div>
+    </div>
     <label>Notes</label><textarea id="eNotes"></textarea>
     <label>Admin Notes</label><textarea id="eAdminNotes"></textarea>
     <div class="modal-actions">
       <button class="btn btn-outline" onclick="closeEdit()">Cancel</button>
       <button class="btn" onclick="saveEdit()">Save</button>
       <button class="btn" style="background:var(--green)" onclick="saveAndApprove()">Save & Approve</button>
+    </div>
+  </div>
+</div>
+
+<!-- Mine Edit/Add Modal -->
+<div class="modal-overlay" id="mineModal">
+  <div class="modal">
+    <h2 id="mineModalTitle">Add Mine</h2>
+    <input type="hidden" id="mineId">
+    <label>Name *</label><input id="mName">
+    <label>Company</label><input id="mCompany">
+    <div class="modal-row">
+      <div><label>Country</label><input id="mCountry"></div>
+      <div><label>Region</label>
+        <select id="mRegion">
+          <option value="">—</option>
+          <option>North America</option><option>South America</option><option>Europe</option>
+          <option>Africa</option><option>Asia</option><option>Australia</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-row">
+      <div><label>Lat</label><input id="mLat" type="number" step="any"></div>
+      <div><label>Lng</label><input id="mLng" type="number" step="any"></div>
+    </div>
+    <div class="modal-row">
+      <div><label>Type</label>
+        <select id="mType"><option>Paste</option><option>Cemented Paste</option><option>Thickened Tailings</option><option>Other</option></select>
+      </div>
+      <div><label>Status</label>
+        <select id="mStatus"><option>operating</option><option>closed</option><option>care & maintenance</option><option>planned</option><option>under construction</option><option>commissioning 2026</option></select>
+      </div>
+    </div>
+    <div class="modal-row">
+      <div><label>Paste TPD</label><input id="mTpd" type="number"></div>
+      <div><label>Ore TPD</label><input id="mOreTpd" type="number"></div>
+    </div>
+    <div class="modal-row">
+      <div><label>Plants</label><input id="mPlants" type="number" value="1"></div>
+      <div><label>Year Commissioned</label><input id="mYear" type="number"></div>
+    </div>
+    <div class="modal-row">
+      <div><label>Commodity</label><input id="mCommodity"></div>
+      <div><label>Designer</label><input id="mDesigner"></div>
+    </div>
+    <div class="modal-row">
+      <div><label>Confidence</label>
+        <select id="mConfidence"><option>likely</option><option>verified</option></select>
+      </div>
+      <div><label>Updated By</label><input id="mUpdatedBy"></div>
+    </div>
+    <label>Source URL</label><input id="mSource">
+    <label>Source Label</label><input id="mSourceLabel">
+    <label>Notes</label><textarea id="mNotes"></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeMineModal()">Cancel</button>
+      <button class="btn btn-red btn-sm" id="mineDeleteBtn" onclick="deleteMine()" style="display:none;margin-right:auto">Delete</button>
+      <button class="btn" onclick="saveMine()">Save</button>
     </div>
   </div>
 </div>
@@ -144,17 +271,59 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// Mine data for diff comparison
+// ============ TABS ============
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.tab-content#tab-${tab}`).classList.add('active');
+  event.target.classList.add('active');
+  if (tab === 'mines') loadMines();
+}
+
+// ============ AUTH ============
+(async function init() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) showAdmin(session.user.email);
+  sb.auth.onAuthStateChange((event) => { if (event === 'SIGNED_OUT') location.reload(); });
+})();
+
+async function login() {
+  const email = document.getElementById('emailInput').value.trim();
+  const password = document.getElementById('passwordInput').value;
+  const errEl = document.getElementById('loginError');
+  const btn = document.getElementById('loginBtn');
+  if (!email || !password) { errEl.textContent = 'Enter email and password'; errEl.style.display = 'block'; return; }
+  btn.disabled = true; btn.textContent = 'Signing in...'; errEl.style.display = 'none';
+  const { data, error } = await sb.auth.signInWithPassword({ email, password });
+  if (error) { errEl.textContent = error.message; errEl.style.display = 'block'; btn.disabled = false; btn.textContent = 'Login'; return; }
+  showAdmin(data.user.email);
+}
+
+function showAdmin(email) {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminPanel').style.display = 'block';
+  document.getElementById('logoutBtn').style.display = 'block';
+  document.getElementById('userEmail').textContent = email;
+  loadSubmissions();
+}
+
+async function logout() { await sb.auth.signOut(); location.reload(); }
+document.getElementById('passwordInput')?.addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+
+// ============ SUBMISSIONS TAB ============
+// Mine data for diff comparison (loaded from Supabase mines table)
 let mineData = [];
 async function loadMineData() {
   try {
-    const r = await fetch('data.json');
-    mineData = await r.json();
-  } catch(e) { console.warn('Could not load data.json for diffs:', e); }
+    const { data, error } = await sb.from('mines').select('*');
+    if (!error && data) mineData = data;
+  } catch(e) {
+    // Fallback to data.json
+    try { const r = await fetch('data.json'); mineData = await r.json(); } catch(e2) {}
+  }
 }
 loadMineData();
 
-// Field mapping: submission field -> data.json field
 const FIELD_MAP = {
   mine_name: { label: 'Mine Name', dataKey: 'name' },
   company: { label: 'Company', dataKey: 'company' },
@@ -178,87 +347,17 @@ function findExistingMine(name) {
 
 function renderDiffField(label, subVal, oldVal, isNew) {
   const sv = (subVal == null || subVal === '') ? '' : String(subVal);
-  if (!sv) return ''; // skip empty
-
-  if (isNew) {
-    return `<div class="f"><span class="fl">${label}</span><span class="field-new">${esc(sv)}</span><span class="badge-new">NEW</span></div>`;
-  }
-
+  if (!sv) return '';
+  if (isNew) return `<div class="f"><span class="fl">${label}</span><span class="field-new">${esc(sv)}</span><span class="badge-new">NEW</span></div>`;
   const ov = (oldVal == null || oldVal === '') ? '' : String(oldVal);
-
-  if (!ov) {
-    // Field not in original — new data
-    return `<div class="f"><span class="fl">${label}</span><span class="field-new">${esc(sv)}</span><span class="badge-new">NEW</span></div>`;
-  }
-
-  if (sv.toLowerCase().trim() === ov.toLowerCase().trim()) {
-    return `<div class="f field-unchanged"><span class="fl">${label}</span>${esc(sv)}</div>`;
-  }
-
+  if (!ov) return `<div class="f"><span class="fl">${label}</span><span class="field-new">${esc(sv)}</span><span class="badge-new">NEW</span></div>`;
+  if (sv.toLowerCase().trim() === ov.toLowerCase().trim()) return `<div class="f field-unchanged"><span class="fl">${label}</span>${esc(sv)}</div>`;
   return `<div class="f field-changed"><span class="fl">${label}</span><span class="field-old">${esc(ov)}</span><span class="diff-arrow">→</span><span class="field-new">${esc(sv)}</span></div>`;
 }
 
-// Check for existing session on load
-(async function init() {
-  const { data: { session } } = await sb.auth.getSession();
-  if (session) {
-    showAdmin(session.user.email);
-  }
-
-  // Listen for auth changes
-  sb.auth.onAuthStateChange((event, session) => {
-    if (event === 'SIGNED_OUT') {
-      location.reload();
-    }
-  });
-})();
-
-async function login() {
-  const email = document.getElementById('emailInput').value.trim();
-  const password = document.getElementById('passwordInput').value;
-  const errEl = document.getElementById('loginError');
-  const btn = document.getElementById('loginBtn');
-  
-  if (!email || !password) { errEl.textContent = 'Enter email and password'; errEl.style.display = 'block'; return; }
-  
-  btn.disabled = true; btn.textContent = 'Signing in...';
-  errEl.style.display = 'none';
-
-  const { data, error } = await sb.auth.signInWithPassword({ email, password });
-  
-  if (error) {
-    errEl.textContent = error.message;
-    errEl.style.display = 'block';
-    btn.disabled = false; btn.textContent = 'Login';
-    return;
-  }
-
-  showAdmin(data.user.email);
-}
-
-function showAdmin(email) {
-  document.getElementById('loginScreen').style.display = 'none';
-  document.getElementById('adminPanel').style.display = 'block';
-  document.getElementById('logoutBtn').style.display = 'block';
-  document.getElementById('userEmail').textContent = email;
-  loadSubmissions();
-}
-
-async function logout() {
-  await sb.auth.signOut();
-  location.reload();
-}
-
-// Enter key to login
-document.getElementById('passwordInput')?.addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
-
 async function loadSubmissions() {
   try {
-    const { data, error } = await sb
-      .from('mine_submissions')
-      .select('*')
-      .order('created_at', { ascending: false });
-    
+    const { data, error } = await sb.from('mine_submissions').select('*').order('created_at', { ascending: false });
     if (error) throw error;
     renderSubmissions(data);
   } catch (e) {
@@ -275,10 +374,7 @@ function renderSubmissions(data) {
   document.getElementById('rejectedCount').textContent = rejected;
   document.getElementById('totalCount').textContent = data.length;
 
-  if (!data.length) {
-    document.getElementById('submissionsList').innerHTML = '<div class="empty">No submissions yet.</div>';
-    return;
-  }
+  if (!data.length) { document.getElementById('submissionsList').innerHTML = '<div class="empty">No submissions yet.</div>'; return; }
 
   document.getElementById('submissionsList').innerHTML = data.map(d => {
     const bc = d.status === 'pending' ? 'pending' : d.status === 'approved' ? 'approved' : 'rejected';
@@ -286,23 +382,25 @@ function renderSubmissions(data) {
     const isNewMine = d.submission_type === 'new';
     const existing = !isNewMine ? findExistingMine(d.existing_mine_name) : null;
 
-    // Build diff fields
     let fieldsHtml = '';
     for (const [subKey, cfg] of Object.entries(FIELD_MAP)) {
-      const subVal = d[subKey];
-      const oldVal = existing ? existing[cfg.dataKey] : undefined;
+      const subVal = d[subKey]; const oldVal = existing ? existing[cfg.dataKey] : undefined;
       const row = renderDiffField(cfg.label, subVal, oldVal, isNewMine);
       if (row) fieldsHtml += row;
     }
-
-    // Always show metadata fields (non-diff)
     fieldsHtml += `<div class="f"><span class="fl">Submitter</span>${esc(d.submitter_name||'')} ${d.submitter_email?'('+esc(d.submitter_email)+')':''}</div>`;
     fieldsHtml += `<div class="f"><span class="fl">Submitted</span>${date}</div>`;
     if (d.existing_mine_name) fieldsHtml += `<div class="f"><span class="fl">Existing Mine</span>${esc(d.existing_mine_name)}</div>`;
-    if (!isNewMine && !existing && d.existing_mine_name) fieldsHtml += `<div class="f"><span class="fl" style="color:var(--yellow)">⚠ Mine not found in data.json</span></div>`;
+    if (!isNewMine && !existing && d.existing_mine_name) fieldsHtml += `<div class="f"><span class="fl" style="color:var(--yellow)">⚠ Mine not found in database</span></div>`;
     if (d.notes) fieldsHtml += `<div class="f"><span class="fl">Notes</span>${esc(d.notes)}</div>`;
     if (d.source_reference) fieldsHtml += `<div class="f"><span class="fl">Source</span>${esc(d.source_reference)}</div>`;
     if (d.admin_notes) fieldsHtml += `<div class="f"><span class="fl">Admin Notes</span>${esc(d.admin_notes)}</div>`;
+
+    const pendingActions = d.status === 'pending' ? `
+      <button class="btn btn-sm" style="background:var(--green)" onclick="approveAndAddToMines('${d.id}')">✓ Approve & Add to Mines</button>
+      <button class="btn btn-sm btn-outline" onclick="approve('${d.id}')">✓ Approve Only</button>
+      <button class="btn btn-sm btn-red" onclick="reject('${d.id}')">✗ Reject</button>
+    ` : '';
 
     return `<div class="card">
       <div class="card-header">
@@ -311,10 +409,7 @@ function renderSubmissions(data) {
       </div>
       <div class="fields">${fieldsHtml}</div>
       <div class="card-actions">
-        ${d.status==='pending'?`
-          <button class="btn btn-sm" style="background:var(--green)" onclick="approve('${d.id}')">✓ Approve</button>
-          <button class="btn btn-sm btn-red" onclick="reject('${d.id}')">✗ Reject</button>
-        `:''}
+        ${pendingActions}
         <button class="btn btn-sm btn-outline" onclick="openEdit('${d.id}')">Edit</button>
       </div>
     </div>`;
@@ -325,12 +420,70 @@ function esc(s) { const d = document.createElement('div'); d.textContent = s; re
 
 async function approve(id) {
   try {
-    const { error } = await sb
-      .from('mine_submissions')
-      .update({ status: 'approved', reviewed_at: new Date().toISOString() })
-      .eq('id', id);
+    const { error } = await sb.from('mine_submissions').update({ status: 'approved', reviewed_at: new Date().toISOString() }).eq('id', id);
     if (error) throw error;
-    showToast('Approved!');
+    showToast('Approved!'); loadSubmissions();
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+async function approveAndAddToMines(subId) {
+  try {
+    // Get the submission
+    const { data: subs, error: subErr } = await sb.from('mine_submissions').select('*').eq('id', subId);
+    if (subErr) throw subErr;
+    if (!subs.length) return;
+    const s = subs[0];
+
+    const mineRecord = {
+      name: s.mine_name,
+      company: s.company || null,
+      country: s.country || null,
+      region: s.region || null,
+      type: s.fill_type || 'Paste',
+      tpd: s.tpd || null,
+      ore_tpd: null,
+      plants: s.plants || 1,
+      commodity: s.commodity || null,
+      year_commissioned: s.commissioned_year || null,
+      designer: s.designer || null,
+      lat: s.lat || null,
+      lng: s.lng || null,
+      notes: s.notes || null,
+      source: s.source_reference || null,
+      confidence: 'verified',
+      status: 'operating',
+      last_updated: new Date().toISOString().split('T')[0],
+      updated_by: s.submitter_name || 'admin'
+    };
+
+    if (s.submission_type === 'correction' && s.existing_mine_name) {
+      // Find existing mine and update
+      const existing = findExistingMine(s.existing_mine_name);
+      if (existing && existing.id) {
+        // Update only non-null fields
+        const updates = { last_updated: mineRecord.last_updated, updated_by: mineRecord.updated_by, confidence: 'verified' };
+        for (const [k, v] of Object.entries(mineRecord)) {
+          if (v != null && v !== '' && k !== 'last_updated' && k !== 'updated_by' && k !== 'confidence') updates[k] = v;
+        }
+        const { error } = await sb.from('mines').update(updates).eq('id', existing.id);
+        if (error) throw error;
+        showToast('Mine updated & submission approved!');
+      } else {
+        // Can't find existing mine — insert as new
+        const { error } = await sb.from('mines').insert(mineRecord);
+        if (error) throw error;
+        showToast('Mine added (existing not found) & submission approved!');
+      }
+    } else {
+      // New submission — insert
+      const { error } = await sb.from('mines').insert(mineRecord);
+      if (error) throw error;
+      showToast('Mine added & submission approved!');
+    }
+
+    // Mark submission as approved
+    await sb.from('mine_submissions').update({ status: 'approved', reviewed_at: new Date().toISOString() }).eq('id', subId);
+    await loadMineData(); // Refresh mine data for diffs
     loadSubmissions();
   } catch(e) { alert('Error: ' + e.message); }
 }
@@ -340,22 +493,15 @@ async function reject(id) {
   try {
     const body = { status: 'rejected', reviewed_at: new Date().toISOString() };
     if (notes) body.admin_notes = notes;
-    const { error } = await sb
-      .from('mine_submissions')
-      .update(body)
-      .eq('id', id);
+    const { error } = await sb.from('mine_submissions').update(body).eq('id', id);
     if (error) throw error;
-    showToast('Rejected');
-    loadSubmissions();
+    showToast('Rejected'); loadSubmissions();
   } catch(e) { alert('Error: ' + e.message); }
 }
 
 async function openEdit(id) {
   try {
-    const { data, error } = await sb
-      .from('mine_submissions')
-      .select('*')
-      .eq('id', id);
+    const { data, error } = await sb.from('mine_submissions').select('*').eq('id', id);
     if (error) throw error;
     if (!data.length) return;
     const d = data[0];
@@ -402,10 +548,7 @@ function getEditBody() {
 async function saveEdit() {
   const id = document.getElementById('editId').value;
   try {
-    const { error } = await sb
-      .from('mine_submissions')
-      .update(getEditBody())
-      .eq('id', id);
+    const { error } = await sb.from('mine_submissions').update(getEditBody()).eq('id', id);
     if (error) throw error;
     closeEdit(); showToast('Saved!'); loadSubmissions();
   } catch(e) { alert('Error: ' + e.message); }
@@ -415,15 +558,158 @@ async function saveAndApprove() {
   const id = document.getElementById('editId').value;
   const body = { ...getEditBody(), status: 'approved', reviewed_at: new Date().toISOString() };
   try {
-    const { error } = await sb
-      .from('mine_submissions')
-      .update(body)
-      .eq('id', id);
+    const { error } = await sb.from('mine_submissions').update(body).eq('id', id);
     if (error) throw error;
     closeEdit(); showToast('Saved & Approved!'); loadSubmissions();
   } catch(e) { alert('Error: ' + e.message); }
 }
 
+// ============ MINES TAB ============
+let allMines = [], filteredMines = [], mineSortField = 'name', mineSortAsc = true;
+
+async function loadMines() {
+  try {
+    const { data, error } = await sb.from('mines').select('*').order('name');
+    if (error) throw error;
+    allMines = data || [];
+    filterMines();
+  } catch(e) {
+    document.getElementById('minesTableBody').innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:40px">Error: ${e.message}</td></tr>`;
+  }
+}
+
+function filterMines() {
+  const q = (document.getElementById('mineSearch').value || '').toLowerCase();
+  const status = document.getElementById('mineStatusFilter').value;
+  filteredMines = allMines.filter(m => {
+    if (status && m.status !== status) return false;
+    if (q && !((m.name||'').toLowerCase().includes(q) || (m.company||'').toLowerCase().includes(q) || (m.country||'').toLowerCase().includes(q) || (m.commodity||'').toLowerCase().includes(q))) return false;
+    return true;
+  });
+  sortAndRenderMines();
+}
+
+function sortMines(field) {
+  if (mineSortField === field) mineSortAsc = !mineSortAsc;
+  else { mineSortField = field; mineSortAsc = true; }
+  sortAndRenderMines();
+}
+
+function sortAndRenderMines() {
+  filteredMines.sort((a, b) => {
+    let av = a[mineSortField], bv = b[mineSortField];
+    if (av == null) av = ''; if (bv == null) bv = '';
+    if (typeof av === 'number' && typeof bv === 'number') return mineSortAsc ? av - bv : bv - av;
+    return mineSortAsc ? String(av).localeCompare(String(bv)) : String(bv).localeCompare(String(av));
+  });
+  renderMinesTable();
+}
+
+function renderMinesTable() {
+  document.getElementById('minesCount').textContent = `${filteredMines.length} of ${allMines.length} mines`;
+  if (!filteredMines.length) {
+    document.getElementById('minesTableBody').innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:40px">No mines found</td></tr>';
+    return;
+  }
+  document.getElementById('minesTableBody').innerHTML = filteredMines.map(m => {
+    const conf = m.confidence === 'verified' ? '🟢' : '🟡';
+    return `<tr onclick="openMineModal('${m.id}')">
+      <td><strong>${esc(m.name)}</strong></td>
+      <td>${esc(m.company||'—')}</td>
+      <td>${esc(m.country||'—')}</td>
+      <td>${esc(m.commodity||'—')}</td>
+      <td>${m.tpd ? m.tpd.toLocaleString() : '—'}</td>
+      <td>${esc(m.status||'—')}</td>
+      <td>${conf}</td>
+    </tr>`;
+  }).join('');
+}
+
+function openMineModal(id) {
+  const m = id ? allMines.find(x => x.id === id) : null;
+  document.getElementById('mineModalTitle').textContent = m ? 'Edit Mine' : 'Add Mine';
+  document.getElementById('mineId').value = m ? m.id : '';
+  document.getElementById('mName').value = m ? m.name || '' : '';
+  document.getElementById('mCompany').value = m ? m.company || '' : '';
+  document.getElementById('mCountry').value = m ? m.country || '' : '';
+  document.getElementById('mRegion').value = m ? m.region || '' : '';
+  document.getElementById('mLat').value = m ? m.lat || '' : '';
+  document.getElementById('mLng').value = m ? m.lng || '' : '';
+  document.getElementById('mType').value = m ? m.type || 'Paste' : 'Paste';
+  document.getElementById('mStatus').value = m ? m.status || 'operating' : 'operating';
+  document.getElementById('mTpd').value = m ? m.tpd || '' : '';
+  document.getElementById('mOreTpd').value = m ? m.ore_tpd || '' : '';
+  document.getElementById('mPlants').value = m ? m.plants || 1 : 1;
+  document.getElementById('mYear').value = m ? m.year_commissioned || '' : '';
+  document.getElementById('mCommodity').value = m ? m.commodity || '' : '';
+  document.getElementById('mDesigner').value = m ? m.designer || '' : '';
+  document.getElementById('mConfidence').value = m ? m.confidence || 'likely' : 'likely';
+  document.getElementById('mUpdatedBy').value = m ? m.updated_by || '' : '';
+  document.getElementById('mSource').value = m ? m.source || '' : '';
+  document.getElementById('mSourceLabel').value = m ? m.source_label || '' : '';
+  document.getElementById('mNotes').value = m ? m.notes || '' : '';
+  document.getElementById('mineDeleteBtn').style.display = m ? 'block' : 'none';
+  document.getElementById('mineModal').classList.add('active');
+}
+
+function closeMineModal() { document.getElementById('mineModal').classList.remove('active'); }
+
+function getMineBody() {
+  return {
+    name: document.getElementById('mName').value.trim(),
+    company: document.getElementById('mCompany').value.trim() || null,
+    country: document.getElementById('mCountry').value.trim() || null,
+    region: document.getElementById('mRegion').value || null,
+    lat: parseFloat(document.getElementById('mLat').value) || null,
+    lng: parseFloat(document.getElementById('mLng').value) || null,
+    type: document.getElementById('mType').value,
+    status: document.getElementById('mStatus').value,
+    tpd: parseInt(document.getElementById('mTpd').value) || null,
+    ore_tpd: parseInt(document.getElementById('mOreTpd').value) || null,
+    plants: parseInt(document.getElementById('mPlants').value) || 1,
+    year_commissioned: parseInt(document.getElementById('mYear').value) || null,
+    commodity: document.getElementById('mCommodity').value.trim() || null,
+    designer: document.getElementById('mDesigner').value.trim() || null,
+    confidence: document.getElementById('mConfidence').value,
+    updated_by: document.getElementById('mUpdatedBy').value.trim() || null,
+    source: document.getElementById('mSource').value.trim() || null,
+    source_label: document.getElementById('mSourceLabel').value.trim() || null,
+    notes: document.getElementById('mNotes').value.trim() || null,
+    last_updated: new Date().toISOString().split('T')[0]
+  };
+}
+
+async function saveMine() {
+  const body = getMineBody();
+  if (!body.name) { alert('Name is required'); return; }
+  const id = document.getElementById('mineId').value;
+  try {
+    if (id) {
+      const { error } = await sb.from('mines').update(body).eq('id', id);
+      if (error) throw error;
+      showToast('Mine updated!');
+    } else {
+      const { error } = await sb.from('mines').insert(body);
+      if (error) throw error;
+      showToast('Mine added!');
+    }
+    closeMineModal();
+    await loadMineData();
+    loadMines();
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+async function deleteMine() {
+  if (!confirm('Delete this mine? This cannot be undone.')) return;
+  const id = document.getElementById('mineId').value;
+  try {
+    const { error } = await sb.from('mines').delete().eq('id', id);
+    if (error) throw error;
+    closeMineModal(); showToast('Mine deleted'); await loadMineData(); loadMines();
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+// ============ UTILS ============
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg; t.style.display = 'block';
@@ -431,6 +717,7 @@ function showToast(msg) {
 }
 
 document.getElementById('editModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeEdit(); });
+document.getElementById('mineModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeMineModal(); });
 </script>
 </body>
 </html>
