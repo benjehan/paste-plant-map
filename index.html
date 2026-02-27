@@ -13,7 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a1a1f;--panel:#0d2329;--card:#112e36;--accent:#00a99d;--brand:#004a59;--text:#e0e8ea;--muted:#7a9ca8;--border:#1a3f4a;--red:#e74c3c;--yellow:#f1c40f;--green:#2ecc71}
+:root{--bg:#0a1a1f;--panel:#0d2329;--card:#112e36;--accent:#00a99d;--accent-glow:rgba(0,169,157,0.25);--brand:#004a59;--text:#e0e8ea;--muted:#7a9ca8;--border:#1a3f4a;--red:#e74c3c;--yellow:#f1c40f;--green:#2ecc71;--glass:rgba(13,35,41,0.85);--glass-border:rgba(0,169,157,0.2)}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh;display:flex;flex-direction:column}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
@@ -24,7 +24,7 @@ a:hover{text-decoration:underline}
 .header-left img{height:32px}
 .header-left h1{font-size:18px;font-weight:600;letter-spacing:0.5px}
 .header-right{display:flex;gap:8px;align-items:center}
-.btn{background:var(--accent);color:#fff;border:none;padding:7px 14px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:500;transition:all .2s}
+.btn{background:var(--accent);color:#fff;border:none;padding:7px 14px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;transition:all .2s}
 .btn:hover{background:#00c9b7;transform:translateY(-1px)}
 .btn-outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
 .btn-outline:hover{background:var(--accent);color:#fff}
@@ -55,11 +55,12 @@ a:hover{text-decoration:underline}
 .bp-banner .bp-text p{font-size:11px;color:var(--muted)}
 .bp-banner .bp-arrow{margin-left:auto;color:var(--accent);font-size:18px;flex-shrink:0}
 
-/* Stats cards */
-.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px}
-.stat-card{background:var(--card);border-radius:6px;padding:12px;text-align:center;border:1px solid var(--border)}
-.stat-card .value{font-size:24px;font-weight:700;color:var(--accent)}
-.stat-card .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+/* Big stats cards */
+.stats-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;padding:12px}
+.stat-card{background:var(--card);border-radius:8px;padding:14px 10px;text-align:center;border:1px solid var(--border);transition:border-color .2s}
+.stat-card:hover{border-color:var(--glass-border)}
+.stat-card .value{font-size:22px;font-weight:700;color:var(--accent);line-height:1.2}
+.stat-card .label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;margin-top:4px}
 
 /* Chart sections */
 .chart-section{padding:8px 12px}
@@ -79,12 +80,28 @@ a:hover{text-decoration:underline}
 .cta-section{padding:12px;display:flex;flex-direction:column;gap:6px;margin-top:auto}
 .cta-section .btn{text-align:center;font-size:14px;padding:10px}
 
-/* Filter bar on map */
-.filter-bar{position:absolute;top:10px;left:50px;right:10px;z-index:800;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.filter-bar select,.filter-bar input{background:rgba(13,35,41,0.95);color:var(--text);border:1px solid var(--border);padding:6px 10px;border-radius:4px;font-size:12px;backdrop-filter:blur(8px)}
-.filter-bar input{width:180px}
-.filter-bar select{min-width:110px}
-.filter-bar select:focus,.filter-bar input:focus{outline:none;border-color:var(--accent)}
+/* ============ FILTER BAR (Premium Redesign) ============ */
+.filter-bar{position:absolute;top:10px;left:50px;right:10px;z-index:800;display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glass-border);border-radius:12px;padding:12px 16px}
+
+.filter-group{display:flex;flex-direction:column;gap:3px}
+.filter-group label{font-size:10px;text-transform:uppercase;letter-spacing:0.8px;color:var(--muted);font-weight:600}
+
+/* Search box */
+.search-wrap{position:relative;flex:1;min-width:200px}
+.search-wrap::before{content:'';position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;border:2px solid var(--muted);border-radius:50%;pointer-events:none}
+.search-wrap::after{content:'';position:absolute;left:26px;top:calc(50% + 7px);width:2px;height:6px;background:var(--muted);transform:rotate(-45deg);pointer-events:none}
+.search-wrap input{width:100%;padding:9px 12px 9px 38px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:14px;transition:border-color .2s,box-shadow .2s}
+.search-wrap input::placeholder{color:var(--muted)}
+.search-wrap input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+
+/* Custom selects */
+.filter-bar select{appearance:none;-webkit-appearance:none;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237a9ca8'/%3E%3C/svg%3E") no-repeat right 10px center;color:var(--text);border:1px solid var(--border);padding:9px 30px 9px 12px;border-radius:8px;font-size:13px;cursor:pointer;min-width:120px;transition:border-color .2s,box-shadow .2s}
+.filter-bar select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+.filter-bar select:hover{border-color:var(--accent)}
+
+/* Clear filters */
+.clear-filters{background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;padding:9px 8px;white-space:nowrap;transition:color .2s;align-self:flex-end}
+.clear-filters:hover{color:var(--accent)}
 
 /* Footer */
 .footer{background:var(--brand);padding:6px 20px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;flex-shrink:0;border-top:1px solid var(--border)}
@@ -141,7 +158,7 @@ a:hover{text-decoration:underline}
 .header{position:relative}
 
 /* Filter toggle (mobile) */
-.filter-toggle{display:none;position:absolute;top:10px;left:10px;z-index:801;background:rgba(13,35,41,0.95);color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:4px;font-size:13px;cursor:pointer;backdrop-filter:blur(8px)}
+.filter-toggle{display:none;position:absolute;top:10px;left:10px;z-index:801;background:var(--glass);color:var(--text);border:1px solid var(--glass-border);padding:10px 14px;border-radius:8px;font-size:13px;cursor:pointer;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);font-weight:500}
 
 /* Smooth sidebar transitions */
 .sidebar{transition:transform .3s ease, opacity .3s ease}
@@ -149,6 +166,7 @@ a:hover{text-decoration:underline}
 /* Tablet */
 @media(max-width:1024px){
   .sidebar{width:300px}
+  .stats-row{grid-template-columns:1fr 1fr}
 }
 
 /* Mobile */
@@ -168,18 +186,21 @@ a:hover{text-decoration:underline}
   .sidebar-toggle{display:flex;align-items:center;justify-content:center}
   .sidebar.open~.map-container .sidebar-toggle,.sidebar-toggle.active{bottom:calc(60vh + 10px)}
   
-  /* Stats row single col on very small */
+  /* Stats row 2-col on mobile */
   .stats-row{grid-template-columns:1fr 1fr;gap:6px;padding:8px}
-  .stat-card .value{font-size:20px}
+  .stat-card .value{font-size:18px}
   
-  /* Charts full width, single col */
+  /* Charts */
   .chart-section{padding:6px 10px}
   .chart-wrap{max-height:200px}
   
   /* Filter bar */
-  .filter-bar{flex-direction:column;left:10px;right:10px;top:10px;display:none;gap:4px}
+  .filter-bar{flex-direction:column;left:10px;right:10px;top:10px;display:none;gap:6px;align-items:stretch}
   .filter-bar.open{display:flex}
-  .filter-bar select,.filter-bar input{width:100%;min-width:0;padding:10px 12px;font-size:14px}
+  .filter-bar select,.search-wrap input{width:100%;min-width:0;padding:12px 14px 12px 40px;font-size:14px}
+  .filter-bar select{padding-left:12px}
+  .filter-group{width:100%}
+  .search-wrap{min-width:0}
   .filter-toggle{display:block}
   
   /* Popups */
@@ -238,36 +259,66 @@ a:hover{text-decoration:underline}
   <div class="map-container">
     <button class="filter-toggle" onclick="document.querySelector('.filter-bar').classList.toggle('open');this.textContent=document.querySelector('.filter-bar').classList.contains('open')?'✕ Close Filters':'🔍 Filters'">🔍 Filters</button>
     <div class="filter-bar">
-      <input type="text" id="searchBox" placeholder="🔍 Search mines...">
-      <select id="filterRegion"><option value="">All Regions</option></select>
-      <select id="filterCommodity"><option value="">All Commodities</option></select>
-      <select id="filterStatus"><option value="">All Statuses</option></select>
-      <select id="filterConfidence"><option value="" selected>All Confidence</option><option value="verified">Verified Only</option><option value="likely">Likely</option></select>
+      <div class="filter-group search-wrap" style="flex:1;min-width:200px">
+        <label>Search</label>
+        <input type="text" id="searchBox" placeholder="Search mines, companies, countries...">
+      </div>
+      <div class="filter-group">
+        <label>Region</label>
+        <select id="filterRegion"><option value="">All Regions</option></select>
+      </div>
+      <div class="filter-group">
+        <label>Commodity</label>
+        <select id="filterCommodity"><option value="">All Commodities</option></select>
+      </div>
+      <div class="filter-group">
+        <label>Status</label>
+        <select id="filterStatus"><option value="">All Statuses</option></select>
+      </div>
+      <div class="filter-group">
+        <label>Confidence</label>
+        <select id="filterConfidence"><option value="" selected>All Confidence</option><option value="verified">Verified Only</option><option value="likely">Likely</option></select>
+      </div>
+      <button class="clear-filters" onclick="clearFilters()">✕ Clear filters</button>
     </div>
     <div id="map"></div>
     <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">📊</button>
   </div>
 
   <div class="sidebar">
-    <!-- Backfill Pro banner at top -->
+    <!-- Intro -->
     <div style="padding:12px;font-size:12px;color:var(--muted);line-height:1.5;border-bottom:1px solid var(--border)">
       <p style="margin-bottom:6px">🌍 This map aims to chart the global paste backfill ecosystem — a shared resource for the entire industry. It is <strong style="color:var(--text)">live and continuously updated</strong> as new data becomes available.</p>
       <p style="margin-bottom:6px">While we strive for accuracy, some data may be incomplete or evolving. If you spot something that needs correcting or know of a plant not listed, please <a href="#" onclick="openModal();return false" style="color:var(--accent);font-weight:500">submit an update</a> with a source — every contribution helps make this resource better for everyone.</p>
     </div>
 
+    <!-- Big stats -->
     <div class="stats-row">
-      <div class="stat-card"><div class="value" id="totalMines">—</div><div class="label">Paste Plants</div></div>
+      <div class="stat-card"><div class="value" id="totalMines">—</div><div class="label">Plants</div></div>
       <div class="stat-card"><div class="value" id="totalTpd">—</div><div class="label">Total TPD</div></div>
+      <div class="stat-card"><div class="value" id="totalCountries">—</div><div class="label">Countries</div></div>
+      <div class="stat-card"><div class="value" id="totalCompanies">—</div><div class="label">Companies</div></div>
     </div>
 
+    <!-- Charts in new order -->
     <div class="chart-section">
       <h3>By Region</h3>
       <div class="chart-wrap"><canvas id="chartRegion"></canvas></div>
     </div>
 
     <div class="chart-section">
+      <h3>Capacity by Region (tpd)</h3>
+      <div class="chart-wrap" style="max-height:220px"><canvas id="chartRegionCapacity"></canvas></div>
+    </div>
+
+    <div class="chart-section">
       <h3>Top 10 by Capacity (tpd)</h3>
       <div class="chart-wrap" style="max-height:220px"><canvas id="chartTop10"></canvas></div>
+    </div>
+
+    <div class="chart-section">
+      <h3>Top 10 Companies (by # of plants)</h3>
+      <div class="chart-wrap" style="max-height:220px"><canvas id="chartTopCompanies"></canvas></div>
     </div>
 
     <div class="chart-section">
@@ -283,6 +334,16 @@ a:hover{text-decoration:underline}
     <div class="chart-section">
       <h3>Status</h3>
       <div class="chart-wrap" style="min-height:180px"><canvas id="chartStatus"></canvas></div>
+    </div>
+
+    <div class="chart-section">
+      <h3>Avg Plant Size by Region (tpd)</h3>
+      <div class="chart-wrap" style="max-height:220px"><canvas id="chartAvgSize"></canvas></div>
+    </div>
+
+    <div class="chart-section" id="designerSection" style="display:none">
+      <h3>Designer Breakdown</h3>
+      <div class="chart-wrap"><canvas id="chartDesigner"></canvas></div>
     </div>
 
     <!-- News section -->
@@ -362,7 +423,6 @@ Chart.defaults.animation.duration=800;
 
 fetch('data.json').then(r=>r.json()).then(async data=>{
   allData=data;
-  // Enrich with approved submission data
   try {
     const subRes = await fetch(SUPABASE_URL + '/rest/v1/mine_submissions?status=eq.approved&select=mine_name,existing_mine_name,submitter_name,reviewed_at,submission_type&order=reviewed_at.desc', {
       headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY }
@@ -383,13 +443,12 @@ fetch('data.json').then(r=>r.json()).then(async data=>{
         }
       });
     }
-  } catch(e) { /* silently continue */ }
+  } catch(e) {}
   populateFilters(data);
   initMap();
   applyFilters();
 });
 
-// Load news
 loadNews();
 
 async function loadNews() {
@@ -400,18 +459,11 @@ async function loadNews() {
     if (!res.ok) throw new Error('API error');
     const news = await res.json();
     const container = document.getElementById('newsFeed');
-    if (!news.length) {
-      container.innerHTML = '<div class="news-empty">News feed coming soon...</div>';
-      return;
-    }
+    if (!news.length) { container.innerHTML = '<div class="news-empty">News feed coming soon...</div>'; return; }
     container.innerHTML = news.map(n => {
       const date = n.published_at ? new Date(n.published_at).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}) : '';
-      return `<div class="news-item">
-        <a href="${esc(n.url)}" target="_blank">${esc(n.title)}</a>
-        <div class="news-meta">${n.source ? esc(n.source) + ' · ' : ''}${date}</div>
-      </div>`;
+      return `<div class="news-item"><a href="${esc(n.url)}" target="_blank">${esc(n.title)}</a><div class="news-meta">${n.source ? esc(n.source) + ' · ' : ''}${date}</div></div>`;
     }).join('');
-    // Populate header news — fade one at a time
     if(news.length) {
       const headerNews = document.getElementById('headerNews');
       const newsItem = document.getElementById('headerNewsItem');
@@ -420,20 +472,12 @@ async function loadNews() {
       let idx = 0;
       function showNews() {
         newsItem.classList.remove('active');
-        setTimeout(() => {
-          newsLink.textContent = news[idx].title;
-          newsLink.href = news[idx].url;
-          newsItem.classList.add('active');
-          idx = (idx + 1) % news.length;
-        }, 1200);
+        setTimeout(() => { newsLink.textContent = news[idx].title; newsLink.href = news[idx].url; newsItem.classList.add('active'); idx = (idx + 1) % news.length; }, 1200);
       }
-      showNews();
-      newsItem.classList.add('active');
+      showNews(); newsItem.classList.add('active');
       setInterval(showNews, 12000);
     }
-  } catch(e) {
-    document.getElementById('newsFeed').innerHTML = '<div class="news-empty">News feed coming soon...</div>';
-  }
+  } catch(e) { document.getElementById('newsFeed').innerHTML = '<div class="news-empty">News feed coming soon...</div>'; }
 }
 
 function esc(s) { const d = document.createElement('div'); d.textContent = s||''; return d.innerHTML; }
@@ -444,6 +488,15 @@ function populateFilters(data){
   add('filterCommodity',[...new Set(data.map(d=>(d.commodity||'').split('/')[0]).filter(Boolean))].sort());
   add('filterStatus',[...new Set(data.map(d=>d.status).filter(Boolean))].sort());
   document.querySelectorAll('.filter-bar select, .filter-bar input').forEach(el=>el.addEventListener('input',applyFilters));
+}
+
+function clearFilters(){
+  document.getElementById('searchBox').value='';
+  document.getElementById('filterRegion').value='';
+  document.getElementById('filterCommodity').value='';
+  document.getElementById('filterStatus').value='';
+  document.getElementById('filterConfidence').value='';
+  applyFilters();
 }
 
 function applyFilters(){
@@ -520,21 +573,46 @@ function renderMap(data){
   if(clusterGroup.getLayers().length) map.fitBounds(clusterGroup.getBounds().pad(0.05));
 }
 
+function fmtNum(n){
+  if(n>=1e6) return (n/1e6).toFixed(1)+'M';
+  if(n>=1e3) return (n/1e3).toFixed(0)+'K';
+  return n.toString();
+}
+
 function renderStats(data){
   document.getElementById('totalMines').textContent=data.length;
   const total=data.reduce((s,d)=>s+(d.tpd||0),0);
-  document.getElementById('totalTpd').textContent=total>=1e6?(total/1e6).toFixed(1)+'M':total>=1e3?(total/1e3).toFixed(0)+'K':total;
+  document.getElementById('totalTpd').textContent=fmtNum(total);
+  const countries=new Set(data.map(d=>d.country).filter(Boolean));
+  document.getElementById('totalCountries').textContent=countries.size;
+  const companies=new Set(data.map(d=>d.company).filter(Boolean));
+  document.getElementById('totalCompanies').textContent=companies.size;
 }
 
 function renderCharts(data){
+  // 1. By Region (doughnut)
   const regionCounts={};
   data.forEach(d=>{regionCounts[d.region]=(regionCounts[d.region]||0)+1});
   const regionLabels=Object.keys(regionCounts).sort();
   makeChart('chartRegion','doughnut',regionLabels,regionLabels.map(r=>regionCounts[r]),regionLabels.map(r=>REGION_COLORS[r]||'#666'));
 
+  // 2. Capacity by Region (bar)
+  const regionTpd={};
+  data.forEach(d=>{regionTpd[d.region]=(regionTpd[d.region]||0)+(d.tpd||0)});
+  const rCapLabels=Object.keys(regionTpd).sort((a,b)=>regionTpd[b]-regionTpd[a]);
+  makeChart('chartRegionCapacity','bar',rCapLabels,rCapLabels.map(r=>regionTpd[r]),rCapLabels.map(r=>REGION_COLORS[r]||'#00a99d'),{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{callback:v=>fmtNum(v)}},y:{grid:{display:false}}}});
+
+  // 3. Top 10 by Capacity
   const top10=[...data].sort((a,b)=>(b.tpd||0)-(a.tpd||0)).slice(0,10);
   makeChart('chartTop10','bar',top10.map(d=>d.name.length>20?d.name.slice(0,18)+'…':d.name),top10.map(d=>d.tpd||0),top10.map(d=>REGION_COLORS[d.region]||'#00a99d'),{indexAxis:'y',plugins:{legend:{display:false}}});
 
+  // 4. Top 10 Companies by # of plants
+  const companyCounts={};
+  data.forEach(d=>{if(d.company) companyCounts[d.company]=(companyCounts[d.company]||0)+1});
+  const topCo=Object.entries(companyCounts).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  makeChart('chartTopCompanies','bar',topCo.map(c=>c[0].length>22?c[0].slice(0,20)+'…':c[0]),topCo.map(c=>c[1]),'#00a99d',{indexAxis:'y',plugins:{legend:{display:false}}});
+
+  // 5. Primary Commodity (doughnut)
   const commCounts={};
   data.forEach(d=>{const c=(d.commodity||'unknown').split('/')[0];commCounts[c]=(commCounts[c]||0)+1});
   const commSorted=Object.entries(commCounts).sort((a,b)=>b[1]-a[1]);
@@ -544,6 +622,7 @@ function renderCharts(data){
   const commColors=['#3498db','#e74c3c','#f39c12','#2ecc71','#9b59b6','#e67e22','#1abc9c','#34495e','#7f8c8d'];
   makeChart('chartCommodity','doughnut',topComm.map(c=>c[0]),topComm.map(c=>c[1]),commColors);
 
+  // 6. Commissioning Timeline
   const decades={};
   data.forEach(d=>{
     const y=d.year_commissioned;
@@ -552,16 +631,40 @@ function renderCharts(data){
   const decLabels=Object.keys(decades).sort();
   makeChart('chartTimeline','bar',decLabels.map(d=>d+'s'),decLabels.map(d=>decades[d]),'#00a99d',{plugins:{legend:{display:false}}});
 
+  // 7. Status (doughnut)
   const statusCounts={};
   data.forEach(d=>{const s=d.status||'unknown';statusCounts[s]=(statusCounts[s]||0)+1});
   const statusLabels=Object.keys(statusCounts).sort();
   makeChart('chartStatus','doughnut',statusLabels,statusLabels.map(s=>statusCounts[s]),statusLabels.map(s=>STATUS_COLORS[s]||'#7f8c8d'));
+
+  // 8. Average Plant Size by Region
+  const regionCount2={}, regionTpd2={};
+  data.forEach(d=>{
+    if(d.tpd){
+      regionCount2[d.region]=(regionCount2[d.region]||0)+1;
+      regionTpd2[d.region]=(regionTpd2[d.region]||0)+d.tpd;
+    }
+  });
+  const avgLabels=Object.keys(regionTpd2).sort((a,b)=>(regionTpd2[b]/regionCount2[b])-(regionTpd2[a]/regionCount2[a]));
+  makeChart('chartAvgSize','bar',avgLabels,avgLabels.map(r=>Math.round(regionTpd2[r]/regionCount2[r])),avgLabels.map(r=>REGION_COLORS[r]||'#00a99d'),{indexAxis:'y',plugins:{legend:{display:false}}});
+
+  // 9. Designer breakdown (if data exists)
+  const designerCounts={};
+  data.forEach(d=>{if(d.designer) designerCounts[d.designer]=(designerCounts[d.designer]||0)+1});
+  const designerEntries=Object.entries(designerCounts).sort((a,b)=>b[1]-a[1]);
+  if(designerEntries.length>0){
+    document.getElementById('designerSection').style.display='block';
+    const dColors=['#00a99d','#3498db','#e74c3c','#f39c12','#9b59b6','#e67e22','#2ecc71','#1abc9c'];
+    makeChart('chartDesigner','doughnut',designerEntries.map(d=>d[0]),designerEntries.map(d=>d[1]),dColors);
+  }
 }
 
 function makeChart(id,type,labels,values,colors,extraOpts={}){
   if(charts[id]) charts[id].destroy();
   const ctx=document.getElementById(id).getContext('2d');
   const isBar=type==='bar';
+  const mergedScales = extraOpts.scales || (isBar?{x:{grid:{display:false}},y:{grid:{color:'#1a3f4a'}}}:undefined);
+  const mergedPlugins = {...{legend:{display:!isBar,position:'right',labels:{padding:4,font:{size:10},boxWidth:8}}}, ...(extraOpts.plugins||{})};
   charts[id]=new Chart(ctx,{
     type,
     data:{
@@ -570,9 +673,9 @@ function makeChart(id,type,labels,values,colors,extraOpts={}){
     },
     options:{
       responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:!isBar,position:'right',labels:{padding:4,font:{size:10},boxWidth:8}}},
-      scales:isBar?{x:{grid:{display:false}},y:{grid:{color:'#1a3f4a'}}}:undefined,
-      ...extraOpts
+      plugins:mergedPlugins,
+      scales:mergedScales,
+      indexAxis:extraOpts.indexAxis||undefined
     }
   });
 }
@@ -581,7 +684,6 @@ function makeChart(id,type,labels,values,colors,extraOpts={}){
 function openModal(prefill, isCorrection){
   const modal = document.getElementById('submitModal');
   modal.classList.add('active');
-  // Reset
   document.querySelectorAll('#submitModal input, #submitModal textarea').forEach(el => { if(el.type!=='hidden') el.value = ''; });
   document.getElementById('fPlants').value = '1';
   document.getElementById('fSubmissionType').value = 'new';
@@ -596,7 +698,6 @@ function openModal(prefill, isCorrection){
     document.getElementById('correctionNote').style.display = 'block';
     document.getElementById('existingMineRow').style.display = 'block';
     document.getElementById('modalTitle').textContent = 'Suggest a Correction';
-    // Pre-fill existing data so user can see current values and edit
     const mine = allData.find(d => d.name === prefill);
     if(mine){
       document.getElementById('fCompany').value = mine.company || '';
@@ -617,7 +718,6 @@ function openModal(prefill, isCorrection){
 }
 
 function closeModal(){document.getElementById('submitModal').classList.remove('active')}
-
 function openCorrection(name){openModal(name, true)}
 
 async function submitMine(){
@@ -656,15 +756,10 @@ async function submitMine(){
       },
       body: JSON.stringify(payload)
     });
-    if (!res.ok) {
-      const err = await res.text();
-      throw new Error(err);
-    }
+    if (!res.ok) { const err = await res.text(); throw new Error(err); }
     closeModal();
     showToast('Thanks! Your submission will be reviewed.');
-  } catch(e) {
-    alert('Error submitting: ' + e.message);
-  }
+  } catch(e) { alert('Error submitting: ' + e.message); }
 }
 
 function showToast(msg){
@@ -673,20 +768,16 @@ function showToast(msg){
   setTimeout(() => t.style.display = 'none', 4000);
 }
 
-// Close modal on overlay click
 document.getElementById('submitModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
 
-// Sidebar toggle for mobile
 function toggleSidebar(){
   const sb=document.querySelector('.sidebar');
   const btn=document.getElementById('sidebarToggle');
   sb.classList.toggle('open');
   btn.textContent=sb.classList.contains('open')?'✕':'📊';
-  // Invalidate map size after transition
   setTimeout(()=>{if(map)map.invalidateSize()},350);
 }
 
-// Close mobile menu on outside click
 document.addEventListener('click',e=>{
   const mm=document.querySelector('.mobile-menu');
   const hb=document.querySelector('.hamburger');
