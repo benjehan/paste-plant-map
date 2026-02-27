@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Paste Plant Map | MineSmart</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a1a1f;--panel:#0d2329;--card:#112e36;--accent:#00a99d;--brand:#004a59;--text:#e0e8ea;--muted:#7a9ca8;--border:#1a3f4a;--red:#e74c3c;--yellow:#f1c40f;--green:#2ecc71}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+.header{background:linear-gradient(135deg,var(--brand),#002a33);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--accent)}
+.header h1{font-size:18px;font-weight:600}
+.header-right{display:flex;gap:10px;align-items:center}
+.btn{background:var(--accent);color:#fff;border:none;padding:8px 16px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:500;transition:all .2s}
+.btn:hover{background:#00c9b7}
+.btn-red{background:var(--red)}.btn-red:hover{background:#c0392b}
+.btn-outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+.btn-outline:hover{background:var(--accent);color:#fff}
+.btn-sm{padding:5px 10px;font-size:12px}
+
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.stats-bar{display:flex;gap:16px;margin-bottom:20px}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px 24px;text-align:center}
+.stat-box .num{font-size:28px;font-weight:700;color:var(--accent)}
+.stat-box .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.stat-box.pending .num{color:var(--yellow)}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px;margin-bottom:12px}
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.card-header h3{font-size:16px;color:var(--accent)}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;text-transform:uppercase}
+.badge-pending{background:var(--yellow);color:#000}
+.badge-approved{background:var(--green);color:#000}
+.badge-rejected{background:var(--red);color:#fff}
+.type-badge{background:var(--brand);color:var(--accent);padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px}
+
+.fields{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px 16px;font-size:13px}
+.fields .f{display:flex;gap:6px}
+.fields .f .fl{color:var(--muted);min-width:100px;font-size:11px;text-transform:uppercase}
+.card-actions{display:flex;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;justify-content:center;align-items:center}
+.modal-overlay.active{display:flex}
+.modal{background:var(--panel);border-radius:8px;padding:24px;width:90%;max-width:500px;max-height:90vh;overflow-y:auto;border:1px solid var(--border)}
+.modal h2{margin-bottom:16px;color:var(--accent);font-size:18px}
+.modal label{display:block;font-size:12px;color:var(--muted);margin:8px 0 4px;text-transform:uppercase}
+.modal input,.modal select,.modal textarea{width:100%;background:var(--card);color:var(--text);border:1px solid var(--border);padding:8px;border-radius:4px;font-size:13px}
+.modal textarea{height:80px;resize:vertical}
+.modal-actions{display:flex;gap:8px;margin-top:16px;justify-content:flex-end}
+
+.empty{text-align:center;padding:60px 20px;color:var(--muted);font-size:16px}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--green);color:#fff;padding:12px 20px;border-radius:6px;font-size:14px;z-index:3000;display:none}
+#loginScreen{display:flex;justify-content:center;align-items:center;min-height:80vh}
+#loginScreen .login-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:32px;text-align:center;width:360px}
+#loginScreen h2{color:var(--accent);margin-bottom:16px}
+#loginScreen input{width:100%;background:var(--panel);color:var(--text);border:1px solid var(--border);padding:10px;border-radius:4px;font-size:13px;margin-bottom:12px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🔒 Paste Plant Map — Admin</h1>
+  <div class="header-right">
+    <a href="index.html" class="btn btn-outline btn-sm">← Back to Map</a>
+    <button class="btn btn-sm btn-red" onclick="logout()" id="logoutBtn" style="display:none">Logout</button>
+  </div>
+</div>
+
+<div class="container">
+  <div id="loginScreen">
+    <div class="login-box">
+      <h2>Admin Login</h2>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:16px">Enter your Supabase service role key</p>
+      <input type="password" id="keyInput" placeholder="eyJhbGci...">
+      <button class="btn" onclick="login()" style="width:100%">Login</button>
+    </div>
+  </div>
+
+  <div id="adminPanel" style="display:none">
+    <div class="stats-bar">
+      <div class="stat-box pending"><div class="num" id="pendingCount">0</div><div class="lbl">Pending</div></div>
+      <div class="stat-box"><div class="num" id="approvedCount">0</div><div class="lbl">Approved</div></div>
+      <div class="stat-box"><div class="num" id="rejectedCount">0</div><div class="lbl">Rejected</div></div>
+      <div class="stat-box"><div class="num" id="totalCount">0</div><div class="lbl">Total</div></div>
+    </div>
+    <div id="submissionsList"></div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <h2 id="editTitle">Edit Submission</h2>
+    <input type="hidden" id="editId">
+    <label>Mine Name</label><input id="eName">
+    <label>Company</label><input id="eCompany">
+    <label>Country</label><input id="eCountry">
+    <label>Region</label><input id="eRegion">
+    <label>Fill Type</label><input id="eFillType">
+    <label>TPD</label><input id="eTpd" type="number">
+    <label>Plants</label><input id="ePlants" type="number">
+    <label>Commodity</label><input id="eCommodity">
+    <label>Year Commissioned</label><input id="eYear" type="number">
+    <label>Designer</label><input id="eDesigner">
+    <label>Lat</label><input id="eLat" type="number" step="any">
+    <label>Lng</label><input id="eLng" type="number" step="any">
+    <label>Notes</label><textarea id="eNotes"></textarea>
+    <label>Admin Notes</label><textarea id="eAdminNotes"></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeEdit()">Cancel</button>
+      <button class="btn" onclick="saveEdit()">Save</button>
+      <button class="btn" style="background:var(--green)" onclick="saveAndApprove()">Save & Approve</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SUPABASE_URL = 'https://cxsariervcthxoudumaq.supabase.co';
+let SERVICE_KEY = '';
+
+function getKey() { return sessionStorage.getItem('sb_service_key') || ''; }
+
+function login() {
+  const key = document.getElementById('keyInput').value.trim();
+  if (!key) return;
+  SERVICE_KEY = key;
+  sessionStorage.setItem('sb_service_key', key);
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminPanel').style.display = 'block';
+  document.getElementById('logoutBtn').style.display = 'block';
+  loadSubmissions();
+}
+
+function logout() {
+  sessionStorage.removeItem('sb_service_key');
+  SERVICE_KEY = '';
+  location.reload();
+}
+
+// Auto-login if key in session
+(function() {
+  const k = getKey();
+  if (k) { document.getElementById('keyInput').value = k; login(); }
+})();
+
+async function sbFetch(path, opts = {}) {
+  const key = getKey();
+  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+    ...opts,
+    headers: {
+      'apikey': key,
+      'Authorization': 'Bearer ' + key,
+      'Content-Type': 'application/json',
+      'Prefer': opts.prefer || 'return=representation',
+      ...opts.headers
+    }
+  });
+  if (!res.ok) { const t = await res.text(); throw new Error(t); }
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
+}
+
+async function loadSubmissions() {
+  try {
+    const data = await sbFetch('mine_submissions?order=created_at.desc');
+    renderSubmissions(data);
+  } catch (e) {
+    document.getElementById('submissionsList').innerHTML = `<div class="empty">Error loading: ${e.message}</div>`;
+  }
+}
+
+function renderSubmissions(data) {
+  const pending = data.filter(d => d.status === 'pending').length;
+  const approved = data.filter(d => d.status === 'approved').length;
+  const rejected = data.filter(d => d.status === 'rejected').length;
+  document.getElementById('pendingCount').textContent = pending;
+  document.getElementById('approvedCount').textContent = approved;
+  document.getElementById('rejectedCount').textContent = rejected;
+  document.getElementById('totalCount').textContent = data.length;
+
+  if (!data.length) {
+    document.getElementById('submissionsList').innerHTML = '<div class="empty">No submissions yet.</div>';
+    return;
+  }
+
+  document.getElementById('submissionsList').innerHTML = data.map(d => {
+    const bc = d.status === 'pending' ? 'pending' : d.status === 'approved' ? 'approved' : 'rejected';
+    const date = new Date(d.created_at).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+    return `<div class="card">
+      <div class="card-header">
+        <h3>${esc(d.mine_name)} <span class="type-badge">${d.submission_type}</span></h3>
+        <span class="badge badge-${bc}">${d.status}</span>
+      </div>
+      <div class="fields">
+        <div class="f"><span class="fl">Company</span>${esc(d.company||'—')}</div>
+        <div class="f"><span class="fl">Country</span>${esc(d.country||'—')}</div>
+        <div class="f"><span class="fl">Region</span>${esc(d.region||'—')}</div>
+        <div class="f"><span class="fl">Fill Type</span>${esc(d.fill_type||'—')}</div>
+        <div class="f"><span class="fl">TPD</span>${d.tpd||'—'}</div>
+        <div class="f"><span class="fl">Plants</span>${d.plants||'—'}</div>
+        <div class="f"><span class="fl">Commodity</span>${esc(d.commodity||'—')}</div>
+        <div class="f"><span class="fl">Year</span>${d.commissioned_year||'—'}</div>
+        <div class="f"><span class="fl">Designer</span>${esc(d.designer||'—')}</div>
+        <div class="f"><span class="fl">Lat/Lng</span>${d.lat||'—'}, ${d.lng||'—'}</div>
+        <div class="f"><span class="fl">Submitter</span>${esc(d.submitter_name)} ${d.submitter_email?'('+esc(d.submitter_email)+')':''}</div>
+        <div class="f"><span class="fl">Submitted</span>${date}</div>
+        ${d.existing_mine_name?`<div class="f"><span class="fl">Existing Mine</span>${esc(d.existing_mine_name)}</div>`:''}
+        ${d.notes?`<div class="f"><span class="fl">Notes</span>${esc(d.notes)}</div>`:''}
+        ${d.source_reference?`<div class="f"><span class="fl">Source</span>${esc(d.source_reference)}</div>`:''}
+        ${d.admin_notes?`<div class="f"><span class="fl">Admin Notes</span>${esc(d.admin_notes)}</div>`:''}
+      </div>
+      <div class="card-actions">
+        ${d.status==='pending'?`
+          <button class="btn btn-sm" style="background:var(--green)" onclick="approve('${d.id}')">✓ Approve</button>
+          <button class="btn btn-sm btn-red" onclick="reject('${d.id}')">✗ Reject</button>
+        `:''}
+        <button class="btn btn-sm btn-outline" onclick="openEdit('${d.id}')">Edit</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+async function approve(id) {
+  try {
+    await sbFetch(`mine_submissions?id=eq.${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ status: 'approved', reviewed_at: new Date().toISOString() })
+    });
+    showToast('Approved!');
+    loadSubmissions();
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+async function reject(id) {
+  const notes = prompt('Rejection reason (optional):');
+  try {
+    const body = { status: 'rejected', reviewed_at: new Date().toISOString() };
+    if (notes) body.admin_notes = notes;
+    await sbFetch(`mine_submissions?id=eq.${id}`, { method: 'PATCH', body: JSON.stringify(body) });
+    showToast('Rejected');
+    loadSubmissions();
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+let editData = [];
+async function openEdit(id) {
+  try {
+    const data = await sbFetch(`mine_submissions?id=eq.${id}`);
+    if (!data.length) return;
+    const d = data[0];
+    editData = d;
+    document.getElementById('editId').value = d.id;
+    document.getElementById('eName').value = d.mine_name || '';
+    document.getElementById('eCompany').value = d.company || '';
+    document.getElementById('eCountry').value = d.country || '';
+    document.getElementById('eRegion').value = d.region || '';
+    document.getElementById('eFillType').value = d.fill_type || '';
+    document.getElementById('eTpd').value = d.tpd || '';
+    document.getElementById('ePlants').value = d.plants || '';
+    document.getElementById('eCommodity').value = d.commodity || '';
+    document.getElementById('eYear').value = d.commissioned_year || '';
+    document.getElementById('eDesigner').value = d.designer || '';
+    document.getElementById('eLat').value = d.lat || '';
+    document.getElementById('eLng').value = d.lng || '';
+    document.getElementById('eNotes').value = d.notes || '';
+    document.getElementById('eAdminNotes').value = d.admin_notes || '';
+    document.getElementById('editModal').classList.add('active');
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+function closeEdit() { document.getElementById('editModal').classList.remove('active'); }
+
+function getEditBody() {
+  return {
+    mine_name: document.getElementById('eName').value,
+    company: document.getElementById('eCompany').value || null,
+    country: document.getElementById('eCountry').value || null,
+    region: document.getElementById('eRegion').value || null,
+    fill_type: document.getElementById('eFillType').value || null,
+    tpd: parseInt(document.getElementById('eTpd').value) || null,
+    plants: parseInt(document.getElementById('ePlants').value) || null,
+    commodity: document.getElementById('eCommodity').value || null,
+    commissioned_year: parseInt(document.getElementById('eYear').value) || null,
+    designer: document.getElementById('eDesigner').value || null,
+    lat: parseFloat(document.getElementById('eLat').value) || null,
+    lng: parseFloat(document.getElementById('eLng').value) || null,
+    notes: document.getElementById('eNotes').value || null,
+    admin_notes: document.getElementById('eAdminNotes').value || null
+  };
+}
+
+async function saveEdit() {
+  const id = document.getElementById('editId').value;
+  try {
+    await sbFetch(`mine_submissions?id=eq.${id}`, { method: 'PATCH', body: JSON.stringify(getEditBody()) });
+    closeEdit(); showToast('Saved!'); loadSubmissions();
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+async function saveAndApprove() {
+  const id = document.getElementById('editId').value;
+  const body = { ...getEditBody(), status: 'approved', reviewed_at: new Date().toISOString() };
+  try {
+    await sbFetch(`mine_submissions?id=eq.${id}`, { method: 'PATCH', body: JSON.stringify(body) });
+    closeEdit(); showToast('Saved & Approved!'); loadSubmissions();
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 3000);
+}
+
+document.getElementById('editModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeEdit(); });
+</script>
+</body>
+</html>
