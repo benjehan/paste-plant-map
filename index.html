@@ -351,7 +351,7 @@ a:hover{text-decoration:underline}
     </div>
     <div id="map"></div>
     <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">📊</button>
-    <button class="fab-add" onclick="openModal()" aria-label="Submit a Mine" title="Submit a Mine">📍</button>
+    <button class="fab-add" onclick="openModal()" aria-label="Submit a Mine" title="Submit a Mine" style="font-family:system-ui;font-weight:300;font-size:28px;line-height:1">+</button>
   </div>
 
   <div class="sidebar">
@@ -458,6 +458,8 @@ a:hover{text-decoration:underline}
     <label>Number of Plants</label><input id="fPlants" type="number" value="1">
     <label>Year Commissioned</label><input id="fYear" type="number">
     <label>Year Decommissioned</label><input id="fYearDecom" type="number" placeholder="Leave blank if active">
+    <label>Status</label>
+    <select id="fStatus"><option value="Operating">Operating</option><option value="Commissioning">Commissioning</option><option value="Under Construction">Under Construction</option><option value="Closed">Closed</option><option value="Care & Maintenance">Care & Maintenance</option><option value="Planned">Planned</option><option value="Unknown">Unknown</option></select>
     <label>Primary Commodity</label><input id="fCommodity">
     <label>Latitude</label><input id="fLat" type="number" step="any" placeholder="e.g. -33.8688">
     <label>Longitude</label><input id="fLng" type="number" step="any" placeholder="e.g. 151.2093">
@@ -832,6 +834,7 @@ function openModal(prefill, isCorrection){
       document.getElementById('fCommodity').value = mine.commodity || '';
       document.getElementById('fYear').value = mine.year_commissioned || '';
       document.getElementById('fYearDecom').value = mine.year_decommissioned || '';
+      if(mine.status) document.getElementById('fStatus').value = mine.status;
       document.getElementById('fLat').value = mine.lat || '';
       document.getElementById('fLng').value = mine.lng || '';
       document.getElementById('fNotes').value = mine.notes || '';
@@ -861,6 +864,7 @@ async function submitMine(){
     commodity: document.getElementById('fCommodity').value.trim() || null,
     commissioned_year: parseInt(document.getElementById('fYear').value) || null,
     decommissioned_year: parseInt(document.getElementById('fYearDecom').value) || null,
+    mine_status: document.getElementById('fStatus').value || null,
     lat: parseFloat(document.getElementById('fLat').value) || null,
     lng: parseFloat(document.getElementById('fLng').value) || null,
     notes: document.getElementById('fNotes').value.trim() || null,
