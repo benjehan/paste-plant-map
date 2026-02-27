@@ -56,7 +56,7 @@ a:hover{text-decoration:underline}
 /* Chart sections */
 .chart-section{padding:8px 12px}
 .chart-section h3{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px;border-bottom:1px solid var(--border);padding-bottom:4px}
-.chart-wrap{position:relative;max-height:200px}
+.chart-wrap{position:relative;max-height:250px;overflow:visible}
 
 /* News section */
 .news-section{padding:8px 12px;border-top:1px solid var(--border)}
@@ -175,7 +175,7 @@ a:hover{text-decoration:underline}
 
     <div class="chart-section">
       <h3>Status</h3>
-      <div class="chart-wrap"><canvas id="chartStatus"></canvas></div>
+      <div class="chart-wrap" style="min-height:180px"><canvas id="chartStatus"></canvas></div>
     </div>
 
     <!-- News section -->
@@ -409,8 +409,8 @@ function makeChart(id,type,labels,values,colors,extraOpts={}){
       datasets:[{data:values,backgroundColor:Array.isArray(colors)?colors:colors,borderWidth:0,borderRadius:isBar?3:0}]
     },
     options:{
-      responsive:true,maintainAspectRatio:true,
-      plugins:{legend:{display:!isBar,position:'right',labels:{padding:6,font:{size:10}}}},
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:!isBar,position:'right',labels:{padding:4,font:{size:10},boxWidth:8}}},
       scales:isBar?{x:{grid:{display:false}},y:{grid:{color:'#1a3f4a'}}}:undefined,
       ...extraOpts
     }
