@@ -4,7 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Global Paste Backfill Plant Map | MineSmart</title>
-<meta name="description" content="Interactive map of 190+ paste backfill plants worldwide. Explore capacity, commodity, and regional data.">
+<meta name="description" content="Interactive map of 230+ paste backfill plants worldwide. Explore capacity, commodity, and regional data.">
+<meta property="og:title" content="Global Paste Backfill Plant Map | MineSmart">
+<meta property="og:description" content="Interactive map of 230+ paste backfill plants worldwide. Explore capacity, commodity, and regional data. A shared resource for the mining industry.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pasteplant.minesmart.cloud">
+<meta property="og:image" content="https://pasteplant.minesmart.cloud/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Global Paste Backfill Plant Map | MineSmart">
+<meta name="twitter:description" content="Interactive map of 230+ paste backfill plants worldwide.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
@@ -28,6 +36,10 @@ a:hover{text-decoration:underline}
 .btn:hover{background:#00c9b7;transform:translateY(-1px)}
 .btn-outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
 .btn-outline:hover{background:var(--accent);color:#fff}
+
+/* Welcome popup */
+.welcome-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:3000;display:flex;justify-content:center;align-items:center;backdrop-filter:blur(4px)}
+.welcome-box{background:var(--panel);border:1px solid var(--accent);border-radius:12px;padding:28px;max-width:520px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,.5)}
 
 /* Header news */
 .header-news{flex:1;text-align:center;overflow:hidden;padding:0 20px}
@@ -225,9 +237,56 @@ a:hover{text-decoration:underline}
   .cta-section .btn{padding:14px;font-size:15px}
 }
 
+/* Email signup card */
+.signup-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px;margin:12px;transition:border-color .2s}
+.signup-card:hover{border-color:var(--glass-border)}
+.signup-card h3{font-size:14px;margin-bottom:4px}
+.signup-card p{font-size:11px;color:var(--muted);margin-bottom:10px}
+.signup-card input{width:100%;background:var(--panel);color:var(--text);border:1px solid var(--border);padding:8px 10px;border-radius:4px;font-size:13px;margin-bottom:6px}
+.signup-card input:focus{outline:none;border-color:var(--accent)}
+.signup-card .btn{width:100%;text-align:center}
+
+/* Timeline slider */
+.timeline-panel{position:absolute;bottom:10px;left:50px;right:10px;z-index:800;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glass-border);border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.timeline-panel .year-display{font-size:22px;font-weight:700;color:var(--accent);min-width:50px;text-align:center}
+.timeline-panel input[type=range]{flex:1;-webkit-appearance:none;background:var(--border);height:4px;border-radius:2px;outline:none;cursor:pointer}
+.timeline-panel input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 6px var(--accent-glow)}
+.timeline-panel input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--accent);cursor:pointer;border:none}
+.timeline-panel .play-btn{background:var(--accent);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.timeline-panel .play-btn:hover{background:#00c9b7}
+.timeline-panel .reset-btn{background:none;border:none;color:var(--muted);font-size:11px;cursor:pointer;white-space:nowrap}
+.timeline-panel .reset-btn:hover{color:var(--accent)}
+
+/* Compare Regions modal */
+.compare-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:2000;justify-content:center;align-items:center;padding:20px}
+.compare-overlay.active{display:flex}
+.compare-modal{background:var(--panel);border-radius:12px;padding:24px;width:95%;max-width:900px;max-height:90vh;overflow-y:auto;border:1px solid var(--border)}
+.compare-modal h2{font-size:18px;color:var(--accent);margin-bottom:6px}
+.compare-modal p{font-size:12px;color:var(--muted);margin-bottom:16px}
+.compare-modal .close-btn{float:right;background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer}
+.region-selector{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.region-chip{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;font-size:13px;transition:all .2s}
+.region-chip.selected{background:var(--accent);color:#fff;border-color:var(--accent)}
+.region-chip:hover{border-color:var(--accent)}
+.compare-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:20px}
+.compare-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px}
+.compare-card h4{font-size:15px;color:var(--accent);margin-bottom:10px}
+.compare-card .cc-row{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--border)}
+.compare-card .cc-row:last-child{border:none}
+.compare-card .cc-label{color:var(--muted)}
+.compare-card .cc-val{font-weight:600}
+.compare-chart-wrap{max-height:300px;margin-top:16px}
+
 /* Desktop */
 @media(min-width:1025px){
   .sidebar{width:380px}
+}
+
+@media(max-width:767px){
+  .timeline-panel{left:10px;right:10px;bottom:10px;padding:8px 12px;gap:8px;flex-wrap:wrap}
+  .timeline-panel .year-display{font-size:18px;min-width:40px}
+  .compare-modal{width:100%;max-width:100%;border-radius:0;padding:16px}
+  .compare-cards{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -245,11 +304,13 @@ a:hover{text-decoration:underline}
     </div>
   </div>
   <div class="header-right">
+    <button class="btn btn-outline" onclick="openCompareModal()">📊 Compare Regions</button>
     <button class="btn btn-outline" onclick="openModal()">+ Submit a Mine</button>
     <a href="https://minesmart.io/backfill-pro/" target="_blank" class="btn">Request a Demo</a>
   </div>
   <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">☰</button>
   <div class="mobile-menu">
+    <button class="btn btn-outline" onclick="openCompareModal();document.querySelector('.mobile-menu').classList.remove('open')">📊 Compare Regions</button>
     <button class="btn btn-outline" onclick="openModal();document.querySelector('.mobile-menu').classList.remove('open')">+ Submit a Mine</button>
     <a href="https://minesmart.io/backfill-pro/" target="_blank" class="btn">Request a Demo</a>
   </div>
@@ -282,15 +343,17 @@ a:hover{text-decoration:underline}
       <button class="clear-filters" id="clearFiltersBtn" onclick="clearFilters()" style="display:none">✕ Clear filters</button>
     </div>
     <div id="map"></div>
+    <div class="timeline-panel" id="timelinePanel" style="display:none">
+      <button class="play-btn" id="timelinePlay" onclick="toggleTimeline()">▶</button>
+      <span class="year-display" id="timelineYear">—</span>
+      <input type="range" id="timelineSlider" min="1950" max="2026" value="2026" oninput="onTimelineChange(this.value)">
+      <button class="reset-btn" onclick="resetTimeline()">Show All</button>
+    </div>
     <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">📊</button>
   </div>
 
   <div class="sidebar">
-    <!-- Intro -->
-    <div style="padding:12px;font-size:12px;color:var(--muted);line-height:1.5;border-bottom:1px solid var(--border)">
-      <p style="margin-bottom:6px">🌍 This map aims to chart the global paste backfill ecosystem — a shared resource for the entire industry. It is <strong style="color:var(--text)">live and continuously updated</strong> as new data becomes available.</p>
-      <p style="margin-bottom:6px">While we strive for accuracy, some data may be incomplete or evolving. If you spot something that needs correcting or know of a plant not listed, please <a href="#" onclick="openModal();return false" style="color:var(--accent);font-weight:500">submit an update</a> with a source — every contribution helps make this resource better for everyone.</p>
-    </div>
+    <!-- Intro removed from sidebar, now a welcome popup -->
 
     <!-- Big stats -->
     <div class="stats-row">
@@ -352,6 +415,15 @@ a:hover{text-decoration:underline}
       <div id="newsFeed"><div class="news-empty">Loading news...</div></div>
     </div>
 
+    <!-- Email Signup -->
+    <div class="signup-card">
+      <h3>📧 Stay Updated</h3>
+      <p>Get notified when new plants are added to the map</p>
+      <input type="text" id="subName" placeholder="Your name">
+      <input type="email" id="subEmail" placeholder="Your email">
+      <button class="btn" onclick="subscribe()">Subscribe</button>
+    </div>
+
     <div class="cta-section">
       <a href="https://minesmart.io/backfill-pro/" target="_blank" class="btn">Learn about Backfill Pro</a>
       <a href="https://minesmart.io/backfill-pro/" target="_blank" class="btn btn-outline">Request a Demo</a>
@@ -393,6 +465,33 @@ a:hover{text-decoration:underline}
     <div class="modal-actions">
       <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
       <button class="btn" onclick="submitMine()">Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Compare Regions Modal -->
+<div class="compare-overlay" id="compareOverlay" onclick="if(event.target===this)closeCompareModal()">
+  <div class="compare-modal">
+    <button class="close-btn" onclick="closeCompareModal()">&times;</button>
+    <h2>📊 Compare Regions</h2>
+    <p>Select 2–3 regions to compare side by side</p>
+    <div class="region-selector" id="regionSelector"></div>
+    <div class="compare-cards" id="compareCards"></div>
+    <div class="compare-chart-wrap"><canvas id="compareChart"></canvas></div>
+  </div>
+</div>
+
+<!-- Welcome popup -->
+<div class="welcome-overlay" id="welcomeOverlay">
+  <div class="welcome-box">
+    <h2 style="color:var(--accent);margin-bottom:12px;font-size:20px">🌍 Welcome to the Global Paste Plant Map</h2>
+    <p style="color:var(--text);font-size:14px;line-height:1.6;margin-bottom:10px">This map aims to chart the global paste backfill ecosystem — <strong>a shared resource for the entire industry</strong>. It is live and continuously updated as new data becomes available.</p>
+    <p style="color:var(--muted);font-size:13px;line-height:1.6;margin-bottom:16px">While we strive for accuracy, some data may be incomplete or evolving. If you spot something that needs correcting or know of a plant not listed, please <a href="#" onclick="closeWelcome();openModal();return false" style="color:var(--accent)">submit an update</a> with a source — every contribution helps make this resource better for everyone.</p>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer">
+        <input type="checkbox" id="welcomeDontShow" style="accent-color:var(--accent);width:16px;height:16px"> Don't show this again
+      </label>
+      <button class="btn" onclick="closeWelcome()" style="padding:10px 24px;font-size:14px">Got it</button>
     </div>
   </div>
 </div>
@@ -777,6 +876,256 @@ document.addEventListener('click',e=>{
   const hb=document.querySelector('.hamburger');
   if(mm && mm.classList.contains('open') && !mm.contains(e.target) && e.target!==hb) mm.classList.remove('open');
 });
+
+// ============ FEATURE 1: Email Signup ============
+async function subscribe(){
+  const name=document.getElementById('subName').value.trim();
+  const email=document.getElementById('subEmail').value.trim();
+  if(!email){showToast('Please enter your email.');return}
+  try{
+    const res=await fetch(SUPABASE_URL+'/rest/v1/subscribers',{
+      method:'POST',headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body:JSON.stringify({email,name:name||null})
+    });
+    if(res.status===409||res.status===400){
+      const txt=await res.text();
+      if(txt.includes('duplicate')||txt.includes('unique')){showToast("You're already subscribed!");return}
+      throw new Error(txt);
+    }
+    if(!res.ok)throw new Error(await res.text());
+    document.getElementById('subName').value='';document.getElementById('subEmail').value='';
+    showToast("Thanks! You're subscribed.");
+  }catch(e){showToast('Error: '+e.message)}
+}
+
+// ============ FEATURE 3: Shareable Mine Links ============
+function getShareUrl(mineName){
+  return window.location.origin+window.location.pathname+'?mine='+encodeURIComponent(mineName);
+}
+
+function copyShareLink(mineName){
+  const url=getShareUrl(mineName);
+  navigator.clipboard.writeText(url).then(()=>showToast('Link copied!')).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=url;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast('Link copied!');
+  });
+}
+
+function checkMineParam(){
+  const params=new URLSearchParams(window.location.search);
+  const mineName=params.get('mine');
+  if(!mineName||!allData.length)return;
+  const mine=allData.find(d=>d.name.toLowerCase()===mineName.toLowerCase());
+  if(mine&&mine.lat&&mine.lng){
+    setTimeout(()=>{
+      map.setView([mine.lat,mine.lng],12);
+      clusterGroup.eachLayer(layer=>{
+        if(layer.getLatLng&&Math.abs(layer.getLatLng().lat-mine.lat)<0.001&&Math.abs(layer.getLatLng().lng-mine.lng)<0.001){
+          layer.openPopup();
+        }
+      });
+    },500);
+  }
+}
+
+// ============ FEATURE 4: Commissioning Timeline Slider ============
+let timelineInterval=null, timelinePlaying=false;
+
+function initTimeline(){
+  const years=allData.map(d=>d.year_commissioned).filter(y=>y&&y>1900);
+  if(!years.length)return;
+  const minY=Math.min(...years), maxY=Math.max(...years,new Date().getFullYear());
+  const slider=document.getElementById('timelineSlider');
+  slider.min=minY;slider.max=maxY;slider.value=maxY;
+  document.getElementById('timelineYear').textContent=maxY;
+  document.getElementById('timelinePanel').style.display='flex';
+}
+
+function onTimelineChange(year){
+  document.getElementById('timelineYear').textContent=year;
+  const filtered=allData.filter(d=>{
+    if(!d.year_commissioned)return true;// show unknowns
+    return d.year_commissioned<=parseInt(year);
+  });
+  // Also apply current filters
+  const region=document.getElementById('filterRegion').value;
+  const commodity=document.getElementById('filterCommodity').value;
+  const status=document.getElementById('filterStatus').value;
+  const confidence=document.getElementById('filterConfidence').value;
+  const search=document.getElementById('searchBox').value.toLowerCase();
+  const final=filtered.filter(d=>{
+    if(region&&d.region!==region)return false;
+    if(commodity&&!(d.commodity||'').toLowerCase().includes(commodity.toLowerCase()))return false;
+    if(status&&d.status!==status)return false;
+    if(confidence&&d.confidence!==confidence)return false;
+    if(search&&!d.name.toLowerCase().includes(search)&&!(d.company||'').toLowerCase().includes(search)&&!(d.country||'').toLowerCase().includes(search))return false;
+    return true;
+  });
+  renderAll(final);
+}
+
+function toggleTimeline(){
+  if(timelinePlaying){pauseTimeline();return}
+  timelinePlaying=true;
+  document.getElementById('timelinePlay').textContent='⏸';
+  const slider=document.getElementById('timelineSlider');
+  const min=parseInt(slider.min),max=parseInt(slider.max);
+  if(parseInt(slider.value)>=max)slider.value=min;
+  timelineInterval=setInterval(()=>{
+    let v=parseInt(slider.value)+1;
+    if(v>max){pauseTimeline();return}
+    slider.value=v;
+    onTimelineChange(v);
+  },500);
+}
+
+function pauseTimeline(){
+  timelinePlaying=false;
+  clearInterval(timelineInterval);
+  document.getElementById('timelinePlay').textContent='▶';
+}
+
+function resetTimeline(){
+  pauseTimeline();
+  const slider=document.getElementById('timelineSlider');
+  slider.value=slider.max;
+  document.getElementById('timelineYear').textContent=slider.max;
+  applyFilters();
+}
+
+// ============ FEATURE 5: Compare Regions ============
+let compareSelectedRegions=[], compareChartInstance=null;
+
+function openCompareModal(){
+  const regions=[...new Set(allData.map(d=>d.region))].filter(Boolean).sort();
+  const sel=document.getElementById('regionSelector');
+  sel.innerHTML=regions.map(r=>`<div class="region-chip" onclick="toggleRegionChip(this,'${r}')">${r}</div>`).join('');
+  compareSelectedRegions=[];
+  document.getElementById('compareCards').innerHTML='<p style="color:var(--muted);font-size:13px;text-align:center;padding:20px">Select regions above to compare</p>';
+  if(compareChartInstance){compareChartInstance.destroy();compareChartInstance=null}
+  document.getElementById('compareOverlay').classList.add('active');
+}
+
+function closeCompareModal(){document.getElementById('compareOverlay').classList.remove('active')}
+
+function toggleRegionChip(el,region){
+  if(compareSelectedRegions.includes(region)){
+    compareSelectedRegions=compareSelectedRegions.filter(r=>r!==region);
+    el.classList.remove('selected');
+  }else{
+    if(compareSelectedRegions.length>=3){showToast('Max 3 regions');return}
+    compareSelectedRegions.push(region);
+    el.classList.add('selected');
+  }
+  renderComparison();
+}
+
+function renderComparison(){
+  const cards=document.getElementById('compareCards');
+  if(!compareSelectedRegions.length){
+    cards.innerHTML='<p style="color:var(--muted);font-size:13px;text-align:center;padding:20px">Select regions above to compare</p>';
+    if(compareChartInstance){compareChartInstance.destroy();compareChartInstance=null}
+    return;
+  }
+  const stats=compareSelectedRegions.map(region=>{
+    const mines=allData.filter(d=>d.region===region);
+    const totalTpd=mines.reduce((s,d)=>s+(d.tpd||0),0);
+    const avgSize=mines.length?Math.round(totalTpd/mines.filter(d=>d.tpd).length):0;
+    // top commodity
+    const commCounts={};mines.forEach(d=>{const c=(d.commodity||'unknown').split('/')[0];commCounts[c]=(commCounts[c]||0)+1});
+    const topComm=Object.entries(commCounts).sort((a,b)=>b[1]-a[1])[0];
+    // top company
+    const coCounts={};mines.forEach(d=>{if(d.company)coCounts[d.company]=(coCounts[d.company]||0)+1});
+    const topCo=Object.entries(coCounts).sort((a,b)=>b[1]-a[1])[0];
+    return{region,count:mines.length,totalTpd,avgSize,topCommodity:topComm?topComm[0]:'—',topCompany:topCo?topCo[0]:'—'};
+  });
+
+  cards.innerHTML=stats.map(s=>`
+    <div class="compare-card">
+      <h4>${esc(s.region)}</h4>
+      <div class="cc-row"><span class="cc-label">Plants</span><span class="cc-val">${s.count}</span></div>
+      <div class="cc-row"><span class="cc-label">Total TPD</span><span class="cc-val">${s.totalTpd.toLocaleString()}</span></div>
+      <div class="cc-row"><span class="cc-label">Avg Plant Size</span><span class="cc-val">${s.avgSize.toLocaleString()} tpd</span></div>
+      <div class="cc-row"><span class="cc-label">Top Commodity</span><span class="cc-val">${esc(s.topCommodity)}</span></div>
+      <div class="cc-row"><span class="cc-label">Top Company</span><span class="cc-val">${esc(s.topCompany)}</span></div>
+    </div>
+  `).join('');
+
+  // Bar chart
+  if(compareChartInstance)compareChartInstance.destroy();
+  const ctx=document.getElementById('compareChart').getContext('2d');
+  compareChartInstance=new Chart(ctx,{
+    type:'bar',
+    data:{
+      labels:stats.map(s=>s.region),
+      datasets:[
+        {label:'Plants',data:stats.map(s=>s.count),backgroundColor:'#3498db'},
+        {label:'Total TPD (÷100)',data:stats.map(s=>Math.round(s.totalTpd/100)),backgroundColor:'#00a99d'},
+        {label:'Avg Size (tpd)',data:stats.map(s=>s.avgSize),backgroundColor:'#f39c12'}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:10,font:{size:11}}}},scales:{x:{grid:{display:false}},y:{grid:{color:'#1a3f4a'}}}}
+  });
+}
+
+// ============ Patch renderMap for share links (Feature 3) ============
+const _origRenderMap = renderMap;
+renderMap = function(data) {
+  if(clusterGroup) map.removeLayer(clusterGroup);
+  clusterGroup=L.markerClusterGroup({maxClusterRadius:40,spiderfyOnMaxZoom:true});
+  const maxTpd=Math.max(...data.map(d=>d.tpd||0),1);
+  data.forEach(d=>{
+    if(!d.lat||!d.lng) return;
+    const r=Math.max(5,Math.min(25,Math.sqrt((d.tpd||0)/maxTpd)*25));
+    const color=REGION_COLORS[d.region]||'#00a99d';
+    const marker=L.circleMarker([d.lat,d.lng],{radius:r,fillColor:color,color:'#fff',weight:1,opacity:0.8,fillOpacity:0.65});
+    const conf=d.confidence==='verified'?'🟢':'🟡';
+    const yr=d.year_commissioned||'—';
+    const designer=d.designer||'—';
+    const safeName = (d.name||'').replace(/'/g,"\\'").replace(/"/g,'&quot;');
+    const statusClass = (d.status||'').toLowerCase()==='operating'?'status-operating':(d.status||'').toLowerCase()==='closed'?'status-closed':'status-other';
+    marker.bindPopup(`
+      <div class="popup-header">
+        <div class="popup-mine-name">${conf} ${esc(d.name)}</div>
+        <div class="popup-company">${esc(d.company)||'—'}</div>
+      </div>
+      <div class="popup-badges">
+        <span class="popup-badge capacity">${(d.tpd||0).toLocaleString()} tpd</span>
+        ${d.commodity?'<span class="popup-badge commodity">'+esc(d.commodity)+'</span>':''}
+        ${d.status?'<span class="popup-badge '+statusClass+'">'+esc(d.status)+'</span>':''}
+      </div>
+      <div class="popup-grid">
+        <span class="pg-label">Country</span><span class="pg-val">${esc(d.country)}</span>
+        <span class="pg-label">Region</span><span class="pg-val">${esc(d.region)}</span>
+        <span class="pg-label">Fill Type</span><span class="pg-val">${esc(d.type)}</span>
+        <span class="pg-label">Plants</span><span class="pg-val">${d.plants||'—'}</span>
+        <span class="pg-label">Ore TPD</span><span class="pg-val">${d.ore_tpd?(d.ore_tpd.toLocaleString()):'—'}</span>
+        <span class="pg-label">Designer</span><span class="pg-val">${esc(designer)}</span>
+        <span class="pg-label">Commissioned</span><span class="pg-val">${yr}</span>
+      </div>
+      ${d.source?'<div class="popup-source">📎 <a href="'+encodeURI(d.source)+'" target="_blank" rel="noopener">'+esc(d.source_label||'View source')+' →</a></div>':''}
+      <div class="popup-footer">
+        ${d.last_updated?'<div style="margin-bottom:4px;font-size:11px;color:var(--muted)">✅ Last checked '+d.last_updated+(d.updated_by?' by <strong style="color:var(--text)">'+esc(d.updated_by)+'</strong>':'')+'</div>':''}
+        <a class="suggest-link" href="#" onclick="copyShareLink('${safeName}');return false">🔗 Share</a> · 
+        <a class="suggest-link" href="#" onclick="openCorrection('${safeName}');return false">📝 Suggest a correction</a>
+      </div>
+    `,{maxWidth:320,autoPan:true,autoPanPadding:[40,40]});
+    clusterGroup.addLayer(marker);
+  });
+  map.addLayer(clusterGroup);
+  if(clusterGroup.getLayers().length) map.fitBounds(clusterGroup.getBounds().pad(0.05));
+};
+
+// Hook into initial load to init timeline and check mine param
+const _origApplyFilters = applyFilters;
+let _firstLoad = true;
+applyFilters = function() {
+  _origApplyFilters();
+  if (_firstLoad) {
+    _firstLoad = false;
+    initTimeline();
+    checkMineParam();
+  }
+};
 </script>
 </body>
 </html>

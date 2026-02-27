@@ -132,6 +132,7 @@ a{color:var(--accent);text-decoration:none}
         <div class="stat-box"><div class="num" id="approvedCount">0</div><div class="lbl">Approved</div></div>
         <div class="stat-box"><div class="num" id="rejectedCount">0</div><div class="lbl">Rejected</div></div>
         <div class="stat-box"><div class="num" id="totalCount">0</div><div class="lbl">Total</div></div>
+        <div class="stat-box"><div class="num" id="subscriberCount">0</div><div class="lbl">Subscribers</div></div>
       </div>
       <div id="submissionsList"></div>
     </div>
@@ -305,6 +306,7 @@ function showAdmin(email) {
   document.getElementById('logoutBtn').style.display = 'block';
   document.getElementById('userEmail').textContent = email;
   loadSubmissions();
+  loadSubscriberCount();
 }
 
 async function logout() { await sb.auth.signOut(); location.reload(); }
@@ -707,6 +709,14 @@ async function deleteMine() {
     if (error) throw error;
     closeMineModal(); showToast('Mine deleted'); await loadMineData(); loadMines();
   } catch(e) { alert('Error: ' + e.message); }
+}
+
+// ============ SUBSCRIBERS ============
+async function loadSubscriberCount() {
+  try {
+    const { data, error, count } = await sb.from('subscribers').select('id', { count: 'exact', head: true });
+    if (!error && count !== null) document.getElementById('subscriberCount').textContent = count;
+  } catch(e) { console.error('Subscriber count error:', e); }
 }
 
 // ============ UTILS ============
