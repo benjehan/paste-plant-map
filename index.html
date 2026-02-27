@@ -259,17 +259,6 @@ a:hover{text-decoration:underline}
 .subscribe-modal .btn{width:100%;text-align:center;padding:11px;font-size:14px}
 .subscribe-modal .close-btn{position:absolute;right:12px;top:12px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer}
 
-/* Timeline slider */
-.timeline-panel{position:absolute;bottom:10px;left:50px;right:10px;z-index:800;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glass-border);border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:12px}
-.timeline-panel .year-display{font-size:22px;font-weight:700;color:var(--accent);min-width:50px;text-align:center}
-.timeline-panel input[type=range]{flex:1;-webkit-appearance:none;background:var(--border);height:4px;border-radius:2px;outline:none;cursor:pointer}
-.timeline-panel input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 6px var(--accent-glow)}
-.timeline-panel input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--accent);cursor:pointer;border:none}
-.timeline-panel .play-btn{background:var(--accent);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.timeline-panel .play-btn:hover{background:#00c9b7}
-.timeline-panel .reset-btn{background:none;border:none;color:var(--muted);font-size:11px;cursor:pointer;white-space:nowrap}
-.timeline-panel .reset-btn:hover{color:var(--accent)}
-
 /* Compare Regions modal */
 .compare-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:2000;justify-content:center;align-items:center;padding:20px}
 .compare-overlay.active{display:flex}
@@ -296,8 +285,6 @@ a:hover{text-decoration:underline}
 }
 
 @media(max-width:767px){
-  .timeline-panel{left:10px;right:10px;bottom:10px;padding:8px 12px;gap:8px;flex-wrap:wrap}
-  .timeline-panel .year-display{font-size:18px;min-width:40px}
   .compare-modal{width:100%;max-width:100%;border-radius:0;padding:16px}
   .compare-cards{grid-template-columns:1fr}
 }
@@ -354,12 +341,6 @@ a:hover{text-decoration:underline}
       <button class="clear-filters" id="clearFiltersBtn" onclick="clearFilters()" style="display:none">✕ Clear filters</button>
     </div>
     <div id="map"></div>
-    <div class="timeline-panel" id="timelinePanel" style="display:none">
-      <button class="play-btn" id="timelinePlay" onclick="toggleTimeline()">▶</button>
-      <span class="year-display" id="timelineYear">—</span>
-      <input type="range" id="timelineSlider" min="1950" max="2026" value="2026" oninput="onTimelineChange(this.value)">
-      <button class="reset-btn" onclick="resetTimeline()">Show All</button>
-    </div>
     <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">📊</button>
     <button class="fab-add" onclick="openModal()" aria-label="Submit a Mine" title="Submit a Mine">+</button>
   </div>
@@ -963,69 +944,6 @@ function checkMineParam(){
   }
 }
 
-// ============ FEATURE 4: Commissioning Timeline Slider ============
-let timelineInterval=null, timelinePlaying=false;
-
-function initTimeline(){
-  const years=allData.map(d=>d.year_commissioned).filter(y=>y&&y>1900);
-  if(!years.length)return;
-  const minY=Math.min(...years), maxY=Math.max(...years,new Date().getFullYear());
-  const slider=document.getElementById('timelineSlider');
-  slider.min=minY;slider.max=maxY;slider.value=maxY;
-  document.getElementById('timelineYear').textContent=maxY;
-  document.getElementById('timelinePanel').style.display='flex';
-}
-
-function onTimelineChange(year){
-  document.getElementById('timelineYear').textContent=year;
-  const filtered=allData.filter(d=>{
-    if(!d.year_commissioned)return true;// show unknowns
-    return d.year_commissioned<=parseInt(year);
-  });
-  // Also apply current filters
-  const region=document.getElementById('filterRegion').value;
-  const commodity=document.getElementById('filterCommodity').value;
-  const status=document.getElementById('filterStatus').value;
-  const confidence=document.getElementById('filterConfidence').value;
-  const search=document.getElementById('searchBox').value.toLowerCase();
-  const final=filtered.filter(d=>{
-    if(region&&d.region!==region)return false;
-    if(commodity&&!(d.commodity||'').toLowerCase().includes(commodity.toLowerCase()))return false;
-    if(status&&d.status!==status)return false;
-    if(confidence&&d.confidence!==confidence)return false;
-    if(search&&!d.name.toLowerCase().includes(search)&&!(d.company||'').toLowerCase().includes(search)&&!(d.country||'').toLowerCase().includes(search))return false;
-    return true;
-  });
-  renderAll(final);
-}
-
-function toggleTimeline(){
-  if(timelinePlaying){pauseTimeline();return}
-  timelinePlaying=true;
-  document.getElementById('timelinePlay').textContent='⏸';
-  const slider=document.getElementById('timelineSlider');
-  const min=parseInt(slider.min),max=parseInt(slider.max);
-  if(parseInt(slider.value)>=max)slider.value=min;
-  timelineInterval=setInterval(()=>{
-    let v=parseInt(slider.value)+1;
-    if(v>max){pauseTimeline();return}
-    slider.value=v;
-    onTimelineChange(v);
-  },500);
-}
-
-function pauseTimeline(){
-  timelinePlaying=false;
-  clearInterval(timelineInterval);
-  document.getElementById('timelinePlay').textContent='▶';
-}
-
-function resetTimeline(){
-  pauseTimeline();
-  const slider=document.getElementById('timelineSlider');
-  slider.value=slider.max;
-  document.getElementById('timelineYear').textContent=slider.max;
-  applyFilters();
 }
 
 // ============ FEATURE 5: Compare Regions ============
@@ -1151,14 +1069,13 @@ renderMap = function(data) {
   if(clusterGroup.getLayers().length) map.fitBounds(clusterGroup.getBounds().pad(0.05));
 };
 
-// Hook into initial load to init timeline and check mine param
+// Hook into initial load to check mine param
 const _origApplyFilters = applyFilters;
 let _firstLoad = true;
 applyFilters = function() {
   _origApplyFilters();
   if (_firstLoad) {
     _firstLoad = false;
-    initTimeline();
     checkMineParam();
   }
 };
