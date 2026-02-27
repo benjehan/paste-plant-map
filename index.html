@@ -30,17 +30,14 @@ a:hover{text-decoration:underline}
 .btn-outline:hover{background:var(--accent);color:#fff}
 
 /* News ticker */
-.news-ticker{background:#001a20;border-bottom:1px solid var(--border);display:flex;align-items:center;overflow:hidden;height:28px;flex-shrink:0}
+.news-ticker{background:#001a20;border-bottom:1px solid var(--border);display:flex;align-items:center;overflow:hidden;height:32px;flex-shrink:0}
 .ticker-label{background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:0 10px;height:100%;display:flex;align-items:center;letter-spacing:1px;flex-shrink:0;z-index:1}
-.ticker-track{flex:1;overflow:hidden;position:relative;height:100%}
-.ticker-content{display:flex;align-items:center;height:100%;position:absolute;white-space:nowrap;animation:tickerScroll 30s linear infinite}
-.ticker-content:hover{animation-play-state:paused}
-.ticker-item{display:inline-flex;align-items:center;padding:0 24px;font-size:12px;color:var(--muted);height:100%}
-.ticker-item a{color:var(--text);text-decoration:none;margin-right:6px}
+.ticker-track{flex:1;overflow:hidden;position:relative;height:100%;display:flex;align-items:center;padding:0 16px}
+.ticker-item{position:absolute;opacity:0;transition:opacity 1s ease-in-out;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.ticker-item.active{opacity:1}
+.ticker-item a{color:var(--text);text-decoration:none}
 .ticker-item a:hover{color:var(--accent);text-decoration:underline}
-.ticker-item .ticker-source{color:var(--muted);font-size:10px}
-.ticker-sep{color:var(--border);padding:0 8px}
-@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item .ticker-source{color:var(--muted);font-size:10px;margin-left:8px}
 
 /* Main layout */
 .main{display:flex;flex:1;overflow:hidden}
@@ -305,15 +302,20 @@ async function loadNews() {
         <div class="news-meta">${n.source ? esc(n.source) + ' · ' : ''}${date}</div>
       </div>`;
     }).join('');
-    // Populate ticker
+    // Populate ticker — fade one at a time
     if(news.length) {
       const ticker = document.getElementById('newsTicker');
-      const tickerContent = document.getElementById('tickerContent');
-      const items = news.map(n => `<span class="ticker-item"><a href="${esc(n.url)}" target="_blank">${esc(n.title)}</a><span class="ticker-source">${n.source ? ' — '+esc(n.source) : ''}</span></span><span class="ticker-sep">|</span>`).join('');
-      tickerContent.innerHTML = items + items;
-      const totalWidth = tickerContent.scrollWidth / 2;
-      tickerContent.style.animation = `tickerScroll ${Math.max(20, totalWidth/40)}s linear infinite`;
+      const tickerTrack = document.getElementById('tickerContent');
+      tickerTrack.innerHTML = news.map(n => `<span class="ticker-item"><a href="${esc(n.url)}" target="_blank">${esc(n.title)}</a><span class="ticker-source">${n.source ? '— '+esc(n.source) : ''}</span></span>`).join('');
       ticker.style.display = 'flex';
+      const items = tickerTrack.querySelectorAll('.ticker-item');
+      let current = 0;
+      items[0].classList.add('active');
+      setInterval(() => {
+        items[current].classList.remove('active');
+        current = (current + 1) % items.length;
+        items[current].classList.add('active');
+      }, 12000);
     }
   } catch(e) {
     document.getElementById('newsFeed').innerHTML = '<div class="news-empty">News feed coming soon...</div>';
