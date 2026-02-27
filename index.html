@@ -160,6 +160,10 @@ a:hover{text-decoration:underline}
 .marker-cluster div{background:rgba(0,169,157,0.7)!important;color:#fff!important;font-weight:600}
 
 /* Sidebar toggle button */
+/* Floating add button */
+.fab-add{position:absolute;bottom:100px;right:14px;z-index:900;width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:28px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.5);transition:transform .2s,background .2s;display:flex;align-items:center;justify-content:center}
+.fab-add:hover{background:#00c9b7;transform:scale(1.1)}
+
 .sidebar-toggle{display:none;position:absolute;bottom:40px;left:10px;z-index:900;width:48px;height:48px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:22px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.4);transition:transform .2s}
 .sidebar-toggle:hover{transform:scale(1.1)}
 
@@ -309,7 +313,6 @@ a:hover{text-decoration:underline}
       <input type="email" id="headerSubEmail" placeholder="Your email">
       <button class="btn" onclick="headerSubscribe()">Subscribe</button>
     </div>
-    <button class="btn btn-outline" onclick="openModal()">+ Submit a Mine</button>
     <a href="https://minesmart.io/backfill-pro/" target="_blank" class="btn">Request a Demo</a>
   </div>
   <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">☰</button>
@@ -318,7 +321,6 @@ a:hover{text-decoration:underline}
       <input type="email" id="mobileSubEmail" placeholder="Your email">
       <button class="btn" onclick="mobileSubscribe()">Subscribe</button>
     </div>
-    <button class="btn btn-outline" onclick="openModal();document.querySelector('.mobile-menu').classList.remove('open')">+ Submit a Mine</button>
     <a href="https://minesmart.io/backfill-pro/" target="_blank" class="btn">Request a Demo</a>
   </div>
 </div>
@@ -357,6 +359,7 @@ a:hover{text-decoration:underline}
       <button class="reset-btn" onclick="resetTimeline()">Show All</button>
     </div>
     <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">📊</button>
+    <button class="fab-add" onclick="openModal()" aria-label="Submit a Mine" title="Submit a Mine">+</button>
   </div>
 
   <div class="sidebar">
