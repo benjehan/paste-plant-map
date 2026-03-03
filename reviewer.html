@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<title>P&C Data Review — Paste Plant Map</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a1a1f;--panel:#0d2329;--card:#112e36;--accent:#00a99d;--brand:#004a59;--text:#e0e8ea;--muted:#7a9ca8;--border:#1a3f4a;--red:#e74c3c;--yellow:#f1c40f;--green:#2ecc71;--pending-bg:rgba(241,196,0,.1)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+/* Login */
+.login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh}
+.login-box{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:40px;width:360px;text-align:center}
+.login-box h1{font-size:20px;color:var(--accent);margin-bottom:6px}
+.login-box p{font-size:13px;color:var(--muted);margin-bottom:24px}
+.login-box input{width:100%;background:var(--card);color:var(--text);border:1px solid var(--border);padding:10px 12px;border-radius:4px;font-size:14px;margin-bottom:12px}
+.login-box input:focus{outline:none;border-color:var(--accent)}
+.login-box .btn{width:100%;padding:12px}
+.login-error{color:var(--red);font-size:12px;margin-top:8px;display:none}
+/* Header */
+.header{background:linear-gradient(135deg,var(--brand),#002a33);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--accent)}
+.header h1{font-size:18px;font-weight:600}
+.header-info{display:flex;gap:16px;align-items:center;font-size:13px}
+.header-info .region-badge{background:var(--accent);color:#fff;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600}
+.btn{background:var(--accent);color:#fff;border:none;padding:8px 16px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:500;transition:all .2s}
+.btn:hover{background:#00c9b7}
+.btn-sm{padding:5px 10px;font-size:12px}
+.btn-outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+.btn-outline:hover{background:var(--accent);color:#fff}
+.btn-green{background:var(--green)}.btn-green:hover{background:#27ae60}
+.btn-red{background:var(--red)}.btn-red:hover{background:#c0392b}
+/* Main */
+.container{padding:16px 20px;max-width:100%}
+.toolbar{display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+.toolbar input[type=text]{background:var(--card);color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:4px;font-size:13px;width:260px}
+.toolbar select{background:var(--card);color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:4px;font-size:13px}
+.toolbar .count{font-size:12px;color:var(--muted);margin-left:auto}
+/* Table */
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:6px}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:1400px}
+thead{position:sticky;top:0;z-index:10}
+th{background:var(--brand);color:var(--accent);padding:10px 8px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;cursor:pointer;user-select:none}
+th:hover{background:#005a6a}
+th.sorted-asc::after{content:' ▲';font-size:9px}
+th.sorted-desc::after{content:' ▼';font-size:9px}
+td{padding:6px 8px;border-bottom:1px solid rgba(26,63,74,.5);white-space:nowrap}
+tr:hover td{background:rgba(0,169,157,.05)}
+tr.pending td{background:var(--pending-bg)}
+td.editable{cursor:pointer;position:relative}
+td.editable:hover{background:rgba(0,169,157,.1);outline:1px dashed var(--accent)}
+td.changed{background:rgba(241,196,0,.15) !important}
+td input,td select{background:var(--card);color:var(--text);border:1px solid var(--accent);padding:4px 6px;border-radius:3px;font-size:12px;width:100%}
+.badge{display:inline-block;padding:2px 6px;border-radius:8px;font-size:10px;font-weight:600}
+.badge-operating{background:rgba(46,204,113,.15);color:var(--green)}
+.badge-closed{background:rgba(231,76,60,.15);color:var(--red)}
+.badge-cm{background:rgba(241,196,0,.15);color:var(--yellow)}
+.badge-construction{background:rgba(0,169,157,.15);color:var(--accent)}
+.badge-pending-edit{background:var(--yellow);color:#000;font-size:9px;padding:1px 5px;margin-left:4px}
+/* Add mine modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;justify-content:center;align-items:center}
+.modal-overlay.active{display:flex}
+.modal{background:var(--panel);border-radius:8px;padding:24px;width:90%;max-width:700px;max-height:90vh;overflow-y:auto;border:1px solid var(--border)}
+.modal h2{margin-bottom:16px;color:var(--accent);font-size:18px}
+.modal label{display:block;font-size:11px;color:var(--muted);margin:8px 0 4px;text-transform:uppercase}
+.modal input,.modal select,.modal textarea{width:100%;background:var(--card);color:var(--text);border:1px solid var(--border);padding:8px;border-radius:4px;font-size:13px}
+.modal textarea{height:60px;resize:vertical}
+.modal-row{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.modal-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 12px}
+.modal-actions{display:flex;gap:8px;margin-top:16px;justify-content:flex-end}
+/* Toast */
+.toast{position:fixed;bottom:20px;right:20px;background:var(--green);color:#fff;padding:12px 20px;border-radius:6px;font-size:13px;font-weight:500;z-index:3000;display:none;animation:slideIn .3s}
+.toast.error{background:var(--red)}
+@keyframes slideIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+/* Pending edits panel */
+.pending-panel{background:var(--card);border:1px solid var(--yellow);border-radius:6px;padding:16px;margin-bottom:16px;display:none}
+.pending-panel h3{color:var(--yellow);font-size:14px;margin-bottom:10px}
+.pending-item{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px}
+.pending-item:last-child{border:none}
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen" class="login-wrap">
+  <div class="login-box">
+    <h1>🗺️ Paste Plant Map</h1>
+    <p>P&C Regional Data Review</p>
+    <input type="text" id="loginUser" placeholder="Username">
+    <input type="password" id="loginPass" placeholder="Password">
+    <select id="loginRegion" style="width:100%;background:var(--card);color:var(--text);border:1px solid var(--border);padding:10px;border-radius:4px;font-size:14px;margin-bottom:12px">
+      <option value="">Select your region...</option>
+      <option value="PCNA">PCNA — North America</option>
+      <option value="PCEU">PCEU — Europe</option>
+      <option value="PCSA">PCSA — South America</option>
+      <option value="PCCE">PCCE — Africa</option>
+      <option value="PCOZ">PCOZ — Australia / Oceania</option>
+      <option value="Other">Other</option>
+    </select>
+    <button class="btn" onclick="doLogin()">Sign In</button>
+    <div class="login-error" id="loginError">Invalid credentials</div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="mainApp" style="display:none">
+  <div class="header">
+    <h1>🗺️ Paste Plant Map — P&C Data Review</h1>
+    <div class="header-info">
+      <span id="userDisplay"></span>
+      <span class="region-badge" id="regionBadge"></span>
+      <button class="btn btn-sm btn-outline" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Pending edits banner -->
+    <div class="pending-panel" id="pendingPanel">
+      <h3>🟡 Your Pending Edits</h3>
+      <div id="pendingList"></div>
+    </div>
+
+    <div class="toolbar">
+      <input type="text" id="searchBox" placeholder="Search mines..." oninput="renderTable()">
+      <select id="filterRegion" onchange="renderTable()">
+        <option value="">All Regions</option>
+        <option value="North America">North America</option>
+        <option value="South America">South America</option>
+        <option value="Europe">Europe</option>
+        <option value="Africa">Africa</option>
+        <option value="Oceania">Oceania</option>
+        <option value="Asia">Asia</option>
+      </select>
+      <select id="filterType" onchange="renderTable()">
+        <option value="">All Types</option>
+        <option value="Paste">Paste</option>
+        <option value="CRF">CRF</option>
+        <option value="Hydraulic">Hydraulic</option>
+        <option value="Other">Other</option>
+      </select>
+      <select id="filterStatus" onchange="renderTable()">
+        <option value="">All Statuses</option>
+        <option value="operating">Operating</option>
+        <option value="closed">Closed</option>
+        <option value="care_maintenance">Care & Maintenance</option>
+        <option value="construction">Construction</option>
+        <option value="commissioning">Commissioning</option>
+      </select>
+      <button class="btn btn-green btn-sm" onclick="showAddMine()">+ Add Mine</button>
+      <span class="count" id="countDisplay"></span>
+    </div>
+
+    <div class="table-wrap" style="max-height:calc(100vh - 220px);overflow-y:auto">
+      <table>
+        <thead>
+          <tr>
+            <th onclick="sortBy('name')">Mine Name</th>
+            <th onclick="sortBy('company')">Company</th>
+            <th onclick="sortBy('country')">Country</th>
+            <th onclick="sortBy('region')">Region</th>
+            <th onclick="sortBy('type')">Fill Type</th>
+            <th onclick="sortBy('tpd')">TPD</th>
+            <th onclick="sortBy('commodity')">Commodity</th>
+            <th onclick="sortBy('status')">Status</th>
+            <th onclick="sortBy('year_commissioned')">Year</th>
+            <th onclick="sortBy('designer')">Designer</th>
+            <th onclick="sortBy('confidence')">Confidence</th>
+            <th>Notes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="mineTable"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ADD MINE MODAL -->
+<div class="modal-overlay" id="addMineModal">
+  <div class="modal">
+    <h2>➕ Add New Mine</h2>
+    <div class="modal-row">
+      <div><label>Mine Name *</label><input id="addName"></div>
+      <div><label>Company</label><input id="addCompany"></div>
+    </div>
+    <div class="modal-row3">
+      <div><label>Country</label><input id="addCountry"></div>
+      <div><label>Region</label>
+        <select id="addRegion"><option value="">—</option><option>North America</option><option>South America</option><option>Europe</option><option>Africa</option><option>Oceania</option><option>Asia</option></select>
+      </div>
+      <div><label>Fill Type</label>
+        <select id="addType"><option>Paste</option><option>CRF</option><option>Hydraulic</option><option>Other</option></select>
+      </div>
+    </div>
+    <div class="modal-row3">
+      <div><label>TPD (capacity)</label><input type="number" id="addTpd"></div>
+      <div><label>Commodity</label><input id="addCommodity"></div>
+      <div><label>Year Commissioned</label><input type="number" id="addYear"></div>
+    </div>
+    <div class="modal-row">
+      <div><label>Status</label>
+        <select id="addStatus"><option value="operating">Operating</option><option value="construction">Construction</option><option value="commissioning">Commissioning</option><option value="closed">Closed</option><option value="care_maintenance">Care & Maintenance</option></select>
+      </div>
+      <div><label>Designer</label><input id="addDesigner"></div>
+    </div>
+    <div class="modal-row">
+      <div><label>Latitude</label><input type="number" step="any" id="addLat"></div>
+      <div><label>Longitude</label><input type="number" step="any" id="addLng"></div>
+    </div>
+    <label>Notes / Source Reference</label>
+    <textarea id="addNotes" placeholder="Where did you find this data? Include source references..."></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal('addMineModal')">Cancel</button>
+      <button class="btn btn-green" onclick="submitNewMine()">Submit for Approval</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MINE MODAL -->
+<div class="modal-overlay" id="editMineModal">
+  <div class="modal">
+    <h2>✏️ Edit Mine</h2>
+    <input type="hidden" id="editId">
+    <div class="modal-row">
+      <div><label>Mine Name</label><input id="editName"></div>
+      <div><label>Company</label><input id="editCompany"></div>
+    </div>
+    <div class="modal-row3">
+      <div><label>Country</label><input id="editCountry"></div>
+      <div><label>Region</label>
+        <select id="editRegion"><option value="">—</option><option>North America</option><option>South America</option><option>Europe</option><option>Africa</option><option>Oceania</option><option>Asia</option></select>
+      </div>
+      <div><label>Fill Type</label>
+        <select id="editType"><option>Paste</option><option>CRF</option><option>Hydraulic</option><option>Other</option></select>
+      </div>
+    </div>
+    <div class="modal-row3">
+      <div><label>TPD</label><input type="number" id="editTpd"></div>
+      <div><label>Commodity</label><input id="editCommodity"></div>
+      <div><label>Year Commissioned</label><input type="number" id="editYear"></div>
+    </div>
+    <div class="modal-row">
+      <div><label>Status</label>
+        <select id="editStatus"><option value="operating">Operating</option><option value="construction">Construction</option><option value="commissioning">Commissioning</option><option value="closed">Closed</option><option value="care_maintenance">Care & Maintenance</option></select>
+      </div>
+      <div><label>Designer</label><input id="editDesigner"></div>
+    </div>
+    <div class="modal-row">
+      <div><label>Latitude</label><input type="number" step="any" id="editLat"></div>
+      <div><label>Longitude</label><input type="number" step="any" id="editLng"></div>
+    </div>
+    <div class="modal-row">
+      <div><label>Confidence</label>
+        <select id="editConfidence"><option value="verified">Verified</option><option value="likely">Likely</option><option value="unverified">Unverified</option></select>
+      </div>
+      <div><label>Source</label><input id="editSource"></div>
+    </div>
+    <label>Notes</label>
+    <textarea id="editNotes"></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal('editMineModal')">Cancel</button>
+      <button class="btn" onclick="submitEdit()">Submit Changes for Approval</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SUPABASE_URL = 'https://cxsariervcthxoudumaq.supabase.co';
+const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN4c2FyaWVydmN0aHhvdWR1bWFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxOTcwMTAsImV4cCI6MjA4Nzc3MzAxMH0.KmjcyBRtRRgvg4FZarJ935wjcKZ4PTThszKWbFPzwUY';
+const VALID_USER = 'P&C';
+const VALID_PASS = 'Engineering91';
+
+let mines = [];
+let edits = [];
+let currentUser = null;
+let currentRegion = null;
+let sortCol = 'name';
+let sortDir = 'asc';
+
+function headers() {
+  return { 'apikey': ANON_KEY, 'Authorization': 'Bearer ' + ANON_KEY, 'Content-Type': 'application/json' };
+}
+
+function doLogin() {
+  const user = document.getElementById('loginUser').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  const region = document.getElementById('loginRegion').value;
+  if (user === VALID_USER && pass === VALID_PASS && region) {
+    currentUser = user;
+    currentRegion = region;
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('mainApp').style.display = 'block';
+    document.getElementById('userDisplay').textContent = 'P&C Reviewer';
+    document.getElementById('regionBadge').textContent = region;
+    document.getElementById('filterRegion').value = regionToFilter(region);
+    loadData();
+  } else {
+    const err = document.getElementById('loginError');
+    err.style.display = 'block';
+    err.textContent = !region ? 'Please select your region' : 'Invalid credentials';
+  }
+}
+
+function regionToFilter(r) {
+  const map = { 'PCNA': 'North America', 'PCSA': 'South America', 'PCEU': 'Europe', 'PCCE': 'Africa', 'PCOZ': 'Oceania' };
+  return map[r] || '';
+}
+
+function logout() {
+  currentUser = null;
+  currentRegion = null;
+  document.getElementById('mainApp').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('loginPass').value = '';
+}
+
+async function loadData() {
+  const [mRes, eRes] = await Promise.all([
+    fetch(SUPABASE_URL + '/rest/v1/mines?select=*&order=name', { headers: headers() }),
+    fetch(SUPABASE_URL + '/rest/v1/mine_edits?select=*&status=eq.pending&order=created_at.desc', { headers: headers() }).catch(() => ({ ok: false }))
+  ]);
+  mines = await mRes.json();
+  edits = eRes.ok ? await eRes.json() : [];
+  renderTable();
+  renderPending();
+}
+
+function renderPending() {
+  const myEdits = edits.filter(e => e.editor_region === currentRegion);
+  const panel = document.getElementById('pendingPanel');
+  const list = document.getElementById('pendingList');
+  if (myEdits.length === 0) { panel.style.display = 'none'; return; }
+  panel.style.display = 'block';
+  list.innerHTML = myEdits.map(e => {
+    const mine = mines.find(m => m.id === e.mine_id);
+    const name = e.edit_type === 'add' ? (e.new_mine_data?.name || 'New mine') : (mine?.name || 'Unknown');
+    const type = e.edit_type === 'add' ? '➕ New mine' : e.edit_type === 'delete' ? '🗑️ Delete' : '✏️ Edit';
+    const changes = e.edit_type === 'update' ? Object.keys(e.field_changes || {}).join(', ') : '';
+    return `<div class="pending-item"><span class="badge badge-pending-edit">PENDING</span><strong>${name}</strong><span>${type}</span><span style="color:var(--muted)">${changes}</span><span style="color:var(--muted);font-size:11px">${new Date(e.created_at).toLocaleDateString()}</span></div>`;
+  }).join('');
+}
+
+function renderTable() {
+  const search = document.getElementById('searchBox').value.toLowerCase();
+  const fRegion = document.getElementById('filterRegion').value;
+  const fType = document.getElementById('filterType').value;
+  const fStatus = document.getElementById('filterStatus').value;
+
+  let filtered = mines.filter(m => {
+    if (search && !(m.name||'').toLowerCase().includes(search) && !(m.company||'').toLowerCase().includes(search) && !(m.country||'').toLowerCase().includes(search)) return false;
+    if (fRegion && m.region !== fRegion) return false;
+    if (fType && m.type !== fType) return false;
+    if (fStatus && m.status !== fStatus) return false;
+    return true;
+  });
+
+  filtered.sort((a, b) => {
+    let va = a[sortCol] || '', vb = b[sortCol] || '';
+    if (typeof va === 'number' || sortCol === 'tpd' || sortCol === 'year_commissioned') {
+      va = Number(va) || 0; vb = Number(vb) || 0;
+    } else { va = String(va).toLowerCase(); vb = String(vb).toLowerCase(); }
+    if (va < vb) return sortDir === 'asc' ? -1 : 1;
+    if (va > vb) return sortDir === 'asc' ? 1 : -1;
+    return 0;
+  });
+
+  // Mark pending edits
+  const pendingMineIds = new Set(edits.filter(e => e.edit_type === 'update').map(e => e.mine_id));
+
+  document.querySelectorAll('th').forEach(th => { th.classList.remove('sorted-asc', 'sorted-desc'); });
+  // Can't easily match th to col here, skip for now
+
+  const tbody = document.getElementById('mineTable');
+  tbody.innerHTML = filtered.map(m => {
+    const hasPending = pendingMineIds.has(m.id);
+    const statusClass = m.status === 'operating' ? 'badge-operating' : m.status === 'closed' ? 'badge-closed' : (m.status||'').includes('care') ? 'badge-cm' : 'badge-construction';
+    return `<tr class="${hasPending ? 'pending' : ''}" data-id="${m.id}">
+      <td><strong>${esc(m.name)}</strong>${hasPending ? '<span class="badge-pending-edit">PENDING</span>' : ''}</td>
+      <td>${esc(m.company)}</td>
+      <td>${esc(m.country)}</td>
+      <td>${esc(m.region)}</td>
+      <td>${esc(m.type)}</td>
+      <td>${m.tpd || '—'}</td>
+      <td>${esc(m.commodity)}</td>
+      <td><span class="badge ${statusClass}">${esc(m.status)}</span></td>
+      <td>${m.year_commissioned || '—'}</td>
+      <td>${esc(m.designer)}</td>
+      <td>${esc(m.confidence)}</td>
+      <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis" title="${esc(m.notes)}">${esc(m.notes)}</td>
+      <td><button class="btn btn-sm btn-outline" onclick="editMine('${m.id}')">Edit</button></td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('countDisplay').textContent = `Showing ${filtered.length} of ${mines.length} mines`;
+}
+
+function sortBy(col) {
+  if (sortCol === col) { sortDir = sortDir === 'asc' ? 'desc' : 'asc'; }
+  else { sortCol = col; sortDir = 'asc'; }
+  renderTable();
+}
+
+function esc(v) { if (!v) return ''; return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function editMine(id) {
+  const m = mines.find(x => x.id === id);
+  if (!m) return;
+  document.getElementById('editId').value = id;
+  document.getElementById('editName').value = m.name || '';
+  document.getElementById('editCompany').value = m.company || '';
+  document.getElementById('editCountry').value = m.country || '';
+  document.getElementById('editRegion').value = m.region || '';
+  document.getElementById('editType').value = m.type || 'Paste';
+  document.getElementById('editTpd').value = m.tpd || '';
+  document.getElementById('editCommodity').value = m.commodity || '';
+  document.getElementById('editYear').value = m.year_commissioned || '';
+  document.getElementById('editStatus').value = m.status || 'operating';
+  document.getElementById('editDesigner').value = m.designer || '';
+  document.getElementById('editLat').value = m.lat || '';
+  document.getElementById('editLng').value = m.lng || '';
+  document.getElementById('editConfidence').value = m.confidence || 'likely';
+  document.getElementById('editSource').value = m.source || '';
+  document.getElementById('editNotes').value = m.notes || '';
+  document.getElementById('editMineModal').classList.add('active');
+}
+
+async function submitEdit() {
+  const id = document.getElementById('editId').value;
+  const m = mines.find(x => x.id === id);
+  const fields = ['name','company','country','region','type','tpd','commodity','year_commissioned','status','designer','lat','lng','confidence','source','notes'];
+  const elMap = { name:'editName',company:'editCompany',country:'editCountry',region:'editRegion',type:'editType',tpd:'editTpd',commodity:'editCommodity',year_commissioned:'editYear',status:'editStatus',designer:'editDesigner',lat:'editLat',lng:'editLng',confidence:'editConfidence',source:'editSource',notes:'editNotes' };
+
+  const changes = {};
+  for (const f of fields) {
+    const newVal = document.getElementById(elMap[f]).value.trim();
+    const oldVal = String(m[f] || '').trim();
+    if (newVal !== oldVal) {
+      changes[f] = { old: m[f], new: ['tpd','year_commissioned','lat','lng'].includes(f) ? (newVal ? Number(newVal) : null) : (newVal || null) };
+    }
+  }
+
+  if (Object.keys(changes).length === 0) {
+    toast('No changes detected', true);
+    return;
+  }
+
+  const edit = {
+    mine_id: id,
+    edit_type: 'update',
+    field_changes: changes,
+    editor_name: currentUser,
+    editor_region: currentRegion,
+    status: 'pending'
+  };
+
+  const res = await fetch(SUPABASE_URL + '/rest/v1/mine_edits', {
+    method: 'POST',
+    headers: { ...headers(), 'Prefer': 'return=representation' },
+    body: JSON.stringify(edit)
+  });
+
+  if (res.ok) {
+    toast(`✅ Edit submitted for ${m.name} — awaiting admin approval`);
+    closeModal('editMineModal');
+    loadData();
+  } else {
+    toast('❌ Failed to submit edit', true);
+  }
+}
+
+function showAddMine() {
+  ['addName','addCompany','addCountry','addTpd','addCommodity','addYear','addDesigner','addLat','addLng','addNotes'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('addRegion').value = regionToFilter(currentRegion);
+  document.getElementById('addType').value = 'Paste';
+  document.getElementById('addStatus').value = 'operating';
+  document.getElementById('addMineModal').classList.add('active');
+}
+
+async function submitNewMine() {
+  const name = document.getElementById('addName').value.trim();
+  if (!name) { toast('Mine name is required', true); return; }
+
+  const mineData = {
+    name, company: document.getElementById('addCompany').value.trim() || null,
+    country: document.getElementById('addCountry').value.trim() || null,
+    region: document.getElementById('addRegion').value || null,
+    type: document.getElementById('addType').value,
+    tpd: document.getElementById('addTpd').value ? Number(document.getElementById('addTpd').value) : null,
+    commodity: document.getElementById('addCommodity').value.trim() || null,
+    year_commissioned: document.getElementById('addYear').value ? Number(document.getElementById('addYear').value) : null,
+    status: document.getElementById('addStatus').value,
+    designer: document.getElementById('addDesigner').value.trim() || null,
+    lat: document.getElementById('addLat').value ? Number(document.getElementById('addLat').value) : null,
+    lng: document.getElementById('addLng').value ? Number(document.getElementById('addLng').value) : null,
+    notes: document.getElementById('addNotes').value.trim() || null
+  };
+
+  const edit = {
+    edit_type: 'add',
+    new_mine_data: mineData,
+    field_changes: {},
+    editor_name: currentUser,
+    editor_region: currentRegion,
+    status: 'pending'
+  };
+
+  const res = await fetch(SUPABASE_URL + '/rest/v1/mine_edits', {
+    method: 'POST',
+    headers: { ...headers(), 'Prefer': 'return=representation' },
+    body: JSON.stringify(edit)
+  });
+
+  if (res.ok) {
+    toast(`✅ New mine "${name}" submitted — awaiting admin approval`);
+    closeModal('addMineModal');
+    loadData();
+  } else {
+    toast('❌ Failed to submit new mine', true);
+  }
+}
+
+function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+function toast(msg, isError) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (isError ? ' error' : '');
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 4000);
+}
+
+// Close modals on escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
+  }
+});
+
+// Close modals on backdrop click
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('active'); });
+});
+</script>
+</body>
+</html>

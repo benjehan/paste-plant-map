@@ -127,6 +127,7 @@ a{color:var(--accent);text-decoration:none}
   <div id="adminPanel" style="display:none">
     <div class="tabs">
       <div class="tab active" onclick="switchTab('submissions')">📋 Submissions</div>
+      <div class="tab" onclick="switchTab('edits')">✏️ P&C Edits</div>
       <div class="tab" onclick="switchTab('mines')">⛏️ Mines</div>
     </div>
 
@@ -140,6 +141,16 @@ a{color:var(--accent);text-decoration:none}
         <div class="stat-box"><div class="num" id="subscriberCount">0</div><div class="lbl">Subscribers</div></div>
       </div>
       <div id="submissionsList"></div>
+    </div>
+
+    <!-- P&C Edits Tab -->
+    <div class="tab-content" id="tab-edits">
+      <div class="stats-bar">
+        <div class="stat-box pending"><div class="num" id="editPendingCount">0</div><div class="lbl">Pending Edits</div></div>
+        <div class="stat-box"><div class="num" id="editApprovedCount">0</div><div class="lbl">Approved</div></div>
+        <div class="stat-box"><div class="num" id="editRejectedCount">0</div><div class="lbl">Rejected</div></div>
+      </div>
+      <div id="editsList"><div class="card" style="text-align:center;color:var(--muted);padding:40px">Loading P&C edits...</div></div>
     </div>
 
     <!-- Mines Tab -->
@@ -284,6 +295,7 @@ function switchTab(tab) {
   document.querySelector(`.tab-content#tab-${tab}`).classList.add('active');
   event.target.classList.add('active');
   if (tab === 'mines') loadMines();
+  if (tab === 'edits') loadEdits();
 }
 
 // ============ AUTH ============
@@ -733,6 +745,126 @@ function showToast(msg) {
 
 document.getElementById('editModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeEdit(); });
 document.getElementById('mineModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeMineModal(); });
+
+// ============ P&C EDITS TAB ============
+const SERVICE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN4c2FyaWVydmN0aHhvdWR1bWFxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MjE5NzAxMCwiZXhwIjoyMDg3NzczMDEwfQ.kphUFG1-TcS6NhUR8NMOQnpguf__FMePxQM1s1_DwSc';
+
+function svcHeaders() {
+  return { 'apikey': SERVICE_KEY, 'Authorization': 'Bearer ' + SERVICE_KEY, 'Content-Type': 'application/json' };
+}
+
+async function loadEdits() {
+  const res = await fetch(SUPABASE_URL + '/rest/v1/mine_edits?select=*&order=created_at.desc', { headers: svcHeaders() });
+  if (!res.ok) { document.getElementById('editsList').innerHTML = '<div class="card">Failed to load edits</div>'; return; }
+  const edits = await res.json();
+  
+  const pending = edits.filter(e => e.status === 'pending');
+  const approved = edits.filter(e => e.status === 'approved');
+  const rejected = edits.filter(e => e.status === 'rejected');
+  
+  document.getElementById('editPendingCount').textContent = pending.length;
+  document.getElementById('editApprovedCount').textContent = approved.length;
+  document.getElementById('editRejectedCount').textContent = rejected.length;
+  
+  if (edits.length === 0) {
+    document.getElementById('editsList').innerHTML = '<div class="card" style="text-align:center;color:var(--muted);padding:40px">No P&C edits yet. Share /reviewer.html with your regional teams.</div>';
+    return;
+  }
+  
+  await loadMineData();
+  
+  document.getElementById('editsList').innerHTML = edits.map(e => {
+    const mine = mineData.find(m => m.id === e.mine_id);
+    const mineName = e.edit_type === 'add' ? (e.new_mine_data?.name || 'New Mine') : (mine?.name || 'Unknown');
+    const statusClass = e.status === 'pending' ? 'badge-pending' : e.status === 'approved' ? 'badge-approved' : 'badge-rejected';
+    const typeIcon = e.edit_type === 'add' ? '➕' : e.edit_type === 'delete' ? '🗑️' : '✏️';
+    const typeLabel = e.edit_type === 'add' ? 'New Mine' : e.edit_type === 'delete' ? 'Delete Request' : 'Edit';
+    
+    let changesHtml = '';
+    if (e.edit_type === 'update' && e.field_changes) {
+      changesHtml = '<div class="fields" style="margin-top:8px">' + Object.entries(e.field_changes).map(([field, vals]) => {
+        return `<div class="f"><span class="fl">${field}</span><span class="field-old">${esc(String(vals.old || '—'))}</span> → <span class="field-new">${esc(String(vals.new || '—'))}</span></div>`;
+      }).join('') + '</div>';
+    }
+    if (e.edit_type === 'add' && e.new_mine_data) {
+      changesHtml = '<div class="fields" style="margin-top:8px">' + Object.entries(e.new_mine_data).filter(([k,v]) => v).map(([k, v]) => {
+        return `<div class="f"><span class="fl">${k}</span><span class="field-new">${esc(String(v))}</span></div>`;
+      }).join('') + '</div>';
+    }
+    
+    const actions = e.status === 'pending' ? `
+      <div class="card-actions">
+        <button class="btn btn-sm" style="background:var(--green)" onclick="approveEdit('${e.id}')">✅ Approve</button>
+        <button class="btn btn-sm btn-red" onclick="rejectEdit('${e.id}')">❌ Reject</button>
+      </div>` : '';
+    
+    return `<div class="card">
+      <div class="card-header">
+        <h3>${typeIcon} ${esc(mineName)} <span class="type-badge">${typeLabel}</span></h3>
+        <span class="badge ${statusClass}">${e.status}</span>
+      </div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:8px">
+        By: <strong>${esc(e.editor_name)}</strong> (${esc(e.editor_region)}) — ${new Date(e.created_at).toLocaleString()}
+        ${e.reviewed_at ? ' — Reviewed: ' + new Date(e.reviewed_at).toLocaleString() : ''}
+      </div>
+      ${changesHtml}
+      ${e.admin_notes ? '<div style="margin-top:8px;font-size:12px;color:var(--yellow)">Admin: ' + esc(e.admin_notes) + '</div>' : ''}
+      ${actions}
+    </div>`;
+  }).join('');
+}
+
+async function approveEdit(editId) {
+  // Get the edit details
+  const res = await fetch(SUPABASE_URL + '/rest/v1/mine_edits?id=eq.' + editId + '&select=*', { headers: svcHeaders() });
+  const edits = await res.json();
+  if (!edits.length) return;
+  const edit = edits[0];
+  
+  try {
+    if (edit.edit_type === 'update' && edit.mine_id) {
+      // Apply field changes to the mine
+      const updates = {};
+      for (const [field, vals] of Object.entries(edit.field_changes || {})) {
+        updates[field] = vals.new;
+      }
+      updates.last_updated = new Date().toISOString().slice(0, 10);
+      updates.updated_by = 'P&C Review (' + (edit.editor_region || '') + ')';
+      
+      await fetch(SUPABASE_URL + '/rest/v1/mines?id=eq.' + edit.mine_id, {
+        method: 'PATCH', headers: svcHeaders(), body: JSON.stringify(updates)
+      });
+    } else if (edit.edit_type === 'add' && edit.new_mine_data) {
+      // Insert new mine
+      const newMine = { ...edit.new_mine_data, last_updated: new Date().toISOString().slice(0, 10), updated_by: 'P&C Review (' + (edit.editor_region || '') + ')', confidence: 'likely' };
+      await fetch(SUPABASE_URL + '/rest/v1/mines', {
+        method: 'POST', headers: { ...svcHeaders(), 'Prefer': 'return=representation' }, body: JSON.stringify(newMine)
+      });
+    }
+    
+    // Mark edit as approved
+    await fetch(SUPABASE_URL + '/rest/v1/mine_edits?id=eq.' + editId, {
+      method: 'PATCH', headers: svcHeaders(),
+      body: JSON.stringify({ status: 'approved', reviewed_at: new Date().toISOString(), reviewed_by: document.getElementById('userEmail').textContent })
+    });
+    
+    showToast('✅ Edit approved and applied');
+    loadEdits();
+    loadMineData();
+  } catch(err) {
+    showToast('❌ Error applying edit: ' + err.message);
+  }
+}
+
+async function rejectEdit(editId) {
+  const notes = prompt('Rejection reason (optional):');
+  await fetch(SUPABASE_URL + '/rest/v1/mine_edits?id=eq.' + editId, {
+    method: 'PATCH', headers: svcHeaders(),
+    body: JSON.stringify({ status: 'rejected', admin_notes: notes || null, reviewed_at: new Date().toISOString(), reviewed_by: document.getElementById('userEmail').textContent })
+  });
+  showToast('Edit rejected');
+  loadEdits();
+}
 </script>
 </body>
 </html>
