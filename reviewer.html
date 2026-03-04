@@ -86,8 +86,9 @@ td input,td select{background:var(--card);color:var(--text);border:1px solid var
   <div class="login-box">
     <h1>🗺️ Paste Plant Map</h1>
     <p>P&C Regional Data Review</p>
-    <input type="text" id="loginUser" placeholder="Username">
+    <input type="text" id="loginUser" placeholder="Username (P&C)">
     <input type="password" id="loginPass" placeholder="Password">
+    <input type="text" id="loginName" placeholder="Your name (e.g. Bruno, Kelvin...)" style="width:100%;background:var(--card);color:var(--text);border:1px solid var(--border);padding:10px 12px;border-radius:4px;font-size:14px;margin-bottom:12px">
     <select id="loginRegion" style="width:100%;background:var(--card);color:var(--text);border:1px solid var(--border);padding:10px;border-radius:4px;font-size:14px;margin-bottom:12px">
       <option value="">Select your region...</option>
       <option value="PCNA">PCNA — North America</option>
@@ -170,7 +171,9 @@ td input,td select{background:var(--card);color:var(--text);border:1px solid var
             <th onclick="sortBy('year_commissioned')">Year</th>
             <th onclick="sortBy('designer')">Designer</th>
             <th onclick="sortBy('confidence')">Confidence</th>
-            <th onclick="sortBy('checked_at')">Last Checked</th>
+            <th onclick="sortBy('last_updated')">Last Updated</th>
+            <th onclick="sortBy('updated_by')">Updated By</th>
+            <th onclick="sortBy('checked_at')">P&C Checked</th>
             <th onclick="sortBy('checked_by')">Checked By</th>
             <th>Notes</th>
             <th>Actions</th>
@@ -294,19 +297,20 @@ function doLogin() {
   const user = document.getElementById('loginUser').value.trim();
   const pass = document.getElementById('loginPass').value;
   const region = document.getElementById('loginRegion').value;
-  if (user === VALID_USER && pass === VALID_PASS && region) {
-    currentUser = user;
+  const realName = document.getElementById('loginName').value.trim();
+  if (user === VALID_USER && pass === VALID_PASS && region && realName) {
+    currentUser = realName;
     currentRegion = region;
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('mainApp').style.display = 'block';
-    document.getElementById('userDisplay').textContent = 'P&C Reviewer';
+    document.getElementById('userDisplay').textContent = realName;
     document.getElementById('regionBadge').textContent = region;
     document.getElementById('filterRegion').value = regionToFilter(region);
     loadData();
   } else {
     const err = document.getElementById('loginError');
     err.style.display = 'block';
-    err.textContent = !region ? 'Please select your region' : 'Invalid credentials';
+    err.textContent = !region ? 'Please select your region' : !realName ? 'Please enter your name' : 'Invalid credentials';
   }
 }
 
@@ -398,8 +402,10 @@ function renderTable() {
       <td>${m.year_commissioned || '—'}</td>
       <td>${esc(m.designer)}</td>
       <td>${esc(m.confidence)}</td>
-      <td style="font-size:11px;color:var(--muted)">${m.checked_at ? new Date(m.checked_at).toLocaleDateString() : '<span style="color:var(--red)">—</span>'}</td>
-      <td style="font-size:11px">${m.checked_by ? esc(m.checked_by) + (m.checked_region ? ' <span style="color:var(--muted)">(' + esc(m.checked_region) + ')</span>' : '') : '<span style="color:var(--red)">—</span>'}</td>
+      <td style="font-size:11px;color:var(--muted)">${m.last_updated || '—'}</td>
+      <td style="font-size:11px">${esc(m.updated_by) || '—'}</td>
+      <td style="font-size:11px;color:var(--muted)">${m.checked_at ? new Date(m.checked_at).toLocaleDateString() : '<span style="color:var(--red)">✗</span>'}</td>
+      <td style="font-size:11px">${m.checked_by ? esc(m.checked_by) + (m.checked_region ? ' <span style="color:var(--muted)">(' + esc(m.checked_region) + ')</span>' : '') : '<span style="color:var(--red)">✗</span>'}</td>
       <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis" title="${esc(m.notes)}">${esc(m.notes)}</td>
       <td style="white-space:nowrap"><button class="btn btn-sm btn-outline" onclick="editMine('${m.id}')">Edit</button> <button class="btn btn-sm ${m.checked_at ? 'btn-outline' : 'btn-green'}" onclick="markChecked('${m.id}')" title="${m.checked_at ? 'Re-check' : 'Mark as checked'}">${m.checked_at ? '↻' : '✓'}</button></td>
     </tr>`;
