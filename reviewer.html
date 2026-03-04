@@ -146,6 +146,11 @@ td input,td select{background:var(--card);color:var(--text);border:1px solid var
         <option value="construction">Construction</option>
         <option value="commissioning">Commissioning</option>
       </select>
+      <select id="filterChecked" onchange="renderTable()">
+        <option value="">All (Checked & Unchecked)</option>
+        <option value="unchecked">❌ Not Checked</option>
+        <option value="checked">✅ Checked</option>
+      </select>
       <button class="btn btn-green btn-sm" onclick="showAddMine()">+ Add Mine</button>
       <span class="count" id="countDisplay"></span>
     </div>
@@ -165,6 +170,8 @@ td input,td select{background:var(--card);color:var(--text);border:1px solid var
             <th onclick="sortBy('year_commissioned')">Year</th>
             <th onclick="sortBy('designer')">Designer</th>
             <th onclick="sortBy('confidence')">Confidence</th>
+            <th onclick="sortBy('checked_at')">Last Checked</th>
+            <th onclick="sortBy('checked_by')">Checked By</th>
             <th>Notes</th>
             <th>Actions</th>
           </tr>
@@ -353,6 +360,9 @@ function renderTable() {
     if (fRegion && m.region !== fRegion) return false;
     if (fType && m.type !== fType) return false;
     if (fStatus && m.status !== fStatus) return false;
+    const fChecked = document.getElementById('filterChecked').value;
+    if (fChecked === 'checked' && !m.checked_at) return false;
+    if (fChecked === 'unchecked' && m.checked_at) return false;
     return true;
   });
 
@@ -388,8 +398,10 @@ function renderTable() {
       <td>${m.year_commissioned || '—'}</td>
       <td>${esc(m.designer)}</td>
       <td>${esc(m.confidence)}</td>
+      <td style="font-size:11px;color:var(--muted)">${m.checked_at ? new Date(m.checked_at).toLocaleDateString() : '<span style="color:var(--red)">—</span>'}</td>
+      <td style="font-size:11px">${m.checked_by ? esc(m.checked_by) + (m.checked_region ? ' <span style="color:var(--muted)">(' + esc(m.checked_region) + ')</span>' : '') : '<span style="color:var(--red)">—</span>'}</td>
       <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis" title="${esc(m.notes)}">${esc(m.notes)}</td>
-      <td><button class="btn btn-sm btn-outline" onclick="editMine('${m.id}')">Edit</button></td>
+      <td style="white-space:nowrap"><button class="btn btn-sm btn-outline" onclick="editMine('${m.id}')">Edit</button> <button class="btn btn-sm ${m.checked_at ? 'btn-outline' : 'btn-green'}" onclick="markChecked('${m.id}')" title="${m.checked_at ? 'Re-check' : 'Mark as checked'}">${m.checked_at ? '↻' : '✓'}</button></td>
     </tr>`;
   }).join('');
 
@@ -529,6 +541,26 @@ function toast(msg, isError) {
   t.className = 'toast' + (isError ? ' error' : '');
   t.style.display = 'block';
   setTimeout(() => t.style.display = 'none', 4000);
+}
+
+async function markChecked(id) {
+  const m = mines.find(x => x.id === id);
+  if (!m) return;
+  const res = await fetch(SUPABASE_URL + '/rest/v1/mines?id=eq.' + id, {
+    method: 'PATCH',
+    headers: { ...headers(), 'Prefer': 'return=representation' },
+    body: JSON.stringify({
+      checked_by: currentUser,
+      checked_at: new Date().toISOString(),
+      checked_region: currentRegion
+    })
+  });
+  if (res.ok) {
+    toast(`✅ ${m.name} marked as checked by ${currentRegion}`);
+    loadData();
+  } else {
+    toast('❌ Failed to mark as checked — columns may not exist yet. Run schema-checked.sql first.', true);
+  }
 }
 
 // Close modals on escape
